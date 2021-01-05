@@ -1,0 +1,46 @@
+/* Use uppercase hex color pleas */
+
+:root {
+  --main-font-color: white;
+  --main-background-color: white;
+
+  // items
+  --item-poor: #889D9D;
+  --item-common: #FFFFFF;
+  --item-uncommon: #1EFF0C;
+  --item-rare: #0070FF;
+  --item-epic: #A335EE;
+  --item-legendary: #FF8000;
+  --item-artifact: #E6CC80;
+
+  // classes
+  --class-druid: #FF7D0A;
+  --class-hunter: #ABD473;
+  --class-mage: #69CCF0;
+  --class-paladin: #F58CBA;
+  --class-priest: #FFFFFF;
+  --class-rogue: #FFF569;
+  --class-shaman: #0070DE;
+  --class-warlock: #9482C9;
+  --class-warrior: #C79C6E;
+
+  // chat
+  --chat-general: #FEC1C0;
+  --chat-system-essages: #FFFF00;
+  --chat-guild: #3CE13F;
+  --chat-officer: #40BC40;
+  --chat-party: #AAABFE;
+  --chat-linked-spells: #67BCFF;
+  --chat-say: #FFFFFF;
+  --chat-whisper: #FF7EFF;
+  --chat-yell: #FF3F40;
+  --chat-emote: #FF7E40;
+  --chat-raid: #FF7D01;
+  --chat-raid-leader: #FF4709;
+  --chat-raid-warning: #FF4700;
+}
+
+html {
+  color: var(--main-font-color);
+  background-color: var(--main-background-color);
+}

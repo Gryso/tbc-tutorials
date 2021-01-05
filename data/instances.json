@@ -1,0 +1,395 @@
+{
+  "hellfireCitadel": {
+    "hellfireRamparts": {
+      "name": "Hellfire Ramparts",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "watchkeeper": [],
+        "omor": [],
+        "vazruden": [],
+        "nazan": [],
+        "felIronChest": []
+      },
+      "heroic": {
+        "watchkeeper": [],
+        "omor": [],
+        "vazruden": [],
+        "nazan": [],
+        "felIronChest": []
+      }
+    },
+    "theBloodFurnace": {
+      "name": "The Blood Furnace",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "maker": [],
+        "broggok": [],
+        "breaker": []
+      },
+      "heroic": {
+        "maker": [],
+        "broggok": [],
+        "breaker": []
+      }
+    },
+    "theShatteredHalls": {
+      "name": "The Shattered Halls",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "nethekurse": [],
+        "porung": [],
+        "omrogg": [],
+        "kargath": []
+      },
+      "heroic": {
+        "nethekurse": [],
+        "porung": [],
+        "omrogg": [],
+        "kargath": []
+      }
+    },
+    "magtheridonsLair": {
+      "instanceType": "raid",
+      "numberOfPlayers": 25,
+      "name": "Magtheridon's Lair",
+      "normal": {
+        "magtheridon": []
+      }
+    }
+  },
+  "coilfangReservoir": {
+    "theSlavePens": {
+      "name": "The Slave Pens",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "mennu": [],
+        "rokmar": [],
+        "quagmirran": []
+      },
+      "heroic": {
+        "mennu": [],
+        "rokmar": [],
+        "quagmirran": []
+      }
+    },
+    "theUnderbog": {
+      "name": "The Underbog",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "hungarfen": [],
+        "ghazan": [],
+        "swamplord": [],
+        "stalker": []
+      },
+      "heroic": {
+        "hungarfen": [],
+        "ghazan": [],
+        "swamplord": [],
+        "stalker": []
+      }
+    },
+    "theSteamvault": {
+      "name": "The Steamvault",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "thespia": [],
+        "steamrigger": [],
+        "warlord": []
+      },
+      "heroic": {
+        "thespia": [],
+        "steamrigger": [],
+        "warlord": []
+      }
+    },
+    "serpentshrineCavern": {
+      "name": "Serpentshrine Cavern",
+      "instanceType": "raid",
+      "numberOfPlayers": 25,
+      "normal": {
+        "hydross": [],
+        "lurker": [],
+        "leotheras": [],
+        "karathress": [],
+        "morogrim": [],
+        "vashj": []
+      }
+    }
+  },
+  "Auchindoun": {
+    "manaTombs": {
+      "name": "Mana-Tombs",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "pandemonius": [],
+        "tavarok": [],
+        "nexusPrince": [],
+        "yor": []
+      },
+      "heroic": {
+        "pandemonius": [],
+        "tavarok": [],
+        "nexusPrince": [],
+        "yor": []
+      }
+    },
+    "auchenaiCrypts": {
+      "name": "Auchenai Crypts",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "shirrak": [],
+        "exarch": [],
+        "avatar": []
+      },
+      "heroic": {
+        "shirrak": [],
+        "exarch": [],
+        "avatar": []
+      }
+    },
+    "sethekkHalls": {
+      "name": "Sethekk Halls",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "darkweaver": [],
+        "talonKing": [],
+        "ravenGod": []
+      },
+      "heroic": {
+        "darkweaver": [],
+        "talonKing": [],
+        "ravenGod": []
+      }
+    },
+    "shadowLabyrinth": {
+      "name": "Shadow Labyrinth",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "hellmaw": [],
+        "blackheart": [],
+        "grandmaster": [],
+        "murmur": []
+      },
+      "heroic": {
+        "hellmaw": [],
+        "blackheart": [],
+        "grandmaster": [],
+        "murmur": []
+      }
+    }
+  },
+  "cavernsOfTime": {
+    "oldHillsbradFoothills": {
+      "name": "Old Hillsbrad Foothills",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "drake": [],
+        "skarloc": [],
+        "hunter": []
+      },
+      "heroic": {
+        "drake": [],
+        "skarloc": [],
+        "hunter": []
+      }
+    },
+    "theBlackMorass": {
+      "name": "The Black Morass",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "deja": [],
+        "temporus": [],
+        "aeonus": []
+      },
+      "heroic": {
+        "deja": [],
+        "temporus": [],
+        "aeonus": []
+      }
+    },
+    "hyjalSummit": {
+      "name": "Hyjal Summit",
+      "instanceType": "raid",
+      "numberOfPlayers": 25,
+      "normal": {
+        "winterchill": [],
+        "anetheron": [],
+        "kazrogal": [],
+        "azgalor": [],
+        "archimonde": []
+      }
+    }
+  },
+  "tempestKeep": {
+    "theMechanar": {
+      "name": "The Mechanar",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "cacheoftheLegion": [],
+        "capacitus": [],
+        "sepethrea": [],
+        "calc": []
+      },
+      "heroic": {
+        "cacheoftheLegion": [],
+        "capacitus": [],
+        "sepethrea": [],
+        "calc": []
+      }
+    },
+    "theBotanica": {
+      "name": "The Botanica",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "sarannis": [],
+        "freywinn": [],
+        "thorngrin": [],
+        "laj": [],
+        "splinter": []
+      },
+      "heroic": {
+        "sarannis": [],
+        "freywinn": [],
+        "thorngrin": [],
+        "laj": [],
+        "splinter": []
+      }
+    },
+    "theArcatraz": {
+      "name": "The Arcatraz",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "unbound": [],
+        "scryer": [],
+        "dalliah": [],
+        "harbinger": []
+      },
+      "heroic": {
+        "unbound": [],
+        "scryer": [],
+        "dalliah": [],
+        "harbinger": []
+      }
+    },
+    "theEye": {
+      "name": "The Eye",
+      "instanceType": "raid",
+      "numberOfPlayers": 25,
+      "normal": {
+        "alar": [],
+        "voidReaver": [],
+        "solarian": [],
+        "kaelthas": []
+      }
+    }
+  },
+  "karazhan": {
+    "name": "Karazhan",
+    "instanceType": "raid",
+    "numberOfPlayers": 10,
+    "normal": {
+      "attumen": [],
+      "moroes": [],
+      "maiden": [],
+      "operaEvent": {
+        "shared": [],
+        "theCrone": [],
+        "romuloAJulianne": [],
+        "theBigBadWolf": []
+      },
+      "curator": [],
+      "illhoof": [],
+      "aran": [],
+      "netherspite": [],
+      "chess": [],
+      "nightbane": [],
+      "prince": []
+    }
+  },
+  "gruulsLair": {
+    "name": "Gruul's Lair",
+    "instanceType": "raid",
+    "numberOfPlayers": 25,
+    "normal": {
+      "highKingMaulgar": [],
+      "gruul": []
+    }
+  },
+  "blackTemple": {
+    "name": "Black Temple",
+    "instanceType": "raid",
+    "numberOfPlayers": 25,
+    "normal": {
+      "najentus": [],
+      "supremus": [],
+      "gorefiend": [],
+      "bloodboil": [],
+      "akama": [],
+      "essencofSouls": [],
+      "shahraz": [],
+      "council": [],
+      "illidanStormrage": []
+    }
+  },
+  "zulAman": {
+    "name": "Zul'Aman",
+    "instanceType": "raid",
+    "numberOfPlayers": 10,
+    "normal": {
+      "nalorakk": [],
+      "akilZon": [],
+      "janAlai": [],
+      "halazzi": [],
+      "malacrass": [],
+      "zuljin": [],
+      "chest": []
+    }
+  },
+  "sunwellIsle": {
+    "magistersTerrace": {
+      "name": "Magister's Terrace",
+      "instanceType": "dungeon",
+      "numberOfPlayers": 5,
+      "normal": {
+        "fireheart": [],
+        "vexallus": [],
+        "delrissa": [],
+        "kaelthas": []
+      },
+      "heroic": {
+        "fireheart": [],
+        "vexallus": [],
+        "delrissa": [],
+        "kaelthas": []
+      }
+    },
+    "sunwellPlateau": {
+      "name": "Sunwell Plateau",
+      "instanceType": "raid",
+      "numberOfPlayers": 25,
+      "normal": {
+        "kalecgos": [],
+        "brutallus": [],
+        "felmyst": [],
+        "eredarTwins": [],
+        "muru": [],
+        "kiljaeden": []
+      }
+    }
+  }
+}

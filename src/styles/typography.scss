@@ -1,0 +1,75 @@
+:root {
+  --base-font-size: 16px;
+  --base-line-height: 1.5;
+  --scale: 1.5;
+  --leading: calc(var(--base-line-height) * 1rem);
+}
+
+html {
+  font-family: serif;
+  font-size: var(--base-font-size);
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  margin-top: var(--leading);
+  margin-bottom: 0;
+  line-height: var(--leading);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: monospace, monospace;
+  font-size: 0.875rem;
+}
+
+ul, ol {
+  margin-top: var(--leading);
+  margin-bottom: var(--leading);
+
+  li {
+    line-height: var(--leading);
+  }
+
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: var(--leading);
+  margin-bottom: 0;
+  font-family: sans-serif;
+  line-height: var(--leading);
+}
+
+h1 {
+  margin-top: calc(2 * var(--leading));
+  font-size: calc(2 * var(--scale) * 1rem);
+  line-height: calc(2 * var(--leading));
+}
+
+h2 {
+  margin-top: calc(1.5 * var(--leading));
+  font-size: calc(1.5 * var(--scale) * 1rem);
+  line-height: calc(1.5 * var(--leading));
+}
+
+h3 {
+  font-size: calc(1 * var(--scale) * 1rem);
+}
+
+h4 {
+  font-size: calc(0.875 * var(--scale) * 1rem);
+}
+
+h5 {
+  font-size: calc(0.75 * var(--scale) * 1rem);
+}
+
+h6 {
+  font-size: calc(0.625 * var(--scale) * 1rem);
+}
