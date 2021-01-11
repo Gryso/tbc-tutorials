@@ -9,6 +9,8 @@ html {
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
 }
 
@@ -110,7 +112,7 @@ fieldset {
 legend {
   display: table;
   max-width: 100%;
-  padding: 0; /* 3 */
+  padding: 0;
   box-sizing: border-box;
   color: inherit;
   white-space: normal;

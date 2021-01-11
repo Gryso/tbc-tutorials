@@ -11,28 +11,6 @@ const Macros = (props) => {
 
   return (
     <MainLayout>
-      <p>This is just simple button to open macro menu. If you are too lazy to write /macro"</p>
-      <p>This is just simple button to open macro menu. If you are too lazy to write /macro"</p>
-
-
-      <h1>h1</h1>
-      text h1
-      <h2>h2</h2>
-      text h2
-      <h3>h3</h3>
-      text h3
-      <h4>h4</h4>
-      text h4
-      <h5>h5</h5>
-      text h5
-      <h6>h6</h6>
-      text h6
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
       Macros
       <SimpleMacro
         name="OpenMacroMenu"

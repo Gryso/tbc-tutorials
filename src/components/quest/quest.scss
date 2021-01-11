@@ -1,0 +1,32 @@
+.default {
+  color: var(--quest-default)
+}
+
+.veryEasy {
+  color: var(--quest-very-easy)
+}
+
+.easy {
+  color: var(--quest-easy)
+}
+
+.medium {
+  color: var(--quest-medium)
+}
+
+.hard {
+  color: var(--quest-hard)
+}
+
+.veryHard {
+  color: var(--quest-very-hard)
+}
+
+.questLink {
+  text-decoration: none;
+}
+
+.questIcon {
+  height: 1em;
+  width: 1em;
+}

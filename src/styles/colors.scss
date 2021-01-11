@@ -3,6 +3,10 @@
 :root {
   --main-font-color: white;
   --main-background-color: white;
+  --yellow-font-color: #FFD100;  //edit this
+
+  --spell: #6BCEEE;
+  --talent: #548FEA;
 
   // items
   --item-poor: #889D9D;
@@ -38,9 +42,23 @@
   --chat-raid: #FF7D01;
   --chat-raid-leader: #FF4709;
   --chat-raid-warning: #FF4700;
+
+  // reputations
+  // THIS IS possibly WRONG
+  --reputation-positive: #00FF00;
+  --reputation-neutral: #FFFF00;
+  --reputation-negative: #CC2222;
+
+  // quests
+  --quest-default: #FFD100;
+  --quest-very-easy: #808080;
+  --quest-easy: #37C035;
+  --quest-medium: #EFFF00;
+  --quest-hard: #FF823B;
+  --quest-very-hard: #F31F1E;
 }
 
 html {
-  color: var(--main-font-color);
   background-color: var(--main-background-color);
+  color: var(--main-font-color);
 }
