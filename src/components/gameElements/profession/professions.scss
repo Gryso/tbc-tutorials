@@ -1,0 +1,58 @@
+@import "../gameLementsMixins";
+
+.profession {
+  @include text-with-icon;
+  @include span-icon;
+
+  &.alchemy {
+    color: var(--spell)
+  }
+
+  &.blacksmithing {
+    color: var(--spell)
+  }
+
+  &.cooking {
+    color: var(--spell)
+  }
+
+  &.enchanting {
+    color: var(--spell)
+  }
+
+  &.engineering {
+    color: var(--spell)
+  }
+
+  &.firstaid {
+    color: var(--spell)
+  }
+
+  &.fishing {
+    color: var(--spell)
+  }
+
+  &.herbalism {
+    color: var(--spell)
+  }
+
+  &.jewelcrafting {
+    color: var(--spell)
+  }
+
+  &.leatherworking {
+    color: var(--spell)
+  }
+
+  &.mining {
+    color: var(--spell)
+  }
+
+  &.skinning {
+    color: var(--spell)
+  }
+
+  &.tailoring {
+    color: var(--spell)
+  }
+}

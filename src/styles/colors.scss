@@ -3,30 +3,42 @@
 :root {
   --main-font-color: white;
   --main-background-color: white;
-  --yellow-font-color: #FFD100;  //edit this
+  --golden-wow: #FFD100; //edit this
 
-  --spell: #6BCEEE;
-  --talent: #548FEA;
+  --spell: #7AD5FF;
+  --talent: #548FEA; // still not sure
 
   // items
-  --item-poor: #889D9D;
+  --item-poor: #9D9D9D;
   --item-common: #FFFFFF;
-  --item-uncommon: #1EFF0C;
-  --item-rare: #0070FF;
+  --item-uncommon: #1EFF00;
+  --item-rare: #0070DD;
   --item-epic: #A335EE;
   --item-legendary: #FF8000;
   --item-artifact: #E6CC80;
 
   // classes
-  --class-druid: #FF7D0A;
-  --class-hunter: #ABD473;
-  --class-mage: #69CCF0;
-  --class-paladin: #F58CBA;
+  --class-druid: #FF7C0A;
+  --class-hunter: #AAD372;
+  --class-mage: #3FC7EB;
+  --class-paladin: #F48CBA;
   --class-priest: #FFFFFF;
-  --class-rogue: #FFF569;
-  --class-shaman: #0070DE;
-  --class-warlock: #9482C9;
-  --class-warrior: #C79C6E;
+  --class-rogue: #FFF468;
+  --class-shaman: #0070DD;
+  --class-warlock: #8788EE;
+  --class-warrior: #C69B6D;
+
+  // factions
+  --faction-alliance: #FF7D0A;
+  --faction-horde: #ABD473;
+
+  // power
+  --power-mana: #0000FF;
+  --power-rage: #FF0000;
+  --power-focus: #FF8040;
+  --power-energy: #FFFF00;
+  --power-combo-points: #FFF569;
+  --power-soul-shards: #80528C;
 
   // chat
   --chat-general: #FEC1C0;
@@ -43,6 +55,12 @@
   --chat-raid-leader: #FF4709;
   --chat-raid-warning: #FF4700;
 
+  //profession skill-ups
+  --skillup-alwyas: #EE783C;
+  --skillup-often: #EEEE00;
+  --skillup-seldom: #3CB33C;
+  --skillup-never: #787878;
+
   // reputations
   // THIS IS possibly WRONG
   --reputation-positive: #00FF00;
@@ -51,11 +69,11 @@
 
   // quests
   --quest-default: #FFD100;
-  --quest-very-easy: #808080;
-  --quest-easy: #37C035;
-  --quest-medium: #EFFF00;
-  --quest-hard: #FF823B;
-  --quest-very-hard: #F31F1E;
+  --quest-very-easy: #DD2222;
+  --quest-easy: #FF8040;
+  --quest-medium: #FFFF00;
+  --quest-hard: #40BF40;
+  --quest-very-hard: #808080;
 }
 
 html {

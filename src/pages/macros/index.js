@@ -1,6 +1,6 @@
 import React from "react";
 import MainLayout from "../../components/MainLayout";
-import SimpleMacro from "../../components/SimpleMacro";
+import SimpleMacro from "../../components/macro/SimpleMacro";
 
 const code = `const foo = 'foo';
 const bar = 'bar';

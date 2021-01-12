@@ -1,0 +1,35 @@
+@import "../gameLementsMixins";
+
+.quest {
+  text-decoration: none;
+  @include text-with-icon;
+
+  &.default {
+    color: var(--quest-default)
+  }
+
+  &.veryEasy {
+    color: var(--quest-very-easy)
+  }
+
+  &.easy {
+    color: var(--quest-easy)
+  }
+
+  &.medium {
+    color: var(--quest-medium)
+  }
+
+  &.hard {
+    color: var(--quest-hard)
+  }
+
+  &.veryHard {
+    color: var(--quest-very-hard)
+  }
+}
+
+.questIcon {
+  height: 1em;
+  width: 1em;
+}

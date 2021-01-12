@@ -1,0 +1,14 @@
+@import "../gameLementsMixins";
+
+.faction {
+  @include text-with-icon;
+  @include span-icon;
+
+  &.alliance {
+    color: var(--faction-alliance)
+  }
+
+  &.horde {
+    color: var(--faction-horde)
+  }
+}

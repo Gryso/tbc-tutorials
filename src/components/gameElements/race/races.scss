@@ -1,0 +1,37 @@
+@import "../gameLementsMixins";
+
+.race {
+  @include text-with-icon;
+  @include span-icon;
+  color: var(--golden-wow);
+
+  //&.bloodelf {
+  //}
+  //
+  //&.draenei {
+  //}
+  //
+  //&.dwarf {
+  //}
+  //
+  //&.gnome {
+  //}
+  //
+  //&.human {
+  //}
+  //
+  //&.nightelf {
+  //}
+  //
+  //&.orc {
+  //}
+  //
+  //&.tauren {
+  //}
+  //
+  //&.troll {
+  //}
+  //
+  //&.undead {
+  //}
+}

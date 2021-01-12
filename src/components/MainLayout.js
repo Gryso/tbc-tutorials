@@ -1,10 +1,11 @@
 import React from "react";
-import "./mainLayout.scss"
-import MainMenu from "./MainMenu";
+import "./mainLayout.scss";
+import MainMenu from "./mainMenu/MainMenu";
+import Footer from "./footer/Footer";
 
 function MainLayout({children, name}) {
   return (
-    <div style={{margin: `0 auto`, maxWidth: 650, padding: `0 1rem`}} className="layout">
+    <div className="layout">
       <header>
         <MainMenu/>
       </header>
@@ -12,11 +13,7 @@ function MainLayout({children, name}) {
         {children}
       </main>
       <footer>
-        <div>&copy; Copyright 2021 - {new Date().getFullYear()} tbc-tutorials</div>
-        <div>
-          <span>If you want yours tutorial to be published or if You found a mistake pleas contact: </span>
-          <a href="mailto:tbc-tutorials@gmail.com" target="_blank">tbc-tutorials@gmail.com</a>
-        </div>
+        <Footer/>
       </footer>
     </div>
   );

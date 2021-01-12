@@ -1,0 +1,14 @@
+@mixin text-with-icon {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+@mixin span-icon {
+  img {
+    align-self: center;
+    margin-right: 0.125em;
+  }
+}
+
+

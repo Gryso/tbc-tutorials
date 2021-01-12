@@ -1,13 +1,51 @@
 import * as React from "react";
 import MainLayout from "../components/MainLayout";
-import Item from "../components/item/Item";
-import Quest from "../components/quest/Quest";
-import Spell from "../components/spell/Spell";
-import Talent from "../components/talent/Talent";
-import ClassIcon from "../components/classIcon/ClassIcon";
-import RaceIcon from "../components/raceIcon/RaceIcon";
+import Item from "../components/gameElements/item/Item";
+import Quest from "../components/gameElements/quest/Quest";
+import Spell from "../components/gameElements/spell/Spell";
+import Talent from "../components/gameElements/talent/Talent";
+import Icon from "../components/gameElements/icon/Icon";
+import {Alliance, Horde} from "../components/gameElements/faction/factions";
+import {
+  Alchemy,
+  Blacksmithing,
+  Cooking,
+  Enchanting,
+  Engineering,
+  Firstaid,
+  Fishing,
+  Herbalism,
+  Jewelcrafting,
+  Leatherworking,
+  Mining,
+  Skinning,
+  Tailoring
+} from "../components/gameElements/profession/professions";
+import {
+  Druid,
+  Hunter,
+  Mage,
+  Paladin,
+  Priest,
+  Rogue,
+  Shaman,
+  Warlock,
+  Warrior
+} from "../components/gameElements/class/classes";
+import {
+  Bloodelf,
+  Draenei,
+  Dwarf,
+  Gnome,
+  Human,
+  Nightelf,
+  Orc,
+  Tauren,
+  Troll,
+  Undead
+} from "../components/gameElements/race/races";
 
-const testing = (props) => {
+const testing = () => {
   return (
     <MainLayout>
       TESTING
@@ -57,33 +95,125 @@ const testing = (props) => {
       <br/>
       <br/>
 
+      All icons:
+      <br/>
       Classes:
       <br/>
-      <ClassIcon className={"druid"}/>
-      <ClassIcon className={"hunter"}/>
-      <ClassIcon className={"mage"}/>
-      <ClassIcon className={"paladin"}/>
-      <ClassIcon className={"priest"}/>
-      <ClassIcon className={"rogue"}/>
-      <ClassIcon className={"shaman"}/>
-      <ClassIcon className={"warlock"}/>
-      <ClassIcon className={"warrior"}/>
-      <ClassIcon/>
+      <Icon type="druid"/>
+      <Icon type="hunter"/>
+      <Icon type="mage"/>
+      <Icon type="paladin"/>
+      <Icon type="priest"/>
+      <Icon type="rogue"/>
+      <Icon type="shaman"/>
+      <Icon type="warlock"/>
+      <Icon type="warrior"/>
       <br/>
-
       Races:
       <br/>
-      <RaceIcon className={"bloodelf"}/>
-      <RaceIcon className={"draenei"}/>
-      <RaceIcon className={"dwarf"}/>
-      <RaceIcon className={"gnome"}/>
-      <RaceIcon className={"human"}/>
-      <RaceIcon className={"nightelf"}/>
-      <RaceIcon className={"orc"}/>
-      <RaceIcon className={"tauren"}/>
-      <RaceIcon className={"troll"}/>
-      <RaceIcon className={"undead"}/>
-      <RaceIcon/>
+      <Icon type="bloodelf"/>
+      <Icon type="draenei"/>
+      <Icon type="dwarf"/>
+      <Icon type="gnome"/>
+      <Icon type="human"/>
+      <Icon type="nightelf"/>
+      <Icon type="orc"/>
+      <Icon type="tauren"/>
+      <Icon type="troll"/>
+      <Icon type="undead"/>
+      <br/>
+      Professions:
+      <br/>
+      <Icon type="alchemy"/>
+      <Icon type="blacksmithing"/>
+      <Icon type="cooking"/>
+      <Icon type="enchanting"/>
+      <Icon type="engineering"/>
+      <Icon type="firstaid"/>
+      <Icon type="fishing"/>
+      <Icon type="herbalism"/>
+      <Icon type="jewelcrafting"/>
+      <Icon type="leatherworking"/>
+      <Icon type="mining"/>
+      <Icon type="skinning"/>
+      <Icon type="tailoring"/>
+      <br/>
+      Factions:
+      <br/>
+      <Icon type="horde"/>
+      <Icon type="alliance"/>
+      <br/>
+      <Icon/>
+      <br/>
+      <br/>
+
+      <Horde/>
+      <Alliance/>
+      <br/>
+      <br/>
+      <Alchemy/>
+      <Blacksmithing/>
+      <Cooking/>
+      <Enchanting/>
+      <Engineering/>
+      <Firstaid/>
+      <Fishing/>
+      <Herbalism/>
+      <Jewelcrafting/>
+      <Leatherworking/>
+      <Mining/>
+      <Skinning/>
+      <Tailoring/>
+      <br/>
+      <br/>
+      <Druid/>
+      <Hunter/>
+      <Mage/>
+      <Paladin/>
+      <Priest/>
+      <Rogue/>
+      <Shaman/>
+      <Warlock/>
+      <Warrior/>
+      <br/>
+      <br/>
+      <Bloodelf/>
+      <Draenei/>
+      <Dwarf/>
+      <Gnome/>
+      <Human/>
+      <Nightelf/>
+      <Orc/>
+      <Tauren/>
+      <Troll/>
+      <Undead/>
+      <br/>
+      <br/>
+      <p>
+        I like <Bloodelf/> because they pointy ears, i do not like <Draenei/> so much as they have hoofs.
+        I like <Tauren/> hoofs better and hey are nice and big not like little <Dwarf/> or <Gnome/>. I find <Human/> dull
+        as I already am one in real life. I do not like capuera so that is also no for <Troll/>. I choose
+        <Nightelf/> or <Bloodelf/> as elfs are quite cool not so coll as <Undead/> tho. There is also <Orc/> but I
+        think too many people already play orcs. I like <Shaman/> most of all classes but I would also consider <Hunter/>
+      </p>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
 
 
     </MainLayout>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import MainLayout from "../../components/MainLayout";
-import Item from "../../components/item/Item";
+import Item from "../../components/gameElements/item/Item";
 
 const bis = (props) => {
   return (
