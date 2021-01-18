@@ -1,5 +1,5 @@
 import * as React from "react"
-import MainLayout from "../components/MainLayout";
+import MainLayout from "../components/layouts/mainLayout/MainLayout";
 
 const IndexPage = (props) => {
   console.log('%c props:', 'color: rgb(49, 193, 27)', props);

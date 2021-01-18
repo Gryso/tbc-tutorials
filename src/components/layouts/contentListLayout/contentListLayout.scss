@@ -1,0 +1,32 @@
+.content {
+  max-width: 88ch;
+  width: 100%;
+  padding: 0 4ch;
+}
+
+.listOfContent {
+  height: min-content;
+  border-left: 1px solid var(--golden-wow);
+
+  .listOfContentTitle {
+    padding-left: 1.5em;
+    font-weight: bold;
+    margin-bottom: calc(var(--leading) / 4);
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 1.5em;
+    margin: 0;
+  }
+
+  a {
+    color: var(--main-font-color);
+    text-decoration: none;
+    line-height: calc(2 * 1rem);
+
+    &:hover {
+      color: var(--golden-wow);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.sideMenuItem {
+  list-style-type: none;
+
+  .neviemCo {
+    position: relative;
+    cursor: pointer;
+    .sideMenuItemIcon {
+      position: absolute;
+      left: 0;
+    }
+
+    .sideMenuItemLabel {
+      margin-left: 1em;
+    }
+  }
+
+  ul {
+    padding-left: 1em;
+  }
+}

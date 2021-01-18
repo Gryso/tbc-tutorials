@@ -1,5 +1,5 @@
 import React from "react";
-import { CodeBlock, CopyBlock, dracula } from "react-code-blocks";
+// import { CodeBlock, CopyBlock, dracula } from "react-code-blocks";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const SimpleMacro = (props) => {
@@ -22,7 +22,8 @@ const SimpleMacro = (props) => {
       {/*  }}*/}
       {/*/>*/}
       <pre style={{
-        whiteSpace: "pre-wrap"
+        whiteSpace: "pre-wrap",
+        maxWidth: "80ch"
       }}>{props.text}</pre>
 
       <CopyToClipboard text={props.text} onCopy={() => console.log("copy")}>

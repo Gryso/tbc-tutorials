@@ -1,0 +1,24 @@
+.contentHeading {
+  position: relative;
+
+  .anchorIcon {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    padding-right: 0.125em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transform: translateX(-100%);
+
+    img {
+      height: 0.625rem;
+    }
+  }
+
+  &:hover .anchorIcon {
+    visibility: visible;
+  }
+}

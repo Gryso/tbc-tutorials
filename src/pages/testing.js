@@ -1,5 +1,5 @@
 import * as React from "react";
-import MainLayout from "../components/MainLayout";
+import MainLayout from "../components/layouts/mainLayout/MainLayout";
 import Item from "../components/gameElements/item/Item";
 import Quest from "../components/gameElements/quest/Quest";
 import Spell from "../components/gameElements/spell/Spell";
