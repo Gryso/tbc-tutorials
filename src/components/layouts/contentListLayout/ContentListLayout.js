@@ -53,20 +53,32 @@ function renderContentList(contentList) {
 }
 
 function ContentListLayout({children}) {
+  if (!children.length) {
+    console.log('%c  in top if', 'color: rgb(218, 129, 46)');
+    return (
+      <div className="content">
+        {children}
+      </div>
+    );
+  }
+  const title = children.find((child) => child.type.name === "Title").props.children;
+  const contentList = generateContentList(children);
+
 
   return (
     <>
-      <div className="content" >
+      <div className="content">
         {children}
       </div>
-      <div className="listOfContent" aria-hidden="true">
-        <div className="listOfContentTitle">
-          <AnchorLink
-            to={`#${headingToKebabCase(children[0].props.children)}`}
-            title={children[0].props.children}/>
-        </div>
-        {renderContentList(generateContentList(children))}
-      </div>
+      {contentList.length > 0 ?
+        <div className="listOfContent" aria-hidden="true">
+          <div className="listOfContentTitle">
+            <AnchorLink
+              to={`#${headingToKebabCase(title)}`}
+              title={title}/>
+          </div>
+          {renderContentList(contentList)}
+        </div> : null}
     </>
   );
 }

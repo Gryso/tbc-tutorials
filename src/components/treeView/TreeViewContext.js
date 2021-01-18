@@ -1,9 +1,3 @@
-import * as React from 'react';
+import React from "react";
 
-const TreeViewContext = React.createContext({});
-
-if (process.env.NODE_ENV !== 'production') {
-  TreeViewContext.displayName = 'TreeViewContext';
-}
-
-export default TreeViewContext;
+export default React.createContext({});

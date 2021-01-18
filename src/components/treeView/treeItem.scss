@@ -1,7 +1,7 @@
 .sideMenuItem {
   list-style-type: none;
 
-  .neviemCo {
+  .sideMenuHeader {
     position: relative;
     cursor: pointer;
     .sideMenuItemIcon {
@@ -11,6 +11,15 @@
 
     .sideMenuItemLabel {
       margin-left: 1em;
+
+      a {
+        text-decoration: none;
+        color: var(--main-font-color);
+
+        &:hover {
+          color: pink;
+        }
+      }
     }
   }
 

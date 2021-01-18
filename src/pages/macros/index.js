@@ -4,10 +4,9 @@ import SimpleMacro from "../../components/macro/SimpleMacro";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import MacroSideMenu from "../../components/menus/sideMenus/MacroSideMenu";
 import {Heading2, Heading3, Heading4, Title} from "../../components/headers/headers";
-import SEO from "../../components/seo";
 
 
-const Macros = (props) => {
+const Macros = () => {
 
   return (
     <MainLayout pageTitle="General macros">
@@ -28,7 +27,7 @@ const Macros = (props) => {
         <SimpleMacro
           name="SellJunk"
           description={"This will sell all grey items to vendor you are currently talking to."}
-          text={`/script for bag = 0, 4 do for slot = 1, GetContainerNumSlots(bag) do local name = GetContainerItemLink(bag,slot) if name and string.find(name,\"ff9d9d9d\") then DEFAULT_CHAT_FRAME:AddMessage(\"Selling \"..name) UseContainerItem(bag,slot) end end end`}
+          text={`/script for bag = 0, 4 do for slot = 1, GetContainerNumSlots(bag) do local name = GetContainerItemLink(bag,slot) if name and string.find(name,"ff9d9d9d") then DEFAULT_CHAT_FRAME:AddMessage("Selling "..name) UseContainerItem(bag,slot) end end end`}
         />
         <SimpleMacro
           name="Focus"

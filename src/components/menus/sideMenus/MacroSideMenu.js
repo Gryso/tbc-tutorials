@@ -3,10 +3,8 @@ import TreeView from "../../treeView/TreeView";
 import TreeItem from "../../treeView/TreeItem";
 
 function MacroSideMenu() {
-  console.log('%c in macro side menu', 'color: rgb(218, 129, 46)');
   return (
-    <TreeView>
-
+    <TreeView LSKey="MacroSideMenu">
       <TreeItem label="General" link="/macros"/>
       <TreeItem label="Druid" link="/macros/druid"/>
       <TreeItem label="Hunter" link="/macros/hunter"/>
