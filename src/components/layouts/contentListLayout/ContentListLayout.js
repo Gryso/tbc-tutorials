@@ -3,27 +3,31 @@ import "./contentListLayout.scss";
 import {AnchorLink} from "gatsby-plugin-anchor-links";
 import headingToKebabCase from "../../../utils/headingToKebabCase";
 
+function getComponentName(type) {
+  return type.displayName || type.name || null;
+}
+
 function generateContentList(children) {
   let contentList = [];
 
   children.forEach((child) => {
     if (child.type) {
 
-      if (child.type.name === "Heading2") {
+      if (getComponentName(child.type) === "Heading2") {
         contentList.push({
           text: child.props.children,
           children: []
         });
       }
 
-      if (child.type.name === "Heading3") {
+      if (getComponentName(child.type) === "Heading3") {
         contentList[contentList.length - 1].children.push({
           text: child.props.children,
           children: []
         });
       }
 
-      if (child.type.name === "Heading4") {
+      if (getComponentName(child.type) === "Heading4") {
         contentList[contentList.length - 1].children[contentList.length - 1].children.push({
           text: child.props.children,
           children: []
@@ -54,14 +58,13 @@ function renderContentList(contentList) {
 
 function ContentListLayout({children}) {
   if (!children.length) {
-    console.log('%c  in top if', 'color: rgb(218, 129, 46)');
     return (
       <div className="content">
         {children}
       </div>
     );
   }
-  const title = children.find((child) => child.type.name === "Title").props.children;
+  const title = children.find((child) => getComponentName(child.type) === "Title").props.children;
   const contentList = generateContentList(children);
 
 
