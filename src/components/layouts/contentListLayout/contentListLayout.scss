@@ -6,7 +6,7 @@
 
 .listOfContent {
   height: min-content;
-  border-left: 1px solid var(--golden-wow);
+  border-left: 1px solid var(--vertical-sepoarator-color);
 
   .listOfContentTitle {
     padding-left: 1.5em;
@@ -21,12 +21,12 @@
   }
 
   a {
-    color: var(--main-font-color);
+    color: var(--primary-font-color);
     text-decoration: none;
     line-height: calc(2 * 1rem);
 
     &:hover {
-      color: var(--golden-wow);
+      color: var(--contrast-color);
     }
   }
 }

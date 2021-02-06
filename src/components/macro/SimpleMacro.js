@@ -1,12 +1,15 @@
 import React from "react";
 // import { CodeBlock, CopyBlock, dracula } from "react-code-blocks";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import "./simpleMacro.scss";
+import Button from "../button/Button";
+import {Heading4} from "../headers/headers";
 
 const SimpleMacro = (props) => {
 
   return (
-    <>
-      <h4>{props.name}</h4>
+    <div className="simpleMacro">
+      <Heading4>{props.name}</Heading4>
       <div>{props.description}</div>
       {/*<CodeBlock*/}
       {/*  text={props.text}*/}
@@ -21,15 +24,16 @@ const SimpleMacro = (props) => {
       {/*    // minHeight: "3em"*/}
       {/*  }}*/}
       {/*/>*/}
-      <pre style={{
-        whiteSpace: "pre-wrap",
-        maxWidth: "80ch"
-      }}>{props.text}</pre>
+      <div className="macroCodeWrapper">
+        <pre className="macroCode">
+          {props.text}
+        </pre>
+      </div>
 
       <CopyToClipboard text={props.text} onCopy={() => console.log("copy")}>
-        <span>Copy</span>
+        <Button>Copy</Button>
       </CopyToClipboard>
-    </>
+    </div>
   );
 };
 

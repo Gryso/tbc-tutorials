@@ -7,13 +7,13 @@ import SEO from "../../seo";
 function MainLayout({children, pageTitle}) {
   return (
     <div className="layout">
-      <SEO title={pageTitle ? `${pageTitle} | TBC-tutorials` : "TBC-tutorials"}/>
+      <SEO title={pageTitle ? `${pageTitle} | TBC-tutorials` : "TBC-tutorials"} />
       <header>
-        <MainMenu/>
+        <MainMenu />
       </header>
       {children}
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </div>
   );

@@ -10,12 +10,10 @@ function TreeItem({children, link, label}) {
   return (
     <TreeViewContext.Consumer>
       {(treeViewContext) => (
-        <li
-          className="sideMenuItem"
-          role="treeitem"
-        >
+        <li className="sideMenuItem">
           <div
             className="sideMenuHeader"
+            role="button"
             onClick={() => {
               if (link) {
                 return;
@@ -29,14 +27,14 @@ function TreeItem({children, link, label}) {
             {children ? <img
               className="sideMenuItemIcon"
               src={treeViewContext.state[label] ? downArrow : rightArrow}
-              alt="test"
+              alt={treeViewContext.state[label] ? "unpack" : "pack"}
               style={{
                 width: "1em",
                 height: "1em",
-              }}/> : null}
+              }} /> : null}
             <span className="sideMenuItemLabel">
-          {link ? <Link to={link}>{label}</Link> : label}
-        </span>
+              {link ? <Link to={link}>{label}</Link> : label}
+            </span>
           </div>
           {children && treeViewContext.state[label] && (
             <ul>

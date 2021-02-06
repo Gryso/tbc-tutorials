@@ -1,11 +1,14 @@
 /* Use uppercase hex colors pleas */
 
 :root {
-  --main-font-color: white;
-  --main-background-color: white;
-  --golden-wow: #FFD100; //edit this
+  --primary-font-color: #ECE8DA;
+  --secondary-font-color: #ECE8DA;
+  --primary-color: #618A30;
+  --secondary-color: #98B23E;
+  --contrast-color: #FFD100;
   --header-footer-color: #131313;
   --header-footer-sepoarator-color: #313131;
+  --vertical-sepoarator-color: #6F84410D;
 
 
   --spell: #7AD5FF;
@@ -81,5 +84,5 @@
 
 :root {
   background-color: var(--main-background-color);
-  color: var(--main-font-color);
+  color: var(--primary-font-color);
 }

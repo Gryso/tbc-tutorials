@@ -3,7 +3,7 @@
 .race {
   @include text-with-icon;
   @include span-icon;
-  color: var(--golden-wow);
+  color: var(--contrast-color);
 
   //&.bloodelf {
   //}

@@ -22,18 +22,22 @@ const Tank = () => {
               <p>Miss is unsuccessfully hit that deals no damage.</p>
             <Heading3>Dodge</Heading3>
               <p>
-                Dodge is hit completely avoided by player resulting in miss.
-                You can only dodge attacks from the front and cannot dodge ranged physical attacks.
 
               </p>
             <Heading3>Parry</Heading3>
               <p>Parry is hit completely avoided by player resulting in miss. You cannot parry ranged physical attacks</p>
             <Heading3>Block</Heading3>
-              <p>Block is hit avoided by player resulting in miss</p>
+              <p>Block is hit partially avoided by player resulting in miss</p>
             <Heading3>Armor</Heading3>
             <Heading3>Resistances</Heading3>
         Miss -> Dodge -> Parry -> Block -> Crushing Blow -> Critical Strikes -> Hit
           <Heading2>Hitting</Heading2>
+        <div
+          style={{
+            height: "1500px"
+          }}
+        >loooooong div</div>
+
 
       </SideMenuLayout>
 

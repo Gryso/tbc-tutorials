@@ -5,13 +5,18 @@
   align-items: flex-start;
   width: 100vw;
   min-height: 100vh;
-  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 50%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(90deg, #000000 0%, #181818 50%, #000000 100%);
+
+  .backgroundImage {
+    position: absolute;
+    bottom: 0;
+    height: 200px;
+  }
 
   header {
     position: sticky;
     top: 0;
     z-index: 100;
-    flex-basis: 3rem;
     width: 100%;
     background-color: var(--header-footer-color);
     border-bottom: 1px solid var(--header-footer-sepoarator-color);
@@ -24,8 +29,7 @@
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
-    padding: 1rem 0.5rem;
-    margin-top: 4rem;
+    padding: 1rem 1.5rem;
     background-color: var(--header-footer-color);
     border-top: 1px solid var(--header-footer-sepoarator-color);
     font-size: 0.75rem;

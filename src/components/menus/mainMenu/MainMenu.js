@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "gatsby"
 import "./mainMenu.scss"
 
-function MainMenu({children, name}) {
+function MainMenu() {
   return (
-    <nav role="navigation">
+    <nav role="navigation" aria-label="Main" className="mainMenu">
       <Link to="/pve-tutorials/">PVE Tutorials</Link>
       <Link to="/pve-bis/">PVE BIS</Link>
       <Link to="/pvp-tutorials/">PVP Tutorials</Link>
