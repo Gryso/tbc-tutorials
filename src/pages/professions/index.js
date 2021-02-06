@@ -1,17 +1,17 @@
 import * as React from "react";
 import MainLayout from "../../components/layouts/mainLayout/MainLayout";
-import BISSideMenu from "../../components/menus/sideMenus/BISSideMenu";
+import ProfessionsSideMenu from "../../components/menus/sideMenus/ProfessionsSideMenu";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import {Title} from "../../components/headers/headers";
 
-const BIS = () => {
+const Professions = () => {
   return (
-    <MainLayout pageTitle="General macros">
-      <SideMenuLayout sideMenu={BISSideMenu}>
-        <Title>BIS</Title>
+    <MainLayout pageTitle="Professions">
+      <SideMenuLayout sideMenu={ProfessionsSideMenu}>
+        <Title>Professions</Title>
       </SideMenuLayout>
     </MainLayout>
   );
 };
 
-export default BIS;
+export default Professions;

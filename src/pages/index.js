@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import MainLayout from "../components/layouts/mainLayout/MainLayout";
 
 const IndexPage = (props) => {
@@ -7,7 +7,7 @@ const IndexPage = (props) => {
     <MainLayout>
       index
     </MainLayout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

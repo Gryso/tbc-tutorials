@@ -4,11 +4,12 @@ nav {
   align-items: center;
   justify-content: center;
   padding: 0.5em;
+  height: 100%;
 
   a {
     text-decoration: none;
     margin: 0 1em;
-    color: #00FF00;
+    color: var(--main-font-color);
 
     &:hover {
       color: pink;

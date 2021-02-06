@@ -3,9 +3,9 @@ import "./treeView.scss"
 import useLocalStorage from "../../utils/useLocalStorage";
 import TreeViewContext from "./TreeViewContext";
 
-function TreeView({children, LSKey}) {
+function TreeView({children, localStorageKey}) {
 
-  const [state, setState] = useLocalStorage(LSKey, {})
+  const [state, setState] = useLocalStorage(localStorageKey, {})
 
   return (
     <TreeViewContext.Provider

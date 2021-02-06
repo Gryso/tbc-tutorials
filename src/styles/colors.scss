@@ -4,6 +4,9 @@
   --main-font-color: white;
   --main-background-color: white;
   --golden-wow: #FFD100; //edit this
+  --header-footer-color: #131313;
+  --header-footer-sepoarator-color: #313131;
+
 
   --spell: #7AD5FF;
   --talent: #548FEA; // still not sure
@@ -76,7 +79,7 @@
   --quest-very-hard: #808080;
 }
 
-html {
+:root {
   background-color: var(--main-background-color);
   color: var(--main-font-color);
 }

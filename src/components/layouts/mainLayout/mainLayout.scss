@@ -5,7 +5,7 @@
   align-items: flex-start;
   width: 100vw;
   min-height: 100vh;
-  background-color: #c6c1b0;
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 50%, rgba(0,0,0,1) 100%);
 
   header {
     position: sticky;
@@ -13,7 +13,8 @@
     z-index: 100;
     flex-basis: 3rem;
     width: 100%;
-    background-color: #7c6c4d;
+    background-color: var(--header-footer-color);
+    border-bottom: 1px solid var(--header-footer-sepoarator-color);
   }
 
   footer {
@@ -25,7 +26,8 @@
     width: 100%;
     padding: 1rem 0.5rem;
     margin-top: 4rem;
-    background-color: #163916;
+    background-color: var(--header-footer-color);
+    border-top: 1px solid var(--header-footer-sepoarator-color);
     font-size: 0.75rem;
   }
 }

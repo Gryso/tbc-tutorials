@@ -5,12 +5,13 @@ import "./mainMenu.scss"
 function MainMenu({children, name}) {
   return (
     <nav role="navigation">
+      <Link to="/pve-tutorials/">PVE Tutorials</Link>
+      <Link to="/pve-bis/">PVE BIS</Link>
+      <Link to="/pvp-tutorials/">PVP Tutorials</Link>
       <Link to="/macros/">Macros</Link>
-      <Link to="/bis/">BIS</Link>
       <Link to="/attunements/">Attunements</Link>
-      {/*<Link to="/reputations/">Reputations</Link>*/}
-      {/*<Link to="/guides/">Class guides</Link>*/}
-      {/*<Link to="/professions/">Professions</Link>*/}
+      <Link to="/reputations/">Reputations</Link>
+      <Link to="/professions/">Professions</Link>
       <Link to="/testing/">Test</Link>
     </nav>
   );
