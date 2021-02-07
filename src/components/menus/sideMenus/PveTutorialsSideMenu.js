@@ -4,8 +4,8 @@ import TreeItem from "../../treeView/TreeItem";
 
 function PveTutorialsSideMenu() {
   return (
-    <nav role="navigation" aria-label="PVE tutorials side menu">
-      <h3>Pve Tutorials</h3>
+    <nav role="navigation" aria-label="PvE tutorials side menu">
+      <h3>PvE Tutorials</h3>
       <TreeView localStorageKey="PveTutorialsSideMenu">
         <TreeItem label="Physical DPS mechanics" link="/pve-tutorials/physical" />
         <TreeItem label="Spell DPS mechanics" link="/pve-tutorials/spell" />

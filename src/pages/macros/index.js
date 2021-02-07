@@ -39,7 +39,7 @@ const Macros = () => {
             width: "100%",
             height: "700px"
           }}
-        >*
+        >
         </div>
         <Heading3>Test</Heading3>
         <SimpleMacro

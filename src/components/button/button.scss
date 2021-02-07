@@ -1,5 +1,5 @@
 .tbcStyledButton {
-  padding: 3px 3px;
+  padding: 1px;
   box-shadow: inset 0 2px 3px 1px rgba(255, 255, 255, 0.84);
   background: linear-gradient(
                   90deg,
@@ -20,7 +20,7 @@
     align-items: center;
     height: calc(0.25em * 2 + var(--leading));
     padding: 0.25em 2em;
-    box-shadow: inset 0 0 5px 2px rgba(0, 10, 0, 0.829);
+    box-shadow: inset 0 0 4px 1px rgba(0, 10, 0, 0.829);
     background: linear-gradient(
                     180deg,
                     #0c2205 0%,
@@ -28,7 +28,7 @@
                     #42690f 45%,
                     #0c2205 100%
     );
-    border: 3px solid #000000;
+    border: 2px solid #000000;
     border-radius: 10px;
     cursor: pointer;
     color: var(--contrast-color);
@@ -37,11 +37,10 @@
 
     .light {
       position: absolute;
-      top: calc(3px + 0.25em);
-      z-index: 3;
+      top: calc(2px + 0.25em);
       width: calc(100% - 10px);
       height: calc(100% - 10px);
-      box-shadow: 1px -3px 3px 0px #FFFDEA;
+      box-shadow: 1px -2px 0px 0px #FFFDEA;
       filter: blur(3px);
     }
   }

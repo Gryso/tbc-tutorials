@@ -10,7 +10,7 @@ const SimpleMacro = (props) => {
   return (
     <div className="simpleMacro">
       <Heading4>{props.name}</Heading4>
-      <div>{props.description}</div>
+      <p>{props.description}</p>
       {/*<CodeBlock*/}
       {/*  text={props.text}*/}
       {/*  language={"lua"}*/}

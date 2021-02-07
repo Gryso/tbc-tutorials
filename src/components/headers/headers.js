@@ -4,11 +4,11 @@ import {AnchorLink} from "gatsby-plugin-anchor-links";
 import anchor from "../../images/icons/anchorLink.svg";
 import headingToKebabCase from "../../utils/headingToKebabCase";
 
-export const Title = ({children}) => {
-  const kebabCaseTitle = headingToKebabCase(children);
+export const Title = ({children, align = "center", anchorId}) => {
+  const kebabCaseTitle = anchorId || headingToKebabCase(children);
 
   return (
-    <h1 id={kebabCaseTitle} className="contentHeading">
+    <h1 id={kebabCaseTitle} className={`contentHeading title ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseTitle}`}
         title={children}
@@ -23,11 +23,11 @@ export const Title = ({children}) => {
   );
 };
 
-export const Heading2 = ({children}) => {
-  const kebabCaseHeading = headingToKebabCase(children);
+export const Heading2 = ({children, align = "left", anchorId}) => {
+  const kebabCaseHeading = anchorId || headingToKebabCase(children);
 
   return (
-    <h2 id={kebabCaseHeading} className="contentHeading">
+    <h2 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseHeading}`}
         title={children}
@@ -42,11 +42,11 @@ export const Heading2 = ({children}) => {
   );
 };
 
-export const Heading3 = ({children}) => {
-  const kebabCaseHeading = headingToKebabCase(children);
+export const Heading3 = ({children, align = "left", anchorId}) => {
+  const kebabCaseHeading = anchorId || headingToKebabCase(children);
 
   return (
-    <h3 id={kebabCaseHeading} className="contentHeading">
+    <h3 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseHeading}`}
         title={children}
@@ -61,11 +61,11 @@ export const Heading3 = ({children}) => {
   );
 };
 
-export const Heading4 = ({children}) => {
-  const kebabCaseHeading = headingToKebabCase(children);
+export const Heading4 = ({children, align = "left", anchorId}) => {
+  const kebabCaseHeading = anchorId || headingToKebabCase(children);
 
   return (
-    <h4 id={kebabCaseHeading} className="contentHeading">
+    <h4 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseHeading}`}
         title={children}

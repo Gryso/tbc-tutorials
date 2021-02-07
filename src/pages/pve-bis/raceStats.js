@@ -3,15 +3,17 @@ import MainLayout from "../../components/layouts/mainLayout/MainLayout";
 import BisSideMenu from "../../components/menus/sideMenus/PveBisSideMenu";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import {Title} from "../../components/headers/headers";
+import RaceStatsTable from "../../components/raceStatsTable/RaceStatsTable";
 
-const BIS = () => {
+const RaceStats = () => {
   return (
-    <MainLayout pageTitle="General macros">
+    <MainLayout pageTitle="Race stats">
       <SideMenuLayout sideMenu={BisSideMenu}>
-        <Title>BIS</Title>
+        <Title id="raceStatsTitle">Race stats</Title>
+        <RaceStatsTable />
       </SideMenuLayout>
     </MainLayout>
   );
 };
 
-export default BIS;
+export default RaceStats;

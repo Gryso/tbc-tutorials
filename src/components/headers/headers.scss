@@ -1,24 +1,40 @@
 .contentHeading {
   position: relative;
 
+  &.centerAlign {
+    text-align: center;
+  }
+
+  &.leftAlign {
+    text-align: left;
+  }
+
+  &.rightAlign {
+    text-align: right;
+  }
+
+  &.title {
+    color: var(--primary-color);
+  }
+
+  &:hover .anchorIcon {
+    visibility: visible;
+  }
+
   .anchorIcon {
-    visibility: hidden;
     position: absolute;
     top: 0;
-    height: 100%;
     left: 0;
-    padding-right: 0.125em;
     display: flex;
     align-items: center;
+    height: 100%;
+    padding-right: 0.125em;
+    visibility: hidden;
     cursor: pointer;
     transform: translateX(-100%);
 
     img {
       height: 0.625rem;
     }
-  }
-
-  &:hover .anchorIcon {
-    visibility: visible;
   }
 }

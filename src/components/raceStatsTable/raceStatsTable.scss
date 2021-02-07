@@ -1,0 +1,65 @@
+.raceStatsTable {
+  // classes
+  --class-opacity: 0.15;
+  --transparent-class-druid: rgba(255, 124, 10, var(--class-opacity));
+  --transparent-class-hunter: rgba(170, 211, 114, var(--class-opacity));
+  --transparent-class-mage: rgba(63, 199, 235, var(--class-opacity));
+  --transparent-class-paladin: rgba(244, 140, 186, var(--class-opacity));
+  --transparent-class-priest: rgba(255, 255, 255, var(--class-opacity));
+  --transparent-class-rogue: rgba(255, 244, 104, var(--class-opacity));
+  --transparent-class-shaman: rgba(0, 112, 221, var(--class-opacity));
+  --transparent-class-warlock: rgba(135, 136, 238, var(--class-opacity));
+  --transparent-class-warrior: rgba(198, 155, 109, var(--class-opacity));
+
+  // factions
+  --faction-opacity: 0.4;
+  --transparent-faction-alliance: rgba(0, 120, 255, var(--faction-opacity));
+  --transparent-faction-horde: rgba(179, 0, 0, var(--faction-opacity));
+
+  width: 100%;
+  margin-top: calc(var(--leading) / 2);
+  border-collapse: collapse;
+
+  td, th {
+    padding: 0.5em 1em;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  td:first-of-type {
+    text-align: left;
+  }
+
+  &.alliance {
+    &, td, th {
+      border: 1px solid var(--transparent-faction-alliance);
+    }
+
+    thead th, tbody:hover th, tbody tr:hover td {
+      background-color: var(--transparent-faction-alliance);
+    }
+  }
+
+  &.horde {
+    &, td, th {
+      border: 1px solid var(--transparent-faction-horde);
+    }
+
+    thead th, tbody:hover th, tbody tr:hover td {
+      background-color: var(--transparent-faction-horde);
+    }
+  }
+
+  tbody {
+    &.druid {background-color: var(--transparent-class-druid)}
+    &.hunter {background-color: var(--transparent-class-hunter)}
+    &.mage {background-color: var(--transparent-class-mage)}
+    &.paladin {background-color: var(--transparent-class-paladin)}
+    &.priest {background-color: var(--transparent-class-priest)}
+    &.rogue {background-color: var(--transparent-class-rogue)}
+    &.shaman {background-color: var(--transparent-class-shaman)}
+    &.warlock {background-color: var(--transparent-class-warlock)}
+    &.warrior {background-color: var(--transparent-class-warrior)}
+  }
+}
