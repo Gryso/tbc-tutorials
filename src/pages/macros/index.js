@@ -13,10 +13,6 @@ const Macros = () => {
       <SideMenuLayout sideMenu={MacroSideMenu}>
         <Title>General macros</Title>
         <Heading2>TestHeading2-1</Heading2>
-        <Heading2>TestHeading2-2</Heading2>
-        <Heading2>TestHeading2-3</Heading2>
-        <Heading3>TestHeading3-1</Heading3>
-        <Heading3>TestHeading3-2</Heading3>
         <Heading3>TestHeading3-3</Heading3>
         <Heading4>TestHeading4</Heading4>
         <SimpleMacro
@@ -34,14 +30,6 @@ const Macros = () => {
           description={"Simple focus. Focuses target if target exist of mouseover player if it does not"}
           text={`/focus [target=target, exists]; mouseover`}
         />
-        <div
-          style={{
-            width: "100%",
-            height: "700px"
-          }}
-        >
-        </div>
-        <Heading3>Test</Heading3>
         <SimpleMacro
           name="TankFocus"
           description={"Same as focus macro with addition of X target icon added to focus target."}

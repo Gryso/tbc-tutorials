@@ -15,21 +15,32 @@ function generateContentList(children) {
 
       if (getComponentName(child.type) === "Heading2") {
         contentList.push({
-          text: child.props.children,
+          content: child.props.children,
+          anchorId: child.props.anchorId,
           children: []
         });
       }
 
       if (getComponentName(child.type) === "Heading3") {
         contentList[contentList.length - 1].children.push({
-          text: child.props.children,
+          content: child.props.children,
+          anchorId: child.props.anchorId,
+          children: []
+        });
+      }
+
+      if (getComponentName(child.type) === "SimpleMacro") {
+        contentList[contentList.length - 1].children.push({
+          content: child.props.name,
+          anchorId: child.props.anchorId,
           children: []
         });
       }
 
       if (getComponentName(child.type) === "Heading4") {
         contentList[contentList.length - 1].children[contentList.length - 1].children.push({
-          text: child.props.children,
+          content: child.props.children,
+          anchorId: child.props.anchorId,
           children: []
         });
       }
@@ -46,8 +57,11 @@ function renderContentList(contentList) {
         return (
           <li key={index}>
             <AnchorLink
-              to={`#${headingToKebabCase(item.text)}`}
-              title={item.text}/>
+              to={`#${headingToKebabCase(item.anchorId || item.content)}`}
+              title={item.anchorId || item.content}
+            >
+              {item.content}
+            </AnchorLink>
             {item.children.length > 0 && renderContentList(item.children)}
           </li>
         );

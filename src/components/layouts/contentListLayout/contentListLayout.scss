@@ -1,7 +1,7 @@
 .content {
-  max-width: 88ch;
+  max-width: 60em;
   width: 100%;
-  padding: 0 4ch;
+  padding: 0 2em;
 }
 
 .listOfContent {
@@ -12,6 +12,7 @@
     padding-left: 1.5em;
     font-weight: bold;
     margin-bottom: calc(var(--leading) / 4);
+    white-space: nowrap;
   }
 
   ul {

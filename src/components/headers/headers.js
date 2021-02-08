@@ -11,7 +11,7 @@ export const Title = ({children, align = "center", anchorId}) => {
     <h1 id={kebabCaseTitle} className={`contentHeading title ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseTitle}`}
-        title={children}
+        title={kebabCaseTitle}
         className="anchorIcon"
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
@@ -30,7 +30,7 @@ export const Heading2 = ({children, align = "left", anchorId}) => {
     <h2 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseHeading}`}
-        title={children}
+        title={kebabCaseHeading}
         className="anchorIcon"
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
@@ -49,7 +49,7 @@ export const Heading3 = ({children, align = "left", anchorId}) => {
     <h3 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseHeading}`}
-        title={children}
+        title={kebabCaseHeading}
         className="anchorIcon"
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
@@ -68,7 +68,7 @@ export const Heading4 = ({children, align = "left", anchorId}) => {
     <h4 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
       <AnchorLink
         to={`#${kebabCaseHeading}`}
-        title={children}
+        title={kebabCaseHeading}
         className="anchorIcon"
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import MainLayout from "../../components/layouts/mainLayout/MainLayout";
 import ProfessionsSideMenu from "../../components/menus/sideMenus/ProfessionsSideMenu";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";

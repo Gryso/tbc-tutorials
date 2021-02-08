@@ -6,7 +6,6 @@ import MacroSideMenu from "../../components/menus/sideMenus/MacroSideMenu";
 import {Title} from "../../components/headers/headers";
 
 const Druid = (props) => {
-console.log('%c props:', 'color: rgb(49, 193, 27)', props);
   return (
     <MainLayout>
       <SideMenuLayout sideMenu={MacroSideMenu}>

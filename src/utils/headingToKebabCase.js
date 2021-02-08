@@ -1,3 +1,7 @@
 export default function headingToKebabCase(heading) {
-  return heading.replace(/\s+/g, '-').toLowerCase();
+  if (typeof heading === "string" || heading instanceof String) {
+    return heading.replace(/\s+/g, "-").toLowerCase();
+  }
+
+  return null
 }

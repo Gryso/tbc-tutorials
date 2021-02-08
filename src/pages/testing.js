@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import MainLayout from "../components/layouts/mainLayout/MainLayout";
 import Item from "../components/gameElements/item/Item";
 import Quest from "../components/gameElements/quest/Quest";

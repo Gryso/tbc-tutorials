@@ -1,0 +1,23 @@
+import Icon from "../icon/Icon";
+import React from "react";
+
+export const Ammo = () => <span className="class ammo"><Icon type="ammo"/>Ammo</span>;
+export const Back = () => <span className="class back"><Icon type="back"/>Back</span>;
+export const Bag = () => <span className="class bag"><Icon type="bag"/>Bag</span>;
+export const Chest = () => <span className="class chest"><Icon type="chest"/>Chest</span>;
+export const Feet = () => <span className="class feet"><Icon type="feet"/>Feet</span>;
+export const Finger = () => <span className="class finger"><Icon type="finger"/>Finger</span>;
+export const Hands = () => <span className="class hands"><Icon type="hands"/>Hands</span>;
+export const Head = () => <span className="class head"><Icon type="head"/>Head</span>;
+export const Legs = () => <span className="class legs"><Icon type="legs"/>Legs</span>;
+export const Mainhand = () => <span className="class mainhand"><Icon type="mainhand"/>Main hand</span>;
+export const Neck = () => <span className="class neck"><Icon type="neck"/>Neck</span>;
+export const Ranged = () => <span className="class ranged"><Icon type="ranged"/>Ranged</span>;
+export const Relic = () => <span className="class relic"><Icon type="relic"/>Relic</span>;
+export const Secondaryhand = () => <span className="class secondaryhand"><Icon type="secondaryhand"/>Secondary hand</span>;
+export const Shirt = () => <span className="class shirt"><Icon type="shirt"/>Shirt</span>;
+export const Shoulder = () => <span className="class shoulder"><Icon type="shoulder"/>Shoulder</span>;
+export const Tabard = () => <span className="class tabard"><Icon type="tabard"/>Tabard</span>;
+export const Trinket = () => <span className="class trinket"><Icon type="trinket"/>Trinket</span>;
+export const Waist = () => <span className="class waist"><Icon type="waist"/>Waist</span>;
+export const Wrists = () => <span className="class wrists"><Icon type="wrists"/>Wrists</span>;

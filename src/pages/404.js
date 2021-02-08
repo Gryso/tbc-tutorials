@@ -1,7 +1,6 @@
-import * as React from "react";
+import React from "react";
 import MainLayout from "../components/layouts/mainLayout/MainLayout";
 
-// styles
 const pageStyle = {
   width: "100%",
   display: "flex",

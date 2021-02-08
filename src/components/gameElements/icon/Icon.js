@@ -1,6 +1,7 @@
 import React from "react";
 
 const icons = {
+  // classes
   druid: require("../../../images/icons/classIcons/druid.png"),
   hunter: require("../../../images/icons/classIcons/hunter.png"),
   mage: require("../../../images/icons/classIcons/mage.png"),
@@ -11,6 +12,7 @@ const icons = {
   warlock: require("../../../images/icons/classIcons/warlock.png"),
   warrior: require("../../../images/icons/classIcons/warrior.png"),
 
+  // races
   bloodelf: require("../../../images/icons/raceIcons/bloodelf.png"),
   draenei: require("../../../images/icons/raceIcons/draenei.png"),
   dwarf: require("../../../images/icons/raceIcons/dwarf.png"),
@@ -22,6 +24,7 @@ const icons = {
   troll: require("../../../images/icons/raceIcons/troll.png"),
   undead: require("../../../images/icons/raceIcons/undead.png"),
 
+  // professions
   alchemy: require("../../../images/icons/professionIcons/alchemy.png"),
   blacksmithing: require("../../../images/icons/professionIcons/blacksmithing.png"),
   cooking: require("../../../images/icons/professionIcons/cooking.png"),
@@ -36,8 +39,31 @@ const icons = {
   skinning: require("../../../images/icons/professionIcons/skinning.png"),
   tailoring: require("../../../images/icons/professionIcons/tailoring.png"),
 
+  // factions
   alliance: require("../../../images/icons/factionIcons/alliance.png"),
   horde: require("../../../images/icons/factionIcons/horde.png"),
+
+  // equipment slots
+  ammo: require("../../../images/icons/equipmentSlotIcons/ammo.png"),
+  back: require("../../../images/icons/equipmentSlotIcons/back.png"),
+  bag: require("../../../images/icons/equipmentSlotIcons/bag.png"),
+  chest: require("../../../images/icons/equipmentSlotIcons/chest.png"),
+  feet: require("../../../images/icons/equipmentSlotIcons/feet.png"),
+  finger: require("../../../images/icons/equipmentSlotIcons/finger.png"),
+  hands: require("../../../images/icons/equipmentSlotIcons/hands.png"),
+  head: require("../../../images/icons/equipmentSlotIcons/head.png"),
+  legs: require("../../../images/icons/equipmentSlotIcons/legs.png"),
+  mainhand: require("../../../images/icons/equipmentSlotIcons/mainhand.png"),
+  neck: require("../../../images/icons/equipmentSlotIcons/neck.png"),
+  ranged: require("../../../images/icons/equipmentSlotIcons/ranged.png"),
+  relic: require("../../../images/icons/equipmentSlotIcons/relic.png"),
+  secondaryhand: require("../../../images/icons/equipmentSlotIcons/secondaryhand.png"),
+  shirt: require("../../../images/icons/equipmentSlotIcons/shirt.png"),
+  shoulder: require("../../../images/icons/equipmentSlotIcons/shoulder.png"),
+  tabard: require("../../../images/icons/equipmentSlotIcons/tabard.png"),
+  trinket: require("../../../images/icons/equipmentSlotIcons/trinket.png"),
+  waist: require("../../../images/icons/equipmentSlotIcons/waist.png"),
+  wrists: require("../../../images/icons/equipmentSlotIcons/wrists.png"),
 
   unknown: require("../../../images/icons/questionmark.png"),
 };
@@ -56,4 +82,3 @@ const Icon = ({type = "unknown", size = "1em"}) => {
 };
 
 export default Icon;
-

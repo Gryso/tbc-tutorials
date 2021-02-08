@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from "react";
 import {Link} from "gatsby";
 import rightArrow from "../../images/icons/rightArrow.svg";
 import downArrow from "../../images/icons/downArros.svg";
