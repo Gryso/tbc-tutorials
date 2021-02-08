@@ -27,7 +27,7 @@ function generateContentList(children) {
         let parentChildren = parent.children || parent;
 
         parentChildren.push({
-          content: child.props.children,
+          content: child.props.children || child.props.name,
           anchorId: child.props.anchorId,
           children: []
         });
