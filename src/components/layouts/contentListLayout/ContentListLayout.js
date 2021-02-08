@@ -12,8 +12,9 @@ function generateContentList(children) {
 
   children.forEach((child) => {
     if (child.type) {
+      let componentName = getComponentName(child.type);
 
-      if (getComponentName(child.type) === "Heading2") {
+      if (componentName === "Heading2") {
         contentList.push({
           content: child.props.children,
           anchorId: child.props.anchorId,
@@ -21,24 +22,24 @@ function generateContentList(children) {
         });
       }
 
-      if (getComponentName(child.type) === "Heading3") {
-        contentList[contentList.length - 1].children.push({
+      if (componentName === "Heading3" || componentName === "SimpleMacro") {
+        let parent = contentList[contentList.length - 1] || contentList;
+        let parentChildren = parent.children || parent;
+
+        parentChildren.push({
           content: child.props.children,
           anchorId: child.props.anchorId,
           children: []
         });
       }
 
-      if (getComponentName(child.type) === "SimpleMacro") {
-        contentList[contentList.length - 1].children.push({
-          content: child.props.name,
-          anchorId: child.props.anchorId,
-          children: []
-        });
-      }
+      if (componentName === "Heading4") {
+        let parent = contentList[contentList.length - 1].children[contentList.length - 1]
+          || contentList[contentList.length - 1]
+          || contentList;
+        let parentChildren = parent.children || parent;
 
-      if (getComponentName(child.type) === "Heading4") {
-        contentList[contentList.length - 1].children[contentList.length - 1].children.push({
+        parentChildren.push({
           content: child.props.children,
           anchorId: child.props.anchorId,
           children: []
@@ -80,6 +81,7 @@ function ContentListLayout({children}) {
   }
   const title = children.find((child) => getComponentName(child.type) === "Title").props.children;
   const contentList = generateContentList(children);
+  console.log('%c contentList:', 'color: rgb(49, 193, 27)', contentList);
 
 
   return (
@@ -92,7 +94,7 @@ function ContentListLayout({children}) {
           <div className="listOfContentTitle">
             <AnchorLink
               to={`#${headingToKebabCase(title)}`}
-              title={title}/>
+              title={title} />
           </div>
           {renderContentList(contentList)}
         </div> : null}

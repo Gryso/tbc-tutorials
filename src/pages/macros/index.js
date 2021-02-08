@@ -13,8 +13,7 @@ const Macros = () => {
       <SideMenuLayout sideMenu={MacroSideMenu}>
         <Title>General macros</Title>
         <Heading2>TestHeading2-1</Heading2>
-        <Heading3>TestHeading3-3</Heading3>
-        <Heading4>TestHeading4</Heading4>
+        <Heading2>TestHeading2-2</Heading2>
         <SimpleMacro
           name="OpenMacroMenu"
           description={"This is just simple button to open macro menu. If you are too lazy to write /macro"}
