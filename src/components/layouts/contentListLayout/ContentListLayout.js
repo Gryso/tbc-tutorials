@@ -24,9 +24,8 @@ function generateContentList(children) {
 
       if (componentName === "Heading3" || componentName === "SimpleMacro") {
         let parent = contentList[contentList.length - 1] || contentList;
-        let parentChildren = parent.children || parent;
 
-        parentChildren.push({
+        (parent.children || parent).push({
           content: child.props.children || child.props.name,
           anchorId: child.props.anchorId,
           children: []
@@ -37,9 +36,8 @@ function generateContentList(children) {
         let parent = contentList[contentList.length - 1].children[contentList.length - 1]
           || contentList[contentList.length - 1]
           || contentList;
-        let parentChildren = parent.children || parent;
 
-        parentChildren.push({
+        (parent.children || parent).push({
           content: child.props.children,
           anchorId: child.props.anchorId,
           children: []
@@ -79,10 +77,12 @@ function ContentListLayout({children}) {
       </div>
     );
   }
-  const title = children.find((child) => getComponentName(child.type) === "Title").props.children;
+  const title = children.find((child) => {
+    console.log('%c child:', 'color: rgb(49, 193, 27)', child);
+    return getComponentName(child.type) === "Title"
+  }).props.children;
+  console.log('%c title:', 'color: rgb(49, 193, 27)', title);
   const contentList = generateContentList(children);
-  console.log('%c contentList:', 'color: rgb(49, 193, 27)', contentList);
-
 
   return (
     <>
