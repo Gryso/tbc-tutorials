@@ -12,7 +12,7 @@ const FeralDps = () => {
   return (
     <MainLayout pageTitle="General macros">
       <SideMenuLayout sideMenu={BisSideMenu}>
-        <Title>Feral BIS</Title>
+        <Title>Feral DPS BIS</Title>
         <Heading2 anchorId="t4t5-bis">T4 / T5</Heading2>
         <EquipmentSet equipment={{
           head: <Item id="8345" quality="rare">Wolfshead Helm</Item>,
