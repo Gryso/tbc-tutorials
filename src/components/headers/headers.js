@@ -16,7 +16,7 @@ export const Title = ({children, align = "center", anchorId}) => {
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
         }}>
-        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem"/>
+        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem" />
       </AnchorLink>
       {children}
     </h1>
@@ -35,7 +35,7 @@ export const Heading2 = ({children, align = "left", anchorId}) => {
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
         }}>
-        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem"/>
+        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem" />
       </AnchorLink>
       {children}
     </h2>
@@ -54,7 +54,7 @@ export const Heading3 = ({children, align = "left", anchorId}) => {
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
         }}>
-        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem"/>
+        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem" />
       </AnchorLink>
       {children}
     </h3>
@@ -73,7 +73,7 @@ export const Heading4 = ({children, align = "left", anchorId}) => {
         gatsbyLinkProps={{
           "aria-label": `${children} title permalink`
         }}>
-        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem"/>
+        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem" />
       </AnchorLink>
       {children}
     </h4>

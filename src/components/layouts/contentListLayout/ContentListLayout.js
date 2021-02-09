@@ -2,6 +2,8 @@ import React from "react";
 import "./contentListLayout.scss";
 import {AnchorLink} from "gatsby-plugin-anchor-links";
 import headingToKebabCase from "../../../utils/headingToKebabCase";
+import {Title, Heading2, Heading3, Heading4} from "../../headers/headers";
+import SimpleMacro from "../../macro/SimpleMacro";
 
 function getComponentName(type) {
   return type.displayName || type.name || null;
@@ -9,12 +11,11 @@ function getComponentName(type) {
 
 function generateContentList(children) {
   let contentList = [];
-
   children.forEach((child) => {
     if (child.type) {
       let componentName = getComponentName(child.type);
 
-      if (componentName === "Heading2") {
+      if (componentName === Heading2.name) {
         contentList.push({
           content: child.props.children,
           anchorId: child.props.anchorId,
@@ -22,7 +23,7 @@ function generateContentList(children) {
         });
       }
 
-      if (componentName === "Heading3" || componentName === "SimpleMacro") {
+      if (componentName === Heading3.name || componentName === SimpleMacro.name) {
         let parent = contentList[contentList.length - 1] || contentList;
 
         (parent.children || parent).push({
@@ -32,7 +33,7 @@ function generateContentList(children) {
         });
       }
 
-      if (componentName === "Heading4") {
+      if (componentName === Heading4.name) {
         let parent = contentList[contentList.length - 1].children[contentList.length - 1]
           || contentList[contentList.length - 1]
           || contentList;
@@ -70,7 +71,6 @@ function renderContentList(contentList) {
 }
 
 function ContentListLayout({children}) {
-  console.log('%c children:', 'color: rgb(49, 193, 27)', children);
   if (!children.length) {
     return (
       <div className="content">
@@ -79,10 +79,8 @@ function ContentListLayout({children}) {
     );
   }
   const title = children.find((child) => {
-    console.log('%c child:', 'color: rgb(49, 193, 27)', child);
-    return getComponentName(child.type) === "Title"
+    return getComponentName(child.type) === Title.name
   }).props.children;
-  console.log('%c title:', 'color: rgb(49, 193, 27)', title);
   const contentList = generateContentList(children);
 
   return (
