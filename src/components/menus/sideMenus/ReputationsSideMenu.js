@@ -11,10 +11,10 @@ function ReputationSideMenu() {
         <TreeItem label="Thrallmar / Honor Hold" link="/reputations/druid" />
         <TreeItem label="Cenarion Expedition" link="/reputations/hunter" />
         <TreeItem label="Sporeggar" link="/reputations/mage" />
-        <TreeItem label="The Scryers/The Aldor" link="/reputations/paladin" />
+        <TreeItem label="The Scryers / The Aldor" link="/reputations/paladin" />
         <TreeItem label="Lower City" link="/reputations/priest" />
         <TreeItem label="The Sha'tar" link="/reputations/rogue" />
-        <TreeItem label="Mag'har/Kurenai" link="/reputations/shaman" />
+        <TreeItem label="Mag'har / Kurenai" link="/reputations/shaman" />
         <TreeItem label="The Consortium" link="/reputations/warlock" />
         <TreeItem label="Keepers of Time" link="/reputations/warrior" />
         <TreeItem label="Netherwing" link="/reputations/warrior" />

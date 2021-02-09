@@ -9,7 +9,8 @@ function PveBisSideMenu() {
       <TreeView localStorageKey="PveBisSideMenu">
         <TreeItem label="Druid">
           <TreeItem label="Balance" link="/pve-bis/druid/balance" />
-          <TreeItem label="Feral" link="/pve-bis/druid/feral" />
+          <TreeItem label="Feral Tank" link="/pve-bis/druid/feralTank" />
+          <TreeItem label="Feral DPS" link="/pve-bis/druid/feralDps" />
           <TreeItem label="Restoration" link="/pve-bis/druid/restoration" />
         </TreeItem>
         <TreeItem label="Hunter">

@@ -1,5 +1,6 @@
 .sideMenuItem {
   list-style-type: none;
+  list-style-position: inside;
 
   .sideMenuHeader {
     position: relative;
@@ -10,7 +11,7 @@
     padding: 0;
     font: inherit;
     outline: inherit;
-    line-height: calc(2.25 * 1rem);
+    margin: calc(1 * 1em) 0;
     .sideMenuItemIcon {
       position: absolute;
       left: 0;
@@ -18,7 +19,6 @@
     }
 
     .sideMenuItemLabel {
-      margin-left: 1em;
       color: var(--primary-font-color);
 
       a {

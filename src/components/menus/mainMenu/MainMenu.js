@@ -5,9 +5,9 @@ import "./mainMenu.scss"
 function MainMenu() {
   return (
     <nav role="navigation" aria-label="Main" className="mainMenu">
-      <Link to="/pve-tutorials/">PVE Tutorials</Link>
-      <Link to="/pve-bis/">PVE BIS</Link>
-      <Link to="/pvp-tutorials/">PVP Tutorials</Link>
+      <Link to="/pve-tutorials/">PvE Tutorials</Link>
+      <Link to="/pve-bis/">PvE BIS</Link>
+      <Link to="/pvp-tutorials/">PvP Tutorials</Link>
       <Link to="/macros/">Macros</Link>
       <Link to="/attunements/">Attunements</Link>
       <Link to="/reputations/">Reputations</Link>

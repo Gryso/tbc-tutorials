@@ -26,7 +26,7 @@ export const onClientEntry = () => {
   window.onload = () => {
     addScript("http://tbcdb.com/tooltips/power.js?vnew")
     window.aowow_tooltips = {
-      "colorlinks": true,
+      // "colorlinks": true,
       "iconizelinks": true,
       // "renamelinks": true
     }

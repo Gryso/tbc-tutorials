@@ -1,33 +1,36 @@
 .content {
-  max-width: 60em;
   width: 100%;
+  max-width: 70em;
   padding: 0 2em;
 }
 
 .listOfContent {
   height: min-content;
+  max-width: 20em;
   border-left: 1px solid var(--sepoarator-color);
+  font-size: 0.85rem;
 
   .listOfContentTitle {
     padding-left: 1.5em;
-    font-weight: bold;
     margin-bottom: calc(var(--leading) / 4);
+    font-weight: bold;
     white-space: nowrap;
+
+    a {
+      color: var(--primary-font-color);
+    }
   }
 
   ul {
-    list-style-type: none;
-    padding-left: 1.5em;
+    width: max-content;
+    padding-left: 1em;
     margin: 0;
+    list-style-type: none;
   }
 
   a {
-    color: var(--primary-font-color);
+    color: var(--primary-color);
     text-decoration: none;
     line-height: calc(2 * 1rem);
-
-    &:hover {
-      color: var(--contrast-color);
-    }
   }
 }

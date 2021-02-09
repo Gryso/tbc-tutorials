@@ -70,6 +70,7 @@ function renderContentList(contentList) {
 }
 
 function ContentListLayout({children}) {
+  console.log('%c children:', 'color: rgb(49, 193, 27)', children);
   if (!children.length) {
     return (
       <div className="content">
@@ -91,11 +92,11 @@ function ContentListLayout({children}) {
       </div>
       {contentList.length > 0 ?
         <div className="listOfContent" aria-hidden="true">
-          <div className="listOfContentTitle">
-            <AnchorLink
-              to={`#${headingToKebabCase(title)}`}
-              title={title} />
-          </div>
+          {/*<div className="listOfContentTitle">*/}
+          {/*  <AnchorLink*/}
+          {/*    to={`#${headingToKebabCase(title)}`}*/}
+          {/*    title={title} />*/}
+          {/*</div>*/}
           {renderContentList(contentList)}
         </div> : null}
     </>

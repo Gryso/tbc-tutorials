@@ -14,7 +14,7 @@ function PvpTutorialsSideMenu() {
         <TreeItem label="Eye of the Storm" link="/pvp-tutorials/eos"/>
         <TreeItem label="Druid">
           <TreeItem label="Balance" link="/pvp-tutorials/druid/balance"/>
-          <TreeItem label="Feral" link="/pvp-tutorials/druid/feral"/>
+          <TreeItem label="FeralDps" link="/pvp-tutorials/druid/feral"/>
           <TreeItem label="Restoration" link="/pvp-tutorials/druid/restoration"/>
         </TreeItem>
         <TreeItem label="Hunter">

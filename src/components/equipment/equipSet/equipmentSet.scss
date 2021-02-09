@@ -1,0 +1,49 @@
+.equipSetTable {
+  --transparent-item-epic: rgba(163, 53, 238, 0.2);
+
+  //margin: calc(var(--leading) / 2) auto 0;
+  margin-top: calc(var(--leading) / 2);
+  border-collapse: collapse;
+
+  &, tr {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--transparent-item-epic);
+
+    & td:first-of-type {
+      border-right: 1px solid var(--transparent-item-epic);
+    }
+  }
+
+  th, td {
+    vertical-align: middle;
+    text-align: left;
+  }
+
+  td {
+    padding: 0 0.5em;
+  }
+
+  th {
+    .equipmentSlotHeaderCellWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    padding: 0.125em;
+  }
+
+  tbody {
+    &.weapons {
+      tr:first-of-type {
+        border-top: none;
+      }
+
+      th .equipmentSlotHeaderCellWrapper {
+        justify-content: flex-end;
+        padding: 0.25em 2em;
+        //padding-right: 1em;
+      }
+    }
+  }
+}
