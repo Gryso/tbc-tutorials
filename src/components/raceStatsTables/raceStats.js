@@ -1,7 +1,35 @@
+import {Alliance, Horde} from "../gameElements/faction/factions";
+import {
+  Druid,
+  Hunter,
+  Mage,
+  Paladin,
+  Priest,
+  Rogue,
+  Shaman,
+  Warlock,
+  Warrior
+} from "../gameElements/class/classes";
+import {
+  Bloodelf,
+  Draenei,
+  Dwarf,
+  Gnome,
+  Human,
+  Nightelf,
+  Orc,
+  Tauren,
+  Troll,
+  Undead
+} from "../gameElements/race/races";
+
 const raceStats = {
   "alliance": {
+    component: Alliance,
     "druid": {
+      component: Druid,
       "nightelf": {
+        component: Nightelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -34,7 +62,9 @@ const raceStats = {
       }
     },
     "hunter": {
+      component: Hunter,
       "draenei": {
+        component: Draenei,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -66,6 +96,7 @@ const raceStats = {
         }
       },
       "dwarf": {
+        component: Dwarf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -97,6 +128,7 @@ const raceStats = {
         }
       },
       "nightelf": {
+        component: Nightelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -129,7 +161,9 @@ const raceStats = {
       }
     },
     "mage": {
+      component: Mage,
       "draenei": {
+        component: Draenei,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -161,6 +195,7 @@ const raceStats = {
         }
       },
       "gnome": {
+        component: Gnome,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -192,6 +227,7 @@ const raceStats = {
         }
       },
       "human": {
+        component: Human,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -224,7 +260,9 @@ const raceStats = {
       }
     },
     "paladin": {
+      component: Paladin,
       "draenei": {
+        component: Draenei,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -256,6 +294,7 @@ const raceStats = {
         }
       },
       "dwarf": {
+        component: Dwarf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -287,6 +326,7 @@ const raceStats = {
         }
       },
       "human": {
+        component: Human,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -319,7 +359,9 @@ const raceStats = {
       }
     },
     "priest": {
+      component: Priest,
       "draenei": {
+        component: Draenei,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -351,6 +393,7 @@ const raceStats = {
         }
       },
       "dwarf": {
+        component: Dwarf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -382,6 +425,7 @@ const raceStats = {
         }
       },
       "human": {
+        component: Human,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -413,6 +457,7 @@ const raceStats = {
         }
       },
       "nightelf": {
+        component: Nightelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -445,7 +490,9 @@ const raceStats = {
       }
     },
     "rogue": {
+      component: Rogue,
       "dwarf": {
+        component: Dwarf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -477,6 +524,7 @@ const raceStats = {
         }
       },
       "gnome": {
+        component: Gnome,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -508,6 +556,7 @@ const raceStats = {
         }
       },
       "human": {
+        component: Human,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -539,6 +588,7 @@ const raceStats = {
         }
       },
       "nightelf": {
+        component: Nightelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -571,7 +621,9 @@ const raceStats = {
       }
     },
     "shaman": {
+      component: Shaman,
       "draenei": {
+        component: Draenei,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -604,7 +656,9 @@ const raceStats = {
       }
     },
     "warlock": {
+      component: Warlock,
       "gnome": {
+        component: Gnome,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -636,6 +690,7 @@ const raceStats = {
         }
       },
       "human": {
+        component: Human,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -668,7 +723,9 @@ const raceStats = {
       }
     },
     "warrior": {
+      component: Warrior,
       "draenei": {
+        component: Draenei,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -700,6 +757,7 @@ const raceStats = {
         }
       },
       "dwarf": {
+        component: Dwarf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -731,6 +789,7 @@ const raceStats = {
         }
       },
       "gnome": {
+        component: Gnome,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -762,6 +821,7 @@ const raceStats = {
         }
       },
       "human": {
+        component: Human,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -793,6 +853,7 @@ const raceStats = {
         }
       },
       "nightelf": {
+        component: Nightelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -826,8 +887,11 @@ const raceStats = {
     }
   },
   "horde": {
+    component: Horde,
     "druid": {
+      component: Druid,
       "tauren": {
+        component: Tauren,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -860,7 +924,9 @@ const raceStats = {
       }
     },
     "hunter": {
+      component: Hunter,
       "bloodelf": {
+        component: Bloodelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -892,6 +958,7 @@ const raceStats = {
         }
       },
       "orc": {
+        component: Orc,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -923,6 +990,7 @@ const raceStats = {
         }
       },
       "tauren": {
+        component: Tauren,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -954,6 +1022,7 @@ const raceStats = {
         }
       },
       "troll": {
+        component: Troll,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -986,7 +1055,9 @@ const raceStats = {
       }
     },
     "mage": {
+      component: Mage,
       "bloodelf": {
+        component: Bloodelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1018,6 +1089,7 @@ const raceStats = {
         }
       },
       "troll": {
+        component: Troll,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1049,6 +1121,7 @@ const raceStats = {
         }
       },
       "undead": {
+        component: Undead,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1081,7 +1154,9 @@ const raceStats = {
       }
     },
     "paladin": {
+      component: Paladin,
       "bloodelf": {
+        component: Bloodelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1114,7 +1189,9 @@ const raceStats = {
       }
     },
     "priest": {
+      component: Priest,
       "bloodelf": {
+        component: Bloodelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1146,6 +1223,7 @@ const raceStats = {
         }
       },
       "troll": {
+        component: Troll,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1177,6 +1255,7 @@ const raceStats = {
         }
       },
       "undead": {
+        component: Undead,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1209,7 +1288,9 @@ const raceStats = {
       }
     },
     "rogue": {
+      component: Rogue,
       "bloodelf": {
+        component: Bloodelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1241,6 +1322,7 @@ const raceStats = {
         }
       },
       "orc": {
+        component: Orc,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1272,6 +1354,7 @@ const raceStats = {
         }
       },
       "troll": {
+        component: Troll,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1303,6 +1386,7 @@ const raceStats = {
         }
       },
       "undead": {
+        component: Undead,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1335,7 +1419,9 @@ const raceStats = {
       }
     },
     "shaman": {
+      component: Shaman,
       "orc": {
+        component: Orc,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1367,6 +1453,7 @@ const raceStats = {
         }
       },
       "tauren": {
+        component: Tauren,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1398,6 +1485,7 @@ const raceStats = {
         }
       },
       "troll": {
+        component: Troll,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1430,7 +1518,9 @@ const raceStats = {
       }
     },
     "warlock": {
+      component: Warlock,
       "bloodelf": {
+        component: Bloodelf,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1462,6 +1552,7 @@ const raceStats = {
         }
       },
       "orc": {
+        component: Orc,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1493,6 +1584,7 @@ const raceStats = {
         }
       },
       "undead": {
+        component: Undead,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1525,7 +1617,9 @@ const raceStats = {
       }
     },
     "warrior": {
+      component: Warrior,
       "orc": {
+        component: Orc,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1557,6 +1651,7 @@ const raceStats = {
         }
       },
       "tauren": {
+        component: Tauren,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1588,6 +1683,7 @@ const raceStats = {
         }
       },
       "troll": {
+        component: Troll,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1619,6 +1715,7 @@ const raceStats = {
         }
       },
       "undead": {
+        component: Undead,
         "health": null,
         "mana": null,
         "baseStats": {
@@ -1651,16 +1748,16 @@ const raceStats = {
       }
     }
   }
-}
+};
 
 export default raceStats;
 export const {alliance, horde} = raceStats;
-export const druid = {...alliance.druid, ...horde.druid}
-export const hunter = {...alliance.hunter, ...horde.hunter}
-export const mage = {...alliance.mage, ...horde.mage}
-export const paladin = {...alliance.paladin, ...horde.paladin}
-export const priest = {...alliance.priest, ...horde.priest}
-export const rogue = {...alliance.rogue, ...horde.rogue}
-export const shaman = {...alliance.shaman, ...horde.shaman}
-export const warlock = {...alliance.warlock, ...horde.warlock}
-export const warrior = {...alliance.warrior, ...horde.warrior}
+export const druid = {...alliance.druid, ...horde.druid};
+export const hunter = {...alliance.hunter, ...horde.hunter};
+export const mage = {...alliance.mage, ...horde.mage};
+export const paladin = {...alliance.paladin, ...horde.paladin};
+export const priest = {...alliance.priest, ...horde.priest};
+export const rogue = {...alliance.rogue, ...horde.rogue};
+export const shaman = {...alliance.shaman, ...horde.shaman};
+export const warlock = {...alliance.warlock, ...horde.warlock};
+export const warrior = {...alliance.warrior, ...horde.warrior};
