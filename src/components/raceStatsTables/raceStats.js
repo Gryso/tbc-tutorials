@@ -30,32 +30,32 @@ const raceStats = {
       component: Druid,
       "nightelf": {
         component: Nightelf,
-        "health": null,
-        "mana": null,
+        "health": 4254,
+        "mana": 3890,
         "baseStats": {
           "strength": 73,
           "agility": 75,
           "stamina": 82,
           "intellect": 120,
           "spirit": 133,
-          "armor": null
+          "armor": 150
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 126,
+          "crit": 3.96
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.35,
+          "regen": 67
         },
         "defenses": {
-          "armor": null,
+          "armor": 150,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.23,
           "parry": null,
           "block": null
         }
@@ -65,59 +65,59 @@ const raceStats = {
       component: Hunter,
       "draenei": {
         component: Draenei,
-        "health": null,
-        "mana": null,
+        "health": 4458,
+        "mana": 4273,
         "baseStats": {
           "strength": 65,
           "agility": 148,
           "stamina": 107,
           "intellect": 78,
           "spirit": 85,
-          "armor": null
+          "armor": 296
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 333,
+          "crit": 2.17
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 278,
+          "crit": 2.17
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 4.58,
+          "regen": 35
         },
         "defenses": {
-          "armor": null,
+          "armor": 296,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
+          "dodge": 0.47,
+          "parry": 5.00,
           "block": null
         }
       },
       "dwarf": {
         component: Dwarf,
-        "health": null,
-        "mana": null,
+        "health": 4498,
+        "mana": 4243,
         "baseStats": {
           "strength": 66,
           "agility": 147,
           "stamina": 111,
           "intellect": 76,
           "spirit": 82,
-          "armor": null
+          "armor": 294
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 333,
+          "crit": 2.14
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 277,
+          "crit": 2.14
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 4.55,
+          "regen": 33
         },
         "defenses": {
           "armor": null,
@@ -129,33 +129,33 @@ const raceStats = {
       },
       "nightelf": {
         component: Nightelf,
-        "health": null,
-        "mana": null,
+        "health": 4458,
+        "mana": 4258,
         "baseStats": {
           "strength": 61,
           "agility": 156,
           "stamina": 107,
           "intellect": 77,
           "spirit": 83,
-          "armor": null
+          "armor": 312
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 337,
+          "crit": 2.37
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 286,
+          "crit": 2.37
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 4.56,
+          "regen": 33
         },
         "defenses": {
-          "armor": null,
+          "armor": 312,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
+          "dodge": 1.79,
+          "parry": 5.00,
           "block": null
         }
       }
@@ -164,96 +164,96 @@ const raceStats = {
       component: Mage,
       "draenei": {
         component: Draenei,
-        "health": null,
-        "mana": null,
+        "health": 3713,
+        "mana": 4241,
         "baseStats": {
           "strength": 34,
           "agility": 36,
           "stamina": 50,
           "intellect": 152,
           "spirit": 147,
-          "armor": null
+          "armor": 72
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 24,
+          "crit": 4.90
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 2.81,
+          "regen": 84
         },
         "defenses": {
-          "armor": null,
+          "armor": 72,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.90,
           "parry": null,
           "block": null
         }
       },
       "gnome": {
         component: Gnome,
-        "health": null,
-        "mana": null,
+        "health": 3713,
+        "mana": 4391,
         "baseStats": {
           "strength": 28,
           "agility": 42,
           "stamina": 50,
           "intellect": 162,
           "spirit": 145,
-          "armor": null
+          "armor": 84
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 18,
+          "crit": 5.14
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 2.93,
+          "regen": 86
         },
         "defenses": {
-          "armor": null,
+          "armor": 84,
           "defense": 350,
-          "dodge": null,
+          "dodge": 5.14,
           "parry": null,
           "block": null
         }
       },
       "human": {
         component: Human,
-        "health": null,
-        "mana": null,
+        "health": 3723,
+        "mana": 4226,
         "baseStats": {
           "strength": 33,
           "agility": 39,
           "stamina": 51,
           "intellect": 151,
           "spirit": 159,
-          "armor": null
+          "armor": 78
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 23,
+          "crit": 5.02
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 2.80,
+          "regen": 91
         },
         "defenses": {
-          "armor": null,
+          "armor": 78,
           "defense": 350,
-          "dodge": null,
+          "dodge": 5.02,
           "parry": null,
           "block": null
         }
@@ -263,98 +263,98 @@ const raceStats = {
       component: Paladin,
       "draenei": {
         component: Draenei,
-        "health": null,
-        "mana": null,
+        "health": 4387,
+        "mana": 3933,
         "baseStats": {
           "strength": 127,
           "agility": 74,
           "stamina": 119,
           "intellect": 84,
           "spirit": 91,
-          "armor": null
+          "armor": 148
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 444,
+          "crit": 3.61
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 4.39,
+          "regen": 38
         },
         "defenses": {
-          "armor": null,
+          "armor": 148,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 3.61,
+          "parry": 5.00,
+          "block": 5.00
         }
       },
       "dwarf": {
         component: Dwarf,
-        "health": null,
-        "mana": null,
+        "health": 4477,
+        "mana": 3903,
         "baseStats": {
           "strength": 128,
           "agility": 73,
           "stamina": 123,
           "intellect": 82,
           "spirit": 88,
-          "armor": null
+          "armor": 146
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 446,
+          "crit": 3.57
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 4.36,
+          "regen": 37
         },
         "defenses": {
-          "armor": null,
+          "armor": 146,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 3.57,
+          "parry": 5.00,
+          "block": 5.00
         }
       },
       "human": {
         component: Human,
-        "health": null,
-        "mana": null,
+        "health": 4397,
+        "mana": 3918,
         "baseStats": {
           "strength": 126,
           "agility": 77,
           "stamina": 120,
           "intellect": 83,
           "spirit": 97,
-          "armor": null
+          "armor": 154
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 442,
+          "crit": 3.73
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 4.37,
+          "regen": 41
         },
         "defenses": {
-          "armor": null,
+          "armor": 154,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 3.73,
+          "parry": 5.00,
+          "block": 5.00
         }
       }
     },
@@ -362,128 +362,128 @@ const raceStats = {
       component: Priest,
       "draenei": {
         component: Draenei,
-        "health": null,
-        "mana": null,
+        "health": 3781,
+        "mana": 4530,
         "baseStats": {
           "strength": 40,
           "agility": 42,
           "stamina": 57,
           "intellect": 146,
           "spirit": 153,
-          "armor": null
+          "armor": 84
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 30,
+          "crit": 4.86
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.06,
+          "regen": 86
         },
         "defenses": {
-          "armor": null,
+          "armor": 84,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.86,
           "parry": null,
           "block": null
         }
       },
       "dwarf": {
         component: Dwarf,
-        "health": null,
-        "mana": null,
+        "health": 3821,
+        "mana": 4500,
         "baseStats": {
           "strength": 41,
           "agility": 41,
           "stamina": 61,
           "intellect": 144,
           "spirit": 150,
-          "armor": null
+          "armor": 82
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 31,
+          "crit": 4.82
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.04,
+          "regen": 83
         },
         "defenses": {
-          "armor": null,
+          "armor": 82,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.82,
           "parry": null,
           "block": null
         }
       },
       "human": {
         component: Human,
-        "health": null,
-        "mana": null,
+        "health": 3791,
+        "mana": 4515,
         "baseStats": {
           "strength": 39,
           "agility": 45,
           "stamina": 58,
           "intellect": 145,
           "spirit": 166,
-          "armor": null
+          "armor": 90
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 29,
+          "crit": 4.98
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.05,
+          "regen": 93
         },
         "defenses": {
-          "armor": null,
+          "armor": 90,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.98,
           "parry": null,
           "block": null
         }
       },
       "nightelf": {
         component: Nightelf,
-        "health": null,
-        "mana": null,
+        "health": 3781,
+        "mana": 4515,
         "baseStats": {
           "strength": 36,
           "agility": 50,
           "stamina": 57,
           "intellect": 145,
           "spirit": 151,
-          "armor": null
+          "armor": 100
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 26,
+          "crit": 5.18
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.05,
+          "regen": 84
         },
         "defenses": {
-          "armor": null,
+          "armor": 100,
           "defense": 350,
-          "dodge": null,
+          "dodge": 6.18,
           "parry": null,
           "block": null
         }
@@ -493,7 +493,7 @@ const raceStats = {
       component: Rogue,
       "dwarf": {
         component: Dwarf,
-        "health": null,
+        "health": 4444,
         "mana": null,
         "baseStats": {
           "strength": 97,
@@ -501,31 +501,31 @@ const raceStats = {
           "stamina": 92,
           "intellect": 38,
           "spirit": 57,
-          "armor": null
+          "armor": 308
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 371,
+          "crit": 3.56
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 214,
+          "crit": 3.56
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 308,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
+          "dodge": 7.11,
+          "parry": 5.00,
           "block": null
         }
       },
       "gnome": {
         component: Gnome,
-        "health": null,
+        "health": 4404,
         "mana": null,
         "baseStats": {
           "strength": 90,
@@ -533,31 +533,31 @@ const raceStats = {
           "stamina": 88,
           "intellect": 45,
           "spirit": 58,
-          "armor": null
+          "armor": 322
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 371,
+          "crit": 3.73
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 221,
+          "crit": 3.73
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 322,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
+          "dodge": 7.46,
+          "parry": 5.00,
           "block": null
         }
       },
       "human": {
         component: Human,
-        "health": null,
+        "health": 4414,
         "mana": null,
         "baseStats": {
           "strength": 95,
@@ -565,31 +565,31 @@ const raceStats = {
           "stamina": 89,
           "intellect": 39,
           "spirit": 63,
-          "armor": null
+          "armor": 316
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 373,
+          "crit": 3.65
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 218,
+          "crit": 3.65
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 316,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
+          "dodge": 7.31,
+          "parry": 5.00,
           "block": null
         }
       },
       "nightelf": {
         component: Nightelf,
-        "health": null,
+        "health": 4404,
         "mana": null,
         "baseStats": {
           "strength": 92,
@@ -597,25 +597,25 @@ const raceStats = {
           "stamina": 88,
           "intellect": 39,
           "spirit": 58,
-          "armor": null
+          "armor": 326
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 375,
+          "crit": 3.78
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 223,
+          "crit": 3.78
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 326,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
+          "dodge": 8.56,
+          "parry": 5.00,
           "block": null
         }
       }
@@ -624,34 +624,34 @@ const raceStats = {
       component: Shaman,
       "draenei": {
         component: Draenei,
-        "health": null,
-        "mana": null,
+        "health": 4109,
+        "mana": 4313,
         "baseStats": {
           "strength": 103,
           "agility": 61,
           "stamina": 113,
           "intellect": 109,
           "spirit": 122,
-          "armor": null
+          "armor": 122
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 326,
+          "crit": 4.11
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.56,
+          "regen": 59
         },
         "defenses": {
-          "armor": null,
+          "armor": 122,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.11,
           "parry": null,
-          "block": null
+          "block": 5.00
         }
       }
     },
@@ -659,64 +659,64 @@ const raceStats = {
       component: Warlock,
       "gnome": {
         component: Gnome,
-        "health": null,
-        "mana": null,
+        "health": 4060,
+        "mana": 4480,
         "baseStats": {
           "strength": 46,
           "agility": 61,
           "stamina": 75,
           "intellect": 143,
           "spirit": 131,
-          "armor": null
+          "armor": 122
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 36,
+          "crit": 4.47
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.44,
+          "regen": 73
         },
         "defenses": {
-          "armor": null,
+          "armor": 122,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.48,
           "parry": null,
           "block": null
         }
       },
       "human": {
         component: Human,
-        "health": null,
-        "mana": null,
+        "health": 4070,
+        "mana": 4330,
         "baseStats": {
           "strength": 51,
           "agility": 58,
           "stamina": 76,
           "intellect": 133,
           "spirit": 144,
-          "armor": null
+          "armor": 116
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 41,
+          "crit": 4.35
         },
         "spell": {
-          "crit": null,
-          "regen": null
+          "crit": 3.32,
+          "regen": 77
         },
         "defenses": {
-          "armor": null,
+          "armor": 116,
           "defense": 350,
-          "dodge": null,
+          "dodge": 4.36,
           "parry": null,
           "block": null
         }
@@ -726,7 +726,7 @@ const raceStats = {
       component: Warrior,
       "draenei": {
         component: Draenei,
-        "health": null,
+        "health": 5584,
         "mana": null,
         "baseStats": {
           "strength": 146,
@@ -734,31 +734,31 @@ const raceStats = {
           "stamina": 132,
           "intellect": 34,
           "spirit": 53,
-          "armor": null
+          "armor": 186
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 482,
+          "crit": 3.96
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 153,
+          "crit": 3.96
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 186,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 3.85,
+          "parry": 5.00,
+          "block": 5.00
         }
       },
       "dwarf": {
         component: Dwarf,
-        "health": null,
+        "health": 5624,
         "mana": null,
         "baseStats": {
           "strength": 147,
@@ -766,26 +766,26 @@ const raceStats = {
           "stamina": 136,
           "intellect": 32,
           "spirit": 50,
-          "armor": null
+          "armor": 184
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 484,
+          "crit": 3.93
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 152,
+          "crit": 3.93
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 184,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 3.82,
+          "parry": 5.00,
+          "block": 5.00
         }
       },
       "gnome": {
@@ -798,31 +798,31 @@ const raceStats = {
           "stamina": 132,
           "intellect": 38,
           "spirit": 51,
-          "armor": null
+          "armor": 198
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 470,
+          "crit": 4.14
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 159,
+          "crit": 4.14
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 198,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 4.05,
+          "parry": 5.00,
+          "block": 5.00
         }
       },
       "human": {
         component: Human,
-        "health": null,
+        "health": 5594,
         "mana": null,
         "baseStats": {
           "strength": 145,
@@ -830,31 +830,31 @@ const raceStats = {
           "stamina": 133,
           "intellect": 33,
           "spirit": 56,
-          "armor": null
+          "armor": 192
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 480,
+          "crit": 4.05
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 156,
+          "crit": 4.05
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 192,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 3.95,
+          "parry": 5.00,
+          "block": 5.00
         }
       },
       "nightelf": {
         component: Nightelf,
-        "health": null,
+        "health": 5584,
         "mana": null,
         "baseStats": {
           "strength": 142,
@@ -862,26 +862,26 @@ const raceStats = {
           "stamina": 132,
           "intellect": 33,
           "spirit": 51,
-          "armor": null
+          "armor": 202
         },
         "melee": {
-          "power": null,
-          "cirt": null
+          "power": 474,
+          "crit": 4.20
         },
         "ranged": {
-          "power": null,
-          "cirt": null
+          "power": 161,
+          "crit": 4.20
         },
         "spell": {
           "crit": null,
           "regen": null
         },
         "defenses": {
-          "armor": null,
+          "armor": 202,
           "defense": 350,
-          "dodge": null,
-          "parry": null,
-          "block": null
+          "dodge": 5.12,
+          "parry": 5.00,
+          "block": 5.00
         }
       }
     }
@@ -904,11 +904,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -939,11 +939,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -971,11 +971,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1003,11 +1003,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1035,11 +1035,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1070,11 +1070,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1102,11 +1102,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1134,11 +1134,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1169,11 +1169,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1204,11 +1204,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1236,11 +1236,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1268,11 +1268,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1303,11 +1303,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1335,11 +1335,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1367,11 +1367,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1399,11 +1399,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1434,11 +1434,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1466,11 +1466,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1498,11 +1498,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1533,11 +1533,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1565,11 +1565,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1597,11 +1597,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1632,11 +1632,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1664,11 +1664,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1696,11 +1696,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
@@ -1728,11 +1728,11 @@ const raceStats = {
         },
         "melee": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "ranged": {
           "power": null,
-          "cirt": null
+          "crit": null
         },
         "spell": {
           "crit": null,
