@@ -1,0 +1,136 @@
+.raceStatsTable,
+.tankStatsTable,
+.spellDpsStatsTable,
+.healerStatsTable,
+.meleePhysicalDpsStatsTable,
+.hybridPhysicalDpsStatsTable,
+.rangedPhysicalDpsStatsTable,
+.priestRacialsTable {
+  // low-opacity
+  --low-opacity: 0.15;
+  --low-opacity-class-druid: rgba(255, 124, 10, var(--low-opacity));
+  --low-opacity-class-hunter: rgba(170, 211, 114, var(--low-opacity));
+  --low-opacity-class-mage: rgba(63, 199, 235, var(--low-opacity));
+  --low-opacity-class-paladin: rgba(244, 140, 186, var(--low-opacity));
+  --low-opacity-class-priest: rgba(255, 255, 255, var(--low-opacity));
+  --low-opacity-class-rogue: rgba(255, 244, 104, var(--low-opacity));
+  --low-opacity-class-shaman: rgba(0, 112, 221, var(--low-opacity));
+  --low-opacity-class-warlock: rgba(135, 136, 238, var(--low-opacity));
+  --low-opacity-class-warrior: rgba(198, 155, 109, var(--low-opacity));
+  --low-opacity-faction-alliance: rgba(0, 120, 255, var(--low-opacity));
+  --low-opacity-faction-horde: rgba(179, 0, 0, var(--low-opacity));
+  --low-opacity-contrast-color: rgba(255, 209, 0, var(--low-opacity));
+
+  // high-opacity
+  --high-opacity: 0.4;
+  --high-opacity-class-druid: rgba(255, 124, 10, var(--high-opacity));
+  --high-opacity-class-hunter: rgba(170, 211, 114, var(--high-opacity));
+  --high-opacity-class-mage: rgba(63, 199, 235, var(--high-opacity));
+  --high-opacity-class-paladin: rgba(244, 140, 186, var(--high-opacity));
+  --high-opacity-class-priest: rgba(255, 255, 255, var(--high-opacity));
+  --high-opacity-class-rogue: rgba(255, 244, 104, var(--high-opacity));
+  --high-opacity-class-shaman: rgba(0, 112, 221, var(--high-opacity));
+  --high-opacity-class-warlock: rgba(135, 136, 238, var(--high-opacity));
+  --high-opacity-class-warrior: rgba(198, 155, 109, var(--high-opacity));
+  --high-opacity-faction-alliance: rgba(0, 120, 255, var(--high-opacity));
+  --high-opacity-faction-horde: rgba(179, 0, 0, var(--high-opacity));
+  --high-opacity-contrast-color: rgba(255, 209, 0, var(--high-opacity));
+
+  width: 100%;
+  margin-top: calc(var(--leading) * 0.5);
+  margin-bottom: calc(var(--leading) * 2);
+  border-collapse: collapse;
+
+  td, th {
+    vertical-align: middle;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-shadow: 1px 1px 3px black;
+  }
+
+  th {
+    text-orientation: sideways;
+  }
+
+  td:first-of-type {
+    text-align: left;
+  }
+
+  &.alliance {
+    &, td, th {
+      border: 1px solid var(--high-opacity-faction-alliance);
+    }
+
+    thead th, tbody:hover th, tbody tr:hover td {
+      background-color: var(--high-opacity-faction-alliance);
+    }
+  }
+
+  &.horde {
+    &, td, th {
+      border: 1px solid var(--high-opacity-faction-horde);
+    }
+
+    thead th, tbody:hover th, tbody tr:hover td {
+      background-color: var(--high-opacity-faction-horde);
+    }
+  }
+
+  tbody {
+    &.druid {background-color: var(--low-opacity-class-druid)}
+    &.hunter {background-color: var(--low-opacity-class-hunter)}
+    &.mage {background-color: var(--low-opacity-class-mage)}
+    &.paladin {background-color: var(--low-opacity-class-paladin)}
+    &.priest {background-color: var(--low-opacity-class-priest)}
+    &.rogue {background-color: var(--low-opacity-class-rogue)}
+    &.shaman {background-color: var(--low-opacity-class-shaman)}
+    &.warlock {background-color: var(--low-opacity-class-warlock)}
+    &.warrior {background-color: var(--low-opacity-class-warrior)}
+  }
+}
+
+.priestRacialsTable {
+  width: auto;
+  &, td, th {
+    border: 1px solid var(--high-opacity-class-priest);
+    text-align: left;
+  }
+
+  th {
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .alliance {
+    background-color: var(--low-opacity-faction-horde);
+  }
+  .horde {
+    background-color: var(--low-opacity-faction-alliance);
+  }
+}
+
+.tankStatsTable,
+.spellDpsStatsTable,
+.healerStatsTable,
+.meleePhysicalDpsStatsTable,
+.hybridPhysicalDpsStatsTable,
+.rangedPhysicalDpsStatsTable {
+  thead {
+    background-color: var(--high-opacity-contrast-color);
+  }
+  &, td, th {
+    border: 1px solid var(--low-opacity-contrast-color);
+  }
+
+  tbody {
+    &.druid:hover th, &.druid tr:hover td {background-color: var(--high-opacity-class-druid)}
+    &.hunter:hover th, &.hunter tr:hover td {background-color: var(--high-opacity-class-hunter)}
+    &.mage:hover th, &.mage tr:hover td {background-color: var(--high-opacity-class-mage)}
+    &.paladin:hover th, &.paladin tr:hover td {background-color: var(--high-opacity-class-paladin)}
+    &.priest:hover th, &.priest tr:hover td {background-color: var(--high-opacity-class-priest)}
+    &.rogue:hover th, &.rogue tr:hover td {background-color: var(--high-opacity-class-rogue)}
+    &.shaman:hover th, &.shaman tr:hover td {background-color: var(--high-opacity-class-shaman)}
+    &.warlock:hover th, &.warlock tr:hover td {background-color: var(--high-opacity-class-warlock)}
+    &.warrior:hover th, &.warrior tr:hover td {background-color: var(--high-opacity-class-warrior)}
+  }
+}

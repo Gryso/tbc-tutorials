@@ -85,9 +85,9 @@ function ContentListLayout({children}) {
 
   return (
     <>
-      <div className="content">
+      <article className="content">
         {children}
-      </div>
+      </article>
       {contentList.length > 0 ?
         <div className="listOfContent" aria-hidden="true">
           {/*<div className="listOfContentTitle">*/}
