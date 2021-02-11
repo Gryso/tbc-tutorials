@@ -11,9 +11,8 @@ import HealerStatsTable from "../../components/raceStatsTables/HealerStatsTable"
 import MeleePhysicalDpsStatsTable from "../../components/raceStatsTables/MeleePhysicalDpsStatsTable";
 import HybridPhysicalDpsStatsTable from "../../components/raceStatsTables/HybridPhysicalDpsStatsTable";
 import RangedPhysicalDpsStatsTable from "../../components/raceStatsTables/RangedPhysicalDpsStatsTable";
-import AllianceRaceStatsTable from "../../components/raceStatsTables/AllianceRaceStatsTable";
-import HordeRaceStatsTable from "../../components/raceStatsTables/HordeRaceStatsTable";
 import PriestRacialsTable from "../../components/raceStatsTables/PriestRacialsTable";
+import FactionRaceStatsTable from "../../components/raceStatsTables/FactionRaceStatsTable";
 
 const RaceStats = () => {
   return (
@@ -25,10 +24,10 @@ const RaceStats = () => {
         </p>
 
         <Heading2 align="center" anchorId="alliance"><Alliance /></Heading2>
-        <AllianceRaceStatsTable />
+        <FactionRaceStatsTable faction="alliance" />
 
         <Heading2 align="center" anchorId="horde"><Horde /></Heading2>
-        <HordeRaceStatsTable />
+        <FactionRaceStatsTable faction="horde" />
 
         <Heading2 align="center">Tank stats</Heading2>
         <TankStatsTable />

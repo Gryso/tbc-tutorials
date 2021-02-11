@@ -1,4 +1,5 @@
 .raceStatsTable,
+.classRaceStatsTable,
 .tankStatsTable,
 .spellDpsStatsTable,
 .healerStatsTable,
@@ -89,6 +90,7 @@
   }
 }
 
+.classRaceStatsTable,
 .tankStatsTable,
 .spellDpsStatsTable,
 .healerStatsTable,
@@ -121,18 +123,18 @@
   margin-right: auto;
   &, td, th {
     border: 1px solid var(--low-opacity-class-priest);
-    text-align: left;
+    text-align: center;
   }
 
-  th {
-    width: 1px;
-    white-space: nowrap;
-  }
+  //th {
+  //  width: 1px;
+  //  white-space: nowrap;
+  //}
 
   .alliance {
-    background-color: var(--low-opacity-faction-horde);
+    background-color: var(--low-opacity-faction-alliance);
   }
   .horde {
-    background-color: var(--low-opacity-faction-alliance);
+    background-color: var(--low-opacity-faction-horde);
   }
 }
