@@ -89,26 +89,6 @@
   }
 }
 
-.priestRacialsTable {
-  width: auto;
-  &, td, th {
-    border: 1px solid var(--high-opacity-class-priest);
-    text-align: left;
-  }
-
-  th {
-    width: 1px;
-    white-space: nowrap;
-  }
-
-  .alliance {
-    background-color: var(--low-opacity-faction-horde);
-  }
-  .horde {
-    background-color: var(--low-opacity-faction-alliance);
-  }
-}
-
 .tankStatsTable,
 .spellDpsStatsTable,
 .healerStatsTable,
@@ -132,5 +112,27 @@
     &.shaman:hover th, &.shaman tr:hover td {background-color: var(--high-opacity-class-shaman)}
     &.warlock:hover th, &.warlock tr:hover td {background-color: var(--high-opacity-class-warlock)}
     &.warrior:hover th, &.warrior tr:hover td {background-color: var(--high-opacity-class-warrior)}
+  }
+}
+
+.priestRacialsTable {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  &, td, th {
+    border: 1px solid var(--low-opacity-class-priest);
+    text-align: left;
+  }
+
+  th {
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .alliance {
+    background-color: var(--low-opacity-faction-horde);
+  }
+  .horde {
+    background-color: var(--low-opacity-faction-alliance);
   }
 }

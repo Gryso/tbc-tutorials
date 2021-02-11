@@ -48,7 +48,7 @@ const RaceStats = () => {
         <Heading2 align="center">Ranged physical dps stats</Heading2>
         <RangedPhysicalDpsStatsTable />
 
-        <Heading2 anchorId="priest-racials"><Priest /> Racials</Heading2>
+        <Heading2 align="center" anchorId="priest-racials"><Priest /> Racials</Heading2>
         <PriestRacialsTable />
 
 

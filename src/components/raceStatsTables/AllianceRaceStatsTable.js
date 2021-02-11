@@ -2,6 +2,8 @@ import React from "react";
 import "./raceStats.scss";
 import {Druid, Hunter, Mage, Paladin, Priest, Rogue, Shaman, Warlock, Warrior} from "../gameElements/class/classes";
 import {Draenei, Dwarf, Gnome, Human, Nightelf} from "../gameElements/race/races";
+import {alliance} from "./raceStats";
+
 
 const RaceStats = () => {
   return (
