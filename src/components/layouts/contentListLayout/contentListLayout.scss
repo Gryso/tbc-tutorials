@@ -1,15 +1,18 @@
 .content {
   width: 100%;
   max-width: 70em;
-  padding: 0 2em;
+  padding: var(--top-content-gap) 2rem calc(4 * var(--top-content-gap));
 }
 
 .listOfContent {
+  position: sticky;
+  top: calc(var(--header-height) + var(--top-content-gap));
   height: min-content;
   max-width: 20em;
+  margin-top: calc((var(--h1-multiplayer) * var(--leading)) + var(--top-content-gap));
+  margin-right: 1.5rem;
   border-left: 1px solid var(--sepoarator-color);
   font-size: 0.85rem;
-  margin-right: 1.5rem;
 
   .listOfContentTitle {
     padding-left: 1.5em;
