@@ -1018,7 +1018,7 @@ const raceStats = {
         },
         "ranged": {
           "power": 283,
-          "crit": null
+          "crit": 2.29
         },
         "spell": {
           "crit": 4.51,
