@@ -5,14 +5,20 @@ import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayo
 import {Heading2, Title} from "../../components/headers/headers";
 import {Alliance, Horde} from "../../components/gameElements/faction/factions";
 import {Priest} from "../../components/gameElements/class/classes";
-import TankStatsTable from "../../components/raceStatsTables/TankStatsTable";
-import SpellDpsStatsTable from "../../components/raceStatsTables/SpellDpsStatsTable";
-import HealerStatsTable from "../../components/raceStatsTables/HealerStatsTable";
-import MeleePhysicalDpsStatsTable from "../../components/raceStatsTables/MeleePhysicalDpsStatsTable";
-import HybridPhysicalDpsStatsTable from "../../components/raceStatsTables/HybridPhysicalDpsStatsTable";
-import RangedPhysicalDpsStatsTable from "../../components/raceStatsTables/RangedPhysicalDpsStatsTable";
 import PriestRacialsTable from "../../components/raceStatsTables/PriestRacialsTable";
 import FactionRaceStatsTable from "../../components/raceStatsTables/FactionRaceStatsTable";
+import ClassRaceStatsTable from "../../components/raceStatsTables/ClassRaceStatsTable";
+import {
+  druid,
+  hunter,
+  mage,
+  paladin,
+  priest,
+  rogue,
+  shaman,
+  warlock,
+  warrior
+} from "../../components/raceStatsTables/raceStats";
 
 const RaceStats = () => {
   return (
@@ -30,22 +36,114 @@ const RaceStats = () => {
         <FactionRaceStatsTable faction="horde" />
 
         <Heading2 align="center">Tank stats</Heading2>
-        <TankStatsTable />
+        <ClassRaceStatsTable
+          raceStats={{
+            druid: druid,
+            paladin: paladin,
+            warrior: warrior,
+          }}
+          displayStats={[
+            "agility",
+            "dodge",
+            "armor",
+            "stamina",
+            "health",
+            "defense",
+            "parry",
+            "block",
+          ]}
+          describedby="tank-stats"
+        />
 
         <Heading2 align="center">Spell dps stats</Heading2>
-        <SpellDpsStatsTable />
+        <ClassRaceStatsTable
+          raceStats={{
+            druid: druid,
+            mage: mage,
+            priest: priest,
+            shaman: shaman,
+            warlock: warlock,
+          }}
+          displayStats={[
+            "intellect",
+            "mana",
+            "spellCrit",
+            "spirit",
+            "spellRegen",
+          ]}
+          describedby="spell-dps-stats"
+        />
 
         <Heading2 align="center">Healer stats</Heading2>
-        <HealerStatsTable />
+        <ClassRaceStatsTable
+          raceStats={{
+            druid: druid,
+            paladin: paladin,
+            priest: priest,
+            shaman: shaman,
+          }}
+          displayStats={[
+            "intellect",
+            "mana",
+            "spellCrit",
+            "spirit",
+            "spellRegen",
+          ]}
+          describedby="healer-stats"
+        />
 
         <Heading2 align="center">Melee physical dps stats</Heading2>
-        <MeleePhysicalDpsStatsTable />
+        <ClassRaceStatsTable
+          raceStats={{
+            rogue: rogue,
+            warrior: warrior,
+          }}
+          displayStats={[
+            "strength",
+            "meleePower",
+            "agility",
+            "meleeCrit",
+          ]}
+          describedby="melee-physical-dps-stats"
+        />
 
         <Heading2 align="center">Hybrid physical dps stats</Heading2>
-        <HybridPhysicalDpsStatsTable />
+        <ClassRaceStatsTable
+          raceStats={{
+            druid: druid,
+            paladin: paladin,
+            shaman: shaman,
+          }}
+          displayStats={[
+            "strength",
+            "meleePower",
+            "agility",
+            "meleeCrit",
+            "intellect",
+            "mana",
+            "spellCrit",
+            "spirit",
+            "spellRegen",
+          ]}
+          describedby="hybrid-physical-dps-stats"
+        />
 
         <Heading2 align="center">Ranged physical dps stats</Heading2>
-        <RangedPhysicalDpsStatsTable />
+        <ClassRaceStatsTable
+          raceStats={{
+            hunter: hunter,
+          }}
+          displayStats={[
+            "agility",
+            "rangedPower",
+            "rangedCrit",
+            "intellect",
+            "mana",
+            "spirit",
+            "spellRegen",
+          ]}
+          describedby="ranged-physical-dps-stats"
+        />
 
         <Heading2 align="center" anchorId="priest-racials"><Priest /> Racials</Heading2>
         <PriestRacialsTable />
