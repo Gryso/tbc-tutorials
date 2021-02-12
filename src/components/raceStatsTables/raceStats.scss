@@ -1,11 +1,5 @@
 .raceStatsTable,
 .classRaceStatsTable,
-.tankStatsTable,
-.spellDpsStatsTable,
-.healerStatsTable,
-.meleePhysicalDpsStatsTable,
-.hybridPhysicalDpsStatsTable,
-.rangedPhysicalDpsStatsTable,
 .priestRacialsTable {
   // low-opacity
   --low-opacity: 0.15;
@@ -90,16 +84,11 @@
   }
 }
 
-.classRaceStatsTable,
-.tankStatsTable,
-.spellDpsStatsTable,
-.healerStatsTable,
-.meleePhysicalDpsStatsTable,
-.hybridPhysicalDpsStatsTable,
-.rangedPhysicalDpsStatsTable {
+.classRaceStatsTable {
   thead {
     background-color: var(--high-opacity-contrast-color);
   }
+
   &, td, th {
     border: 1px solid var(--low-opacity-contrast-color);
   }
@@ -119,8 +108,8 @@
 
 .priestRacialsTable {
   width: auto;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 
   &, td, th {
     border: 1px solid var(--low-opacity-class-priest);
@@ -134,6 +123,7 @@
   .alliance {
     background-color: var(--low-opacity-faction-alliance);
   }
+
   .horde {
     background-color: var(--low-opacity-faction-horde);
   }

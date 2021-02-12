@@ -769,7 +769,7 @@ const raceStats = {
       },
       "gnome": {
         component: Gnome,
-        "health": null,
+        "health": 5584,
         "mana": null,
         "baseStats": {
           "strength": 140,

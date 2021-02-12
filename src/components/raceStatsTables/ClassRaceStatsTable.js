@@ -2,6 +2,10 @@ import React from "react";
 import "./raceStats.scss";
 import getObjectKeysWithoutComponent from "../../utils/getObjectKeysWithoutComponent";
 
+function percentage(value) {
+  return value ? `${value}%` : null;
+}
+
 const listOfStats = {
   health: {header: "Health", assessor: (oneRaceStats) => oneRaceStats.health},
   mana: {header: "Mana", assessor: (oneRaceStats) => oneRaceStats.mana},
@@ -11,16 +15,16 @@ const listOfStats = {
   intellect: {header: "Intellect", assessor: (oneRaceStats) => oneRaceStats.baseStats.intellect},
   spirit: {header: "Spirit", assessor: (oneRaceStats) => oneRaceStats.baseStats.spirit},
   meleePower: {header: "Melee AP", assessor: (oneRaceStats) => oneRaceStats.melee.power},
-  meleeCrit: {header: "Melee Crit", assessor: (oneRaceStats) => oneRaceStats.melee.crit},
+  meleeCrit: {header: "Melee Crit", assessor: (oneRaceStats) => percentage(oneRaceStats.melee.crit)},
   rangedPower: {header: "Range AP", assessor: (oneRaceStats) => oneRaceStats.ranged.power},
-  rangedCrit: {header: "Range Crit", assessor: (oneRaceStats) => oneRaceStats.ranged.crit},
-  spellCrit: {header: "Spell Crit", assessor: (oneRaceStats) => oneRaceStats.spell.crit},
+  rangedCrit: {header: "Range Crit", assessor: (oneRaceStats) => percentage(oneRaceStats.ranged.crit)},
+  spellCrit: {header: "Spell Crit", assessor: (oneRaceStats) => percentage(oneRaceStats.spell.crit)},
   spellRegen: {header: "Mana Regen", assessor: (oneRaceStats) => oneRaceStats.spell.regen},
   armor: {header: "Armor", assessor: (oneRaceStats) => oneRaceStats.defenses.armor},
   defense: {header: "Defense", assessor: (oneRaceStats) => oneRaceStats.defenses.defense},
-  dodge: {header: "Dodge", assessor: (oneRaceStats) => oneRaceStats.defenses.dodge},
-  parry: {header: "Parry", assessor: (oneRaceStats) => oneRaceStats.defenses.parry},
-  block: {header: "Block", assessor: (oneRaceStats) => oneRaceStats.defenses.block},
+  dodge: {header: "Dodge", assessor: (oneRaceStats) => percentage(oneRaceStats.defenses.dodge)},
+  parry: {header: "Parry", assessor: (oneRaceStats) => percentage(oneRaceStats.defenses.parry)},
+  block: {header: "Block", assessor: (oneRaceStats) => percentage(oneRaceStats.defenses.block)},
 };
 
 const ClassRaceStatsTable = ({raceStats, displayStats, describedby}) => {

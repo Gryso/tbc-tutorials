@@ -44,11 +44,11 @@ const RaceStats = () => {
           }}
           displayStats={[
             "agility",
-            "dodge",
             "armor",
             "stamina",
             "health",
             "defense",
+            "dodge",
             "parry",
             "block",
           ]}

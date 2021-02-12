@@ -1,0 +1,38 @@
+@mixin element-scrollbar($thumb-color, $background-color: mix($thumb-color, white,  50%), $width: 1rem) {
+  // For Webkit
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $thumb-color;
+    scrollbar-arrow-color: $thumb-color;
+    scrollbar-track-color: $background-color;
+  }
+
+  // For Firefox future compatibility
+  // This is W3C draft and does not work yet. Use html-firefox-scrollbar mixin instead.
+  & {
+    scrollbar-color: $thumb-color $background-color;
+    scrollbar-width: $width;
+  }
+}
+
+// For Firefox
+@mixin html-firefox-scrollbar($thumb-color, $background-color: mix($thumb-color, white,  50%), $firefox-width: this) {
+  // This must be used on html/:root element to take effect
+  & {
+    scrollbar-color: $thumb-color $background-color;
+    scrollbar-width: $firefox-width;
+  }
+}

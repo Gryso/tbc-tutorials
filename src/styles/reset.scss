@@ -1,11 +1,14 @@
+@import "./scrollbarMixin";
+
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-html {
+:root {
   -webkit-text-size-adjust: 100%;
+  @include html-firefox-scrollbar(var(--scrollbar-thumb), var(--scrollbar-track), thin);
 }
 
 body {
@@ -14,6 +17,8 @@ body {
   max-width: 100%;
   margin: 0;
   overflow-x: hidden;
+  overflow-y: auto;
+  @include element-scrollbar(var(--scrollbar-thumb), var(--scrollbar-track), 0.5rem);
 }
 
 main {
