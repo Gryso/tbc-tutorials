@@ -78,9 +78,7 @@ function ContentListLayout({children}) {
       </div>
     );
   }
-  const title = children.find((child) => {
-    return getComponentName(child.type) === Title.name
-  }).props.children;
+  
   const contentList = generateContentList(children);
 
   return (
@@ -90,11 +88,6 @@ function ContentListLayout({children}) {
       </article>
       {contentList.length > 0 ?
         <div className="listOfContent" aria-hidden="true">
-          {/*<div className="listOfContentTitle">*/}
-          {/*  <AnchorLink*/}
-          {/*    to={`#${headingToKebabCase(title)}`}*/}
-          {/*    title={title} />*/}
-          {/*</div>*/}
           {renderContentList(contentList)}
         </div> : null}
     </>

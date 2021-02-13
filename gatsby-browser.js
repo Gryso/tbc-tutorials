@@ -11,25 +11,24 @@ const addScript = url => {
 }
 
 export const onClientEntry = () => {
-  // document.onreadystatechange = () => {
-  //   if (document.readyState === 'complete')
-  //   {
-  //     addScript("http://tbcdb.com/tooltips/power.js?vnew")
-  //     window.aowow_tooltips = {
-  //       "colorlinks": true,
-  //       "iconizelinks": true,
-  //       // "renamelinks": true
-  //     }
-  //   }
-  // };
+  document.onreadystatechange = () => {
+    if (document.readyState === 'complete')
+    {
+      addScript("http://tbcdb.com/tooltips/power.js?vnew")
+      window.aowow_tooltips = {
+        // "colorlinks": true,
+        "iconizelinks": true,
+        // "renamelinks": true
+      }    }
+  };
 
-  window.onload = () => {
-    addScript("http://tbcdb.com/tooltips/power.js?vnew")
-    window.aowow_tooltips = {
-      // "colorlinks": true,
-      "iconizelinks": true,
-      // "renamelinks": true
-    }
-    // addScript("http://cdn.cavernoftime.com/api/tooltip.js")
-  }
+  // window.onload = () => {
+  //   addScript("http://tbcdb.com/tooltips/power.js?vnew")
+  //   window.aowow_tooltips = {
+  //     // "colorlinks": true,
+  //     "iconizelinks": true,
+  //     // "renamelinks": true
+  //   }
+  //   // addScript("http://cdn.cavernoftime.com/api/tooltip.js")
+  // }
 }

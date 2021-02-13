@@ -17,7 +17,7 @@
     border-radius: 10px;
 
     .macroCode {
-      //background-image: url("https://www.transparenttextures.com/patterns/rocky-wall.png");
+      position: relative;
       width: 100%;
       padding: 0.75em 0.5em;
       margin: 0;
@@ -27,6 +27,18 @@
       border-radius: 10px;
       font-family: monospace, monospace;
       white-space: pre-wrap;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../../images/macroCordeBackground.png");
+        background-repeat: repeat-x;
+        content: "";
+        filter: grayscale(100%) blur(1px);
+      }
     }
 
     .copyMacroButton {

@@ -32,7 +32,7 @@ function TreeItem({children, link, label}) {
                 width: "1em",
                 height: "1em",
               }} /> : null}
-            <span className="sideMenuItemLabel">
+            <span className={`sideMenuItemLabel${children ? " hasChildren" : ""}`}>
               {link ? <Link to={link}>{label}</Link> : label}
             </span>
           </div>

@@ -1,6 +1,7 @@
 @import "../../../styles/scrollbarMixin";
 
 .body {
+  --top-content-gap: 1vh;
   display: flex;
   flex-direction: row;
   flex-grow: 1;
@@ -12,9 +13,10 @@
     top: var(--header-height);
     display: flex;
     flex-direction: column;
-    width: 15em;
+    max-width: 20em;
+    width: auto;
     height: calc(100vh - var(--header-height));
-    padding: 1em 2em;
+    padding: var(--top-content-gap) 2em;
     border-right: 1px solid var(--sepoarator-color);
     overflow-y: auto;
     @include element-scrollbar(var(--scrollbar-thumb), var(--scrollbar-track), 0.5rem);
@@ -27,8 +29,6 @@
   }
 
   main {
-    --top-content-gap: 1vh;
-
     position: relative;
     display: flex;
     flex-direction: row;

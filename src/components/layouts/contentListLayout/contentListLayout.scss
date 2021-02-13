@@ -14,17 +14,6 @@
   border-left: 1px solid var(--sepoarator-color);
   font-size: 0.85rem;
 
-  .listOfContentTitle {
-    padding-left: 1.5em;
-    margin-bottom: calc(var(--leading) / 4);
-    font-weight: bold;
-    white-space: nowrap;
-
-    a {
-      color: var(--primary-font-color);
-    }
-  }
-
   ul {
     width: max-content;
     padding-left: 1em;

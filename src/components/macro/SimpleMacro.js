@@ -11,19 +11,6 @@ const SimpleMacro = (props) => {
     <div className="simpleMacro">
       <Heading3>{props.name}</Heading3>
       <p>{props.description}</p>
-      {/*<CodeBlock*/}
-      {/*  text={props.text}*/}
-      {/*  language={"lua"}*/}
-      {/*  theme={dracula}*/}
-      {/*  showLineNumbers={false}*/}
-      {/*  wrapLongLines={true}*/}
-      {/*  wrapLines={true}*/}
-      {/*  customStyle={{*/}
-      {/*    lineHeight: "1.125em",*/}
-      {/*    paddingRight: "40px",*/}
-      {/*    // minHeight: "3em"*/}
-      {/*  }}*/}
-      {/*/>*/}
       <div className="macroCodeWrapper">
         <pre className="macroCode">
           {props.text}
