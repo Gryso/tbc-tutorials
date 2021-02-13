@@ -876,4 +876,4 @@ if (typeof $WowheadPower == "undefined") {
 
     init();
   }
-};
+}

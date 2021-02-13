@@ -7,7 +7,7 @@ function PveTutorialsSideMenu() {
     <nav role="navigation" aria-label="PvE tutorials side menu">
       <h3>PvE Tutorials</h3>
       <TreeView localStorageKey="PveTutorialsSideMenu">
-        <TreeItem label="Physical DPS  mechanics mechanics mechanics" link="/pve-tutorials/physical" />
+        <TreeItem label="Physical DPS" link="/pve-tutorials/physical" />
         <TreeItem label="Spell DPS mechanics" link="/pve-tutorials/spell" />
         <TreeItem label="Tank mechanics" link="/pve-tutorials/tank" />
         <TreeItem label="Healing mechanics" link="/pve-tutorials/healing" />

@@ -6,7 +6,11 @@
   flex-direction: row;
   flex-grow: 1;
   width: 100%;
-  //background: url("images/bg_obrazok.png");
+  background-image: url("../../../images/pageBackgroundImage.png");
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-size: auto 800px;
+  background-repeat: no-repeat;
 
   nav {
     position: sticky;

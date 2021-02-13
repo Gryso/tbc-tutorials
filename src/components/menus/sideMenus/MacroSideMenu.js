@@ -17,16 +17,6 @@ function MacroSideMenu() {
         <TreeItem label="Shaman" link="/macros/shaman" />
         <TreeItem label="Warlock" link="/macros/warlock" />
         <TreeItem label="Warrior" link="/macros/warrior" />
-
-        <TreeItem label="test">
-          <TreeItem label="Warlock" link="/macros/warlock" />
-          <TreeItem label="Warrior" link="/macros/warrior" />
-          <TreeItem label="deeper test">
-            <TreeItem label="Paladin" link="/macros/paladin" />
-            <TreeItem label="Priest" link="/macros/priest" />
-          </TreeItem>
-          <TreeItem label="Hunter" link="/macros/hunter" />
-        </TreeItem>
       </TreeView>
     </nav>
   );

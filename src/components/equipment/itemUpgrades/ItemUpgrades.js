@@ -10,18 +10,23 @@ const ItemUpgrades = ({enchant, gems}) => {
 
   return (
     <table className="itemUpgradesTable" aria-describedby="???????">
-      {enchant ? <tr>
-        <th scope="row"><Icon type="enchanting"/></th>
-        <td>
-          {enchant}
-        </td>
-      </tr> : null}
-      {gems ? <tr>
-        <th scope="row"><Icon type="jewelcrafting"/></th>
-        <td>
-          {gems.map((gem, index) => <>{gem}{gems.length - 1 === index ? null : ", "}</>)}
-        </td>
-      </tr> : null}
+      <tbody>
+        {enchant ? <tr>
+          <th scope="row"><Icon type="enchanting" /></th>
+          <td>
+            {enchant}
+          </td>
+        </tr> : null}
+        {gems ? <tr>
+          <th scope="row"><Icon type="jewelcrafting" /></th>
+          <td>
+            {gems.map((gem, index) =>
+              <React.Fragment key={index}>
+                {gem}{gems.length - 1 === index ? null : ", "}
+              </React.Fragment>)}
+          </td>
+        </tr> : null}
+      </tbody>
     </table>
   );
 };
