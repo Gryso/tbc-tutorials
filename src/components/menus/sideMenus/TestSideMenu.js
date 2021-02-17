@@ -8,6 +8,7 @@ function TestSideMenu() {
       <h3>Test side Menu</h3>
       <TreeView localStorageKey="TestSideMenu">
         <TreeItem label="Testing" link="/testing/" />
+        <TreeItem label="Headers Testing" link="/headersTesting/" />
         <TreeItem label="Typography" link="/typography" />
 
         <TreeItem label="Upackable1">

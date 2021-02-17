@@ -1,6 +1,6 @@
 import React from "react";
 import "./raceStats.scss";
-import raceStats from "./raceStats";
+import raceStats from "../../utils/raceStats";
 import getObjectKeysWithoutComponent from "../../utils/getObjectKeysWithoutComponent";
 
 const FactionRaceStatsTable = ({faction}) => {

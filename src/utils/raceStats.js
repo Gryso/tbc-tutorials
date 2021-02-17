@@ -1,6 +1,6 @@
-import {Alliance, Horde} from "../gameElements/faction/factions";
-import {Druid, Hunter, Mage, Paladin, Priest, Rogue, Shaman, Warlock, Warrior} from "../gameElements/class/classes";
-import {Bloodelf, Draenei, Dwarf, Gnome, Human, Nightelf, Orc, Tauren, Troll, Undead} from "../gameElements/race/races";
+import {Alliance, Horde} from "../components/gameElements/faction/factions";
+import {Druid, Hunter, Mage, Paladin, Priest, Rogue, Shaman, Warlock, Warrior} from "../components/gameElements/class/classes";
+import {Bloodelf, Draenei, Dwarf, Gnome, Human, Nightelf, Orc, Tauren, Troll, Undead} from "../components/gameElements/race/races";
 
 const raceStats = {
   "alliance": {

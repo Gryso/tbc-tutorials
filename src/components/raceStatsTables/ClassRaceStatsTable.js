@@ -55,7 +55,7 @@ const ClassRaceStatsTable = ({raceStats, displayStats, describedby}) => {
                     {raceStats[wowClass][race].component()}
                   </td>
                   {displayStats.map((stat, index) =>
-                    <td scope="col" key={index}>{listOfStats[stat].assessor(raceStats[wowClass][race])}</td>)
+                    <td key={index}>{listOfStats[stat].assessor(raceStats[wowClass][race])}</td>)
                   }
                 </tr>
               );

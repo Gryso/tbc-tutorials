@@ -52,7 +52,7 @@ import SimpleMacro from "../components/macro/SimpleMacro";
 import EquipmentSet from "../components/equipment/equipSet/EquipmentSet";
 import EquipmentList from "../components/equipment/equipmentList/EquipmentList";
 import StatsList from "../components/statsLIst/StatsList";
-import {druid, paladin, warrior} from "../components/raceStatsTables/raceStats";
+import {druid, paladin, warrior} from "../utils/raceStats";
 import ClassRaceStatsTable from "../components/raceStatsTables/ClassRaceStatsTable";
 import FactionRaceStatsTable from "../components/raceStatsTables/FactionRaceStatsTable";
 import PriestRacialsTable from "../components/raceStatsTables/PriestRacialsTable";
@@ -65,7 +65,6 @@ const testing = () => {
         <Author>Test author</Author>
         <Heading2>Test heading 2</Heading2>
         <Heading3>Test heading 3</Heading3>
-        <Heading3>Test heading 3-2</Heading3>
         <Heading4>Test heading 4</Heading4>
 
         <Heading2>Icons</Heading2>
@@ -190,7 +189,13 @@ const testing = () => {
         <SimpleMacro
           name="OpenMacroMenu"
           description={"This is just simple button to open macro menu. If you are too lazy to write /macro"}
-          text={`/macro`}
+          text={
+`/macro
+/macro
+/macro
+/macro
+/macro
+/macro`}
         />
         <Heading2>Items</Heading2>
         <Heading3>EquipmentSet</Heading3>

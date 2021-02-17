@@ -3,13 +3,13 @@ import React from "react";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import "./simpleMacro.scss";
 import Button from "../button/Button";
-import {Heading3} from "../headers/headers";
+import {Heading4} from "../headers/headers";
 
 const SimpleMacro = (props) => {
 
   return (
     <div className="simpleMacro">
-      <Heading3>{props.name}</Heading3>
+      <Heading4>{props.name}</Heading4>
       <p>{props.description}</p>
       <div className="macroCodeWrapper">
         <pre className="macroCode">

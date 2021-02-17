@@ -72,14 +72,14 @@
   // reputations
   // THIS IS possibly WRONG
   --reputation-positive: #00FF00;
-  --reputation-neutral: #FFFF00;
+  --reputation-neutral: #ffff00;
   --reputation-negative: #CC2222;
 
   // quests
   --quest-default: #FFD100;
-  --quest-very-easy: #DD2222;
-  --quest-easy: #FF8040;
+  --quest-very-hard: #DD2222;
+  --quest-hard: #FF8040;
   --quest-medium: #FFFF00;
-  --quest-hard: #40BF40;
-  --quest-very-hard: #808080;
+  --quest-easy: #40BF40;
+  --quest-very-easy: #808080;
 }

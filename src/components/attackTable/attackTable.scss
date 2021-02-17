@@ -1,0 +1,36 @@
+.attackTable {
+  --critical-color: red;
+  --crushing-color: #c49e9e;
+  --hit-color: white;
+  --miss-color: #375f32;
+  --dodge-color: #467e4e;
+  --parry-color: #00ff0d;
+  --block-color: #0040ff;
+
+  display: flex;
+  flex-direction: row;
+
+  .values {
+    width: 75px;
+    height: 250px;
+    background-color: #e9dede;
+
+    .value {
+      width: 100%;
+
+      &.critical {background-color: var(--critical-color)}
+      &.crushing {background-color: var(--crushing-color)}
+      &.hit {background-color: var(--hit-color)}
+      &.miss {background-color: var(--miss-color)}
+      &.dodge {background-color: var(--dodge-color)}
+      &.parry {background-color: var(--parry-color)}
+      &.block {background-color: var(--block-color)}
+    }
+  }
+
+  .stats {
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+}

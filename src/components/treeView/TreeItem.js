@@ -7,6 +7,16 @@ import TreeViewContext from "./TreeViewContext";
 
 
 function TreeItem({children, link, label}) {
+  const handleClick = (treeViewContext) => {
+    if (link) {
+      return;
+    }
+    treeViewContext.setState({
+      ...treeViewContext.state,
+      [label]: !treeViewContext.state[label]
+    });
+  }
+
   return (
     <TreeViewContext.Consumer>
       {(treeViewContext) => (
@@ -14,14 +24,14 @@ function TreeItem({children, link, label}) {
           <div
             className="sideMenuHeader"
             role="button"
+            tabIndex="0"
             onClick={() => {
-              if (link) {
-                return;
+              handleClick(treeViewContext)
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                handleClick(treeViewContext)
               }
-              treeViewContext.setState({
-                ...treeViewContext.state,
-                [label]: !treeViewContext.state[label]
-              });
             }}
           >
             {children ? <img

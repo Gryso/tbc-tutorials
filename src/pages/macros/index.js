@@ -3,7 +3,7 @@ import MainLayout from "../../components/layouts/mainLayout/MainLayout";
 import SimpleMacro from "../../components/macro/SimpleMacro";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import MacroSideMenu from "../../components/menus/sideMenus/MacroSideMenu";
-import {Heading2, Heading3, Heading4, Title} from "../../components/headers/headers";
+import {Heading2, Title} from "../../components/headers/headers";
 
 
 const Macros = () => {

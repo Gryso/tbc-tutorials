@@ -18,7 +18,7 @@ import {
   shaman,
   warlock,
   warrior
-} from "../../components/raceStatsTables/raceStats";
+} from "../../utils/raceStats";
 
 const RaceStats = () => {
   return (

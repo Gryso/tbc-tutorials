@@ -5,6 +5,7 @@ import PveTutorialsMenu from "../../components/menus/sideMenus/PveTutorialsSideM
 import {Title, Heading2, Heading3, Heading4} from "../../components/headers/headers";
 import {Hunter, Paladin, Rogue, Shaman, Warrior} from "../../components/gameElements/class/classes";
 import Spell from "../../components/gameElements/spell/Spell";
+import AttackTable from "../../components/attackTable/AttackTable";
 
 
 const Tank = () => {
@@ -13,6 +14,9 @@ const Tank = () => {
     <MainLayout pageTitle="Tank mechanics">
       <SideMenuLayout sideMenu={PveTutorialsMenu}>
         <Title>Tank mechanics</Title>
+
+        <AttackTable
+        />
 
           <Heading2>Getting hit by the boss</Heading2>
             <Heading3>Successful attacks</Heading3>
@@ -41,7 +45,7 @@ const Tank = () => {
                 <p>
                   Parry is hit completely avoided by player resulting in miss.
                   You can parry only frontal melee attacks.
-                  Only <Paladin />, <Warrior/>, <Rogue/>, <Hunter /> and <Shaman/> with <Spell id="16268">Spirit Weapons</Spell> talent can parry.
+                  Only <Paladin />, <Warrior/>, <Rogue/>, <Hunter /> and <Shaman/> with <Spell id="16268">Spirit Weapons</Spell> talent can parry an attack.
                 </p>
 
             <Heading3>Mitigated attacks</Heading3>
