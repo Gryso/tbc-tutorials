@@ -12,6 +12,35 @@ const icons = {
   warlock: require("../../../images/icons/classIcons/warlock.png"),
   warrior: require("../../../images/icons/classIcons/warrior.png"),
 
+  // talentSpecialisation
+  balance: require("../../../images/icons/talentSpecialisationIcons/balance.png"),
+  feralCombat: require("../../../images/icons/talentSpecialisationIcons/feralcombat.png"),
+  druidRestoration: require("../../../images/icons/talentSpecialisationIcons/druidRestoration.png"),
+  beastMastery: require("../../../images/icons/talentSpecialisationIcons/beastmastery.png"),
+  marksmanship: require("../../../images/icons/talentSpecialisationIcons/marksmanship.png"),
+  survival: require("../../../images/icons/talentSpecialisationIcons/survival.png"),
+  arcane: require("../../../images/icons/talentSpecialisationIcons/arcane.png"),
+  fire: require("../../../images/icons/talentSpecialisationIcons/fire.png"),
+  frost: require("../../../images/icons/talentSpecialisationIcons/frost.png"),
+  paladinHoly: require("../../../images/icons/talentSpecialisationIcons/paladinHoly.png"),
+  paladinProtection: require("../../../images/icons/talentSpecialisationIcons/paladinProtection.png"),
+  retribution: require("../../../images/icons/talentSpecialisationIcons/retribution.png"),
+  discipline: require("../../../images/icons/talentSpecialisationIcons/discipline.png"),
+  priestHoly: require("../../../images/icons/talentSpecialisationIcons/priestHoly.png"),
+  shadow: require("../../../images/icons/talentSpecialisationIcons/shadow.png"),
+  assassination: require("../../../images/icons/talentSpecialisationIcons/assassination.png"),
+  combat: require("../../../images/icons/talentSpecialisationIcons/combat.png"),
+  subtlety: require("../../../images/icons/talentSpecialisationIcons/subtlety.png"),
+  elemental: require("../../../images/icons/talentSpecialisationIcons/elemental.png"),
+  enhancement: require("../../../images/icons/talentSpecialisationIcons/enhancement.png"),
+  shamanRestoration: require("../../../images/icons/talentSpecialisationIcons/shamanRestoration.png"),
+  affliction: require("../../../images/icons/talentSpecialisationIcons/affliction.png"),
+  demonology: require("../../../images/icons/talentSpecialisationIcons/demonology.png"),
+  destruction: require("../../../images/icons/talentSpecialisationIcons/destruction.png"),
+  arms: require("../../../images/icons/talentSpecialisationIcons/arms.png"),
+  fury: require("../../../images/icons/talentSpecialisationIcons/fury.png"),
+  warriorProtection: require("../../../images/icons/talentSpecialisationIcons/warriorProtection.png"),
+
   // races
   bloodelf: require("../../../images/icons/raceIcons/bloodelf.png"),
   draenei: require("../../../images/icons/raceIcons/draenei.png"),
@@ -42,6 +71,35 @@ const icons = {
   // factions
   alliance: require("../../../images/icons/factionIcons/alliance.png"),
   horde: require("../../../images/icons/factionIcons/horde.png"),
+
+  // resistances
+  arcaneResistance: require("../../../images/icons/resistanceIcons/arcane.png"),
+  fireResistance : require("../../../images/icons/resistanceIcons/fire.png"),
+  frostResistance: require("../../../images/icons/resistanceIcons/frost.png"),
+  natureResistance: require("../../../images/icons/resistanceIcons/nature.png"),
+  shadowResistance: require("../../../images/icons/resistanceIcons/shadow.png"),
+
+  // instances
+  blackTemple: require("../../../images/icons/instanceIcons/blackTemple.png"),
+  doomLordKazzak: require("../../../images/icons/instanceIcons/doomLordKazzak.png"),
+  doomWalker: require("../../../images/icons/instanceIcons/doomWalker.png"),
+  gruulsLair: require("../../../images/icons/instanceIcons/gruulsLair.png"),
+  hyjalSummit: require("../../../images/icons/instanceIcons/hyjalSummit.png"),
+  karazhan: require("../../../images/icons/instanceIcons/karazhan.png"),
+  magtheridonsLair: require("../../../images/icons/instanceIcons/magtheridonsLair.png"),
+  serpentshrineCavern: require("../../../images/icons/instanceIcons/serpentshrineCavern.png"),
+  tempestKeep: require("../../../images/icons/instanceIcons/tempestKeep.png"),
+  zulAman: require("../../../images/icons/instanceIcons/zulAman.png"),
+
+  // raid icons
+  circle: require("../../../images/icons/raidIcons/circle.png"),
+  cross: require("../../../images/icons/raidIcons/cross.png"),
+  diamond: require("../../../images/icons/raidIcons/diamond.png"),
+  moon: require("../../../images/icons/raidIcons/moon.png"),
+  skull: require("../../../images/icons/raidIcons/skull.png"),
+  square: require("../../../images/icons/raidIcons/square.png"),
+  star: require("../../../images/icons/raidIcons/star.png"),
+  triangle: require("../../../images/icons/raidIcons/triangle.png"),
 
   // equipment slots
   ammo: require("../../../images/icons/equipmentSlotIcons/ammo.png"),

@@ -6,8 +6,9 @@
 
   &, tr, th, td {
     vertical-align: middle;
-    background-color: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--transparent-contrast-color);
+    //background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    //border: 1px solid var(--transparent-contrast-color);
     text-align: left;
   }
 

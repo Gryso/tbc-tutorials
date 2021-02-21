@@ -1,0 +1,6 @@
+:root {
+  --cursor-main: url("../images/cursors/mainCursor.png");
+  --cursor-redirect: url("../images/cursors/redirectCursor.png");
+  --cursor-mail: url("../images/cursors/mailCursor.png");
+  cursor: var(--cursor-main), auto;
+}

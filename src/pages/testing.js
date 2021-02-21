@@ -52,10 +52,45 @@ import SimpleMacro from "../components/macro/SimpleMacro";
 import EquipmentSet from "../components/equipment/equipSet/EquipmentSet";
 import EquipmentList from "../components/equipment/equipmentList/EquipmentList";
 import StatsList from "../components/statsLIst/StatsList";
-import {druid, paladin, warrior} from "../utils/raceStats";
+import {druid, paladin, warrior} from "../data/raceStats";
 import ClassRaceStatsTable from "../components/raceStatsTables/ClassRaceStatsTable";
 import FactionRaceStatsTable from "../components/raceStatsTables/FactionRaceStatsTable";
 import PriestRacialsTable from "../components/raceStatsTables/PriestRacialsTable";
+import {
+  ArcaneResistance,
+  FireResistance,
+  FrostResistance,
+  NatureResistance,
+  ShadowResistance
+} from "../components/gameElements/resistances/Resistances";
+import {
+  BlackTemple,
+  DoomLordKazzak,
+  DoomWalker,
+  GruulsLair,
+  HyjalSummit, Karazhan, MagtheridonsLair, SerpentshrineCavern, TempestKeep, ZulAman
+} from "../components/gameElements/instance/Instances";
+import {
+  Affliction,
+  Arcane, Arms,
+  Assassination,
+  Balance,
+  BeastMastery,
+  Combat, Demonology, Destruction,
+  Discipline,
+  DruidRestoration, Elemental, Enhancement,
+  FeralCombat,
+  Fire,
+  Frost, Fury,
+  Marksmanship,
+  PaladinHoly,
+  PaladinProtection,
+  PriestHoly,
+  Retribution,
+  Shadow, ShamanRestoration,
+  Subtlety,
+  Survival, WarriorProtection
+} from "../components/gameElements/talentSpecialisation/TalentSpecialisations";
 
 const testing = () => {
   return (
@@ -68,8 +103,8 @@ const testing = () => {
         <Heading4>Test heading 4</Heading4>
 
         <Heading2>Icons</Heading2>
+
         <Heading3>Classes</Heading3>
-        <br />
         <Icon type="druid" />
         <Icon type="hunter" />
         <Icon type="mage" />
@@ -79,9 +114,8 @@ const testing = () => {
         <Icon type="shaman" />
         <Icon type="warlock" />
         <Icon type="warrior" />
-        <br />
+
         <Heading3>Races</Heading3>
-        <br />
         <Icon type="bloodelf" />
         <Icon type="draenei" />
         <Icon type="dwarf" />
@@ -92,9 +126,8 @@ const testing = () => {
         <Icon type="tauren" />
         <Icon type="troll" />
         <Icon type="undead" />
-        <br />
+
         <Heading3>Professions</Heading3>
-        <br />
         <Icon type="alchemy" />
         <Icon type="blacksmithing" />
         <Icon type="cooking" />
@@ -108,11 +141,59 @@ const testing = () => {
         <Icon type="mining" />
         <Icon type="skinning" />
         <Icon type="tailoring" />
-        <br />
+
+        <Heading3>Talent specialisations</Heading3>
+        <Icon type="balance" />
+        <Icon type="feralCombat" />
+        <Icon type="druidRestoration" />
+        <Icon type="beastMastery" />
+        <Icon type="marksmanship" />
+        <Icon type="survival" />
+        <Icon type="arcane" />
+        <Icon type="fire" />
+        <Icon type="frost" />
+        <Icon type="paladinHoly" />
+        <Icon type="paladinProtection" />
+        <Icon type="retribution" />
+        <Icon type="discipline" />
+        <Icon type="priestHoly" />
+        <Icon type="shadow" />
+        <Icon type="assassination" />
+        <Icon type="combat" />
+        <Icon type="subtlety" />
+        <Icon type="elemental" />
+        <Icon type="enhancement" />
+        <Icon type="shamanRestoration" />
+        <Icon type="affliction" />
+        <Icon type="demonology" />
+        <Icon type="destruction" />
+        <Icon type="arms" />
+        <Icon type="fury" />
+        <Icon type="warriorProtection" />
+
         <Heading3>Factions</Heading3>
-        <br />
         <Icon type="horde" />
         <Icon type="alliance" />
+
+        <Heading3>Resistance</Heading3>
+        <Icon type="arcaneResistance" />
+        <Icon type="fireResistance" />
+        <Icon type="frostResistance" />
+        <Icon type="natureResistance" />
+        <Icon type="shadowResistance" />
+
+        <Heading3>Instances</Heading3>
+        <Icon type="blackTemple"/>
+        <Icon type="doomLordKazzak"/>
+        <Icon type="doomWalker"/>
+        <Icon type="gruulsLair"/>
+        <Icon type="hyjalSummit"/>
+        <Icon type="karazhan"/>
+        <Icon type="magtheridonsLair"/>
+        <Icon type="serpentshrineCavern"/>
+        <Icon type="tempestKeep"/>
+        <Icon type="zulAman"/>
+
         <Heading3>Empty</Heading3>
         <Icon />
         <br />
@@ -171,6 +252,36 @@ const testing = () => {
         <Warlock />
         <Warrior />
 
+        <Heading3>Talent specialisations</Heading3>
+        <Balance/>
+        <FeralCombat/>
+        <DruidRestoration/>
+        <BeastMastery/>
+        <Marksmanship/>
+        <Survival/>
+        <Arcane/>
+        <Fire/>
+        <Frost/>
+        <PaladinHoly/>
+        <PaladinProtection/>
+        <Retribution/>
+        <Discipline/>
+        <PriestHoly/>
+        <Shadow/>
+        <Assassination/>
+        <Combat/>
+        <Subtlety/>
+        <Elemental/>
+        <Enhancement/>
+        <ShamanRestoration/>
+        <Affliction/>
+        <Demonology/>
+        <Destruction/>
+        <Arms/>
+        <Fury/>
+        <WarriorProtection/>
+
+
         <Heading3>Races</Heading3>
         <Bloodelf />
         <Draenei />
@@ -182,6 +293,25 @@ const testing = () => {
         <Tauren />
         <Troll />
         <Undead />
+
+        <Heading3>Resistance</Heading3>
+        <ArcaneResistance />
+        <FireResistance />
+        <FrostResistance />
+        <NatureResistance />
+        <ShadowResistance />
+
+        <Heading3>Instances</Heading3>
+        <BlackTemple/>
+        <DoomLordKazzak/>
+        <DoomWalker/>
+        <GruulsLair/>
+        <HyjalSummit/>
+        <Karazhan/>
+        <MagtheridonsLair/>
+        <SerpentshrineCavern/>
+        <TempestKeep/>
+        <ZulAman/>
         <br />
         <br />
 
@@ -190,7 +320,7 @@ const testing = () => {
           name="OpenMacroMenu"
           description={"This is just simple button to open macro menu. If you are too lazy to write /macro"}
           text={
-`/macro
+            `/macro
 /macro
 /macro
 /macro

@@ -1,0 +1,42 @@
+@import "../gameElmentsMixins";
+
+.talentSpecialisation {
+  @include text-with-icon;
+  @include span-icon;
+
+  &.druid {
+    color: var(--class-druid)
+  }
+
+  &.hunter {
+    color: var(--class-hunter)
+  }
+
+  &.mage {
+    color: var(--class-mage)
+  }
+
+  &.paladin {
+    color: var(--class-paladin)
+  }
+
+  &.priest {
+    color: var(--class-priest)
+  }
+
+  &.rogue {
+    color: var(--class-rogue)
+  }
+
+  &.shaman {
+    color: var(--class-shaman)
+  }
+
+  &.warlock {
+    color: var(--class-warlock)
+  }
+
+  &.warrior {
+    color: var(--class-warrior)
+  }
+}

@@ -4,14 +4,16 @@
 
   .sideMenuHeader {
     position: relative;
-    cursor: pointer;
-    background: none;
-    color: inherit;
-    border: none;
+
     padding: 0;
-    font: inherit;
-    outline: inherit;
     margin: calc(0.5 * 1em) 0;
+    background: none;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+
     .sideMenuItemIcon {
       position: absolute;
       left: 0;
@@ -26,8 +28,8 @@
       }
 
       a {
-        text-decoration: none;
         color: var(--primary-font-color);
+        text-decoration: none;
 
         &:hover {
           color: var(--contrast-color);

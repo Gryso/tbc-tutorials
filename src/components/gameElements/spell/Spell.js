@@ -17,4 +17,3 @@ const Spell = ({children, id}) => {
 };
 
 export default Spell;
-

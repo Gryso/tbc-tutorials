@@ -1,0 +1,7 @@
+@import "../gameElmentsMixins";
+
+.instance {
+  @include text-with-icon;
+  @include span-icon;
+  color: var(--contrast-color);
+}

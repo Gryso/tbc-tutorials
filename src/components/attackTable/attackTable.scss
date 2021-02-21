@@ -10,7 +10,9 @@
   display: flex;
   flex-direction: row;
 
-  .values {
+
+
+  .visualValues {
     width: 75px;
     height: 250px;
     background-color: #e9dede;
@@ -28,8 +30,18 @@
     }
   }
 
+  .numeralValues {
+    & .critical {color: var(--critical-color)}
+    & .crushing {color: var(--crushing-color)}
+    & .hit {color: var(--hit-color)}
+    & .miss {color: var(--miss-color)}
+    & .dodge {color: var(--dodge-color)}
+    & .parry {color: var(--parry-color)}
+    & .block {color: var(--block-color)}
+  }
+
   .stats {
-    margin-left: 200px;
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
   }

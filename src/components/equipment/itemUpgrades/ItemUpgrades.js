@@ -12,13 +12,13 @@ const ItemUpgrades = ({enchant, gems}) => {
     <table className="itemUpgradesTable" aria-describedby="???????">
       <tbody>
         {enchant ? <tr>
-          <th scope="row"><Icon type="enchanting" /></th>
+          <th scope="row" aria-label="enchants"><Icon type="enchanting" /></th>
           <td>
             {enchant}
           </td>
         </tr> : null}
         {gems ? <tr>
-          <th scope="row"><Icon type="jewelcrafting" /></th>
+          <th scope="row" aria-label="gems"><Icon type="jewelcrafting" /></th>
           <td>
             {gems.map((gem, index) =>
               <React.Fragment key={index}>

@@ -2,6 +2,7 @@
 import "./src/styles/reset.scss"
 import "./src/styles/colors.scss"
 import "./src/styles/typography.scss"
+import "./src/styles/general.scss"
 
 const addScript = url => {
   const script = document.createElement("script")

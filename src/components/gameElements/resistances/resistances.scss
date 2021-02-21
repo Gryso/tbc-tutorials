@@ -1,0 +1,27 @@
+@import "../gameElmentsMixins";
+
+.resistance {
+  text-shadow: 1px 1px 3px black;
+  @include text-with-icon;
+  @include span-icon;
+
+  &.arcane {
+    color: var(--resistance-arcane);
+  }
+
+  &.fire {
+    color: var(--resistance-fire);
+  }
+
+  &.frost {
+    color: var(--resistance-frost);
+  }
+
+  &.nature {
+    color: var(--resistance-nature);
+  }
+
+  &.shadow {
+    color: var(--resistance-shadow);
+  }
+}

@@ -1,13 +1,13 @@
 import React, {useReducer} from "react";
 import "./attackTable.scss";
-import {druid, paladin, warrior} from "../../utils/raceStats";
-import Icon from "../gameElements/icon/Icon";
+import {druid, paladin, warrior} from "../../data/raceStats";
 import Spell from "../gameElements/spell/Spell";
-import getRacesOfClasses from "../../utils/getRacesOfClasses";
 import Item from "../gameElements/item/Item";
 import roundPositiveNumber from "../../utils/roundPositiveNumber";
-
-const DEFAULT_CLASS = "warrior";
+import ClassAndRacePicker from "./ClassAndRacePicker";
+import AttackTableGraph from "./AttackTableGraph";
+import {BooleanInput, OneChoiceInput, PercentageInput} from "./AttackTableInputs";
+import statsMultipliers from "../../data/statsMultipliers";
 
 const tankClasses = {
   druid: druid,
@@ -15,42 +15,17 @@ const tankClasses = {
   warrior: warrior
 };
 
-const classRaces = getRacesOfClasses(Object.keys(tankClasses));
-
-
-const PercentageInput = ({value, dispatch, name, disabled}) => (
-  <label>
-    {name}:
-    <input
-      max="100"
-      min="0"
-      step="0.01"
-      type="number"
-      disabled={disabled}
-      value={value}
-      onChange={(event) => dispatch({
-        type: CHANGE_STAT,
-        stat: name,
-        value: event.target.value
-      })}
-    />
-  </label>
-);
-
-const CheckBoxInput = ({value, spell, dispatchObject, dispatch}) => (
-  <label>
-    <input
-      type="checkbox"
-      checked={value}
-      onChange={() => dispatch({
-        type: CHANGE_EXTERNAL_EFFECT,
-        ...dispatchObject
-      })}
-    />
-    {spell}
-  </label>
-);
-
+function agilityToDodge(value, wowClass) {
+  if (wowClass === "druid") {
+    return roundPositiveNumber(value * statsMultipliers.druid.agiToDodge);
+  }
+  if (wowClass === "paladin") {
+    return roundPositiveNumber(value * statsMultipliers.paladin.agiToDodge);
+  }
+  if (wowClass === "warrior") {
+    return roundPositiveNumber(value * statsMultipliers.warrior.agiToDodge);
+  }
+}
 
 // druid
 //Feral Swifness
@@ -69,9 +44,7 @@ const CheckBoxInput = ({value, spell, dispatchObject, dispatch}) => (
 
 // Shield Block
 
-
 function createNewStateWithResults(state) {
-  console.log('%c state:', 'color: rgb(49, 193, 27)', state);
   let critical = roundPositiveNumber(5.6 - state.critReduction);
   let crushing = 15;
 
@@ -89,10 +62,13 @@ function createNewStateWithResults(state) {
   let parry = roundPositiveNumber(state.parry - 0.6);
   let dodge = roundPositiveNumber(state.dodge - 0.6);
   if (state.externalEffects.elixir === "elixirOfMajorAgility") {
-    dodge = roundPositiveNumber(dodge + 2.8); // NEVIEM KOLKO TU JE
+    dodge = roundPositiveNumber((dodge + agilityToDodge(35, state.activeClass)))
   }
   if (state.externalEffects.graceOfAirTotem) {
-    dodge = roundPositiveNumber(dodge + 7.8); // NEVIEM KOLKO TU JE
+    dodge = roundPositiveNumber((dodge + agilityToDodge(88, state.activeClass)))
+  }
+  if (state.externalEffects.markOfTheWild) {
+    dodge = roundPositiveNumber((dodge + agilityToDodge(14, state.activeClass)))
   }
 
   let miss = roundPositiveNumber(state.miss - 0.6);
@@ -104,12 +80,22 @@ function createNewStateWithResults(state) {
   }
 
   if (state.externalEffects.elixir === "flaskOfFortification") {
-    // NEVIEM KOLKO TU JE
-    block = roundPositiveNumber(block + 2.8);
-    parry = roundPositiveNumber(parry + 2.8);
-    dodge = roundPositiveNumber(dodge + 2.8);
-    miss = roundPositiveNumber(miss + 2.8);
-    critical = roundPositiveNumber(critical - 2.8)
+    if (state.activeClass !== "druid") {
+      block = roundPositiveNumber(block + 0.166666667);
+      parry = roundPositiveNumber(parry + 0.166666667);
+    }
+    dodge = roundPositiveNumber(dodge + 0.166666667);
+    miss = roundPositiveNumber(miss + 0.166666667);
+    critical = roundPositiveNumber(critical - 0.166666667);
+  }
+
+  if (state.externalEffects.sunwellRadiance) {
+    dodge = roundPositiveNumber(dodge - 20);
+    miss = roundPositiveNumber(miss - 5);
+  }
+
+  if (state.externalEffects.direBearForm) {
+    dodge = roundPositiveNumber(dodge + 4);
   }
 
   return {
@@ -123,9 +109,26 @@ function createNewStateWithResults(state) {
       dodge: dodge,
       miss: miss
     }
-
   };
 }
+
+function addTalentValuesToDefaultStats(state) {
+  if (state.activeClass === "druid") {
+    return {
+      ...state,
+      critReduction: state.critReduction + 3,
+    };
+  }
+  return {
+    ...state,
+    miss: state.miss + 0.8,
+    critReduction: state.critReduction + 0.8,
+    dodge: state.dodge + 0.8,
+    parry: state.parry + 0.8 + 5,
+    block: state.block + 0.8
+  };
+}
+
 
 // actions
 const CHANGE_CLASS = "CHANGE_CLASS";
@@ -139,23 +142,27 @@ function reducer(state, action) {
     let newStateWithoutResults = {
       ...state,
       activeClass: action.class,
-      possibleRaces: classRaces[action.class],
-      activeRace: classRaces[action.class][0],
+      activeRace: action.race,
       miss: 5,
       critReduction: 0,
-      dodge: tankClasses[action.class][classRaces[action.class][0]].defenses.dodge,
-      parry: tankClasses[action.class][classRaces[action.class][0]].defenses.block,
-      block: tankClasses[action.class][classRaces[action.class][0]].defenses.block,
+      dodge: tankClasses[action.class][action.race].defenses.dodge,
+      parry: tankClasses[action.class][action.race].defenses.block,
+      block: tankClasses[action.class][action.race].defenses.block,
       externalEffects: {
         elixir: null,
         hitReduce: null,
         graceOfAirTotem: false,
+        markOfTheWild: false,
+        blessingOfKings: false,
+        sunwellRadiance: false,
+        direBearForm: action.class === "druid",
+        shieldBlock: false,
         holyShield: false,
         redoubt: false,
-        shieldBlock: false,
       }
     };
-    return createNewStateWithResults(newStateWithoutResults);
+
+    return createNewStateWithResults(addTalentValuesToDefaultStats(newStateWithoutResults));
   } else if (action.type === CHANGE_RACE) {
     let newStateWithoutResults = {
       ...state,
@@ -166,12 +173,14 @@ function reducer(state, action) {
       parry: tankClasses[state.activeClass][action.race].defenses.block,
       block: tankClasses[state.activeClass][action.race].defenses.block,
     };
-    return createNewStateWithResults(newStateWithoutResults);
+
+    return createNewStateWithResults(addTalentValuesToDefaultStats(newStateWithoutResults));
   } else if (action.type === CHANGE_STAT) {
     let newStateWithoutResults = {
       ...state,
       [action.stat]: action.value
     };
+
     return createNewStateWithResults(newStateWithoutResults);
   } else if (action.type === CHANGE_EXTERNAL_EFFECT) {
     let newStateWithoutResults = {
@@ -181,6 +190,7 @@ function reducer(state, action) {
         [action.effect]: action.value
       }
     };
+
     return createNewStateWithResults(newStateWithoutResults);
   } else {
     return state;
@@ -188,21 +198,24 @@ function reducer(state, action) {
 }
 
 let initialStateWithoutResults = {
-  activeClass: DEFAULT_CLASS,
-  possibleRaces: classRaces[DEFAULT_CLASS],
-  activeRace: classRaces[DEFAULT_CLASS][0],
-  miss: 5,
+  activeClass: null,
+  activeRace: null,
+  miss: 0,
   critReduction: 0,
-  dodge: tankClasses[DEFAULT_CLASS][classRaces[DEFAULT_CLASS][0]].defenses.dodge,
-  parry: tankClasses[DEFAULT_CLASS][classRaces[DEFAULT_CLASS][0]].defenses.block,
-  block: tankClasses[DEFAULT_CLASS][classRaces[DEFAULT_CLASS][0]].defenses.block,
+  dodge: 0,
+  parry: 0,
+  block: 0,
   externalEffects: {
     elixir: null,
     hitReduce: null,
     graceOfAirTotem: false,
+    markOfTheWild: false,
+    blessingOfKings: false,
+    sunwellRadiance: false,
+    direBearForm: false,
+    shieldBlock: false,
     holyShield: false,
     redoubt: false,
-    shieldBlock: false,
   }
 };
 
@@ -211,138 +224,198 @@ const AttackTable = () => {
 
   return (
     <div className="attackTable">
-      <div className="values">
-        <div className="value hit" style={{height: `${state.results.hit}%`}} />
-        <div className="value critical" style={{height: `${state.results.critical}%`}} />
-        <div className="value crushing" style={{height: `${state.results.crushing}%`}} />
-        <div className="value block" style={{height: `${state.results.block}%`}} />
-        <div className="value parry" style={{height: `${state.results.parry}%`}} />
-        <div className="value dodge" style={{height: `${state.results.dodge}%`}} />
-        <div className="value miss" style={{height: `${state.results.miss}%`}} />
-      </div>
+      <AttackTableGraph
+        statValues={state.results}
+        orderOfStats={["miss", "dodge", "parry", "block", "crushing", "critical", "hit"]}
+      />
 
-      <div className="classesAndRaces">
-        {Object.keys(tankClasses).map((tankClass, index) =>
-          <button key={index} onClick={() => {
-            dispatch({
-              type: CHANGE_CLASS,
-              class: tankClass
-            });
-          }}>
-            <Icon type={tankClass} />
-          </button>)}
-        <br />
-        {state.possibleRaces.map((race, index) =>
-          <button key={index} onClick={() => {
+      <ClassAndRacePicker
+        classes={Object.keys(tankClasses)}
+        onChange={(changes) => {
+          if (changes.class === state.activeClass) {
             dispatch({
               type: CHANGE_RACE,
-              race: race
+              race: changes.race
             });
-          }}>
-            <Icon type={race} />
-          </button>)}
-      </div>
+          } else {
+            dispatch({
+              type: CHANGE_CLASS,
+              class: changes.class,
+              race: changes.race
+            });
+          }
+        }}
+      />
 
       <form className="stats">
+        Player stats:
         <PercentageInput
           value={state.critReduction}
-          dispatch={dispatch}
-          name={"critReduction"}
+          name="Crit reduction"
+          onChange={(value) => dispatch({
+            type: CHANGE_STAT,
+            stat: "critReduction",
+            value: value
+          })}
         />
         <PercentageInput
           value={state.miss}
-          dispatch={dispatch}
-          name={"miss"}
+          name="Miss"
+          onChange={(value) => dispatch({
+            type: CHANGE_STAT,
+            stat: "miss",
+            value: value
+          })}
         />
         <PercentageInput
           value={state.dodge}
-          dispatch={dispatch}
-          name={"dodge"}
+          name="Dodge"
+          onChange={(value) => dispatch({
+            type: CHANGE_STAT,
+            stat: "dodge",
+            value: value
+          })}
         />
         <PercentageInput
           value={state.parry || ""}
-          dispatch={dispatch}
-          name={"parry"}
+          name={"Parry"}
           disabled={state.activeClass === "druid"}
+          onChange={(value) => dispatch({
+            type: CHANGE_STAT,
+            stat: "parry",
+            value: value
+          })}
         />
         <PercentageInput
           value={state.block || ""}
-          dispatch={dispatch}
-          name={"block"}
+          name={"Block"}
           disabled={state.activeClass === "druid"}
+          onChange={(value) => dispatch({
+            type: CHANGE_STAT,
+            stat: "block",
+            value: value
+          })}
         />
-        <CheckBoxInput
-          value={state.externalEffects.hitReduce === "insectSwarm"}
-          dispatchObject={{
+        <br/>
+        Boss buffs/debuffs:
+        <OneChoiceInput
+          value={state.externalEffects.hitReduce}
+          options={[
+            {
+              identifier: "insectSwarm",
+              component: <Spell id={27013}>Insect Swarm</Spell>
+            },
+            {
+              identifier: "scorpidSting",
+              component: <Spell id={3043}>Scorpid Sting</Spell>
+            }
+          ]}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
             effect: "hitReduce",
-            value: state.externalEffects.hitReduce === "insectSwarm" ? null : "insectSwarm"
-          }}
-          dispatch={dispatch}
-          spell={<Spell id={27013}>Insect Swarm</Spell>}
+            value: value
+          })}
         />
-        <CheckBoxInput
-          value={state.externalEffects.hitReduce === "scorpidSting"}
-          dispatchObject={{
-            effect: "hitReduce",
-            value: state.externalEffects.hitReduce === "scorpidSting" ? null : "scorpidSting"
-          }}
-          dispatch={dispatch}
-          spell={<Spell id={3043}>Scorpid Sting</Spell>}
+        <BooleanInput
+          value={state.externalEffects.sunwellRadiance}
+          component={<Spell id={45769}>Sunwell Radiance</Spell>}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
+            effect: "sunwellRadiance",
+            value: value
+          })}
         />
-        <CheckBoxInput
-          value={state.externalEffects.elixir === "elixirOfMajorAgility"}
-          dispatchObject={{
-            effect: "elixir",
-            value: state.externalEffects.elixir === "elixirOfMajorAgility" ? null : "elixirOfMajorAgility"
-          }}
-          dispatch={dispatch}
-          spell={<Item id={22831} quality="common">Elixir of Major Agility</Item>}
-        />
-        <CheckBoxInput
-          value={state.externalEffects.elixir === "flaskOfFortification"}
-          dispatchObject={{
-            effect: "elixir",
-            value: state.externalEffects.elixir === "flaskOfFortification" ? null : "flaskOfFortification"
-          }}
-          dispatch={dispatch}
-          spell={<Item id={22851} quality="common">Flask of Fortification</Item>}
-        />
-        <CheckBoxInput
+        <br/>
+        Player buffs:
+        <BooleanInput
           value={state.externalEffects.graceOfAirTotem}
-          dispatchObject={{
+          component={<><Spell id={25359}>Grace of Air Totem</Spell>(Talented)</>}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
             effect: "graceOfAirTotem",
-            value: !state.externalEffects.graceOfAirTotem
-          }}
-          dispatch={dispatch}
-          spell={<><Spell id={25359}>Grace of Air Totem</Spell> (talented)</>}
+            value: value
+          })}
         />
-        {state.activeClass === "warrior" ? <CheckBoxInput
-          value={state.externalEffects.shieldBlock}
-          dispatchObject={{
-            effect: "shieldBlock",
-            value: !state.externalEffects.shieldBlock
-          }}
-          dispatch={dispatch}
-          spell={<Spell id={2565}>Shield Block</Spell>}
+        <BooleanInput
+          value={state.externalEffects.markOfTheWild}
+          component={<><Spell id={26990}>Mark of the Wild</Spell>(?Talented?)</>}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
+            effect: "markOfTheWild",
+            value: value
+          })}
+        />
+
+
+        <BooleanInput
+          value={state.externalEffects.blessingOfKings}
+          component={<Spell id={20217}>Blessing of Kings</Spell>}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
+            effect: "blessingOfKings",
+            value: value
+          })}
+        />
+
+
+        <OneChoiceInput
+          value={state.externalEffects.elixir}
+          options={[
+            {
+              identifier: "elixirOfMajorAgility",
+              component: <Item id={22831} quality="common">Elixir of Major Agility</Item>
+            },
+            {
+              identifier: "flaskOfFortification",
+              component: <Item id={22851} quality="common">Flask of Fortification</Item>
+            }
+          ]}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
+            effect: "elixir",
+            value: value
+          })}
+        />
+        <br/>
+        Spells:
+        {state.activeClass === "druid" ? <BooleanInput
+          value={state.externalEffects.direBearForm}
+          component={<Spell id="9634">Dire Bear Form</Spell>}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
+            effect: "direBearForm",
+            value: value
+          })}
         /> : null}
+
+        {state.activeClass === "warrior" ? <BooleanInput
+          value={state.externalEffects.shieldBlock}
+          component={<Spell id={2565}>Shield Block</Spell>}
+          onChange={(value) => dispatch({
+            type: CHANGE_EXTERNAL_EFFECT,
+            effect: "shieldBlock",
+            value: value
+          })}
+        /> : null}
+
         {state.activeClass === "paladin" ? <>
-          <CheckBoxInput
+          <BooleanInput
             value={state.externalEffects.holyShield}
-            dispatchObject={{
+            component={<Spell id={27179}>Holy Shield</Spell>}
+            onChange={(value) => dispatch({
+              type: CHANGE_EXTERNAL_EFFECT,
               effect: "holyShield",
-              value: !state.externalEffects.holyShield
-            }}
-            dispatch={dispatch}
-            spell={<Spell id={27179}>Holy Shield</Spell>}
+              value: value
+            })}
           />
-          <CheckBoxInput
+          <BooleanInput
             value={state.externalEffects.redoubt}
-            dispatchObject={{
+            component={<Spell id={20137}>Redoubt</Spell>}
+            onChange={(value) => dispatch({
+              type: CHANGE_EXTERNAL_EFFECT,
               effect: "redoubt",
-              value: !state.externalEffects.redoubt
-            }}
-            dispatch={dispatch}
-            spell={<Spell id={20137}>Redoubt</Spell>}
+              value: value
+            })}
           />
         </> : null}
       </form>

@@ -6,7 +6,6 @@ import BisSideMenu from "../../../components/menus/sideMenus/PveBisSideMenu";
 import EquipmentSet from "../../../components/equipment/equipSet/EquipmentSet";
 import Item from "../../../components/gameElements/item/Item";
 import EquipmentList from "../../../components/equipment/equipmentList/EquipmentList";
-import StatsList from "../../../components/statsLIst/StatsList";
 
 const FeralTank = () => {
   return (
