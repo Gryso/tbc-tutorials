@@ -7,7 +7,8 @@ import roundPositiveNumber from "../../utils/roundPositiveNumber";
 import ClassAndRacePicker from "./ClassAndRacePicker";
 import AttackTableGraph from "./AttackTableGraph";
 import {BooleanInput, OneChoiceInput, PercentageInput} from "./AttackTableInputs";
-import statsMultipliers from "../../data/statsMultipliers";
+import statsFormulas from "../../data/statsFormulas";
+import Talent from "../gameElements/talent/Talent";
 
 const tankClasses = {
   druid: druid,
@@ -17,13 +18,13 @@ const tankClasses = {
 
 function agilityToDodge(value, wowClass) {
   if (wowClass === "druid") {
-    return roundPositiveNumber(value * statsMultipliers.druid.agiToDodge);
+    return roundPositiveNumber(value * statsFormulas.druid.agiToDodge);
   }
   if (wowClass === "paladin") {
-    return roundPositiveNumber(value * statsMultipliers.paladin.agiToDodge);
+    return roundPositiveNumber(value * statsFormulas.paladin.agiToDodge);
   }
   if (wowClass === "warrior") {
-    return roundPositiveNumber(value * statsMultipliers.warrior.agiToDodge);
+    return roundPositiveNumber(value * statsFormulas.warrior.agiToDodge);
   }
 }
 
@@ -62,13 +63,13 @@ function createNewStateWithResults(state) {
   let parry = roundPositiveNumber(state.parry - 0.6);
   let dodge = roundPositiveNumber(state.dodge - 0.6);
   if (state.externalEffects.elixir === "elixirOfMajorAgility") {
-    dodge = roundPositiveNumber((dodge + agilityToDodge(35, state.activeClass)))
+    dodge = roundPositiveNumber((dodge + agilityToDodge(35, state.activeClass)));
   }
   if (state.externalEffects.graceOfAirTotem) {
-    dodge = roundPositiveNumber((dodge + agilityToDodge(88, state.activeClass)))
+    dodge = roundPositiveNumber((dodge + agilityToDodge(88, state.activeClass)));
   }
   if (state.externalEffects.markOfTheWild) {
-    dodge = roundPositiveNumber((dodge + agilityToDodge(14, state.activeClass)))
+    dodge = roundPositiveNumber((dodge + agilityToDodge(14, state.activeClass)));
   }
 
   let miss = roundPositiveNumber(state.miss - 0.6);
@@ -296,7 +297,7 @@ const AttackTable = () => {
             value: value
           })}
         />
-        <br/>
+        <br />
         Boss buffs/debuffs:
         <OneChoiceInput
           value={state.externalEffects.hitReduce}
@@ -325,7 +326,7 @@ const AttackTable = () => {
             value: value
           })}
         />
-        <br/>
+        <br />
         Player buffs:
         <BooleanInput
           value={state.externalEffects.graceOfAirTotem}
@@ -376,7 +377,7 @@ const AttackTable = () => {
             value: value
           })}
         />
-        <br/>
+        <br />
         Spells:
         {state.activeClass === "druid" ? <BooleanInput
           value={state.externalEffects.direBearForm}
@@ -410,7 +411,7 @@ const AttackTable = () => {
           />
           <BooleanInput
             value={state.externalEffects.redoubt}
-            component={<Spell id={20137}>Redoubt</Spell>}
+            component={<Talent id={20137}>Redoubt</Talent>}
             onChange={(value) => dispatch({
               type: CHANGE_EXTERNAL_EFFECT,
               effect: "redoubt",

@@ -2,6 +2,7 @@ import React from "react";
 import "./instances.scss";
 import Icon from "../icon/Icon";
 
+export const SunwellPlateau = () => <span className="instance sunwellPlateau"><Icon type="sunwellPlateau"/>Sunwell Plateau</span>;
 export const BlackTemple = () => <span className="instance blackTemple"><Icon type="blackTemple"/>Black Temple</span>;
 export const DoomLordKazzak = () => <span className="instance doomLordKazzak"><Icon type="doomLordKazzak"/>Doom Lord Kazzak</span>;
 export const DoomWalker = () => <span className="instance doomWalker"><Icon type="doomWalker"/>Doomwalker</span>;

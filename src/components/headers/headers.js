@@ -79,3 +79,22 @@ export const Heading4 = ({children, align = "left", anchorId}) => {
     </h4>
   );
 };
+
+export const Heading5 = ({children, align = "left", anchorId}) => {
+  const kebabCaseHeading = anchorId || headingToKebabCase(children);
+
+  return (
+    <h5 id={kebabCaseHeading} className={`contentHeading ${align}Align`}>
+      <AnchorLink
+        to={`#${kebabCaseHeading}`}
+        title={kebabCaseHeading}
+        className="anchorIcon"
+        gatsbyLinkProps={{
+          "aria-label": `${children} title permalink`
+        }}>
+        <img aria-hidden="true" src={anchor} alt="anchorLink" height="0.625rem" />
+      </AnchorLink>
+      {children}
+    </h5>
+  );
+};

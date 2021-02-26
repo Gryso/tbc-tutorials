@@ -91,6 +91,15 @@ import {
   Subtlety,
   Survival, WarriorProtection
 } from "../components/gameElements/talentSpecialisation/TalentSpecialisations";
+import {
+  Felguard,
+  Felhunter,
+  Imp,
+  Infernal, Shadowfiend,
+  Succubus,
+  Totem, Treant,
+  Voidwalker, WaterElemental
+} from "../components/gameElements/minion/minions";
 
 const testing = () => {
   return (
@@ -175,6 +184,18 @@ const testing = () => {
         <Icon type="horde" />
         <Icon type="alliance" />
 
+        <Heading3>Minions</Heading3>
+        <Icon type="felguard" />
+        <Icon type="felhunter" />
+        <Icon type="imp" />
+        <Icon type="infernal" />
+        <Icon type="shadowfiend" />
+        <Icon type="succubus" />
+        <Icon type="totem" />
+        <Icon type="treant" />
+        <Icon type="voidwalker" />
+        <Icon type="waterElemental" />
+
         <Heading3>Resistance</Heading3>
         <Icon type="arcaneResistance" />
         <Icon type="fireResistance" />
@@ -225,6 +246,18 @@ const testing = () => {
         <Heading3>Factions</Heading3>
         <Horde />
         <Alliance />
+
+        <Heading3>Minions</Heading3>
+        <Felguard/>
+        <Felhunter/>
+        <Imp/>
+        <Infernal/>
+        <Succubus/>
+        <Voidwalker/>
+        <Totem/>
+        <Shadowfiend/>
+        <Treant/>
+        <WaterElemental/>
 
         <Heading3>Professions</Heading3>
         <Alchemy />

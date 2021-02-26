@@ -4,3 +4,37 @@
   --cursor-mail: url("../images/cursors/mailCursor.png");
   cursor: var(--cursor-main), auto;
 }
+
+a {
+  color: var(--contrast-color);
+}
+
+.simplePageTable {
+  --transparent-contrast-color: rgba(255, 209, 0, 0.2);
+  margin: var(--leading) auto;
+  //margin-top: var(--leading);
+  //margin-bottom: var(--leading);
+
+  &, th, td {
+    border: 1px solid var(--transparent-contrast-color);
+    border-collapse: collapse;
+  }
+
+  caption {
+    margin-bottom: 0.375em;
+  }
+
+  th, td {
+    padding: 0.25em 0.5em;
+  }
+
+  &.center td {
+    text-align: center;
+  }
+}
+
+.pageImage {
+  display: block;
+  max-width: 95%;
+  margin: var(--leading) auto;
+}

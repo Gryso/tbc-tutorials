@@ -1,6 +1,6 @@
 import React from "react";
 import "./equipmentList.scss";
-import * as equipmentSlots from "../../gameElements/equipmentSlot/equipmentSlot";
+import * as equipmentSlots from "../../gameElements/equipmentSlot/equipmentSlots";
 import Icon from "../../gameElements/icon/Icon";
 
 const EquipmentList = ({listOfEquipmentSlots}) => {

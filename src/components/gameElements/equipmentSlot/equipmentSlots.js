@@ -1,6 +1,6 @@
 import Icon from "../icon/Icon";
 import React from "react";
-import "./equipmentSlot.scss";
+import "./equipmentSlots.scss";
 
 export const Ammo = () => <span className="equipmentSlot ammo"><Icon type="ammo"/>Ammo</span>;
 export const Back = () => <span className="equipmentSlot back"><Icon type="back"/>Back</span>;

@@ -80,6 +80,7 @@ const icons = {
   shadowResistance: require("../../../images/icons/resistanceIcons/shadow.png"),
 
   // instances
+  sunwellPlateau: require("../../../images/icons/questionmark.png"),
   blackTemple: require("../../../images/icons/instanceIcons/blackTemple.png"),
   doomLordKazzak: require("../../../images/icons/instanceIcons/doomLordKazzak.png"),
   doomWalker: require("../../../images/icons/instanceIcons/doomWalker.png"),
@@ -122,6 +123,23 @@ const icons = {
   trinket: require("../../../images/icons/equipmentSlotIcons/trinket.png"),
   waist: require("../../../images/icons/equipmentSlotIcons/waist.png"),
   wrists: require("../../../images/icons/equipmentSlotIcons/wrists.png"),
+
+  //minions
+  felguard: require("../../../images/icons/minionIcons/felguard.png"),
+  felhunter: require("../../../images/icons/minionIcons/felhunter.png"),
+  imp: require("../../../images/icons/minionIcons/imp.png"),
+  infernal: require("../../../images/icons/minionIcons/infernal.png"),
+  shadowfiend: require("../../../images/icons/minionIcons/shadowfiend.png"),
+  succubus: require("../../../images/icons/minionIcons/succubus.png"),
+  totem: require("../../../images/icons/minionIcons/totem.png"),
+  treant: require("../../../images/icons/minionIcons/treant.png"),
+  voidwalker: require("../../../images/icons/minionIcons/voidwalker.png"),
+  waterElemental: require("../../../images/icons/minionIcons/waterElemental.png"),
+
+  //defenses
+  block: require("../../../images/icons/defenseIcons/block.png"),
+  dodge: require("../../../images/icons/defenseIcons/dodge.png"),
+  parry: require("../../../images/icons/defenseIcons/parry.png"),
 
   unknown: require("../../../images/icons/questionmark.png"),
 };

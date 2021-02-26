@@ -4,10 +4,10 @@ import "./talentSpecialisation.scss";
 
 // Druid
 export const Balance = () => <span className="talentSpecialisation druid balance"><Icon type="balance" />Balance</span>;
-export const FeralCombat = () => <span className="talentSpecialisation druid feralCombat"><Icon type="feralCombat" />FeralCombat</span>;
+export const FeralCombat = () => <span className="talentSpecialisation druid feralCombat"><Icon type="feralCombat" />Feral Combat</span>;
 export const DruidRestoration = () => <span className="talentSpecialisation druid druidRestoration"><Icon type="druidRestoration" />Restoration</span>;
 // Hunter
-export const BeastMastery = () => <span className="talentSpecialisation hunter beastMastery"><Icon type="beastMastery" />BeastMastery</span>;
+export const BeastMastery = () => <span className="talentSpecialisation hunter beastMastery"><Icon type="beastMastery" />Beast Mastery</span>;
 export const Marksmanship = () => <span className="talentSpecialisation hunter marksmanship"><Icon type="marksmanship" />Marksmanship</span>;
 export const Survival = () => <span className="talentSpecialisation hunter survival"><Icon type="survival" />Survival</span>;
 // Mage

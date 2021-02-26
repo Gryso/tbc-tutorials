@@ -1,0 +1,30 @@
+@import "../gameElmentsMixins";
+
+.minion {
+  @include text-with-icon;
+  @include span-icon;
+
+  &.druid {
+    color: var(--class-druid)
+  }
+
+  &.hunter {
+    color: var(--class-hunter)
+  }
+
+  &.mage {
+    color: var(--class-mage)
+  }
+
+  &.priest {
+    color: var(--class-priest)
+  }
+
+  &.shaman {
+    color: var(--class-shaman)
+  }
+
+  &.warlock {
+    color: var(--class-warlock)
+  }
+}
