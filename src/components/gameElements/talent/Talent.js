@@ -1,7 +1,7 @@
 import React from "react";
 import "./talent.scss";
 
-const Spell = ({children, id}) => {
+const Talent = ({children, id}) => {
 
   if (id) {
     return (
@@ -16,5 +16,4 @@ const Spell = ({children, id}) => {
   );
 };
 
-export default Spell;
-
+export default Talent;

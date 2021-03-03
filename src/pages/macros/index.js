@@ -3,7 +3,7 @@ import MainLayout from "../../components/layouts/mainLayout/MainLayout";
 import SimpleMacro from "../../components/macro/SimpleMacro";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import MacroSideMenu from "../../components/menus/sideMenus/MacroSideMenu";
-import {Heading2, Title} from "../../components/headers/headers";
+import {Title} from "../../components/headers/headers";
 
 
 const Macros = () => {
@@ -12,8 +12,6 @@ const Macros = () => {
     <MainLayout pageTitle="General macros">
       <SideMenuLayout sideMenu={MacroSideMenu}>
         <Title>General macros</Title>
-        <Heading2>TestHeading2-1</Heading2>
-        <Heading2>TestHeading2-2</Heading2>
         <SimpleMacro
           name="OpenMacroMenu"
           description={"This is just simple button to open macro menu. If you are too lazy to write /macro"}
@@ -26,12 +24,12 @@ const Macros = () => {
         />
         <SimpleMacro
           name="Focus"
-          description={"Simple focus. Focuses target if target exist of mouseover player if it does not"}
+          description={"Simple focus. Focuses target if target exist or mouseover player if it does not"}
           text={`/focus [target=target, exists]; mouseover`}
         />
         <SimpleMacro
           name="TankFocus"
-          description={"Same as focus macro with addition of X target icon added to focus target."}
+          description={"Same as focus macro with addition of X target icon added to focus target. This is helpful to tank for marking."}
           text={`/focus [target=target, exists]; mouseover
 /script SetRaidTargetIcon("focus", 7)`}
         />

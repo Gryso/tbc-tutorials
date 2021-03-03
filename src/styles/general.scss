@@ -12,8 +12,10 @@ a {
 .simplePageTable {
   --transparent-contrast-color: rgba(255, 209, 0, 0.2);
   margin: var(--leading) auto;
-  //margin-top: var(--leading);
-  //margin-bottom: var(--leading);
+
+  th {
+    background-color: var(--transparent-contrast-color);
+  }
 
   &, th, td {
     border: 1px solid var(--transparent-contrast-color);
@@ -31,10 +33,27 @@ a {
   &.center td {
     text-align: center;
   }
+
+  &.noMargin {
+    margin: var(--leading) 0;
+  }
+}
+
+.calculation {
+  border: 1px solid var(--calculation-border-color);
+  border-radius: 10px;
+  padding: 0.375rem;
+  background-color: var(--calculation-background-color);
+  text-align: center;
+  margin: 0.25rem;
+
+  strong {
+    text-decoration: underline;
+  }
 }
 
 .pageImage {
   display: block;
   max-width: 95%;
-  margin: var(--leading) auto;
+  margin: 0 auto;
 }

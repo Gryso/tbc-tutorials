@@ -8,7 +8,7 @@
 
 :root {
   -webkit-text-size-adjust: 100%;
-  @include html-firefox-scrollbar(var(--scrollbar-thumb), var(--scrollbar-track), thin);
+  @include html-firefox-scrollbar(var(--scrollbar-thumb-color), var(--scrollbar-track-color), thin);
 }
 
 body {
@@ -18,7 +18,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  @include element-scrollbar(var(--scrollbar-thumb), var(--scrollbar-track), 0.5rem);
+  @include element-scrollbar(var(--scrollbar-thumb-color), var(--scrollbar-track-color), 0.5rem);
 }
 
 main {

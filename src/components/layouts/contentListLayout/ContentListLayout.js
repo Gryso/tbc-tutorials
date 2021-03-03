@@ -28,7 +28,7 @@ function generateContentList(children) {
         });
       }
 
-      if (componentName === Heading3.name || componentName === Heading4.name || componentName === Heading5.name) {
+      if (componentName === Heading3.name || componentName === Heading4.name) {
         let parent = contentList;
 
         while (parent[parent.length - 1] && parent[parent.length - 1].name < componentName) {

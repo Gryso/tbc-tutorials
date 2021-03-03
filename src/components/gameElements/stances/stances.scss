@@ -1,0 +1,19 @@
+@import "../gameElmentsMixins";
+
+.stance {
+  @include text-with-icon;
+  @include span-icon;
+  color: var(--contrast-color);
+
+  &.druid {
+    color: var(--class-druid)
+  }
+
+  &.rogue {
+    color: var(--class-rogue)
+  }
+
+  &.warrior {
+    color: var(--class-warrior)
+  }
+}

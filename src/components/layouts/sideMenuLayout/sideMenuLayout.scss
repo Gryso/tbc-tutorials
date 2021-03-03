@@ -23,7 +23,7 @@
     padding: var(--top-content-gap) 2em;
     border-right: 1px solid var(--sepoarator-color);
     overflow-y: auto;
-    @include element-scrollbar(var(--scrollbar-thumb), var(--scrollbar-track), 0.5rem);
+    @include element-scrollbar(var(--scrollbar-thumb-color), var(--scrollbar-track-color), 0.5rem);
 
     h3 {
       margin: 0;

@@ -1,0 +1,7 @@
+@import "../gameElmentsMixins";
+
+.boss {
+  @include text-with-icon;
+  @include span-icon;
+  color: var(--reputation-negative)
+}

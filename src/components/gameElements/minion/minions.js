@@ -12,3 +12,7 @@ export const Totem = () => <span className="class shaman"><Icon type="totem"/>To
 export const Shadowfiend = () => <span className="class priest"><Icon type="shadowfiend"/>Shadowfiend</span>;
 export const Treant = () => <span className="class druid"><Icon type="treant"/>Treant</span>;
 export const WaterElemental = () => <span className="class mage"><Icon type="waterElemental"/>Water Elemental</span>;
+// hunter
+export const Bat = () => <span className="class hunter"><Icon type="bat"/>Bat</span>;
+export const BirdOfPray = () => <span className="class hunter"><Icon type="birdOfPray"/>Bird Of Pray</span>;
+export const Wolf = () => <span className="class hunter"><Icon type="wolf"/>Wolf</span>;

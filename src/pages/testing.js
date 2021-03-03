@@ -100,6 +100,45 @@ import {
   Totem, Treant,
   Voidwalker, WaterElemental
 } from "../components/gameElements/minion/minions";
+import {
+  Akilzon,
+  Alar,
+  Anetheron,
+  Archimonde,
+  AttumenTheHuntsman,
+  Azgalor,
+  BigBadWolf, Brutallus, Entropius, EredarTwins, FathomLordKarathress, Felmyst,
+  GruulTheDragonkiller,
+  GurtoggBloodboil, Halazzi, HighAstromancerSolarian,
+  HighKingMaulgar,
+  HighWarlordNajentus,
+  HyakissTheLurker, HydrossTheUnstable,
+  IllidanStormrage,
+  IllidariCouncil, Janalai, KaelthasSunstrider, Kalecgos,
+  Kazrogal, Kiljaeden,
+  Kilrek, LadyVashj, LeotherasTheBlind, Magtheridon, MaidenOfVirtue, Moroes, MorogrimTidewalker,
+  MotherShahraz, Muru, Nalorakk,
+  Netherspite,
+  Nightbane,
+  PrinceMalchezaar,
+  RageWinterchill,
+  ReliquaryOfSouls, RokadTheRavager, RomuloAndJulianne, SathrovarrTheCorruptor,
+  ShadeOfAkama, ShadeOfAran,
+  ShadikithTheGlider,
+  Supremus,
+  TerestianIllhoof,
+  TeronGorefiend,
+  TheCurator, TheLurkerBelow, VoidReaver, WizardOfOz,
+  Zuljin
+} from "../components/gameElements/bosse/bosses";
+import {
+  AquaticForm, BattleStance,
+  BearForm, BerserkerStance,
+  CatForm, DefensiveStance,
+  FlightForm, MoonkinForm, Prowl, Stealth,
+  SwiftFlightForm,
+  TravelForm, TreeForm
+} from "../components/gameElements/stances/stances";
 
 const testing = () => {
   return (
@@ -180,6 +219,20 @@ const testing = () => {
         <Icon type="fury" />
         <Icon type="warriorProtection" />
 
+        <Heading3>Stances</Heading3>
+        <Icon type="bearForm" />
+        <Icon type="catForm" />
+        <Icon type="travelForm" />
+        <Icon type="aquaticForm" />
+        <Icon type="flightForm" />
+        <Icon type="moonkinForm" />
+        <Icon type="treeForm" />
+        <Icon type="prowl" />
+        <Icon type="battleStance" />
+        <Icon type="berserkerStance" />
+        <Icon type="defensiveStance" />
+        <Icon type="stealth" />
+
         <Heading3>Factions</Heading3>
         <Icon type="horde" />
         <Icon type="alliance" />
@@ -214,6 +267,74 @@ const testing = () => {
         <Icon type="serpentshrineCavern"/>
         <Icon type="tempestKeep"/>
         <Icon type="zulAman"/>
+
+        <Heading3>Bosses</Heading3>
+        <Heading4>Black Temple</Heading4>
+        <Icon type="gurtoggBloodboil"/>
+        <Icon type="illidariCouncil"/>
+        <Icon type="shadeOfAkama"/>
+        <Icon type="highWarlordNajentus"/>
+        <Icon type="motherShahraz"/>
+        <Icon type="supremus"/>
+        <Icon type="illidanStormrage"/>
+        <Icon type="reliquaryOfSouls"/>
+        <Icon type="teronGorefiend"/>
+        <Heading4>Gruuls Lair</Heading4>
+        <Icon type="gruulTheDragonkiller"/>
+        <Icon type="highKingMaulgar"/>
+        <Heading4>Hyjal Summit</Heading4>
+        <Icon type="anetheron"/>
+        <Icon type="archimonde"/>
+        <Icon type="azgalor"/>
+        <Icon type="kazrogal"/>
+        <Icon type="rageWinterchill"/>
+        <Heading4>Karazhan</Heading4>
+        <Icon type="attumenTheHuntsman"/>
+        <Icon type="netherspite"/>
+        <Icon type="shadikithTheGlider"/>
+        <Icon type="bigBadWolf"/>
+        <Icon type="nightbane"/>
+        <Icon type="terestianIllhoof"/>
+        <Icon type="hyakissTheLurker"/>
+        <Icon type="princeMalchezaar"/>
+        <Icon type="theCurator"/>
+        <Icon type="kilrek"/>
+        <Icon type="rokadTheRavager"/>
+        <Icon type="wizardOfOz"/>
+        <Icon type="maidenOfVirtue"/>
+        <Icon type="romuloAndJulianne"/>
+        <Icon type="moroes"/>
+        <Icon type="shadeOfAran"/>
+        <Heading4>Magtheridons Lair</Heading4>
+        <Icon type="magtheridon"/>
+        <Heading4>Serpentshrine Cavern</Heading4>
+        <Icon type="fathomLordKarathress"/>
+        <Icon type="ladyVashj"/>
+        <Icon type="morogrimTidewalker"/>
+        <Icon type="hydrossTheUnstable"/>
+        <Icon type="leotherasTheBlind"/>
+        <Icon type="theLurkerBelow"/>
+        <Heading4>Sunwell Plateau</Heading4>
+        <Icon type="brutallus"/>
+        <Icon type="eredarTwins"/>
+        <Icon type="kalecgos"/>
+        <Icon type="muru"/>
+        <Icon type="entropius"/>
+        <Icon type="felmyst"/>
+        <Icon type="kiljaeden"/>
+        <Icon type="sathrovarrTheCorruptor"/>
+        <Heading4>The Eye</Heading4>
+        <Icon type="alar"/>
+        <Icon type="highAstromancerSolarian"/>
+        <Icon type="kaelthasSunstrider"/>
+        <Icon type="voidReaver"/>
+        <Heading4>ZulAman</Heading4>
+        <Icon type="akilzon"/>
+        <Icon type="halazzi"/>
+        <Icon type="janalai"/>
+        <Icon type="nalorakk"/>
+        <Icon type="zuljin"/>
+
 
         <Heading3>Empty</Heading3>
         <Icon />
@@ -314,6 +435,20 @@ const testing = () => {
         <Fury/>
         <WarriorProtection/>
 
+        <Heading3>Stances</Heading3>
+        <BearForm/>
+        <CatForm/>
+        <TravelForm/>
+        <AquaticForm/>
+        <FlightForm/>
+        <SwiftFlightForm/>
+        <MoonkinForm/>
+        <TreeForm/>
+        <Prowl/>
+        <BattleStance/>
+        <BerserkerStance/>
+        <DefensiveStance/>
+        <Stealth/>
 
         <Heading3>Races</Heading3>
         <Bloodelf />
@@ -345,8 +480,73 @@ const testing = () => {
         <SerpentshrineCavern/>
         <TempestKeep/>
         <ZulAman/>
-        <br />
-        <br />
+
+        <Heading3>Bosses</Heading3>
+        <Heading4>Black Temple</Heading4>
+        <GurtoggBloodboil/>
+        <IllidariCouncil/>
+        <ShadeOfAkama/>
+        <HighWarlordNajentus/>
+        <MotherShahraz/>
+        <Supremus/>
+        <IllidanStormrage/>
+        <ReliquaryOfSouls/>
+        <TeronGorefiend/>
+        <Heading4>Gruuls Lair</Heading4>
+        <GruulTheDragonkiller/>
+        <HighKingMaulgar/>
+        <Heading4>Hyjal Summit</Heading4>
+        <Anetheron/>
+        <Archimonde/>
+        <Azgalor/>
+        <Kazrogal/>
+        <RageWinterchill/>
+        <Heading4>Karazhan</Heading4>
+        <AttumenTheHuntsman/>
+        <Netherspite/>
+        <ShadikithTheGlider/>
+        <BigBadWolf/>
+        <Nightbane/>
+        <TerestianIllhoof/>
+        <HyakissTheLurker/>
+        <PrinceMalchezaar/>
+        <TheCurator/>
+        <Kilrek/>
+        <RokadTheRavager/>
+        <WizardOfOz/>
+        <MaidenOfVirtue/>
+        <RomuloAndJulianne/>
+        <Moroes/>
+        <ShadeOfAran/>
+        <Heading4>Magtheridons Lair</Heading4>
+        <Magtheridon/>
+        <Heading4>Serpentshrine Cavern</Heading4>
+        <FathomLordKarathress/>
+        <LadyVashj/>
+        <MorogrimTidewalker/>
+        <HydrossTheUnstable/>
+        <LeotherasTheBlind/>
+        <TheLurkerBelow/>
+        <Heading4>Sunwell Plateau</Heading4>
+        <Brutallus/>
+        <EredarTwins/>
+        <Kalecgos/>
+        <Muru/>
+        <Entropius/>
+        <Felmyst/>
+        <Kiljaeden/>
+        <SathrovarrTheCorruptor/>
+        <Heading4>The Eye</Heading4>
+        <Alar/>
+        <HighAstromancerSolarian/>
+        <KaelthasSunstrider/>
+        <VoidReaver/>
+        <Heading4>ZulAman</Heading4>
+        <Akilzon/>
+        <Halazzi/>
+        <Janalai/>
+        <Nalorakk/>
+        <Zuljin/>
 
         <Heading2>Macro</Heading2>
         <SimpleMacro

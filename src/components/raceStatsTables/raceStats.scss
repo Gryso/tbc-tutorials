@@ -1,5 +1,6 @@
 .raceStatsTable,
 .classRaceStatsTable,
+.racialsTable,
 .priestRacialsTable {
   // low-opacity
   --low-opacity: 0.15;
@@ -41,10 +42,6 @@
     padding: 0.5em 1em;
     text-align: center;
     text-shadow: 1px 1px 3px black;
-  }
-
-  th {
-    text-orientation: sideways;
   }
 
   td:first-of-type {
@@ -103,6 +100,42 @@
     &.shaman:hover th, &.shaman tr:hover td {background-color: var(--high-opacity-class-shaman)}
     &.warlock:hover th, &.warlock tr:hover td {background-color: var(--high-opacity-class-warlock)}
     &.warrior:hover th, &.warrior tr:hover td {background-color: var(--high-opacity-class-warrior)}
+  }
+}
+
+.racialsTable {
+  thead {
+    background-color: var(--high-opacity-contrast-color);
+  }
+
+  tbody {
+    th {
+      text-align: left;
+    }
+
+    &.alliance {
+      background-color: var(--low-opacity-faction-alliance);
+
+      &, td, th {
+        border: 1px solid var(--high-opacity-faction-alliance);
+      }
+
+      tr:hover {
+        background-color: var(--high-opacity-faction-alliance);
+      }
+    }
+
+    &.horde {
+      background-color: var(--low-opacity-faction-horde);
+
+      &, td, th {
+        border: 1px solid var(--high-opacity-faction-horde);
+      }
+
+      tr:hover {
+        background-color: var(--high-opacity-faction-horde);
+      }
+    }
   }
 }
 

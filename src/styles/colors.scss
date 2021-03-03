@@ -9,8 +9,11 @@
   --header-footer-color: #131313;
   --header-footer-sepoarator-color: #313131;
   --sepoarator-color: rgba(111, 132, 65, 0.6);
-  --scrollbar-thumb: var(--sepoarator-color);
-  --scrollbar-track: #313131;
+  --scrollbar-thumb-color: var(--sepoarator-color);
+  --scrollbar-track-color: #313131;
+
+  --calculation-background-color: #141414;
+  --calculation-border-color: var(--sepoarator-color);
 
 
   --spell: #7AD5FF;

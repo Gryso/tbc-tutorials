@@ -1,6 +1,5 @@
 import React from "react";
 import MainLayout from "../../components/layouts/mainLayout/MainLayout";
-import BisSideMenu from "../../components/menus/sideMenus/PveBisSideMenu";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import {Heading2, Title} from "../../components/headers/headers";
 import {Alliance, Horde} from "../../components/gameElements/faction/factions";
@@ -19,15 +18,14 @@ import {
   warlock,
   warrior
 } from "../../data/raceStats";
+import StatsAndMechanicsSideMenu from "../../components/menus/sideMenus/StatsAndMechanicsSideMenu";
+import RacialsTable from "../../components/raceStatsTables/RacialsTable";
 
 const RaceStats = () => {
   return (
     <MainLayout pageTitle="Race stats">
-      <SideMenuLayout sideMenu={BisSideMenu}>
+      <SideMenuLayout sideMenu={StatsAndMechanicsSideMenu}>
         <Title>Race stats</Title>
-        <p>
-          This is table of basic stats of level 70 character for every class of every race.
-        </p>
 
         <Heading2 align="center" anchorId="alliance"><Alliance /></Heading2>
         <FactionRaceStatsTable faction="alliance" />
@@ -144,6 +142,9 @@ const RaceStats = () => {
           ]}
           describedby="ranged-physical-dps-stats"
         />
+
+        <Heading2 align="center">Racials</Heading2>
+        <RacialsTable />
 
         <Heading2 align="center" anchorId="priest-racials"><Priest /> Racials</Heading2>
         <PriestRacialsTable />

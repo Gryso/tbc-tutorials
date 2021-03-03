@@ -41,6 +41,20 @@ const icons = {
   fury: require("../../../images/icons/talentSpecialisationIcons/fury.png"),
   warriorProtection: require("../../../images/icons/talentSpecialisationIcons/warriorProtection.png"),
 
+  // stances
+  bearForm: require("../../../images/icons/stances/bearForm.png"),
+  catForm: require("../../../images/icons/stances/catForm.png"),
+  travelForm: require("../../../images/icons/stances/travelForm.png"),
+  aquaticForm: require("../../../images/icons/stances/aquaticForm.png"),
+  flightForm: require("../../../images/icons/stances/flightForm.png"),
+  moonkinForm: require("../../../images/icons/stances/moonkinForm.png"),
+  treeForm: require("../../../images/icons/stances/treeForm.png"),
+  prowl: require("../../../images/icons/stances/prowl.png"),
+  battleStance: require("../../../images/icons/stances/battleStance.png"),
+  berserkerStance: require("../../../images/icons/stances/berserkerStance.png"),
+  defensiveStance: require("../../../images/icons/stances/defensiveStance.png"),
+  stealth: require("../../../images/icons/stances/stealth.png"),
+
   // races
   bloodelf: require("../../../images/icons/raceIcons/bloodelf.png"),
   draenei: require("../../../images/icons/raceIcons/draenei.png"),
@@ -80,7 +94,7 @@ const icons = {
   shadowResistance: require("../../../images/icons/resistanceIcons/shadow.png"),
 
   // instances
-  sunwellPlateau: require("../../../images/icons/questionmark.png"),
+  sunwellPlateau: require("../../../images/icons/instanceIcons/sunwellPlateau.png"),
   blackTemple: require("../../../images/icons/instanceIcons/blackTemple.png"),
   doomLordKazzak: require("../../../images/icons/instanceIcons/doomLordKazzak.png"),
   doomWalker: require("../../../images/icons/instanceIcons/doomWalker.png"),
@@ -91,6 +105,73 @@ const icons = {
   serpentshrineCavern: require("../../../images/icons/instanceIcons/serpentshrineCavern.png"),
   tempestKeep: require("../../../images/icons/instanceIcons/tempestKeep.png"),
   zulAman: require("../../../images/icons/instanceIcons/zulAman.png"),
+
+  // bosses
+  // bt
+  gurtoggBloodboil: require("../../../images/icons/bossIcons/blackTemple/gurtoggBloodboil.gif"),
+  illidariCouncil: require("../../../images/icons/bossIcons/blackTemple/illidariCouncil.png"),
+  shadeOfAkama: require("../../../images/icons/bossIcons/blackTemple/shadeOfAkama.gif"),
+  highWarlordNajentus: require("../../../images/icons/bossIcons/blackTemple/highWarlordNajentus.gif"),
+  motherShahraz: require("../../../images/icons/bossIcons/blackTemple/motherShahraz.gif"),
+  supremus: require("../../../images/icons/bossIcons/blackTemple/supremus.gif"),
+  illidanStormrage: require("../../../images/icons/bossIcons/blackTemple/illidanStormrage.gif"),
+  reliquaryOfSouls: require("../../../images/icons/bossIcons/blackTemple/reliquaryOfSouls.gif"),
+  teronGorefiend: require("../../../images/icons/bossIcons/blackTemple/teronGorefiend.gif"),
+  // gl
+  gruulTheDragonkiller: require("../../../images/icons/bossIcons/gruulsLair/gruulTheDragonkiller.gif"),
+  highKingMaulgar: require("../../../images/icons/bossIcons/gruulsLair/highKingMaulgar.gif"),
+  // hs
+  anetheron: require("../../../images/icons/bossIcons/hyjalSummit/anetheron.gif"),
+  archimonde: require("../../../images/icons/bossIcons/hyjalSummit/archimonde.gif"),
+  azgalor: require("../../../images/icons/bossIcons/hyjalSummit/azgalor.gif"),
+  kazrogal: require("../../../images/icons/bossIcons/hyjalSummit/kazrogal.gif"),
+  rageWinterchill: require("../../../images/icons/bossIcons/hyjalSummit/rageWinterchill.gif"),
+  // kz
+  attumenTheHuntsman: require("../../../images/icons/bossIcons/karazhan/attumenTheHuntsman.gif"),
+  netherspite: require("../../../images/icons/bossIcons/karazhan/netherspite.gif"),
+  shadikithTheGlider: require("../../../images/icons/bossIcons/karazhan/shadikithTheGlider.gif"),
+  bigBadWolf: require("../../../images/icons/bossIcons/karazhan/bigBadWolf.gif"),
+  nightbane: require("../../../images/icons/bossIcons/karazhan/nightbane.gif"),
+  terestianIllhoof: require("../../../images/icons/bossIcons/karazhan/terestianIllhoof.gif"),
+  hyakissTheLurker: require("../../../images/icons/bossIcons/karazhan/hyakissTheLurker.gif"),
+  princeMalchezaar: require("../../../images/icons/bossIcons/karazhan/princeMalchezaar.gif"),
+  theCurator: require("../../../images/icons/bossIcons/karazhan/theCurator.gif"),
+  kilrek: require("../../../images/icons/bossIcons/karazhan/kilrek.gif"),
+  rokadTheRavager: require("../../../images/icons/bossIcons/karazhan/rokadTheRavager.gif"),
+  wizardOfOz: require("../../../images/icons/bossIcons/karazhan/wizardOfOz.gif"),
+  maidenOfVirtue: require("../../../images/icons/bossIcons/karazhan/maidenOfVirtue.gif"),
+  romuloAndJulianne: require("../../../images/icons/bossIcons/karazhan/romuloAndJulianne.png"),
+  moroes: require("../../../images/icons/bossIcons/karazhan/moroes.gif"),
+  shadeOfAran: require("../../../images/icons/bossIcons/karazhan/shadeOfAran.gif"),
+  // ml
+  magtheridon: require("../../../images/icons/bossIcons/magtheridonsLair/magtheridon.gif"),
+  // ssc
+  fathomLordKarathress: require("../../../images/icons/bossIcons/serpentshrineCavern/fathomLordKarathress.gif"),
+  ladyVashj: require("../../../images/icons/bossIcons/serpentshrineCavern/ladyVashj.gif"),
+  morogrimTidewalker: require("../../../images/icons/bossIcons/serpentshrineCavern/morogrimTidewalker.gif"),
+  hydrossTheUnstable: require("../../../images/icons/bossIcons/serpentshrineCavern/hydrossTheUnstable.gif"),
+  leotherasTheBlind: require("../../../images/icons/bossIcons/serpentshrineCavern/leotherasTheBlind.gif"),
+  theLurkerBelow: require("../../../images/icons/bossIcons/serpentshrineCavern/theLurkerBelow.gif"),
+  // swp
+  brutallus: require("../../../images/icons/bossIcons/sunwellPlateau/brutallus.gif"),
+  eredarTwins: require("../../../images/icons/bossIcons/sunwellPlateau/eredarTwins.gif"),
+  kalecgos: require("../../../images/icons/bossIcons/sunwellPlateau/kalecgos.gif"),
+  muru: require("../../../images/icons/bossIcons/sunwellPlateau/muru.gif"),
+  entropius: require("../../../images/icons/bossIcons/sunwellPlateau/entropius.gif"),
+  felmyst: require("../../../images/icons/bossIcons/sunwellPlateau/felmyst.gif"),
+  kiljaeden: require("../../../images/icons/bossIcons/sunwellPlateau/kiljaeden.gif"),
+  sathrovarrTheCorruptor: require("../../../images/icons/bossIcons/sunwellPlateau/sathrovarrTheCorruptor.gif"),
+  // eye
+  alar: require("../../../images/icons/bossIcons/theEye/alar.png"),
+  highAstromancerSolarian: require("../../../images/icons/bossIcons/theEye/highAstromancerSolarian.png"),
+  kaelthasSunstrider: require("../../../images/icons/bossIcons/theEye/kaelthasSunstrider.gif"),
+  voidReaver: require("../../../images/icons/bossIcons/theEye/voidReaver.gif"),
+  // za
+  akilzon: require("../../../images/icons/bossIcons/zulAman/akilzon.gif"),
+  halazzi: require("../../../images/icons/bossIcons/zulAman/halazzi.gif"),
+  janalai: require("../../../images/icons/bossIcons/zulAman/janalai.gif"),
+  nalorakk: require("../../../images/icons/bossIcons/zulAman/nalorakk.gif"),
+  zuljin: require("../../../images/icons/bossIcons/zulAman/zuljin.gif"),
 
   // raid icons
   circle: require("../../../images/icons/raidIcons/circle.png"),
@@ -124,7 +205,7 @@ const icons = {
   waist: require("../../../images/icons/equipmentSlotIcons/waist.png"),
   wrists: require("../../../images/icons/equipmentSlotIcons/wrists.png"),
 
-  //minions
+  // minions
   felguard: require("../../../images/icons/minionIcons/felguard.png"),
   felhunter: require("../../../images/icons/minionIcons/felhunter.png"),
   imp: require("../../../images/icons/minionIcons/imp.png"),
@@ -135,8 +216,12 @@ const icons = {
   treant: require("../../../images/icons/minionIcons/treant.png"),
   voidwalker: require("../../../images/icons/minionIcons/voidwalker.png"),
   waterElemental: require("../../../images/icons/minionIcons/waterElemental.png"),
+  // hunter
+  bat: require("../../../images/icons/minionIcons/bat.gif"),
+  birdOfPray: require("../../../images/icons/minionIcons/birdOfPray.gif"),
+  wolf: require("../../../images/icons/minionIcons/wolf.gif"),
 
-  //defenses
+  // defenses
   block: require("../../../images/icons/defenseIcons/block.png"),
   dodge: require("../../../images/icons/defenseIcons/dodge.png"),
   parry: require("../../../images/icons/defenseIcons/parry.png"),
