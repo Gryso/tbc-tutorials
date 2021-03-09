@@ -4,7 +4,6 @@ import Icon from "../../gameElements/icon/Icon";
 import Spell from "../../gameElements/spell/Spell";
 import Item from "../../gameElements/item/Item";
 import ItemUpgrades from "../itemUpgrades/ItemUpgrades";
-import SideMenuLayout from "../../layouts/sideMenuLayout/SideMenuLayout";
 
 // const equipmentExample = {
 //   head:          <Item id="id">ItemName</Item>,
@@ -50,7 +49,24 @@ const EquipmentSlotHeaderCell = ({type, colSpan = "1", rowSpan = "1"}) => {
   );
 };
 
-  const listOfMandatoryItems = ["head", "neck", "shoulder", "back", "chest", "shirt", "tabard", "wrists", "hands", "waist", "legs", "feet", "finger1", "finger2", "trinket1", "trinket2", "mainhand",
+  const listOfMandatoryItems = [
+    "head",
+    "neck",
+    "shoulder",
+    "back",
+    "chest",
+    "shirt",
+    "tabard",
+    "wrists",
+    "hands",
+    "waist",
+    "legs",
+    "feet",
+    "finger1",
+    "finger2",
+    "trinket1",
+    "trinket2",
+    "mainhand",
   ]
 
 const EquipmentSet = ({equipment, describedby}) => {

@@ -1,13 +1,14 @@
 import {
   expertiseFor1PercentReduction,
   expertiseRatingFor1Expertise,
-  glancingChanceForLevel
+  glancingChanceForLevel, meleeHasteRatingForReduction
 } from "../../data/statsFormulas";
 import Icon from "../gameElements/icon/Icon";
 import React from "react";
+import Table from "../table/Table";
 
 export const GlancingBlowDataTable = () => (
-  <table className="simplePageTable center">
+  <Table cellAlign="center">
     <caption>Glancing Blow chance per enemy level</caption>
     <thead>
       <tr>
@@ -38,11 +39,11 @@ export const GlancingBlowDataTable = () => (
         <td>75%</td>
       </tr>
     </tbody>
-  </table>
+  </Table>
 )
 
 export const ExpertiseDataTable = ({isTank}) => (
-  <table className="simplePageTable center">
+  <Table cellAlign="center">
     <caption>Expertise and Expertise rating required for enemy of different levels:</caption>
     <thead>
       <tr>
@@ -83,5 +84,67 @@ export const ExpertiseDataTable = ({isTank}) => (
         {isTank ?  <td>{Math.ceil(expertiseFor1PercentReduction() * expertiseRatingFor1Expertise() * 14)}</td> : null}
       </tr>
     </tbody>
-  </table>
+  </Table>
 )
+
+export const MeleeHasteDataTable = () => (
+  <Table>
+    <caption>Haste Rating for level of reduction</caption>
+    <thead>
+      <tr>
+        <th>Reduction</th>
+        <th>Haste Rating Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(99 / 100))}</td>
+      </tr>
+      <tr>
+        <td>10%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(9 / 10))}</td>
+      </tr>
+      <tr>
+        <td>20%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(8 / 10))}</td>
+      </tr>
+      <tr>
+        <td>30%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(7 / 10))}</td>
+      </tr>
+      <tr>
+        <td>40%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(6 / 10))}</td>
+      </tr>
+      <tr>
+        <td>50%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(5 / 10))}</td>
+      </tr>
+      <tr>
+        <td>60%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(4 / 10))}</td>
+      </tr>
+      <tr>
+        <td>70%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(3 / 10))}</td>
+      </tr>
+      <tr>
+        <td>80%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(2 / 10))}</td>
+      </tr>
+      <tr>
+        <td>90%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(1 / 10))}</td>
+      </tr>
+      <tr>
+        <td>99%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(1 / 100))}</td>
+      </tr>
+      <tr>
+        <td>100%</td>
+        <td>{Math.ceil(meleeHasteRatingForReduction(0))}</td>
+      </tr>
+    </tbody>
+  </Table>
+);

@@ -9,6 +9,60 @@ import {
   TempestKeep,
   ZulAman
 } from "../components/gameElements/instance/Instances";
+import {
+  Akilzon,
+  Alar,
+  Anetheron,
+  Archimonde,
+  AttumenTheHuntsman,
+  Azgalor,
+  Brutallus,
+  Entropius,
+  FathomLordKarathress,
+  Felmyst, Generic,
+  GrandWarlockAlythess,
+  GruulTheDragonkiller,
+  GurtoggBloodboil,
+  Halazzi,
+  HandOfTheDeceiver,
+  HexLordMalacrass,
+  HighAstromancerSolarian,
+  HighKingMaulgar,
+  HighWarlordNajentus,
+  HydrossTheUnstable,
+  IllidanStormrage,
+  IllidariCouncil,
+  Janalai,
+  KaelthasSunstrider,
+  Kalecgos,
+  Kazrogal,
+  Kiljaeden,
+  Kilrek,
+  LadySacrolash,
+  LadyVashj,
+  LeotherasTheBlind,
+  Magtheridon,
+  MaidenOfVirtue,
+  Midnight, Moroes,
+  MorogrimTidewalker,
+  MotherShahraz,
+  Muru,
+  Nalorakk,
+  Netherspite,
+  Nightbane,
+  PrinceMalchezaar,
+  RageWinterchill,
+  SathrovarrTheCorruptor,
+  ShadeOfAkama,
+  ShadeOfAran, ShadowswordBerserker, ShadowswordFuryMage,
+  Supremus,
+  TerestianIllhoof,
+  TeronGorefiend,
+  TheCurator,
+  TheLurkerBelow,
+  VoidReaver, VoidSentinel,
+  Zuljin
+} from "../components/gameElements/bosse/bosses";
 
 const bossArmor = {
   magtheridonsLair: {
@@ -16,7 +70,11 @@ const bossArmor = {
     component: MagtheridonsLair,
     encounters: {
       magtheridon: {
-        magtheridon: 7700
+        magtheridon: {
+          component: Magtheridon,
+          name: "Magtheridon",
+          armor: 7700
+        },
       }
     }
   },
@@ -24,23 +82,47 @@ const bossArmor = {
     name: "Serpentshrine Cavern",
     component: SerpentshrineCavern,
     encounters: {
-      hydross: {
-        hydross: 7700
+      hydrossTheUnstable: {
+        hydrossTheUnstable: {
+          component: HydrossTheUnstable,
+          name: "Hydross The Unstable",
+          armor: 7700
+        }
       },
-      lurker: {
-        lurker: 7700
+      theLurkerBelow: {
+        theLurkerBelow: {
+          component: TheLurkerBelow,
+          name: "The Lurker Below",
+          armor: 7700
+        }
       },
-      leotheras: {
-        leotheras: 7700
+      leotherasTheBlind: {
+        leotherasTheBlind: {
+          component: LeotherasTheBlind,
+          name: "Leotheras The Blind",
+          armor: 7700
+        }
       },
-      karathress: {
-        karathress: 6200
+      fathomLordKarathress: {
+        fathomLordKarathress: {
+          component: FathomLordKarathress,
+          name: "Fathom Lord Karathress",
+          armor: 6200
+        }
       },
-      morogrim: {
-        morogrim: 7700
+      morogrimTidewalker: {
+        morogrimTidewalker: {
+          component: MorogrimTidewalker,
+          name: "Morogrim Tidewalker",
+          armor: 7700
+        }
       },
-      vashj: {
-        vashj: 6200
+      ladyVashj: {
+        ladyVashj: {
+          component: LadyVashj,
+          name: "Lady Vashj",
+          armor: 6200
+        }
       }
     }
   },
@@ -48,20 +130,40 @@ const bossArmor = {
     name: "Hyjal Summit",
     component: HyjalSummit,
     encounters: {
-      winterchill: {
-        winterchill: 6200
+      rageWinterchillchill: {
+        rageWinterchillchill: {
+          component: RageWinterchill,
+          name: "Akil'zon",
+          armor: 6200
+        }
       },
       anetheron: {
-        anetheron: 6200
+        anetheron: {
+          component: Anetheron,
+          name: "Akil'zon",
+          armor: 6200
+        }
       },
       kazrogal: {
-        kazrogal: 6200
+        kazrogal: {
+          component: Kazrogal,
+          name: "Kaz'rogal",
+          armor: 6200
+        }
       },
       azgalor: {
-        azgalor: 6200
+        azgalor: {
+          component: Azgalor,
+          name: "Akil'zon",
+          armor: 6200
+        }
       },
       archimonde: {
-        archimonde: 6200
+        archimonde: {
+          component: Archimonde,
+          name: "Archimonde",
+          armor: 6200
+        }
       }
     }
   },
@@ -70,16 +172,32 @@ const bossArmor = {
     component: TempestKeep,
     encounters: {
       alar: {
-        alar: 7700
+        alar: {
+          component: Alar,
+          name: "Al'ar",
+          armor: 7700
+        }
       },
       voidReaver: {
-        voidReaver: 8800
+        voidReaver: {
+          component: VoidReaver,
+          name: "Void Reaver",
+          armor: 8800
+        }
       },
-      solarian: {
-        solarian: 6200
+      highAstromancerSolarian: {
+        highAstromancerSolarian: {
+          component: HighAstromancerSolarian,
+          name: "High Astromancer Solarian",
+          armor: 6200
+        }
       },
-      kaelthas: {
-        kaelthas: 6200
+      KaelthasSunstriderthas: {
+        KaelthasSunstriderthas: {
+          component: KaelthasSunstrider,
+          name: "Kael'thas Sunstrider",
+          armor: 6200
+        }
       },
     }
   },
@@ -87,40 +205,100 @@ const bossArmor = {
     name: "Karazhan",
     component: Karazhan,
     encounters: {
-      attumen: {
-        attumen: 7500,
-        midnight: 8200
+      attumenTheHuntsman: {
+        attumenTheHuntsman: {
+          component: AttumenTheHuntsman,
+          name: "Attumen the Huntsman",
+          armor: 7500
+        },
+        midnight: {
+          component: Midnight,
+          name: "Midnight",
+          armor: 8200
+        }
       },
       moroes: {
-        moroes: "neviem kolko"
+        moroes: {
+          component: Moroes,
+          name: "Moroes",
+          armor: null
+        }
       },
-      maiden: {
-        maiden: 6700
+      maidenOfVirtue: {
+        maidenOfVirtue: {
+          component: MaidenOfVirtue,
+          name: "Maiden of Virtue",
+          armor: 6700
+        }
       },
       operaEvent: {
-        strawman: 7300,
-        romulo: 7600,
-        julianne: 6100,
-        roar: 4700
+        strawman: {
+          component: Generic,
+          name: "Strawman",
+          armor: 7300
+        },
+        romulo: {
+          component: Generic,
+          name: "Romulo",
+          armor: 7600
+        },
+        julianne: {
+          component: Generic,
+          name: "Julianne",
+          armor: 6100
+        },
+        roar: {
+          component: Generic,
+          name: "Roar",
+          armor: 4700
+        }
       },
-      curator: {
-        curator: 6100
+      theCurator: {
+        theCurator: {
+          component: TheCurator,
+          name: "The Curator",
+          armor: 6100
+        }
       },
-      illhoof: {
-        kilrrek: 3400,
-        illhoof: 6700
+      terestianIllhoof: {
+        kilrek: {
+          component: Kilrek,
+          name: "Kil'rek",
+          armor: 3400
+        },
+        terestianIllhoof: {
+          component: TerestianIllhoof,
+          name: "Terestian Illhoof",
+          armor: 6700
+        }
       },
-      aran: {
-        aran: 3800
+      shadeOfAran: {
+        shadeOfAran: {
+          component: ShadeOfAran,
+          name: "Shade Of Aran",
+          armor: 3800
+        }
       },
       netherspite: {
-        netherspite: 5500
+        netherspite: {
+          component: Netherspite,
+          name: "Netherspite",
+          armor: 5500
+        }
       },
       nightbane: {
-        nightbane: 7600
+        nightbane: {
+          component: Nightbane,
+          name: "Nightbane",
+          armor: 7600
+        }
       },
-      prince: {
-        prince: 7600
+      princeMalchezaar: {
+        princeMalchezaar: {
+          component: PrinceMalchezaar,
+          name: "Prince Malchezaar",
+          armor: 7600
+        }
       }
     }
   },
@@ -129,10 +307,18 @@ const bossArmor = {
     component: GruulsLair,
     encounters: {
       highKingMaulgar: {
-        highKingMaulgar: 7700,
+        highKingMaulgar: {
+          component: HighKingMaulgar,
+          name: "High King Maulgar",
+          armor: 7700
+        },
       },
       gruul: {
-        gruul: 7700
+        gruul: {
+          component: GruulTheDragonkiller,
+          name: "Gruul the Dragonkiller",
+          armor: 7700
+        },
       }
     }
   },
@@ -140,34 +326,78 @@ const bossArmor = {
     name: "Black Temple",
     component: BlackTemple,
     encounters: {
-      najentus: {
-        najentus: 7700
+      highWarlordNajentus: {
+        highWarlordNajentus: {
+          component: HighWarlordNajentus,
+          name: "High Warlord Naj'entus",
+          armor: 7700
+        }
       },
       supremus: {
-        supremus: 7700
+        supremus: {
+          component: Supremus,
+          name: "Supremus",
+          armor: 7700
+        }
       },
-      gorefiend: {
-        gorefiend: 6200
+      teronGorefiend: {
+        teronGorefiend: {
+          component: TeronGorefiend,
+          name: "Teron Gorefiend",
+          armor: 6200
+        }
       },
-      bloodboil: {
-        bloodboil: 7700
+      gurtoggBloodboil: {
+        gurtoggBloodboil: {
+          component: GurtoggBloodboil,
+          name: "Gurtogg Bloodboil",
+          armor: 7700
+        }
       },
-      akama: {
-        akama: 7700
+      shadeOfAkama: {
+        shadeOfAkama: {
+          component: ShadeOfAkama,
+          name: "Shade of Akama",
+          armor: 7700
+        }
       },
       essencofSouls: {
-        essenceOfSuffering: 0,
-        essenceOfDesire: 7700,
-        essenceOfAnger: 7700
+        essenceOfSuffering: {
+          component: Generic,
+          name: "Essence Of Suffering",
+          armor: 0
+        },
+        essenceOfDesire: {
+          component: Generic,
+          name: "Essence Of Desire",
+          armor: 7700
+        },
+        essenceOfAnger: {
+          component: Generic,
+          name: "Essence Of Anger",
+          armor: 7700
+        }
       },
       shahraz: {
-        shahraz: 6200
+        shahraz: {
+          component: MotherShahraz,
+          name: "Mother Shahraz",
+          armor: 6200
+        }
       },
       council: {
-        gathiosTheShatterer: 6200
+        gathiosTheShatterer: {
+          component: IllidariCouncil,
+          name: "Gathios the Shatterer",
+          armor: 6200
+        }
       },
       illidanStormrage: {
-        illidanStormrage: 7700
+        illidanStormrage: {
+          component: IllidanStormrage,
+          name: "Illidan Stormrage",
+          armor: 7700
+        }
       },
     }
   },
@@ -176,22 +406,46 @@ const bossArmor = {
     component: ZulAman,
     encounters: {
       nalorakk: {
-        nalorakk: 7700
+        nalorakk: {
+          component: Nalorakk,
+          name: "Akil'zon",
+          armor: 7700
+        }
       },
       akilZon: {
-        akilZon: 7700
+        akilZon: {
+          component: Akilzon,
+          name: "Halazzi",
+          armor: 7700
+        }
       },
       janAlai: {
-        janAlai: 7700
+        janAlai: {
+          component: Janalai,
+          name: "Jan'alai",
+          armor: 7700
+        }
       },
       halazzi: {
-        halazzi: 7700
+        halazzi: {
+          component: Halazzi,
+          name: "Nalorakk",
+          armor: 7700
+        }
       },
-      malacrass: {
-        malacrass: 6200
+      hexLordMalacrass: {
+        hexLordMalacrass: {
+          component: HexLordMalacrass,
+          name: "Hex Lord Malacrass",
+          armor: 6200
+        }
       },
       zuljin: {
-        zuljin: 7700
+        zuljin: {
+          component: Zuljin,
+          name: "Zul'jin",
+          armor: 7700
+        }
       }
     }
   },
@@ -200,30 +454,87 @@ const bossArmor = {
     component: SunwellPlateau,
     encounters: {
       kalecgos: {
-        kalecgos: 6200,
-        sathrovarrTheCorruptor: 6200
+        kalecgos: {
+          component: Kalecgos,
+          name: "Kalecgos",
+          armor: 6200
+        },
+        sathrovarrTheCorruptor: {
+          component: SathrovarrTheCorruptor,
+          name: "Sathrovarr the Corruptor",
+          armor: 6200
+        }
       },
       brutallus: {
-        brutallus: 7700
+        brutallus: {
+          component: Brutallus,
+          name: "Brutallus",
+          armor: 7700
+        }
       },
       felmyst: {
-        felmyst: 6200
+        felmyst: {
+          component: Felmyst,
+          name: "Felmyst",
+          armor: 6200
+        }
       },
       eredarTwins: {
-        grandWarlockAlythess: 6200,
-        ladySacrolash: 6200
+        grandWarlockAlythess: {
+          component: GrandWarlockAlythess,
+          name: "Grand Warlock Alythess",
+          armor: 6200
+        }
+        ,
+        ladySacrolash: {
+          component: LadySacrolash,
+          name: "Lady Sacrolash",
+          armor: 6200
+        }
       },
       muru: {
-        muru: 7700,
-        entropius: 7700,
-        shadowswordFuryMage: 5700,
-        shadowswordBerserker: 7100,
-        voidSentinel: 6800
+        muru: {
+          component: Muru,
+          name: "M'uru",
+          armor: 7700
+        },
+        entropius: {
+          component: Entropius,
+          name: "Entropius",
+          armor: 7700
+        },
+        shadowswordFuryMage: {
+          component: ShadowswordFuryMage,
+          name: "Shadowsword Fury Mage",
+          armor: 5700
+        },
+        shadowswordBerserker: {
+          component: ShadowswordBerserker,
+          name: "Shadowsword Berserker",
+          armor: 7100
+        },
+        voidSentinel: {
+          component: VoidSentinel,
+          name: "Void Sentinel",
+          armor: 6800
+        }
       },
       kiljaeden: {
-        kiljaeden: 6200,
-        handOfTheDeceiver: 5900,
-        sinisterReflection: 5475
+        kiljaeden: {
+          component: Kiljaeden,
+          name: "Kil'jaeden",
+          armor: 6200
+        },
+        handOfTheDeceiver: {
+          component: HandOfTheDeceiver,
+          name: "Hand of the Deceiver",
+          armor: 5900
+        },
+        sinisterReflection: {
+          component: Generic,
+          name: "Sinister Reflection",
+          armor: 5475
+        }
       }
     }
   }

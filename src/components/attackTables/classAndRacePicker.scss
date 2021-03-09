@@ -1,0 +1,28 @@
+.classAndRacePicker {
+  width: calc((9 * 2.5em) + (8 * 0.125em));
+
+  .classPicker {
+    margin: 0.5em 0;
+  }
+
+  .racePicker {
+    margin: 0.5em 0;
+  }
+
+
+  input {
+    width: 2.5em;
+    height: 2.5em;
+    margin-right: 0.125em;
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 6px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &.active {
+      border: 2px solid var(--contrast-color);
+    }
+  }
+}

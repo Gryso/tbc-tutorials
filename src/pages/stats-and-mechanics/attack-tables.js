@@ -3,11 +3,11 @@ import MainLayout from "../../components/layouts/mainLayout/MainLayout";
 import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayout";
 import {Heading2, Title} from "../../components/headers/headers";
 import StatsAndMechanicsSideMenu from "../../components/menus/sideMenus/StatsAndMechanicsSideMenu";
-import AttackTable from "../../components/attackTable/AttackTable";
+import AttackTable from "../../components/attackTables/AttackTable";
 
 const AttackTables = () => {
   return (
-    <MainLayout pageTitle="AttackTables">
+    <MainLayout pageTitle="Attack Tables">
       <SideMenuLayout sideMenu={StatsAndMechanicsSideMenu}>
         <Title>Attack Tables</Title>
         <Heading2>Player Attacking Boss (frontal)</Heading2>

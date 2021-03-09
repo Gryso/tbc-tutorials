@@ -20,6 +20,7 @@ import {
 } from "../../data/raceStats";
 import StatsAndMechanicsSideMenu from "../../components/menus/sideMenus/StatsAndMechanicsSideMenu";
 import RacialsTable from "../../components/raceStatsTables/RacialsTable";
+import PossibleClassesForRaceTable from "../../components/raceStatsTables/PossibleClassesForRaceTable";
 
 const RaceStats = () => {
   return (
@@ -148,6 +149,9 @@ const RaceStats = () => {
 
         <Heading2 align="center" anchorId="priest-racials"><Priest /> Racials</Heading2>
         <PriestRacialsTable />
+
+        <Heading2 align="center">Possible Classes for Race</Heading2>
+        <PossibleClassesForRaceTable/>
 
 
       </SideMenuLayout>

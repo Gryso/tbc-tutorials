@@ -128,6 +128,7 @@ const icons = {
   rageWinterchill: require("../../../images/icons/bossIcons/hyjalSummit/rageWinterchill.gif"),
   // kz
   attumenTheHuntsman: require("../../../images/icons/bossIcons/karazhan/attumenTheHuntsman.gif"),
+  midnight: require("../../../images/icons/bossIcons/karazhan/midnight.gif"),
   netherspite: require("../../../images/icons/bossIcons/karazhan/netherspite.gif"),
   shadikithTheGlider: require("../../../images/icons/bossIcons/karazhan/shadikithTheGlider.gif"),
   bigBadWolf: require("../../../images/icons/bossIcons/karazhan/bigBadWolf.gif"),
@@ -160,7 +161,11 @@ const icons = {
   entropius: require("../../../images/icons/bossIcons/sunwellPlateau/entropius.gif"),
   felmyst: require("../../../images/icons/bossIcons/sunwellPlateau/felmyst.gif"),
   kiljaeden: require("../../../images/icons/bossIcons/sunwellPlateau/kiljaeden.gif"),
+  handOfTheDeceiver: require("../../../images/icons/bossIcons/sunwellPlateau/handOfTheDeceiver.gif"),
   sathrovarrTheCorruptor: require("../../../images/icons/bossIcons/sunwellPlateau/sathrovarrTheCorruptor.gif"),
+  shadowswordBerserker: require("../../../images/icons/bossIcons/sunwellPlateau/shadowswordBerserker.gif"),
+  shadowswordFuryMage: require("../../../images/icons/bossIcons/sunwellPlateau/shadowswordFuryMage.gif"),
+  voidSentinel: require("../../../images/icons/bossIcons/sunwellPlateau/voidSentinel.gif"),
   // eye
   alar: require("../../../images/icons/bossIcons/theEye/alar.png"),
   highAstromancerSolarian: require("../../../images/icons/bossIcons/theEye/highAstromancerSolarian.png"),
@@ -171,6 +176,7 @@ const icons = {
   halazzi: require("../../../images/icons/bossIcons/zulAman/halazzi.gif"),
   janalai: require("../../../images/icons/bossIcons/zulAman/janalai.gif"),
   nalorakk: require("../../../images/icons/bossIcons/zulAman/nalorakk.gif"),
+  hexLordMalacrass: require("../../../images/icons/bossIcons/zulAman/hexLordMalacrass.gif"),
   zuljin: require("../../../images/icons/bossIcons/zulAman/zuljin.gif"),
 
   // raid icons

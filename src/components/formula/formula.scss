@@ -1,0 +1,14 @@
+.formula {
+  border: 1px solid var(--calculation-border-color);
+  border-radius: 10px;
+  padding: 0.375rem;
+  background-color: var(--calculation-background-color);
+  text-align: center;
+  margin: 0.25rem;
+  font-family: monospace, monospace;
+  font-size: 0.875rem;
+
+  strong {
+    text-decoration: underline;
+  }
+}

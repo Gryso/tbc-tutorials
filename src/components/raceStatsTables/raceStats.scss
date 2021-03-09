@@ -1,6 +1,7 @@
 .raceStatsTable,
 .classRaceStatsTable,
 .racialsTable,
+.possibleClassesForRaceTable,
 .priestRacialsTable {
   // low-opacity
   --low-opacity: 0.15;
@@ -44,10 +45,6 @@
     text-shadow: 1px 1px 3px black;
   }
 
-  td:first-of-type {
-    text-align: left;
-  }
-
   &.alliance {
     &, td, th {
       border: 1px solid var(--high-opacity-faction-alliance);
@@ -81,6 +78,13 @@
   }
 }
 
+.raceStatsTable,
+.classRaceStatsTable {
+  td:first-of-type {
+    text-align: left;
+  }
+}
+
 .classRaceStatsTable {
   thead {
     background-color: var(--high-opacity-contrast-color);
@@ -103,7 +107,7 @@
   }
 }
 
-.racialsTable {
+.racialsTable, .possibleClassesForRaceTable {
   thead {
     background-color: var(--high-opacity-contrast-color);
   }

@@ -1,0 +1,53 @@
+.simplePageTable {
+  --transparent-contrast-color: rgba(255, 209, 0, 0.2);
+  margin: var(--leading) auto;
+
+  thead th {
+    background-color: var(--transparent-contrast-color);
+  }
+
+  &, th, td {
+    border: 1px solid var(--transparent-contrast-color);
+    border-collapse: collapse;
+  }
+
+  tr.highlight, td.highlight, th.highlight {
+    color: var(--contrast-color)
+  }
+
+  caption {
+    margin-bottom: 0.375em;
+  }
+
+  th, td {
+    padding: 0.25em 0.5em;
+  }
+
+  &.center td, &.center th {
+    text-align: center;
+  }
+
+  &.left td, &.left th {
+    text-align: left;
+  }
+
+  &.right td, &.right th {
+    text-align: right;
+  }
+
+  &.centerTable {
+    margin: var(--leading) auto;
+  }
+
+  &.leftTable {
+    margin: var(--leading) 0;
+  }
+
+  &.fillFirstCell {
+    tbody {
+      td:first-child, th:first-child {
+        background-color: var(--transparent-contrast-color);
+      }
+    }
+  }
+}

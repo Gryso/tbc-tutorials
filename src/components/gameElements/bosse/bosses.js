@@ -2,6 +2,7 @@ import Icon from "../icon/Icon";
 import React from "react";
 import "./bosses.scss";
 
+export const Generic = (name) => <span className="boss">{name || ""}</span>;
 // bt
 export const GurtoggBloodboil = () => <span className="boss"><Icon type="gurtoggBloodboil"/>GurtoggBloodboil</span>;
 export const IllidariCouncil = () => <span className="boss"><Icon type="illidariCouncil"/>IllidariCouncil</span>;
@@ -38,6 +39,7 @@ export const MaidenOfVirtue = () => <span className="boss"><Icon type="maidenOfV
 export const RomuloAndJulianne = () => <span className="boss"><Icon type="romuloAndJulianne"/>RomuloAndJulianne</span>;
 export const Moroes = () => <span className="boss"><Icon type="moroes"/>Moroes</span>;
 export const ShadeOfAran = () => <span className="boss"><Icon type="shadeOfAran"/>ShadeOfAran</span>;
+export const Midnight = () => <span className="boss"><Icon type="midnight"/>Midnight</span>;
 // ml
 export const Magtheridon = () => <span className="boss"><Icon type="magtheridon"/>Magtheridon</span>;
 // ssc
@@ -49,21 +51,28 @@ export const LeotherasTheBlind = () => <span className="boss"><Icon type="leothe
 export const TheLurkerBelow = () => <span className="boss"><Icon type="theLurkerBelow"/>TheLurkerBelow</span>;
 // swp
 export const Brutallus = () => <span className="boss"><Icon type="brutallus"/>Brutallus</span>;
+export const GrandWarlockAlythess = () => <span className="boss"><Icon type="eredarTwins"/>Grand Warlock Alythess</span>;
+export const LadySacrolash = () => <span className="boss"><Icon type="eredarTwins"/>Lady Sacrolash</span>;
 export const EredarTwins = () => <span className="boss"><Icon type="eredarTwins"/>EredarTwins</span>;
 export const Kalecgos = () => <span className="boss"><Icon type="kalecgos"/>Kalecgos</span>;
 export const Muru = () => <span className="boss"><Icon type="muru"/>Muru</span>;
 export const Entropius = () => <span className="boss"><Icon type="entropius"/>Entropius</span>;
 export const Felmyst = () => <span className="boss"><Icon type="felmyst"/>Felmyst</span>;
 export const Kiljaeden = () => <span className="boss"><Icon type="kiljaeden"/>Kiljaeden</span>;
-export const SathrovarrTheCorruptor = () => <span className="boss"><Icon type="sathrovarrTheCorruptor"/>SathrovarrTheCorruptor</span>;
+export const HandOfTheDeceiver = () => <span className="boss"><Icon type="handOfTheDeceiver"/>Hand of the Deceiver</span>;
+export const SathrovarrTheCorruptor = () => <span className="boss"><Icon type="sathrovarrTheCorruptor"/>Sathrovarr the Corruptor</span>;
+export const ShadowswordFuryMage = () => <span className="boss"><Icon type="shadowswordFuryMage"/>Shadowsword Fury Mage</span>;
+export const ShadowswordBerserker = () => <span className="boss"><Icon type="shadowswordBerserker"/>Shadowsword Berserker</span>;
+export const VoidSentinel = () => <span className="boss"><Icon type="voidSentinel"/>Void Sentinel</span>;
 // eye
 export const Alar = () => <span className="boss"><Icon type="alar"/>Alar</span>;
 export const HighAstromancerSolarian = () => <span className="boss"><Icon type="highAstromancerSolarian"/>HighAstromancerSolarian</span>;
 export const KaelthasSunstrider = () => <span className="boss"><Icon type="kaelthasSunstrider"/>KaelthasSunstrider</span>;
 export const VoidReaver = () => <span className="boss"><Icon type="voidReaver"/>VoidReaver</span>;
 // za
-export const Akilzon = () => <span className="boss"><Icon type="akilzon"/>Akilzon</span>;
+export const Akilzon = () => <span className="boss"><Icon type="akilzon"/>Akil'zon</span>;
 export const Halazzi = () => <span className="boss"><Icon type="halazzi"/>Halazzi</span>;
-export const Janalai = () => <span className="boss"><Icon type="janalai"/>Janalai</span>;
+export const Janalai = () => <span className="boss"><Icon type="janalai"/>Jan'alai</span>;
 export const Nalorakk = () => <span className="boss"><Icon type="nalorakk"/>Nalorakk</span>;
-export const Zuljin = () => <span className="boss"><Icon type="zuljin"/>Zuljin</span>;
+export const HexLordMalacrass = () => <span className="boss"><Icon type="hexLordMalacrass"/>Hex Lord Malacrass</span>;
+export const Zuljin = () => <span className="boss"><Icon type="zuljin"/>Zul'jin</span>;

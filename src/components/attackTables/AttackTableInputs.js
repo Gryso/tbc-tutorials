@@ -1,10 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./classAndRacePicker.scss";
-import {druid, hunter, mage, paladin, priest, rogue, shaman, warlock, warrior} from "../../data/raceStats";
-import Icon from "../gameElements/icon/Icon";
-import getRacesOfClasses from "../../utils/getRacesOfClasses";
-import roundPositiveNumber from "../../utils/roundPositiveNumber";
-import Spell from "../gameElements/spell/Spell";
 
 export const BooleanInput = ({value, component, onChange}) => (
   <label>
@@ -28,19 +23,19 @@ export const OneChoiceInput = ({value, options, onChange}) => {
               checked={value === option.identifier}
               onChange={(event) => {
                 if (event.target.checked) {
-                  onChange(option.identifier)
+                  onChange(option.identifier);
                 } else {
-                  onChange(false)
+                  onChange(false);
                 }
               }}
             />
             {option.component}
           </label>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
 export const PercentageInput = ({value, name, onChange, disabled = false}) => (
   <label>

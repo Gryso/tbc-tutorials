@@ -2,7 +2,7 @@ import React from "react";
 import "./contentListLayout.scss";
 import {AnchorLink} from "gatsby-plugin-anchor-links";
 import headingToKebabCase from "../../../utils/headingToKebabCase";
-import {Heading2, Heading3, Heading4, Heading5} from "../../headers/headers";
+import {Heading2, Heading3, Heading4} from "../../headers/headers";
 import SimpleMacro from "../../macro/SimpleMacro";
 
 function getComponentName(type) {

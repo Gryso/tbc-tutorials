@@ -4,6 +4,7 @@ import SideMenuLayout from "../../components/layouts/sideMenuLayout/SideMenuLayo
 import {Heading5, Title} from "../../components/headers/headers";
 import StatsAndMechanicsSideMenu from "../../components/menus/sideMenus/StatsAndMechanicsSideMenu";
 import parryExplanation from "../../images/parryExplanation.png";
+import Table from "../../components/table/Table";
 
 const ParryHaste = () => {
   return (
@@ -35,7 +36,7 @@ const ParryHaste = () => {
         </ul>
         <img className="pageImage" src={parryExplanation} alt="Parry mechanics Explanation" />
 
-        <table className="simplePageTable">
+        <Table>
           <caption>Bosses not capable of Parry Haste:</caption>
           <thead>
             <tr>
@@ -43,7 +44,7 @@ const ParryHaste = () => {
               <th>Bosses that cannot parry haste</th>
             </tr>
           </thead>
-        </table>
+        </Table>
       </SideMenuLayout>
     </MainLayout>
   );

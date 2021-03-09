@@ -5,6 +5,12 @@
 * How does Attack power reduction work
 * Glancing blow damage per level
 * Does improve lay of hands stack with + armor from a shaman/priest
-* Can damage of critical strike be blocked by NPC
+* Can critical strike damage be blocked by NPC
+* How npm block work
 * WF triggers parry haste
 * Frost Shock Threat Multiplier
+* Does level difference decreas spell critical strike chance
+* SS, MT and WW damage formula
+* Spell coefficients
+* Resistances
+* Agi to dodge for classes

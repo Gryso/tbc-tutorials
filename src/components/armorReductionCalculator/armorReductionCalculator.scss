@@ -1,3 +1,17 @@
 .armorReductionCalculator {
+  .bad {
+    color: var(--quest-very-hard);
+  }
 
+  .medium {
+    color: var(--quest-hard);
+  }
+
+  .good {
+    color: var(--quest-medium);
+  }
+
+  .zero {
+    color: var(--quest-easy);
+  }
 }

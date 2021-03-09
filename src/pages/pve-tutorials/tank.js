@@ -39,11 +39,12 @@ import statsFormulas, {
   expertiseRatingFor1Expertise,
   expertiseRatingToExpertise,
   expertiseToReduction,
-  glancingChanceForLevel, missChanceForLevel,
+  missChanceForLevel,
   parryRatingToParry,
   ratingFor1Percent,
   resilienceRatingToCritReduction,
-  resistanceCapForLevel, spellResistChanceForLevel
+  resistanceCapForLevel,
+  spellMissChanceForLevel
 } from "../../data/statsFormulas";
 import {BlackTemple, HyjalSummit, SunwellPlateau} from "../../components/gameElements/instance/Instances";
 import {
@@ -69,6 +70,9 @@ import {
   SathrovarrTheCorruptor
 } from "../../components/gameElements/bosse/bosses";
 import {ExpertiseDataTable, GlancingBlowDataTable} from "../../components/dataTables/physicalDpsDataTables";
+import Table from "../../components/table/Table";
+import Formula from "../../components/formula/Formula";
+import {DefensiveStance} from "../../components/gameElements/stances/stances";
 
 
 const Tank = () => {
@@ -173,7 +177,7 @@ const Tank = () => {
             This lefts around 9.99% of avoidance to be fill before becoming uncrushable
           </li>
         </ul>
-        <table className="simplePageTable">
+        <Table>
           <caption>Bosses not capable of Crushing Blow:</caption>
           <thead>
             <tr>
@@ -198,7 +202,7 @@ const Tank = () => {
             </tr>
 
           </tbody>
-        </table>
+        </Table>
         <Heading4 anchorId="boss-to-player-successful-attacks-hit">Hit</Heading4>
         <p>
           Hit is basic successfully hit that deals 100% damage. There si no much more to it. You can avoid normal hits
@@ -317,8 +321,7 @@ const Tank = () => {
         <Heading4 anchorId="boss-to-player-mitigating-successful-attacks-block">Block</Heading4>
         <p>
           Block is successful attacks mitigated by player resulting in hit dealing partial damage. This partial damage
-          is
-          calculated as 100% damage - Shield Block value. Shield Block value is different stat from Block Rating:
+          is calculated as 100% damage - Shield Block value. Shield Block value is different stat from Block Rating:
         </p>
         <ul>
           <li>
@@ -351,6 +354,19 @@ const Tank = () => {
           </li>
         </ul>
 
+        <Heading5 anchorId="boss-to-player-mitigating-successful-attacks-bloc-damage-reduction-of-block">Damage
+          reduction of Block</Heading5>
+        <p>
+          Damage of Block is subtracted from damage after all other mitigations (
+          Armor, <DefensiveStance />, <Spell id={20914}>Blessing of Sanctuary</Spell>) and you can Block 100% of damage
+          if you have enough Block Value and Strength.
+          You can increase damage reduction of block by improving your Block Value or your Strength
+          (You need 20 strength for 1 damage of reduction) Formula for Blocked damage is as follow:
+        </p>
+        <Formula>
+          DamageReduction = Block value + (Strength / 20) - 1.
+        </Formula>
+
         Relevant talents and spells:
         <ul>
           <li>
@@ -380,7 +396,7 @@ const Tank = () => {
         100% of time it make sense to aim for 60% reduction and invest remaining resources to other stats as any armor
         above
         75% reductions is wasted.
-        <table className="simplePageTable center">
+        <Table cellAlign="center">
           <caption>Real armor values required for maximal damage reduction:</caption>
           <thead>
             <tr>
@@ -411,7 +427,7 @@ const Tank = () => {
               <td>{Math.ceil(armorCapForLevel(73) * 4 / 5)}</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
         There are two ways to increase your armor:
         <ul>
           <li><strong>Amor bonus from items</strong>: This is flat amount of armor you can find on your item.
@@ -460,7 +476,7 @@ const Tank = () => {
           for 100% or for 0% damage but on average majority of hits will be reduced by 75%.
         </p>
 
-        <table className="simplePageTable center">
+        <Table cellAlign="center">
           <caption>Resistance values required for maximal damage reduction:</caption>
           <thead>
             <tr>
@@ -486,7 +502,72 @@ const Tank = () => {
               <td>{resistanceCapForLevel(73)}</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
+
+        <Table cellAlign="center">
+          <caption>
+            Chance of specific partial resist amount per different amount of resistance
+            (against 73(<Icon type="skull" />) lvl)
+          </caption>
+          <thead>
+            <tr>
+              <th>Resistance</th>
+              <th>100% resisted</th>
+              <th>75% resisted</th>
+              <th>50% resisted</th>
+              <th>25% resisted</th>
+              <th>0% resisted</th>
+              <th>Average Resisted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>365</td>
+              <td>25%</td>
+              <td>55%</td>
+              <td>16%</td>
+              <td>3%</td>
+              <td>1%</td>
+              <td>75%</td>
+            </tr>
+            <tr>
+              <td>292</td>
+              <td>11%</td>
+              <td>34%</td>
+              <td>40%</td>
+              <td>14%</td>
+              <td>1%</td>
+              <td>60%</td>
+            </tr>
+            <tr>
+              <td>219</td>
+              <td>1%</td>
+              <td>18%</td>
+              <td>48%</td>
+              <td>26%</td>
+              <td>7%</td>
+              <td>45%</td>
+            </tr>
+            <tr>
+              <td>146</td>
+              <td>1%</td>
+              <td>6%</td>
+              <td>24%</td>
+              <td>49%</td>
+              <td>20%</td>
+              <td>30%</td>
+            </tr>
+            <tr>
+              <td>73</td>
+              <td>0%</td>
+              <td>2%</td>
+              <td>11%</td>
+              <td>33%</td>
+              <td>54%</td>
+              <td>15%</td>
+            </tr>
+          </tbody>
+        </Table>
 
         Relevant spells (Basically no bonus of same school stack with each other):
         <ul>
@@ -656,7 +737,7 @@ const Tank = () => {
           Majority of bosses are immune to this effect but it does have some
           uses. (<Talent id={12807}>Improved Disarm</Talent> can prolong duration of <Spell id={676}>Disarm</Spell>)
         </p>
-        <table className="simplePageTable">
+        <Table>
           <caption>Bosses that can be Disarmed:</caption>
           <thead>
             <tr>
@@ -664,13 +745,15 @@ const Tank = () => {
               <th>Bosses that can be disarmed</th>
             </tr>
           </thead>
-        </table>
+        </Table>
 
         <Heading2>Hitting the Boss</Heading2>
         <Heading3 anchorId="player-to-boss-successful-attacks">Successful attacks</Heading3>
         <Heading4 anchorId="player-to-boss-successful-attacks-critical-strike">Critical Strike</Heading4>
         <p>
-          Critical Strike is successfully hit that deals 200% damage of normal hit.
+          Critical Strike is successfully hit that deals 200% damage of normal hit. (This is 100% bonus damage for
+          calculation in talents and items that "Increase Critical Strike damage bonus
+          by X" <Talent id={19490}>Mortal Shots</Talent> would increase your Critical Strike damage to 230% overall)
         </p>
         There are 2 ways to increase your chance of Critical Strike:
         <ol>
@@ -706,12 +789,14 @@ const Tank = () => {
         <p>
           Miss is unsuccessfully hit that deals no damage. Player attacking Boss (lvl 73) has {missChanceForLevel()}%
           chance to miss with one hand weapon (This is also the case for <Druid />). You can decrease chance you will
-          miss attack again boss by increasing your hit rating. You need {Math.ceil(ratingFor1Percent("meleeHit") * 9)} Hit
+          miss attack again boss by increasing your hit rating. You
+          need {Math.ceil(ratingFor1Percent("meleeHit") * 9)} Hit
           rating to decrease chance of missing to 0.
 
           This is a bit more complicated for <Paladin /> as some of his spells benefit from melee hit, some from spell
-          hit and some from both. {spellResistChanceForLevel()}% spell hit is needed to be hit capped with spells against
-          Boss (lvl 73) (That is {Math.ceil(ratingFor1Percent("spellHit") * spellResistChanceForLevel())} Spell
+          hit and some from both. {spellMissChanceForLevel() - 1}% spell hit is needed to be hit capped with spells
+          against
+          Boss (lvl 73) (That is {Math.ceil(ratingFor1Percent("spellHit") * spellMissChanceForLevel() - 1)} Spell
           Hit).
         </p>
 
@@ -738,7 +823,7 @@ const Tank = () => {
           additional effect called <Link to="/stats-and-mechanics/parry-haste">Parry Haste</Link>.
           This is very dangerous as this often creat spikes in average damage that are really hard to
           survive. <strong>Nobody else but tank should attack boss from the front to prevent unnecessary parry
-            Haste.</strong> This is often argument against using fast
+          Haste.</strong> This is often argument against using fast
           weapons, <Paladin />'s <Talent id={20182}>Reckoning</Talent> talent
           and <Shaman />'s <Spell id={25585}>Windfury Totem</Spell> in tank's group.
         </p>
@@ -774,7 +859,7 @@ const Tank = () => {
             <Orc />'s racial <Spell id={20574}>Axe Specialization</Spell> increases expertise axes by 5.
           </li>
         </ol>
-        <ExpertiseDataTable isTank={true}/>
+        <ExpertiseDataTable isTank={true} />
 
         Relevant talents and spells:
         <ul>
@@ -796,7 +881,7 @@ const Tank = () => {
           has higher priority than Critical Strike and Hit. Glancing Blow is only possible on white attacks, yellow
           attacks (spells and abilities) cannot glance.
         </p>
-        <GlancingBlowDataTable/>
+        <GlancingBlowDataTable />
 
         <Heading4 anchorId="player-to-boss-mitigated-successful-attacks-block">Block</Heading4>
         <p>
@@ -806,9 +891,25 @@ const Tank = () => {
           and any successful hit can be Blocked (Critical Strike, Hit)
         </p>
 
-        <Heading3>Threat and taunt mechanics</Heading3>
-        <Heading4>Threat</Heading4>
-        <Heading4>Taunt</Heading4>
+        <Heading3>More about Hitting the Boss</Heading3>
+        <p>
+          You can learn more about Physical attack mechanics in our <Link to="/pve-tutorials/physical">Physical DPS
+          mechanics</Link> tutorial
+        </p>
+
+        <Heading2>Threat and taunt mechanics</Heading2>
+        <Heading3>Threat</Heading3>
+        <p>
+          Threat is measurement which only purpose is to determine who will NPC attack in PvE encounter. You can read
+          more about Threat in our <Link to="/stats-and-mechanics/threat">Threat Mechanics</Link> tutorial.
+        </p>
+        <Heading3>Taunt</Heading3>
+        <p>
+          Taunts are loosely grouped abilities named after <Warrior />'s spell <Spell id={355}>Taunt</Spell> used by
+          Tank classes to keep enemies attack Focus (or Aggro) on them. Pleas
+          read <Link to="/stats-and-mechanics/threat/#taunt">Taunt</Link> section of
+          our <Link to="/stats-and-mechanics/threat">Threat Mechanics</Link> tutorial for more information.
+        </p>
 
 
       </SideMenuLayout>

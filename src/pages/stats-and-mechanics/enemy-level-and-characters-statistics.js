@@ -7,7 +7,13 @@ import {Tauren} from "../../components/gameElements/race/races";
 import {Warrior} from "../../components/gameElements/class/classes";
 import Icon from "../../components/gameElements/icon/Icon";
 import raceStats from "../../data/raceStats";
-import {armorCapForLevel, glancingChanceForLevel, resistanceCapForLevel} from "../../data/statsFormulas";
+import {
+  armorCapForLevel,
+  glancingChanceForLevel,
+  missChanceForLevel,
+  resistanceCapForLevel, spellMissChanceForLevel, spellResistanceForLevel
+} from "../../data/statsFormulas";
+import Table from "../../components/table/Table";
 
 const ImpactOfEnemyLevelOnCharactersStatistics = () => {
   return (
@@ -51,7 +57,7 @@ const ImpactOfEnemyLevelOnCharactersStatistics = () => {
           </li>
         </ul>
 
-        <table className="simplePageTable">
+        <Table>
           <caption>Lets use level 70 naked <Tauren /> <Warrior /> with no talents against different level npc:</caption>
           <thead>
             <tr>
@@ -120,7 +126,7 @@ const ImpactOfEnemyLevelOnCharactersStatistics = () => {
               <td>15%</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
 
         <Heading2>Player attacking enemy</Heading2>
         <Heading5 anchorId="player-attacking-enemy-every-level-of-difference-does-following">
@@ -129,16 +135,23 @@ const ImpactOfEnemyLevelOnCharactersStatistics = () => {
         <ul>
           <li><strong>Increase players</strong> chance of <strong>Glancing Blow</strong> by <strong>5%</strong></li>
           <li><strong>Decrease players</strong> chance of <strong>Critical Strike</strong> by <strong>1%</strong></li>
-          <li><strong>Increase enemy</strong> chance to be <strong>Missed</strong> by <strong>0.5%</strong></li>
+          <li>
+            <strong>Increase enemy</strong> chance to be <strong>Missed</strong> by <strong>0.5%</strong> (
+            first 2 levels of difference) and <strong>3%</strong> above above that.
+          </li>
+          <li>
+            <strong>Increase enemy</strong> chance to be <strong>Missed with spell</strong> by <strong>1%</strong> (
+            first 2 levels of difference) and <strong>11%</strong> above above that.
+          </li>
           <li><strong>Increase enemy</strong> chance to <strong>Dodge</strong> by <strong>0.5%</strong></li>
           <li><strong>Increase enemy</strong> chance to <strong>Parry</strong> by <strong>0.75</strong>(This is not
             confirmed)
           </li>
           <li><strong>Increase enemy</strong> chance to <strong>Resist Spell</strong> by <strong>??</strong></li>
-          <li><strong>Increase enemy</strong> <strong>Resistance</strong> by <strong>8</strong></li>
+          <li><strong>Increase enemy</strong> <strong>Resistance</strong> by <strong>5</strong></li>
         </ul>
 
-        <table className="simplePageTable">
+        <Table>
           <caption>Lets use level 70 naked <Tauren /> <Warrior /> with no talents against different level npc:</caption>
           <thead>
             <tr>
@@ -173,10 +186,17 @@ const ImpactOfEnemyLevelOnCharactersStatistics = () => {
             </tr>
             <tr>
               <td>Player Miss</td>
-              <td>5%</td>
-              <td>5.5%</td>
-              <td>6%</td>
-              <td>9%</td>
+              <td>{missChanceForLevel(70)}%</td>
+              <td>{missChanceForLevel(71)}%</td>
+              <td>{missChanceForLevel(72)}%</td>
+              <td>{missChanceForLevel(73)}%</td>
+            </tr>
+            <tr>
+              <td>Player Spell Miss (Spell Hit related resist)</td>
+              <td>{spellMissChanceForLevel(70)}%</td>
+              <td>{spellMissChanceForLevel(71)}%</td>
+              <td>{spellMissChanceForLevel(72)}%</td>
+              <td>{spellMissChanceForLevel(73)}%</td>
             </tr>
             <tr>
               <td>Enemy Dodge</td>
@@ -187,27 +207,20 @@ const ImpactOfEnemyLevelOnCharactersStatistics = () => {
             </tr>
             <tr>
               <td>Enemy Parry (Confirmed only for 73)</td>
-              <td>11.75</td>
-              <td>12.5</td>
-              <td>13.25</td>
+              <td>11.75%</td>
+              <td>12.5%</td>
+              <td>13.25%</td>
               <td>14%</td>
             </tr>
             <tr>
-              <td>Enemy Spell Resist (Spell Hit related)</td>
-              <td>4%</td>
-              <td>5%</td>
-              <td>6%</td>
-              <td>17%</td>
-            </tr>
-            <tr>
               <td>Enemy Resistance</td>
-              <td>0</td>
-              <td>8</td>
-              <td>16</td>
-              <td>24</td>
+              <td>{spellResistanceForLevel(70)}</td>
+              <td>{spellResistanceForLevel(71)}</td>
+              <td>{spellResistanceForLevel(72)}</td>
+              <td>{spellResistanceForLevel(73)}</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
 
       </SideMenuLayout>
     </MainLayout>

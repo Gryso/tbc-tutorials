@@ -1,40 +1,61 @@
 import React from "react";
-import "./armorReductionCalculator.scss"
+import "./armorReductionCalculator.scss";
 import bossArmor from "../../data/bossArmor";
+import {damageReductionOfArmor} from "../../data/statsFormulas";
 
-function ArmorReductionCalculator() {
+function calculateArmor(armor, reduction) {
+  const result = armor - reduction;
+  return result > 0 ? result : 0;
+}
+
+function createArmorComponent(reducedArmor, baseArmor = 7700) {
+  let className;
+
+  if (reducedArmor <= 0) {
+    return <span className="zero">0</span>;
+  } else if (reducedArmor <= baseArmor / 3) {
+    className = "good";
+  } else if (reducedArmor <= baseArmor * 2 / 3) {
+    className = "medium";
+  } else {
+    className = "bad";
+  }
+
+  return <span className={className}>{reducedArmor}</span>;
+
+}
+
+function ArmorReductionCalculator({reduction = 0}) {
   return (
     <div className="armorReductionCalculator">
       <ul>
         {
-          Object.keys(bossArmor).map((instance, index) => {
-            console.log('%c instance:', 'color: rgb(49, 193, 27)', instance);
-            return (
-              <li key={index}>
-                {bossArmor[instance].component()}
-                <ul>
-                  {Object.keys(bossArmor[instance].encounters).map((encounter, index) => {
-                    console.log('%c encounter:', 'color: rgb(49, 193, 27)', bossArmor[instance].encounters[encounter]);
-                    return (
-                      <li key={index}>
-                        {encounter}:
-                        <ul>
-                          {Object.keys(bossArmor[instance].encounters[encounter]).map((boss, index) => {
-                            console.log('%c x:', 'color: rgb(49, 193, 27)', boss);
-                            return (
-                              <li key={index}>
-                                {boss}: {bossArmor[instance].encounters[encounter][boss]}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </li>
-            )
-          })
+          Object.keys(bossArmor).map((instance, index) => (
+            <li key={index}>
+              {bossArmor[instance].component()}
+              <ul>
+                {Object.keys(bossArmor[instance].encounters).map((encounter, index) => (
+                  <React.Fragment key={index}>
+                    <ul>
+                      {Object.keys(bossArmor[instance].encounters[encounter]).map((boss, index) => {
+                        let bossObject = bossArmor[instance].encounters[encounter][boss];
+                        let reducedArmor = calculateArmor(bossObject.armor, reduction);
+                        return (
+                          <li key={index}>
+                            {bossObject.component(bossObject.name)}
+                            {": "}
+                            {createArmorComponent(reducedArmor, bossObject.armor)}
+                            {" Armor "}
+                            (-{damageReductionOfArmor(reducedArmor, 70, true)}%)
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </React.Fragment>
+                ))}
+              </ul>
+            </li>
+          ))
         }
       </ul>
     </div>

@@ -14,6 +14,7 @@ function StatsAndMechanicsSideMenu() {
         <TreeItem label="Threat" link="/stats-and-mechanics/threat" />
         <TreeItem label="Attack Tables" link="/stats-and-mechanics/attack-tables" />
         <TreeItem label="Parry Haste" link="/stats-and-mechanics/parry-haste" />
+        <TreeItem label="Armor Reduction Calculator" link="/stats-and-mechanics/armor-reduction-calculator" />
       </TreeView>
     </nav>
   );
