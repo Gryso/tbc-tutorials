@@ -227,6 +227,20 @@ const icons = {
   birdOfPray: require("../../../images/icons/minionIcons/birdOfPray.gif"),
   wolf: require("../../../images/icons/minionIcons/wolf.gif"),
 
+  //currencies
+  gold: require("../../../images/icons/currency/gold.png"),
+  silver: require("../../../images/icons/currency/silver.png"),
+  copper: require("../../../images/icons/currency/copper.png"),
+
+  abMark: require("../../../images/icons/currency/abMark.png"),
+  avMark: require("../../../images/icons/currency/avMark.png"),
+  eotsMark: require("../../../images/icons/currency/eotsMark.png"),
+  wsgMark: require("../../../images/icons/currency/wsgMark.png"),
+  arenaPoints: require("../../../images/icons/currency/arenaPoints.png"),
+  honor: require("../../../images/icons/currency/honor.gif"),
+
+  boj: require("../../../images/icons/currency/boj.png"),
+
   // defenses
   block: require("../../../images/icons/defenseIcons/block.png"),
   dodge: require("../../../images/icons/defenseIcons/dodge.png"),

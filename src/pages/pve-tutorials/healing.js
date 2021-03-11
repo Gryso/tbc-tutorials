@@ -20,6 +20,7 @@ import {
 } from "../../components/dataTables/spellDataTables";
 import Spell from "../../components/gameElements/spell/Spell";
 import {Link} from "gatsby";
+import {Tauren} from "../../components/gameElements/race/races";
 
 
 const Healing = () => {
@@ -160,6 +161,20 @@ const Healing = () => {
           have
           no casting time.
         </p>
+
+        <Heading2>Mana</Heading2>
+        <p>
+          Mana Points (short MP) is resource used by casters which they use as to cast spells. Every spell cost certain amount of mana to
+          cast. There are two ways to increase your Mana:
+        </p>
+        <ol>
+          <li>
+            <strong>Intellect</strong> increase Mana by 15 points.
+          </li>
+          <li>
+            <strong>+Mana bonus</strong> increase your Mana by fixed amount.
+          </li>
+        </ol>
 
         <Heading2>Mana Regeneration</Heading2>
         <p>

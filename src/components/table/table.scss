@@ -11,6 +11,10 @@
     border-collapse: collapse;
   }
 
+  tr:hover {
+    background-color: var(--transparent-contrast-color);
+  }
+
   tr.highlight, td.highlight, th.highlight {
     color: var(--contrast-color)
   }
@@ -48,6 +52,12 @@
       td:first-child, th:first-child {
         background-color: var(--transparent-contrast-color);
       }
+    }
+  }
+
+  &.leftAlignFirstColumn {
+    tbody tr td:first-of-type {
+      text-align: left;
     }
   }
 }

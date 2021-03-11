@@ -68,7 +68,7 @@ import {
   MotherShahraz,
   Muru,
   SathrovarrTheCorruptor
-} from "../../components/gameElements/bosse/bosses";
+} from "../../components/gameElements/boss/bosses";
 import {ExpertiseDataTable, GlancingBlowDataTable} from "../../components/dataTables/physicalDpsDataTables";
 import Table from "../../components/table/Table";
 import Formula from "../../components/formula/Formula";
@@ -599,9 +599,10 @@ const Tank = () => {
 
         <Heading4>Health</Heading4>
         <p>
-          Health (short HP) is value that determines how much damage can players withstand before dying. Health is last
+          Health Points (short HP) are value that determines how much damage can players withstand before dying. Health is last
           line of defense
-          after everything else (Avoidance, Armor etc.) fails. Health can be replenish by HP regen or healing.
+          after everything else (Avoidance, Armor etc.) fails. Health can be replenish by HP regen or healing. There
+          are three ways to increase your Health:
         </p>
         <ol>
           <li>
@@ -889,7 +890,29 @@ const Tank = () => {
           capable od Blocking and this Block works very differently from player Block. It is not part
           of <Link to="/stats-and-mechanics/attack-tables">Attack Table</Link>, success is calculated in separate check
           and any successful hit can be Blocked (Critical Strike, Hit)
+
+          While it is clear that a Blocked attack made against a player cannot be a crit, it is possible that mobs have
+          different rules for determining whether an incoming attack is blocked or not, which includes the possibility
+          of a "blocked crit".
+
+          It should be noted, however, that only special attacks—i.e. yellow-damage instant attacks such as Claw,
+          Overpower, and Sinister Strike, and yellow-damage on-next-swing attacks such as Heroic Strike and Raptor
+          Strike—have been observed as inflicting blocked crits. Normal white-damage auto-attacks have never been seen
+          inflicting a blocked crit, and are probably subject to the same mutually-exclusive-attack-result rules that
+          attacks made against players are.
+
+          Note too, that unlike player characters, mobs sometimes block attacks even though they have no shield
+          equipped.
         </p>
+        <Table>
+          <caption>Bosses that can Block:</caption>
+          <thead>
+            <tr>
+              <th>Instance</th>
+              <th>Bosses that can Block</th>
+            </tr>
+          </thead>
+        </Table>
 
         <Heading3>More about Hitting the Boss</Heading3>
         <p>

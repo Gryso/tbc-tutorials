@@ -5,19 +5,19 @@ import "./simpleMacro.scss";
 import Button from "../button/Button";
 import {Heading4} from "../headers/headers";
 
-const SimpleMacro = (props) => {
+const SimpleMacro = ({name, description, text}) => {
 
   return (
     <div className="simpleMacro">
-      <Heading4>{props.name}</Heading4>
-      <p>{props.description}</p>
+      <Heading4>{name}</Heading4>
+      <p>{description}</p>
       <div className="macroCodeWrapper">
         <pre className="macroCode">
-          {props.text}
+          {text}
         </pre>
       </div>
 
-      <CopyToClipboard text={props.text} onCopy={() => console.log("copy")}>
+      <CopyToClipboard text={text} onCopy={() => console.log("copy")}>
         <Button>Copy</Button>
       </CopyToClipboard>
     </div>

@@ -21,7 +21,7 @@ const statsMultipliers = {
   },
   "paladin": {
     baseDodge: 0,
-    agiToDodge: 0,
+    agiToDodge: 0.050589366,
     agiToCrit: 25.00,
     intToCrit: 80.00
   },
@@ -51,7 +51,7 @@ const statsMultipliers = {
   },
   "warrior": {
     baseDodge: 0,
-    agiToDodge: 0,
+    agiToDodge: 0.05,
     agiToCrit: 33.00,
     intToCrit: 0,
   }

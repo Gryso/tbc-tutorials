@@ -130,7 +130,7 @@ import {
   TeronGorefiend,
   TheCurator, TheLurkerBelow, VoidReaver, WizardOfOz,
   Zuljin
-} from "../components/gameElements/bosse/bosses";
+} from "../components/gameElements/boss/bosses";
 import {
   AquaticForm, BattleStance,
   BearForm, BerserkerStance,
@@ -139,6 +139,16 @@ import {
   SwiftFlightForm,
   TravelForm, TreeForm
 } from "../components/gameElements/stances/stances";
+import {
+  AbMark,
+  ArenaPoints,
+  AvMark, Boj,
+  Copper,
+  EotsMark,
+  Gold, Honor,
+  Silver,
+  WsgMark
+} from "../components/gameElements/currency/currency";
 
 const testing = () => {
   return (
@@ -255,6 +265,19 @@ const testing = () => {
         <Icon type="frostResistance" />
         <Icon type="natureResistance" />
         <Icon type="shadowResistance" />
+
+        <Heading3>Currency</Heading3>
+        <Icon type="gold" />
+        <Icon type="silver" />
+        <Icon type="copper" />
+        <Icon type="abMark" />
+        <Icon type="avMark" />
+        <Icon type="eotsMark" />
+        <Icon type="wsgMark" />
+        <Icon type="arenaPoints" />
+        <Icon type="honor" />
+        <Icon type="boj" />
+
 
         <Heading3>Instances</Heading3>
         <Icon type="blackTemple"/>
@@ -468,6 +491,19 @@ const testing = () => {
         <FrostResistance />
         <NatureResistance />
         <ShadowResistance />
+
+        <Heading3>Currency</Heading3>
+        <Gold/>
+        <Silver/>
+        <Copper/>
+        <WsgMark/>
+        <AbMark/>
+        <EotsMark/>
+        <AvMark/>
+        <ArenaPoints/>
+        <Honor/>
+        <Boj/>
+
 
         <Heading3>Instances</Heading3>
         <BlackTemple/>

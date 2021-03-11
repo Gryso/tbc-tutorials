@@ -30,7 +30,7 @@ import {
   ShadowResistance
 } from "../../components/gameElements/resistances/Resistances";
 import {BlackTemple, HyjalSummit} from "../../components/gameElements/instance/Instances";
-import {IllidariCouncil, RageWinterchill, Supremus} from "../../components/gameElements/bosse/bosses";
+import {IllidariCouncil, RageWinterchill, Supremus} from "../../components/gameElements/boss/bosses";
 import Table from "../../components/table/Table";
 import Formula from "../../components/formula/Formula";
 import {Link} from "gatsby";
@@ -331,6 +331,20 @@ const SpellMechanics = () => {
           have
           no casting time.
         </p>
+
+        <Heading2>Mana</Heading2>
+        <p>
+          Mana Points (short MP) is resource used by casters which they use as to cast spells. Every spell cost certain amount of mana to
+          cast. There are two ways to increase your Mana:
+        </p>
+        <ol>
+          <li>
+            <strong>Intellect</strong> increase Mana by 15 points.
+          </li>
+          <li>
+            <strong>+Mana bonus</strong> increase your Mana by fixed amount.
+          </li>
+        </ol>
 
         <Heading2>Mana Regeneration</Heading2>
         <p>

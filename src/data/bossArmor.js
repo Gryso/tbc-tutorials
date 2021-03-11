@@ -62,7 +62,7 @@ import {
   TheLurkerBelow,
   VoidReaver, VoidSentinel,
   Zuljin
-} from "../components/gameElements/bosse/bosses";
+} from "../components/gameElements/boss/bosses";
 
 const bossArmor = {
   magtheridonsLair: {

@@ -8,13 +8,14 @@ function PveTutorialsSideMenu() {
       <h3>PvE Tutorials</h3>
       <TreeView localStorageKey="PveTutorialsSideMenu">
         <TreeItem label="Physical DPS" link="/pve-tutorials/physical" />
-        <TreeItem label="Spell DPS mechanics" link="/pve-tutorials/spell" />
-        <TreeItem label="Tank mechanics" link="/pve-tutorials/tank" />
-        <TreeItem label="Healing mechanics" link="/pve-tutorials/healing" />
+        <TreeItem label="Spell DPS" link="/pve-tutorials/spell" />
+        <TreeItem label="Tank" link="/pve-tutorials/tank" />
+        <TreeItem label="Healing" link="/pve-tutorials/healing" />
         <TreeItem label="Raid Composition" link="/pve-tutorials/raid-composition" />
         <TreeItem label="Druid">
           <TreeItem label="Balance" link="/pve-tutorials/druid/balance" />
-          <TreeItem label="FeralDps" link="/pve-tutorials/druid/feral" />
+          <TreeItem label="Feral Cat" link="/pve-tutorials/druid/feral-cat" />
+          <TreeItem label="Feral Tank" link="/pve-tutorials/druid/feral-bear" />
           <TreeItem label="Restoration" link="/pve-tutorials/druid/restoration" />
         </TreeItem>
         <TreeItem label="Hunter">

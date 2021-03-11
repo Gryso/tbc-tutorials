@@ -1,0 +1,17 @@
+@import "../gameElmentsMixins";
+
+.currency {
+  @include text-with-icon;
+  @include span-icon;
+  color: var(--contrast-color);
+
+  &.gold {
+    color: var(--gold-color)
+  }
+  &.silver {
+    color: var(--silver-color)
+  }
+  &.copper {
+    color: var(--copper-color)
+  }
+}
