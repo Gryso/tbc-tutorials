@@ -41,7 +41,7 @@ import statsFormulas, {
   expertiseToReduction,
   missChanceForLevel,
   parryRatingToParry,
-  ratingFor1Percent,
+  ratingFor1Percent, ratingMultipliers,
   resilienceRatingToCritReduction,
   resistanceCapForLevel,
   spellMissChanceForLevel
@@ -73,6 +73,7 @@ import {ExpertiseDataTable, GlancingBlowDataTable} from "../../components/dataTa
 import Table from "../../components/table/Table";
 import Formula from "../../components/formula/Formula";
 import {DefensiveStance} from "../../components/gameElements/stances/stances";
+import round from "../../utils/round";
 
 
 const Tank = () => {
@@ -335,7 +336,8 @@ const Tank = () => {
         </ul>
         <p>
           Of tanking classes <Paladin /> and <Warrior /> wearing shield can Block. As Block mitigated only part of
-          attack it is less useful than Miss, Parry or Dodge.
+          attack it is less useful than Miss, Parry or Dodge. Note that Block is more effective against fast attacking
+          enemies that deal less damage per one hit.
         </p>
         <ul>
           <li>
@@ -846,7 +848,7 @@ const Tank = () => {
         <ol>
           <li>
             <strong>Expertise Rating</strong>: Expertise Rating increase your Expertise
-            by {expertiseRatingToExpertise(1)}.
+            by {round(1/ratingMultipliers.expertise)}.
           </li>
           <li>
             <strong>Expertise</strong>: One point of Expertise decrease chance enemy will Dodge or Parry you

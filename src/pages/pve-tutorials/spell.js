@@ -8,7 +8,7 @@ import Spell from "../../components/gameElements/spell/Spell";
 import {
   averageDamageReductionFromResistance,
   intellectFor1Crit,
-  intellectToCrit,
+  intellectToCrit, intellectToMana,
   ratingFor1Percent,
   spellCritRatingToCrit,
   spellHasteRatingForReduction,
@@ -339,7 +339,7 @@ const SpellMechanics = () => {
         </p>
         <ol>
           <li>
-            <strong>Intellect</strong> increase Mana by 15 points.
+            <strong>Intellect</strong> increase Mana by {intellectToMana(1)} points.
           </li>
           <li>
             <strong>+Mana bonus</strong> increase your Mana by fixed amount.

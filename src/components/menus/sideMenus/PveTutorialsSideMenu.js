@@ -14,8 +14,8 @@ function PveTutorialsSideMenu() {
         <TreeItem label="Raid Composition" link="/pve-tutorials/raid-composition" />
         <TreeItem label="Druid">
           <TreeItem label="Balance" link="/pve-tutorials/druid/balance" />
-          <TreeItem label="Feral Cat" link="/pve-tutorials/druid/feral-cat" />
-          <TreeItem label="Feral Tank" link="/pve-tutorials/druid/feral-bear" />
+          <TreeItem label="Feral DPS" link="/pve-tutorials/druid/feral-dps" />
+          <TreeItem label="Feral Tank" link="/pve-tutorials/druid/feral-tank" />
           <TreeItem label="Restoration" link="/pve-tutorials/druid/restoration" />
         </TreeItem>
         <TreeItem label="Hunter">

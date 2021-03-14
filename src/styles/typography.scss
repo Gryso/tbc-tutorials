@@ -11,6 +11,7 @@
   --h6-multiplayer: 0.625;
 
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Segoe UI Symbol";
+  --code-font-family:  monospace, monospace;
   font-size: var(--base-font-size);
   -webkit-font-smoothing: antialiased;
 }
@@ -25,7 +26,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: monospace, monospace;
+  font-family: var(--code-font-family);
   font-size: 0.875rem;
 }
 

@@ -22,7 +22,6 @@ function createArmorComponent(reducedArmor, baseArmor = 7700) {
   }
 
   return <span className={className}>{reducedArmor}</span>;
-
 }
 
 function ArmorReductionCalculator({reduction = 0}) {

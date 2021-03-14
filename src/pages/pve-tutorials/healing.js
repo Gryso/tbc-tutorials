@@ -6,7 +6,7 @@ import {Heading2, Heading3, Heading4, Heading5, Title} from "../../components/he
 import Talent from "../../components/gameElements/talent/Talent";
 import {
   intellectFor1Crit,
-  intellectToCrit,
+  intellectToCrit, intellectToMana,
   ratingFor1Percent,
   spellCritRatingToCrit,
   spellHasteRatingForReduction
@@ -169,7 +169,7 @@ const Healing = () => {
         </p>
         <ol>
           <li>
-            <strong>Intellect</strong> increase Mana by 15 points.
+            <strong>Intellect</strong> increase Mana by {intellectToMana(1)} points.
           </li>
           <li>
             <strong>+Mana bonus</strong> increase your Mana by fixed amount.

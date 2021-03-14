@@ -13,13 +13,17 @@ import {
   dualWieldingMissIncrease,
   expertiseFor1PercentReduction,
   expertiseRatingFor1Expertise,
+  intellectToMana,
   missChanceForLevel,
   ratingFor1Percent
 } from "../../data/statsFormulas";
-import {Druid, Hunter, Paladin, Rogue, Shaman, Warrior} from "../../components/gameElements/class/classes";
+import {Druid, Hunter, Paladin, Rogue, Shaman, Warlock, Warrior} from "../../components/gameElements/class/classes";
 import {Arms, Fury} from "../../components/gameElements/talentSpecialisation/TalentSpecialisations";
 import {
+  AmountOfArmorValuesDataTable,
+  ArmorPenetrationOnFixedArmorDataTable,
   ExpertiseDataTable,
+  FixedArmorPenetrationOnArmorDataTable,
   GlancingBlowDataTable,
   MeleeHasteDataTable
 } from "../../components/dataTables/physicalDpsDataTables";
@@ -29,6 +33,11 @@ import Spell from "../../components/gameElements/spell/Spell";
 import {BearForm, CatForm} from "../../components/gameElements/stances/stances";
 import Formula from "../../components/formula/Formula";
 import {Wolf} from "../../components/gameElements/minion/minions";
+import {
+  ImpactOfDifferentSpiritAndIntellectDistributionDataTable,
+  PointsSplitBetweenSpiritAndIntellectDataTable
+} from "../../components/dataTables/spellDataTables";
+import {orderedArmorAmounts} from "../../data/bossArmor";
 
 const Physical = () => {
 
@@ -125,8 +134,9 @@ const Physical = () => {
         <p>
           Players wielding Single Weapon has {missChanceForLevel(73)}% chance to Miss attack against Boss (lvl 73).
           This chance is same for Special attacks and auto-attacks. You can decrease chance you will miss attack again
-          boss by increasing your Hit Rating. You need {Math.ceil(ratingFor1Percent("meleeHit") * missChanceForLevel())}
-          Hit rating to decrease chance of missing to 0.
+          boss by increasing your Hit Rating. You
+          need {Math.ceil(ratingFor1Percent("meleeHit") * missChanceForLevel(73))} Hit rating to decrease chance of
+          missing to 0.
         </p>
 
         <Heading4>Wielding Dual Weapons</Heading4>
@@ -155,27 +165,60 @@ const Physical = () => {
         <Heading3>Dodge</Heading3>
         <p>
           Dodge is hit completely avoided by Boss resulting in miss. Boss, unlike the player, can Dodge from every
-          direction including rear. Boss has 6.5% chance to Dodge player attack. This means you
+          direction including rear. Boss has 6.5% chance to Dodge player attack. (<Hunter />'s ranged attack cannot be
+          dodged making Expertise Rating useless for Hunters.) You can decrease chance boss will dodge your attack with
+          Expertise.
+        </p>
+        <Heading5>Expertise</Heading5>
+        <p>
+          Expertise decrease chance enemy will dodge your attack by 0.25%. Expertise can be improved with Expertise
+          Rating
+          and you need {expertiseRatingFor1Expertise()} Expertise Rating for one Expertise This means you
           need {expertiseFor1PercentReduction() * 6.5} Expertise
           or {Math.ceil(expertiseFor1PercentReduction() * expertiseRatingFor1Expertise() * 6.5)} Expertise Rating to
           decrease chance of Dodge to 0%. Expertise Rating is very important and should have priority over any other
-          stat as it does not matter how hard can you hit if your attack is completely avoided. Expertise rating should
+          stat
+          as it does not matter how hard can you hit if your attack is completely avoided. Expertise rating should
           arguably have higher priority than Hit rating despite fact they provide same damage increase, because items
-          with Expertise Rating are much rarer. (<Hunter />'s ranged attack cannot be dodged making Expertise Rating
-          useless for Hunters)
+          with
+          Expertise Rating are much rarer.
         </p>
         <ExpertiseDataTable />
 
+        <Heading3>Block</Heading3>
+        <p>
+          We need more information
+        </p>
+
         <Heading2>Improving Damage</Heading2>
-        <Heading3>Armor</Heading3>
-        Armor is attribute that decreases physical damage received. Reduction is applied to damage of every successful
-        attack. The most common armor value on Boss is 7700 which reduces damage
-        by {damageReductionOfArmor(7700, 70, true)}%. You can increase your damage by
-        directly reducing armor of boss (using spells
-        like <Spell id={26993}>Faerie Fire</Spell> or items like <Item id={12798} quality="rare">Annihilator</Item>) or
-        by items with 'Your attacks ignore x of your opponent's armor' bonuses.
-        (like <Item id={32591}>Choker of Serrated Blades</Item>) Learn more in
-        our <Link to="/stats-and-mechanics/armor-reduction-calculator">Armor Reduction Calculator</Link>
+        <Heading3>Armor reduction</Heading3>
+        <p>
+          Armor is attribute that decreases physical damage received. Reduction is applied to damage of every successful
+          attack. The most common ({orderedArmorAmounts[0].proportion}% of encounters) armor value on Boss
+          is {orderedArmorAmounts[0].armor} which reduces damage
+          by {damageReductionOfArmor(+orderedArmorAmounts[0].armor, 70, true)}% and second most common
+          ({orderedArmorAmounts[1].proportion}% of encounters) armor value on Boss
+          is {orderedArmorAmounts[1].armor} which reduces
+          damage by {damageReductionOfArmor(+orderedArmorAmounts[1].armor, 70, true)}%. You can increase your damage by
+          directly reducing armor of boss (using spells like <Spell id={26993}>Faerie Fire</Spell> or items like <Item
+          id={12798} quality="rare">Annihilator</Item>) or by items with Armor Penetration.
+        </p>
+        <AmountOfArmorValuesDataTable />
+
+        <Heading5>Armor Penetration</Heading5>
+        <p>
+          Armor Penetration reduces amount of enemies Armor affecting your attacks. It is usually found on items with
+          'Your attacks ignore x of your opponent's armor' bonuses. Improving Damage (like <Item id={32591}>Choker of
+          Serrated Blades</Item>). You can learn more in our <Link to="/stats-and-mechanics/armor-reduction-calculator">Armor
+          Reduction Calculator</Link>
+        </p>
+
+        <ArmorPenetrationOnFixedArmorDataTable />
+        Amount of damage increased per point of Armor Penetration is not linear and grows faster the more Penetration
+        you have.
+        <FixedArmorPenetrationOnArmorDataTable />
+        Damage increase of Armor Penetration grows indirectly with amount of armor enemy has, meaning less armor enemy
+        has more effective Armor Penetration is.
 
         <Heading3>Attack Power</Heading3>
         <p>
@@ -354,6 +397,87 @@ const Physical = () => {
             <strong>Off-Hand damage reduction</strong> damage of your off-hand weapon is reduced by <strong>50%</strong>
           </li>
         </ul>
+
+        <Heading2>Resource</Heading2>
+        <Heading4>Mana</Heading4>
+        <p>
+          Mana Points (short MP) is resource used by casters which they use as to cast spells. Every spell cost certain
+          amount of mana to
+          cast. There are two ways to increase your Mana:
+        </p>
+        <ol>
+          <li>
+            <strong>Intellect</strong> increase Mana by {intellectToMana(1)} points.
+          </li>
+          <li>
+            <strong>+Mana bonus</strong> increase your Mana by fixed amount.
+          </li>
+        </ol>
+        <Heading5>Mana Regeneration</Heading5>
+        <p>
+          Mana (for characters that have it) is regenerated every 2 seconds (Effects that directly state interval in
+          which they regenerate mana are exempt from this rule) and is represented as Mana Per 5 Seconds in character
+          sheet. (calculated as mana per 2 seconds * 5/2)
+        </p>
+
+        <Heading5>Spirit Based Mana Regeneration</Heading5>
+        <p>
+          Rate at which Spirit Based Mana Regeneration regenerates mana is based on Intellect, Spirit and character
+          level. Exact formula is:
+        </p>
+        <Formula>
+          MP5 = 5 * (0.001 + sqrt(Int) * Spirit * BaseLevelRegeneration(0.009327 for level 70) (Round up)
+        </Formula>
+        <Heading5>Best Spirit and Intellect Ratio</Heading5>
+        <p>
+          We can calculate best ratio of Spirit and Intellect for maximal mana regeneration (level 70). This ration
+          is <strong>Spirit 2 / 1 intellect</strong> (There is about 0.5% buffer to both sides around this spot due to
+          rounding) this means that <strong>your Intellect should always be half of your Spirit</strong> for maximal
+          Spirit Based Mana Regeneration (This also provides highest bonus in mana and Spell Critical Strike making it
+          all around win)
+        </p>
+        <PointsSplitBetweenSpiritAndIntellectDataTable />
+        <ImpactOfDifferentSpiritAndIntellectDistributionDataTable />
+        <p>
+          (459 Intellect will make your Spirit worth 1 mana per 5 seconds. From this point up mana
+          regeneration from MP5 is less valuable than Spirit (This does not take into account interruption of Spirit
+          Based Mana Regeneration from Five Second Rule))
+        </p>
+        <Heading5>Five Second Rule</Heading5>
+        <p>
+          Spirit Based Mana Regeneration is interrupted for 5 seconds after player spends mana to cast a spell. (Not
+          when player start casting spell) This is handled differently for Channeled Spells as mana is spend at the
+          start of channeling triggering minimal amount of 5 seconds long Spirit Based Mana Regeneration interruption
+          that does not end before channeling is finished. (Meaning <Warlock />'s <Spell id={27217}>Drain
+          Soul</Spell> will
+          interrupt Spirit Based Mana Regeneration for full 15 seconds)
+        </p>
+
+        <Heading5>MP5 bonus based Mana Regeneration</Heading5>
+        <p>
+          Item bonuses that directly regenerate mana ('Restores 12 mana per 5 sec' bonus) also restore mana every 2
+          seconds but they are exempt from 5 second rule and continue to regenerate mana even after and during spell
+          casting making them (with exceptions) more valuable than Spirit Based Mana Regeneration.
+        </p>
+        <Heading5>Energize effects Mana Regeneration</Heading5>
+        <p>
+          Energize effects like <Spell id={27142}>Blessing of Wisdom</Spell>, <Spell id={25570}>Mana Spring
+          Totem</Spell> and <Spell id={33736}>Water Shield</Spell>
+          are also exempt from 5 second rule and they regenerate mana in intervals written in their tooltip.
+        </p>
+
+        <Heading4>Energy</Heading4>
+        <p>
+          Energy is resources used by <Rogue /> and <Druid /> in <CatForm /> to execute their abilities. Maximal amount
+          of energy is 100 points (<Rogue /> can increase this maximum up to 120) and it regenerates at a fixed rate of
+          20 energy every 2 seconds, in and out of combat.
+        </p>
+        <Heading4>Rage</Heading4>
+        <p>
+          Rage is resources used by <Warrior /> and <Druid /> in <BearForm /> to execute their abilities. Maximal amount
+          of rage is 100 points and is by default empty and builds only by being hit, by dealing damage, or by using
+          certain Abilities. When out of combat, Rage degenerates or depletes at a constant rate.
+        </p>
 
         <Heading2>Not getting killed</Heading2>
         <p>

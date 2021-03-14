@@ -234,10 +234,12 @@ const AttackTable = () => {
         classes={Object.keys(tankClasses)}
         onChange={(changes) => {
           if (changes.class === state.activeClass) {
-            dispatch({
-              type: CHANGE_RACE,
-              race: changes.race
-            });
+            if (changes.race !== state.activeRace) {
+              dispatch({
+                type: CHANGE_RACE,
+                race: changes.race
+              });
+            }
           } else {
             dispatch({
               type: CHANGE_CLASS,

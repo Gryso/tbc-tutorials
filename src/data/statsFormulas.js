@@ -2,56 +2,56 @@ import round from "../utils/round";
 
 const statsMultipliers = {
   "druid": {
-    baseDodge: 0,
-    agiToDodge: 0.068,
+    baseDodge: -1.87,
+    agiToDodge: 0.0680,
     agiToCrit: 25.00,
     intToCrit: 80.00
   },
   "hunter": {
-    baseDodge: 0,
-    agiToDodge: 0,
+    baseDodge: -5.45,
+    agiToDodge: 0.04,
     agiToCrit: 40.00,
     intToCrit: 80.00
   },
   "mage": {
-    baseDodge: 0,
-    agiToDodge: 0,
+    baseDodge: 3.45,
+    agiToDodge: 0.04,
     agiToCrit: 25.00,
     intToCrit: 80.00
   },
   "paladin": {
-    baseDodge: 0,
-    agiToDodge: 0.050589366,
+    baseDodge: 0.65,
+    agiToDodge: 0.0506,
     agiToCrit: 25.00,
     intToCrit: 80.00
   },
   "priest": {
-    baseDodge: 0,
-    agiToDodge: 0,
+    baseDodge: 3.18,
+    agiToDodge: 0.04,
     agiToCrit: 25.00,
     intToCrit: 80.00
   },
   "rogue": {
-    baseDodge: 0,
-    agiToDodge: 0,
+    baseDodge: -0.59,
+    agiToDodge: 0.05,
     agiToCrit: 40.00,
     intToCrit: 0
   },
   "shaman": {
-    baseDodge: 0,
-    agiToDodge: 0,
+    baseDodge: 1.67,
+    agiToDodge: 0.04,
     agiToCrit: 25.00,
     intToCrit: 80
   },
   "warlock": {
-    baseDodge: 0,
-    agiToDodge: 0,
+    baseDodge: 2.03,
+    agiToDodge: 0.04,
     agiToCrit: 24.69,
     intToCrit: 81.97
   },
   "warrior": {
-    baseDodge: 0,
-    agiToDodge: 0.05,
+    baseDodge: 0.75,
+    agiToDodge: 0.0333,
     agiToCrit: 33.00,
     intToCrit: 0,
   }
@@ -81,6 +81,9 @@ export const attackPowerMultiplier = 14;
 export const expertiseMultiplier = 4;
 export const defenseMultiplier = 25;
 export const dualWieldingMissIncrease = 19;
+export const manaPerIntellect = 15;
+export const healthPerStamina = 10;
+export const healthPerStaminaTauren = 10.5;
 
 // For one percent
 export const ratingFor1Percent = (rating) => ratingMultipliers[rating];
@@ -108,6 +111,7 @@ export const dodgeRatingToDodge = (dodgeRating) => round(dodgeRating / ratingMul
 export const agilityToDodge = (agility, wowClass) => round(agility / statsMultipliers[wowClass].agiToDodge);
 export const parryRatingToParry = (parryRating) => round(parryRating / ratingMultipliers.parry);
 export const resilienceRatingToCritReduction = (resilience) => round(resilience / ratingMultipliers.resilience);
+export const staminaToHealth = (stamina, tauren = false) => stamina * (tauren ? healthPerStaminaTauren : healthPerStamina);
 
 // Melee
 export const critRatingToCrit = (critRating) => round(critRating / ratingMultipliers.meleeCrit);
@@ -135,6 +139,7 @@ export const missChanceForLevel = (level = 73, wielding = 1) => {
 // Spell
 export const spellCritRatingToCrit = (critRating) => round(critRating / ratingMultipliers.spellCrit);
 export const intellectToCrit = (intellect, wowClass) => round(intellect / statsMultipliers[wowClass].intToCrit);
+export const intellectToMana = (intellect) => round(intellect * manaPerIntellect);
 export const spellHasteRatingToSpeed = (hasteRating) => round(1 - (1 / (1 + (hasteRating) / 1570)));
 export const spellHitRatingToHitChance = (hitRating) => round(hitRating / ratingMultipliers.spellHit);
 export const spellHasteRatingForReduction = (reduction) => round(1570 * (1 / reduction - 1));

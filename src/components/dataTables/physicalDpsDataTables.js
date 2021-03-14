@@ -1,4 +1,5 @@
 import {
+  damageReductionOfArmor,
   expertiseFor1PercentReduction,
   expertiseRatingFor1Expertise,
   glancingChanceForLevel, meleeHasteRatingForReduction
@@ -6,6 +7,8 @@ import {
 import Icon from "../gameElements/icon/Icon";
 import React from "react";
 import Table from "../table/Table";
+import round from "../../utils/round";
+import {orderedArmorAmounts} from "../../data/bossArmor";
 
 export const GlancingBlowDataTable = () => (
   <Table cellAlign="center">
@@ -148,3 +151,108 @@ export const MeleeHasteDataTable = () => (
     </tbody>
   </Table>
 );
+
+export const ArmorPenetrationOnFixedArmorDataTable = () => {
+  const bossArmor = 5000;
+  const bossArmorReduction = damageReductionOfArmor(bossArmor, 70, true)
+  const armorPenetrationIncrement = 500;
+
+  return (
+    <Table cellAlign="center" fillFirstCell={true}>
+      <caption>Damage increase per Armor Penetration on {bossArmor} Armor Boss</caption>
+      <thead>
+        <tr>
+          <th>Penetration</th>
+          <th>Reduced Armor</th>
+          <th>Damage Reduction</th>
+          <th>Reduction Decrease</th>
+          <th>Damage Increase per Penetration</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Array.from(Array(bossArmor/armorPenetrationIncrement + 1)).map((item, index) => {
+          const armorPenetration = Math.min(index * armorPenetrationIncrement, bossArmor)
+          const armor = Math.max(bossArmor - armorPenetration, 0);
+          const armorReduction = damageReductionOfArmor(armor, 70, true);
+          const reductionDecrease = round(bossArmorReduction - armorReduction)
+          return (
+            <tr key={index}>
+              <td>{armorPenetration}</td>
+              <td>{armor}</td>
+              <td>{damageReductionOfArmor(armor, 70, true)}%</td>
+              <td>{reductionDecrease}%</td>
+              <td>{round(reductionDecrease / armorPenetration) || 0}%</td>
+            </tr>
+          )
+        })}
+      </tbody>
+    </Table>
+  )
+}
+
+export const FixedArmorPenetrationOnArmorDataTable = () => {
+  const armorPenetration = 1000;
+  const armorIncrement = 1000;
+  return (
+    (
+      <Table cellAlign="center" fillFirstCell={true}>
+        <caption>Damage increase of fixed Armor Penetration ({armorPenetration}) on different Armor</caption>
+        <thead>
+          <tr>
+            <th>Armor</th>
+            <th>Damage Reduction</th>
+            <th>Reduced Armor</th>
+            <th>Reduction Decrease</th>
+            <th>Damage Increase per Penetration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Array.from(Array(7)).map((item, index) => {
+            const armor = armorPenetration + index * armorIncrement;
+            const armorReduction = damageReductionOfArmor(armor, 70, true);
+            const reducedArmor = Math.max(armor - armorPenetration, 0)
+            const reducedArmorReduction = damageReductionOfArmor(reducedArmor, 70, true)
+            const reductionDecrease = round(armorReduction - reducedArmorReduction)
+            return (
+              <tr key={index}>
+                <td>{armor}</td>
+                <td>{armorReduction}%</td>
+                <td>{reducedArmor}</td>
+                <td>{reductionDecrease}%</td>
+                <td>{round(reductionDecrease / armorPenetration) || 0}%</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </Table>
+    )
+  )
+}
+
+
+
+export const AmountOfArmorValuesDataTable = () => {
+  return (
+    (
+      <Table cellAlign="center">
+        <caption>Amount of different Armor values you can encounter</caption>
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Armor</th>
+            <th>Proportion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orderedArmorAmounts.map((datum, index) => (
+            <tr key={index}>
+              <td>{datum.amount}</td>
+              <td>{datum.armor}</td>
+              <td>{datum.proportion}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    )
+  )
+}

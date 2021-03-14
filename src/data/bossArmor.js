@@ -19,7 +19,8 @@ import {
   Brutallus,
   Entropius,
   FathomLordKarathress,
-  Felmyst, Generic,
+  Felmyst,
+  Generic,
   GrandWarlockAlythess,
   GruulTheDragonkiller,
   GurtoggBloodboil,
@@ -43,7 +44,7 @@ import {
   LeotherasTheBlind,
   Magtheridon,
   MaidenOfVirtue,
-  Midnight, Moroes,
+  Midnight,
   MorogrimTidewalker,
   MotherShahraz,
   Muru,
@@ -54,15 +55,19 @@ import {
   RageWinterchill,
   SathrovarrTheCorruptor,
   ShadeOfAkama,
-  ShadeOfAran, ShadowswordBerserker, ShadowswordFuryMage,
+  ShadeOfAran,
+  ShadowswordBerserker,
+  ShadowswordFuryMage,
   Supremus,
   TerestianIllhoof,
   TeronGorefiend,
   TheCurator,
   TheLurkerBelow,
-  VoidReaver, VoidSentinel,
+  VoidReaver,
+  VoidSentinel,
   Zuljin
 } from "../components/gameElements/boss/bosses";
+import round from "../utils/round";
 
 const bossArmor = {
   magtheridonsLair: {
@@ -218,11 +223,11 @@ const bossArmor = {
         }
       },
       moroes: {
-        moroes: {
-          component: Moroes,
-          name: "Moroes",
-          armor: null
-        }
+        // moroes: {
+        //   component: Moroes,
+        //   name: "Moroes",
+        //   armor: null
+        // }
       },
       maidenOfVirtue: {
         maidenOfVirtue: {
@@ -541,3 +546,25 @@ const bossArmor = {
 };
 
 export default bossArmor;
+
+let armorAmounts = {};
+let bossCount = 0;
+Object.keys(bossArmor).forEach((instanceName) => {
+  let encounters = bossArmor[instanceName].encounters;
+  Object.keys(encounters).forEach((encounterName) => {
+    let encounter = encounters[encounterName];
+    Object.keys(encounter).forEach((bossName) => {
+      let boss = encounter[bossName];
+      bossCount++;
+      armorAmounts[boss.armor] = (armorAmounts[boss.armor] || 0) + 1;
+    });
+  });
+});
+
+export const orderedArmorAmounts = Object.entries(armorAmounts)
+  .sort((a, b) => b[1] - a[1])
+  .map((armorAmountPair) => ({
+    amount: armorAmountPair[1],
+    armor: armorAmountPair[0],
+    proportion: round(armorAmountPair[1] / (bossCount / 100), 1)
+  }));
