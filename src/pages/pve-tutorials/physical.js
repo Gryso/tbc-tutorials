@@ -21,7 +21,7 @@ import {Druid, Hunter, Paladin, Rogue, Shaman, Warlock, Warrior} from "../../com
 import {Arms, Fury} from "../../components/gameElements/talentSpecialisation/TalentSpecialisations";
 import {
   AmountOfArmorValuesDataTable,
-  ArmorPenetrationOnFixedArmorDataTable,
+  ArmorPenetrationOnFixedArmorDataTable, DpsIncreasePerCritChancePercent,
   ExpertiseDataTable,
   FixedArmorPenetrationOnArmorDataTable,
   GlancingBlowDataTable,
@@ -38,6 +38,8 @@ import {
   PointsSplitBetweenSpiritAndIntellectDataTable
 } from "../../components/dataTables/spellDataTables";
 import {orderedArmorAmounts} from "../../data/bossArmor";
+import Table from "../../components/table/Table";
+import Expresion from "../../components/expresion/Expresion";
 
 const Physical = () => {
 
@@ -67,38 +69,39 @@ const Physical = () => {
         <ol>
           <li>
             <strong>Critical Strike Rating</strong>: Increase critic chance by {critRatingToCrit(1)}%
-            per point. ({ratingFor1Percent("meleeCrit")} Critical Strike Rating for 1% chance)
+            per point. (<strong>{ratingFor1Percent("meleeCrit")}</strong> Critical Strike Rating for 1% chance)
           </li>
 
           <li><strong>Agility</strong>:
             <ul>
               <li>
-                <Druid />: needs {agilityFor1PercentCrit("druid")} agility for 1% of Critically Strike
-                ({agilityToCrit(1, "druid")}% chance per point)
+                <Druid />: needs <strong>{agilityFor1PercentCrit("druid")}</strong> agility for 1% of
+                Critical Strike ({agilityToCrit(1, "druid")}% chance per point)
               </li>
               <li>
-                <Hunter />: needs {agilityFor1PercentCrit("hunter")} agility for 1% of Critically Strike
-                ({agilityToCrit(1, "hunter")}% chance per point)
+                <Hunter />: needs <strong>{agilityFor1PercentCrit("hunter")}</strong> agility for 1% of
+                Critical Strike ({agilityToCrit(1, "hunter")}% chance per point)
               </li>
               <li>
-                <Paladin />: needs {agilityFor1PercentCrit("paladin")} agility for 1% of Critically Strike
-                ({agilityToCrit(1, "paladin")}% chance per point)
+                <Paladin />: needs <strong>{agilityFor1PercentCrit("paladin")}</strong> agility for 1% of
+                Critical Strike ({agilityToCrit(1, "paladin")}% chance per point)
               </li>
               <li>
-                <Rogue />: needs {agilityFor1PercentCrit("rogue")} agility for 1% of Critically Strike
-                ({agilityToCrit(1, "rogue")}% chance per point)
+                <Rogue />: needs <strong>{agilityFor1PercentCrit("rogue")}</strong> agility for 1% of
+                Critical Strike ({agilityToCrit(1, "rogue")}% chance per point)
               </li>
               <li>
-                <Shaman />: needs {agilityFor1PercentCrit("shaman")} agility for 1% of Critically Strike
-                ({agilityToCrit(1, "shaman")}% chance per point)
+                <Shaman />: needs <strong>{agilityFor1PercentCrit("shaman")}</strong> agility for 1% of
+                Critical Strike ({agilityToCrit(1, "shaman")}% chance per point)
               </li>
               <li>
-                <Warrior />: needs {agilityFor1PercentCrit("warrior")} agility for 1% of Critically Strike
-                ({agilityToCrit(1, "warrior")}% chance per point)
+                <Warrior />: needs <strong>{agilityFor1PercentCrit("warrior")}</strong> agility for 1% of
+                Critical Strike ({agilityToCrit(1, "warrior")}% chance per point)
               </li>
             </ul>
           </li>
         </ol>
+        <DpsIncreasePerCritChancePercent/>
 
         <Heading3>Hit</Heading3>
         <p>
@@ -112,8 +115,8 @@ const Physical = () => {
           Glancing Blow is successful attack damage of which is reduces to 75% of normal hit. Chance for Glancing Blow
           against Boss (lvl 73) is 25%, there is no way to avoid it as there is no stat that decrease this chance
           and it cannot be pushed out of <Link to="/stats-and-mechanics/attack-tables">Attack Table</Link> table as it
-          has higher priority than Critical Strike and Hit. Glancing Blow is only possible on white attacks, yellow
-          attacks (spells and abilities) cannot glance.
+          has higher priority than Critical Strike and Hit. Glancing Blow is only possible on white melee attacks,
+          yellow attacks (spells and abilities) and Ranged attacks cannot glance.
         </p>
         <GlancingBlowDataTable />
 
@@ -223,7 +226,7 @@ const Physical = () => {
         <Heading3>Attack Power</Heading3>
         <p>
           Attack Power is attribute that increase your damage you need {attackPowerMultiplier} Attack Power to increase
-          DPS of your Auto Attack by 1. Attack power also increase damage of your Special Attacks and Abilities
+          DPS of your Auto Attack by 1. Attack power also increase damage of your Special Attacks and Abilities.
         </p>
         There are 3 ways to increase your Attack Power:
         <ol>
@@ -258,6 +261,137 @@ const Physical = () => {
           </li>
         </ol>
 
+        <Table cellAlign="center" leftAlignFirstColumn={true}>
+          <caption>AP calculation (lvl 70 no talents)</caption>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Str</th>
+              <th>Agi</th>
+              <th>Lvl</th>
+              <th>Penalty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th aria-label="druid" scope="row"><Druid /></th>
+              <td>x2</td>
+              <td>x0</td>
+              <td>x0</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="cat form" scope="row"><CatForm /></th>
+              <td>x2</td>
+              <td>x1</td>
+              <td>x2</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="bear form" scope="row"><BearForm /></th>
+              <td>x2</td>
+              <td>x0</td>
+              <td>x3</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="hunter (melee)" scope="row"><Hunter /> (Melee)</th>
+              <td>x1</td>
+              <td>x1</td>
+              <td>x2</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="hunter (ranged)" scope="row"><Hunter /> (Ranged)</th>
+              <td>x0</td>
+              <td>x1</td>
+              <td>x2</td>
+              <td>-10</td>
+            </tr>
+            <tr>
+              <th aria-label="paladin" scope="row"><Paladin /></th>
+              <td>x2</td>
+              <td>x0</td>
+              <td>x3</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="rogue" scope="row"><Rogue /></th>
+              <td>x1</td>
+              <td>x1</td>
+              <td>x2</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="shaman" scope="row"><Shaman /></th>
+              <td>(x1) - 10</td>
+              <td>x0</td>
+              <td>x2</td>
+              <td>-20</td>
+            </tr>
+            <tr>
+              <th aria-label="warrior" scope="row"><Warrior /></th>
+              <td>x2</td>
+              <td>x0</td>
+              <td>x3</td>
+              <td>-20</td>
+            </tr>
+          </tbody>
+        </Table>
+
+        <Heading4>Auto-Attacks Damage</Heading4>
+        <p>
+          Without weapon you hit for 1-2 damage every 2 seconds (0.6 DPS) when you use weapon both speed and damage are
+          based on Weapon attributes (except <CatForm/> 51-75 every second (63 dps) and <BearForm/> 127-188 every 2.5
+          seconds (63 dps)).
+        </p>
+        <p>
+          Weapon damage is also increased by you Attack Power. Note this is <strong>Weapon Speed</strong> (or normalized
+          speed) not character attack speed (damage calculation is done before other bonuses like Haste Rating Speed
+          increase). Game uses following calculations for you Damage (various talents may alter this values): </p>
+        <ul>
+          <li>
+            <strong>MainHand / TwoHand</strong>:
+            <ul>
+              <li><strong>Min Damage</strong>: <Expresion>WeaponMinimalDamage + (AP/14 * WeaponSpeed)</Expresion></li>
+              <li><strong>Max Damage</strong>: <Expresion>WeaponMaximalDamage + (AP/14 * WeaponSpeed)</Expresion></li>
+              <li><strong>DPS</strong>: <Expresion>WeaponDPS + AP/14</Expresion></li>
+            </ul>
+          </li>
+          <li>
+            <strong>OffHand</strong>:
+            <ul>
+              <li><strong>Min Damage</strong>: <Expresion>(WeaponMinimalDamage + (AP/14 * WeaponSpeed)) / 2</Expresion></li>
+              <li><strong>Max Damage</strong>: <Expresion>(WeaponMaximalDamage + (AP/14 * WeaponSpeed)) / 2</Expresion></li>
+              <li><strong>DPS</strong>: <Expresion>(63 + AP/14) / 2</Expresion></li>
+            </ul>
+          </li>
+          <li>
+            <strong><CatForm/></strong>:
+            <ul>
+              <li><strong>Min Damage</strong>: <Expresion>51 + (AP/14 * 1)</Expresion></li>
+              <li><strong>Max Damage</strong>: <Expresion>75 + (AP/14 * 1)</Expresion></li>
+              <li><strong>DPS</strong>: <Expresion>63 + AP/14</Expresion></li>
+            </ul>
+          </li>
+          <li>
+            <strong><BearForm/></strong>:
+            <ul>
+              <li><strong>Min Damage</strong>: <Expresion>127 + (AP/14 * 2.5)</Expresion></li>
+              <li><strong>Max Damage</strong>: <Expresion>188 + (AP/14 * 2.5)</Expresion></li>
+              <li><strong>DPS</strong>: <Expresion>63 + AP/14</Expresion></li>
+            </ul>
+          </li>
+          <li>
+            <strong>Hands</strong>:
+            <ul>
+              <li><strong>Min Damage</strong>: <Expresion>~1 + (AP/14 * 2)</Expresion></li>
+              <li><strong>Max Damage</strong>: <Expresion>~2 + (AP/14 * 2)</Expresion></li>
+              <li><strong>DPS</strong>: <Expresion>~0.8 + AP/14</Expresion></li>
+            </ul>
+          </li>
+        </ul>
+
         <Heading4>Special Attacks Damage</Heading4>
         <p>
           The base damage of any Special melee attack that does "weapon damage" is the actual damage of Main-hand
@@ -268,7 +402,7 @@ const Physical = () => {
         <Heading5>Attack Power Bonus of Special Attacks</Heading5>
         Special attacks Also get bonus from your Attack Power. This is formula for non normalized abilities.
         <Formula>
-          SpecialAttacksDamage = MainHandWeaponDamage + (WeaponSpeed * AttackPower / 14)
+          SpecialAttacksDamage = MainHandWeaponDamage + (MainHandWeaponSpeed * AttackPower / 14)
         </Formula>
 
         <Heading5>Attack Speed Normalization</Heading5>
@@ -289,7 +423,7 @@ const Physical = () => {
         <Formula>
           SpecialAttacksDamage = MainHandWeaponDamage + (NormalizedWeaponSpeed * AttackPower / 14)
         </Formula>
-        Abilities with normalized weapon speed:
+        Abilities that use normalized weapon speed:
         <ul>
           <li>
             <Rogue />: <Spell id={27441}>Ambush</Spell>, <Spell id={26863}>Backstab</Spell>, <Spell

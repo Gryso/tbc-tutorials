@@ -237,7 +237,7 @@ const icons = {
   eotsMark: require("../../../images/icons/currency/eotsMark.png"),
   wsgMark: require("../../../images/icons/currency/wsgMark.png"),
   arenaPoints: require("../../../images/icons/currency/arenaPoints.png"),
-  honor: require("../../../images/icons/currency/honor.gif"),
+  honor: require("../../../images/icons/currency/honor.png"),
 
   boj: require("../../../images/icons/currency/boj.png"),
 

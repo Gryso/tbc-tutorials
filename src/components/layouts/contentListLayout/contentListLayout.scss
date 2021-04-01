@@ -1,14 +1,17 @@
+@import "../../../styles/mediaQueries";
+
 .content {
   width: 100%;
-  max-width: 70em;
+  max-width: var(--content-max-width);
   padding: var(--top-content-gap) 2rem calc(12 * var(--top-content-gap));
 }
 
 .listOfContent {
   position: sticky;
   top: calc(var(--header-height) + var(--top-content-gap));
+  display: none;
   height: min-content;
-  max-width: 20em;
+  max-width: var(--list-of-content-max-width);
   margin-top: calc((var(--h1-multiplayer) * var(--leading)) + var(--top-content-gap));
   margin-right: 1.5rem;
   border-left: 1px solid var(--sepoarator-color);
@@ -25,5 +28,11 @@
     color: var(--primary-color);
     text-decoration: none;
     line-height: calc(2 * 1rem);
+  }
+}
+
+@media only screen and (min-width: $large-break-point) {
+  .listOfContent {
+    display: block;
   }
 }

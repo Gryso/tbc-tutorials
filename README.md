@@ -13,4 +13,3 @@
 * SS, MT and WW damage formula
 * Spell coefficients
 * Resistances
-* Agi to dodge for classes

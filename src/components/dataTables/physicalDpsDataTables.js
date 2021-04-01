@@ -9,6 +9,7 @@ import React from "react";
 import Table from "../table/Table";
 import round from "../../utils/round";
 import {orderedArmorAmounts} from "../../data/bossArmor";
+import {Druid, Hunter, Paladin, Rogue, Shaman, Warrior} from "../gameElements/class/classes";
 
 export const GlancingBlowDataTable = () => (
   <Table cellAlign="center">
@@ -253,6 +254,36 @@ export const AmountOfArmorValuesDataTable = () => {
           ))}
         </tbody>
       </Table>
+    )
+  )
+}
+
+export const DpsIncreasePerCritChancePercent = () => {
+  return (
+    (
+      <section>
+        <h5>DPS increase per 1% of Critical Strike Chance for different classes:</h5>
+        <ul>
+          <li>
+            <Druid />: <strong>1.2%</strong>
+          </li>
+          <li>
+            <Hunter />: <strong>~1.19%</strong> (1.3% for Ranged Attacks and 1% for Pet Attacks)
+          </li>
+          <li>
+            <Paladin />: <strong>1%</strong>
+          </li>
+          <li>
+            <Rogue />: <strong>~1.3%</strong> (exclude auto attack and finishing moves)
+          </li>
+          <li>
+            <Shaman />: <strong>1%</strong>
+          </li>
+          <li>
+            <Warrior />: <strong>1.2%</strong>
+          </li>
+        </ul>
+      </section>
     )
   )
 }

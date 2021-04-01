@@ -116,6 +116,7 @@ export const staminaToHealth = (stamina, tauren = false) => stamina * (tauren ? 
 // Melee
 export const critRatingToCrit = (critRating) => round(critRating / ratingMultipliers.meleeCrit);
 export const agilityToCrit = (agility, wowClass) => round(agility / statsMultipliers[wowClass].agiToCrit);
+export const critToMeleeDpsImprovement = (critChance, critBonus) => round(critChance * critBonus);
 export const hasteRatingToSpeed = (hasteRating) => round(hasteRating / ratingMultipliers.meleeHaste);
 export const hitRatingToHitChance = (hitRating) => round(hitRating / ratingMultipliers.meleeHit);
 export const expertiseRatingToExpertise = (expertiseRating) => Math.floor(expertiseRating / ratingMultipliers.expertise);

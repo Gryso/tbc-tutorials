@@ -20,7 +20,6 @@ import {
 } from "../../components/dataTables/spellDataTables";
 import Spell from "../../components/gameElements/spell/Spell";
 import {Link} from "gatsby";
-import {Tauren} from "../../components/gameElements/race/races";
 
 
 const Healing = () => {

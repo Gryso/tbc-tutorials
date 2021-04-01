@@ -2,6 +2,12 @@
   --cursor-main: url("../images/cursors/mainCursor.png");
   --cursor-redirect: url("../images/cursors/redirectCursor.png");
   --cursor-mail: url("../images/cursors/mailCursor.png");
+
+  --content-max-width: 70em;
+  --list-of-content-max-width: 20em;
+  --side-menu-max-width: 20em;
+  --side-menu-min-width: 12em;
+
   cursor: var(--cursor-main), auto;
 }
 

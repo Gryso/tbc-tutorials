@@ -37,7 +37,6 @@ import statsFormulas, {
   dodgeRatingToDodge,
   expertiseFor1PercentReduction,
   expertiseRatingFor1Expertise,
-  expertiseRatingToExpertise,
   expertiseToReduction,
   missChanceForLevel,
   parryRatingToParry,
@@ -881,8 +880,8 @@ const Tank = () => {
           Glancing Blow is successful attack damage of which is reduces to 75% of normal hit. Chance for Glancing Blow
           against Boss (lvl 73) is 25%, there is no way to avoid it as there is no stat that decrease this chance
           and it cannot be pushed out of <Link to="/stats-and-mechanics/attack-tables">Attack Table</Link> table as it
-          has higher priority than Critical Strike and Hit. Glancing Blow is only possible on white attacks, yellow
-          attacks (spells and abilities) cannot glance.
+          has higher priority than Critical Strike and Hit. Glancing Glancing Blow is only possible on white melee
+          attacks, yellow attacks (spells and abilities) and Ranged attacks cannot glance.
         </p>
         <GlancingBlowDataTable />
 

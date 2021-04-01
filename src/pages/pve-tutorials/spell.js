@@ -34,6 +34,7 @@ import {IllidariCouncil, RageWinterchill, Supremus} from "../../components/gameE
 import Table from "../../components/table/Table";
 import Formula from "../../components/formula/Formula";
 import {Link} from "gatsby";
+import round from "../../utils/round";
 
 
 const SpellMechanics = () => {
@@ -68,7 +69,7 @@ const SpellMechanics = () => {
           level than caster also benefit from Bonus Resistance From Level Difference this is 5 all resistance per level
           above caster. (This resistance is not affected by Spell Penetration) Boss (lvl 73)
           has {spellResistanceForLevel(73)} Bonus Resistance From Level Difference on average partially
-          resisting {averageDamageReductionFromResistance()}% of damage
+          resisting {round(averageDamageReductionFromResistance() * 100)}% of damage
         </p>
 
         {/*<Table cellAlign="center">*/}
@@ -149,11 +150,11 @@ const SpellMechanics = () => {
           Binary are spells that can only hit and have full effect or be fully resisted and have not effect at all. This
           are usually spells that deal no damage (There are exceptions for damage spells that have additional non-damage
           effect like <Spell id={27223}>Death Coil</Spell> or <Spell id={25387}>Mind Flay</Spell>) as Binary spells
-          cannot have Partial Resist effect of Spell Resistance is combined with your chance to hit spell for total
-          hit chance. Both Spell Hit Rating and Spell Penetration affect spells hit chance.
+          cannot have Partial Resist of their effect. Spell Resistance is combined with your chance to hit spell for
+          total hit chance. Both Spell Hit Rating and Spell Penetration affect spells hit chance.
         </p>
         <Formula>
-          BinarySpellHitChance = PlayersChanceToHit * AverageDamageReducedByResistance
+          BinarySpellHitChance = PlayersChanceToHit * (1 – 0.75 * (EnemySpellResistance) / (5 * AttackerLevel))
         </Formula>
 
         <Heading2>Damage of Spells</Heading2>

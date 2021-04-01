@@ -23,10 +23,14 @@ import {
   IllidariCouncil,
   KaelthasSunstrider,
   Kalecgos,
+  Kiljaeden,
   LadyVashj,
   LeotherasTheBlind,
   Magtheridon,
   MotherShahraz,
+  Muru,
+  Netherspite,
+  Nightbane,
   PrinceMalchezaar,
   ShadeOfAran,
   Supremus,
@@ -48,6 +52,7 @@ import round from "../../../utils/round";
 import statsFormulas, {
   agilityToCrit,
   critRatingToCrit,
+  critToMeleeDpsImprovement,
   damageReductionOfArmor,
   expertiseFor1PercentReduction,
   expertiseRatingFor1Expertise,
@@ -56,6 +61,7 @@ import statsFormulas, {
   hasteRatingToSpeed,
   hitRatingToHitChance,
   intellectToMana,
+  manaRegen,
   missChanceForLevel,
   ratingFor1Percent,
   staminaToHealth
@@ -103,8 +109,11 @@ import {
   Tailoring
 } from "../../../components/gameElements/profession/professions";
 import {Wolf} from "../../../components/gameElements/minion/minions";
-import SimpleMacro from "../../../components/macro/SimpleMacro";
+import {HeadlessMacro} from "../../../components/macro/SimpleMacro";
 import Expresion from "../../../components/expresion/Expresion";
+import Formula from "../../../components/formula/Formula";
+import Author from "../../../components/author/Author";
+import {DpsIncreasePerCritChancePercent} from "../../../components/dataTables/physicalDpsDataTables";
 
 function calculateWeaponAttackPower(feralAp, agility, strength, king = true) {
   let statsMultiplayer = king ? 1.133 : 1.03;
@@ -122,8 +131,16 @@ const Physical = () => {
     <MainLayout pageTitle="Feral DPS">
       <SideMenuLayout sideMenu={PveTutorialsMenu}>
         <Title>Feral DPS (Cat)</Title>
+        <Author server="Firemaw">Lodin</Author>
 
         <Heading2>Cat Form</Heading2>
+        <p>
+          First lets take a look at our most important ability <Spell id={768}>Cat Form</Spell>. It is druids
+          shapeshifting form that turns you into prettier version of <Rogue /> and allow you to effectively deal
+          physical
+          damage.
+          <CatForm /> has following effects:
+        </p>
         <ol>
           <li>
             <CatForm /> Allows you to use following cat abilities:
@@ -150,11 +167,14 @@ const Physical = () => {
             <CatForm /> changes resource that you are using from Mana to Energy. (This also makes you immune to Mana
             Burn and Mana Drain effects.)
           </li>
-          <li>Abilities in <CatForm /> have global cooldown reduced to 1.0 second from usual 1.5 seconds.</li>
+          <li><CatForm /> abilities have global cooldown reduced to 1.0 second from usual 1.5 seconds.</li>
           <li>Your <strong>base</strong> Attack Speed in <CatForm /> is normalized to 1 attack per second.</li>
           <li>
-            In <CatForm /> you will cease to attack with your Weapon and use cat pawns instead fully ignoring your
-            Weapon. (Due to this you are immune to <Spell id={676}>Disarm</Spell>
+            In <CatForm /> you will cease to attack with your Weapon and use cat pawns instead, fully ignoring your
+            Weapon. (Due to this you are unaffected by <Spell id={676}>Disarm</Spell>)
+          </li>
+          <li>
+            Your <strong>base</strong>(excluding Attack Power) damage in <CatForm /> is set to 51-75 (63 DPS).
           </li>
           <li><CatForm /> reduces threat you generate by 29% down to 0.71 threat point per one damage delt. (0.71x
             Threat Multiplier)
@@ -164,8 +184,8 @@ const Physical = () => {
             Mana regeneration is unaffected)
           </li>
           <li>
-            <CatForm /> increase your Attack Power by 40 and <Talent id={16975}>Predatory Strikes</Talent> adds another
-            150 Attack Power
+            <CatForm /> increase your Attack Power by 140 (lvl * 2)
+            and <Talent id={16975}>Predatory Strikes</Talent> adds another 105 Attack Power
           </li>
           <li><CatForm /> increase your Attack Power by amount equal to your Agility</li>
           <li>
@@ -224,15 +244,16 @@ const Physical = () => {
           Energy is resources used for Abilities by <Druid /> in <CatForm /> minimal amount of energy is 0 and maximal
           is
           100 (this cannot be improved for <Druid />). Energy regenerates by 20 points every 2 seconds. This interval
-          begins when you ShapeShift into <CatForm /> and by default you have no 0 energy after ShapeShift, this can be
+          begins when you ShapeShift into <CatForm /> and by default you have 0 energy after ShapeShift, this can be
           improved with <Talent id={17061}>Furor</Talent> up to 40 and with <Item id={8345} quality="rare">Wolfshead
-          Helm</Item> by 20. When you leave <CatForm /> all accumulated energy is lost.
+          Helm</Item> by another 20 (up to 60 energy after ShapeShift together).
+          When you leave <CatForm /> all accumulated energy is lost.
         </p>
 
         <Heading2>Race</Heading2>
         <Heading5>Racials</Heading5>
         Both races have <Spell id={20551}>Nature Resistance</Spell> and <Tauren /> has <Spell
-        id={20550}>Endurance</Spell> that could provide some additional survivability and <Nightelf />'s <Spell
+        id={20550}>Endurance</Spell> that provides some additional survivability and <Nightelf />'s <Spell
         id={20585}>Wisp Spirit</Spell> can let you AFK a bit longer before pull as you can get there faster after wipe.
         Apart from that racials are pretty inconsequential.
         <Heading5>Base Stats</Heading5>
@@ -285,6 +306,7 @@ const Physical = () => {
           and Agility also include bonus from <Talent id={24894}>Heart of the Wild</Talent>. All values in parenthesis
           are values with <Spell id={20217}>Blessing of Kings</Spell> buff applied.
         </p>
+
         <Heading5>Agility</Heading5>
         <p>
           Agility is best stat you can get (apart from Hit and Expertise rating) one point does all of the following:
@@ -308,22 +330,26 @@ const Physical = () => {
             Increase your Bonus Healing by 1 (1.1) due to <Talent id={33873}>Nurturing Instinct</Talent>
           </li>
         </ul>
+
         <Heading5>Strength</Heading5>
         <p>
           Strength increase your Attack Power by 2.266 (2.4926).
         </p>
+
         <Heading5>Stamina</Heading5>
         <p>
           Stamina increase your Health by {staminaToHealth(1.03)} ({staminaToHealth(1.133)}). For <Tauren /> with <Spell
           id={20550}>Endurance</Spell> Stamina increase your Health
           by {staminaToHealth(1.03, true)} ({staminaToHealth(1.133, true)}).
         </p>
+
         <Heading5>Intellect</Heading5>
         <p>
           Intellect increase Mana by {intellectToMana(1.236)} points ({intellectToMana(1.3596)}) and increase amount of
           mana regenerated by Spirit. Note one point of Intellect from equipment provides 1.03 (1.133) effective
           Intellect.
         </p>
+
         <Heading5>Spirit</Heading5>
         <p>
           Spirit increase Mana and Health regeneration. Health regenerated is inconsequential and for amount of Mana
@@ -333,11 +359,12 @@ const Physical = () => {
         </p>
 
         <Heading3>Secondary</Heading3>
+
         <Heading5>Expertise</Heading5>
         <p>
           Expertise decrease chance enemy will dodge or parry your attack by 0.25%. As you should <strong>always attack
           enemy from behind to
-          avoid</strong> <Link to="/stats-and-mechanics/parry-haste">Parry Haste</Link>. Only dodge reduction matters to
+          avoid</strong> <Link to="/stats-and-mechanics/parry-haste">Parry Haste</Link>, only dodge reduction matters to
           us as NPC can dodge attack from every direction.
           Expertise can be improved with Expertise Rating and you need {expertiseRatingFor1Expertise()} Expertise Rating
           for one Expertise. (Expertise is <strong>rounded down</strong>.)
@@ -345,18 +372,22 @@ const Physical = () => {
           need {expertiseFor1PercentReduction() * 6.5} Expertise
           or {Math.ceil(expertiseFor1PercentReduction() * expertiseRatingFor1Expertise() * 6.5)} Expertise Rating to
           decrease chance of Dodge to 0% (This is Hard Cap and any point of Expertise Rating above this is wasted).
-          There is no other way to improved this. Decrease of Dodge chance from Expertise Rating is same as decrease of
-          Miss chance from Hit Ratinging point to point. But as Expertise Rating is not so common as Hit Ratinging items
+          There is no other way to improved this.
+        </p>
+        <p>
+          Decrease of Dodge chance from Expertise Rating is same as decrease of
+          Miss chance from Hit Rating point to point. But as Expertise Rating is not so common as Hit Rating, items
           with
           Expertise Rating are more valuable. Both Expertise and Hit Ratinging should be your main priority as nothing
           else
           will provide bigger damage increase. One of most overlooked items is <Item id={30834}>Shapeshifter's
           Signet</Item> which is absolutely AWESOME improving your damage by fixed 1.25% just from Expertise Rating
-          Bonus and you can just buy it from vendor (if you are Exalted with Lower City fraction).
+          Bonus and you can just buy it from vendor (if you are Exalted with Lower City faction).
         </p>
-        <Heading5>Hit Ratinging</Heading5>
+
+        <Heading5>Hit Rating</Heading5>
         <p>
-          Hit Ratinging decrease chance you will miss target with your attacks by {hitRatingToHitChance(1)}%. Attacking
+          Hit Rating decrease chance you will miss target with your attacks by {hitRatingToHitChance(1)}%. Attacking
           Boss (level 73) you chance to miss is {missChanceForLevel(73)}% so you
           need {Math.ceil(ratingFor1Percent("meleeHit") * missChanceForLevel(73))} Hit Ratinging to never miss a Boss.
           Damage increase of Hit Ratinging is same as of Expertise Rating and this two stats should be main priority of
@@ -382,78 +413,598 @@ const Physical = () => {
           even {Math.ceil(ratingFor1Percent("meleeHit") * (missChanceForLevel(73) - 4))} (With <Talent
           id={33602}>Improved Faerie Fire</Talent>) Hit Ratinging required for lucky <Nightelf />.)
         </p>
+
         <Heading5>Attack Power</Heading5>
         <p>
           Attack Power increase damage of your abilities and your overall DPS by 0.071 per point (or 1 DPS per 14AP).
           Every point of Attack Power increase your effective Attack Power by 1.1 (due to <Talent id={24894}>Heart of
           the Wild</Talent>). If there is <Enhancement /> <Shaman /> in your group <Talent id={30811}>Unleashe
-          Rage</Talent>increase this value to 1.21 effective Attack Power.
+          Rage</Talent> increase this value to 1.21 effective Attack Power. Formula for your base AttackPower
+          in <CatForm /> is:
         </p>
+        <Formula>(2 * Strength) + Agility + (2 * Level) - 20)</Formula>
+        <p>
+          This is further improved by your talents, buffs and Attack Power bonus from your equipment.
+        </p>
+
         <Heading5>Critical Strike Rating</Heading5>
         <p>
-          Critical Strike Rating increase you chance of Critical Strike by {critRatingToCrit(1)} which also increase
-          amount of additional combo points from <Talent id={37117}>Primal Fury</Talent> talent
+          Critical Strike Rating increase you chance of Critical Strike by {critRatingToCrit(1)} which also
+          increase amount of additional combo points from <Talent id={37117}>Primal Fury</Talent> talent. One percent
+          improvement in your Critical Strike chance increase your DPS
+          by {critToMeleeDpsImprovement(1, 1.2)}% (
+          with <Talent id={33869}>Predatory Instincts</Talent>).
         </p>
+
         <Heading5>Armor Penetration</Heading5>
         <p>
           Armor Penetration found on items with 'ignore x of your opponent's armor' reduce amount of enemies armor that
-          affect your attacks. There are two common values you should be prepared most common
+          affect your attacks. There are two common values you should be prepared for. Most common value
           is {orderedArmorAmounts[0].armor} and second most common is {orderedArmorAmounts[1].armor} to match both value
           you should aim for default (in your main gear) value of {orderedArmorAmounts[1].armor} armor reduction
           (including all raid buffs and debuffs) and be able to swap items that will bump your Armor penetration up
           to {orderedArmorAmounts[0].armor} when necessary. Any point of Armor Penetration above enemies armor (again
-          count in all buffs/debuffs) is wasted and Damage Increase from Armor Penetration scales in faster than liner
+          count in all buffs/debuffs) is wasted. Damage Increase from Armor Penetration scales in faster than liner
           fashion (more Penetration you have more effective it is). So it is important to get the amount just right and
           if you focus on Armor Penetration make sure you stick to it. You can learn more in <Link
           to="/pve-tutorials/physical/#armor-penetration">Armor Penetration part of our Physical DPS mechanics
           tutorial</Link> and play with our <Link to="/stats-and-mechanics/armor-reduction-calculator">Armor Reduction
           Calculator</Link>
         </p>
+
         <Heading5>Haste Rating</Heading5>
         <p>
-          Haste Rating reduce attack between your attacks by about {hasteRatingToSpeed(1)} per point. Way haste rating
+          Haste Rating reduce time between your attacks by about {hasteRatingToSpeed(1)} per point. Way haste rating
           is calculated is quite complicated and you can read about it in our <Link
           to="/pve-tutorials/physical/#haste">Physical DPS mechanics</Link> tutorial. Note that Haste Rating also
           increase amount of procs from <Spell id={16864}>Omen of Clarity</Spell>, <Link
           to="pve-tutorials/druid/feral-dps/#malorne-harness-t4">Malorne Harness set 2 piece Bonus</Link> and trinkets
           like <Item id={28830}>Dragonspine Trophy</Item> or <Item id={32505}>Madness of the Betrayer</Item>. (Despite
           the popular belief that haste is less effective on classes with fast attack speed haste is still awesome
-          for <Druid /> as that is not how percentages work.)
+          for <Druid /> as that is not how percentages work.) Note Haste rating only affect your Auto-Attacks and does
+          not affect your abilities.
         </p>
+
+        <Heading3>Stats priority</Heading3>
+        <p>
+          Expertise > Hit > Agility > Armor Penetration > Haste > Critical Strike > Strength > AP > Intellect > Stamina
+          > Spirit
+        </p>
+        {/*<Item id={29390}>Everbloom Idol</Item> benefits from crit.*/}
+        {/*<Talent id={37117}>Primal Fury</Talent> benefits from crit.*/}
 
         <Heading2>Talents</Heading2>
         <p>
           Talents are to same degree relative and should be customized for your situation so even tough we will list
-          same standard build do not follow them religiously.
+          same standard builds do not follow them religiously. We will also discuss some talents in detail.
         </p>
         <ul>
-          <li><Link
-            to="https://calculators.iradei.eu/talents/druid?00000000000000000000055000213232211530125105503301000000000000">Pure
-            DPS</Link></li>
-          <li><Link
-            to="https://calculators.iradei.eu/talents/druid?00000000000000000000055000213232212532125105503001000000000000">Pure
-            DPS but I cannot waste mana fast enough</Link></li>
-          <li><Link
-            to="https://calculators.iradei.eu/talents/druid?01000000000000000000050320213232212513125105503001000000000000">I
-            like my PvP</Link></li>
-          <li><Link
-            to="https://calculators.iradei.eu/talents/druid?00000000000000000000050303213232210530125105503301000000000000">Tank/DPS
-            hybrid</Link></li>
+          <li>
+            <a
+              href="https://calculators.iradei.eu/talents/druid?00000000000000000000050000003232210530105105503001000000000000">
+              Must have Talents (14 free points)</a>
+          </li>
+          <li>
+            <a
+              href="https://calculators.iradei.eu/talents/druid?00000000000000000000055000213232211530125105503301000000000000">
+              Pure DPS</a>
+          </li>
+          <li>
+            <a
+              href="https://calculators.iradei.eu/talents/druid?00000000000000000000055000213232212532125105503001000000000000">
+              Pure DPS but I cannot waste mana fast enough</a>
+          </li>
+          <li>
+            <a
+              href="https://calculators.iradei.eu/talents/druid?01000000000000000000050320213232212513125105503001000000000000">
+              I like my PvP</a>
+          </li>
+          <li>
+            <a
+              href="https://calculators.iradei.eu/talents/druid?00000000000000000000050303213232210530125105503301000000000000">
+              Tank/DPS hybrid</a>
+          </li>
         </ul>
+
+        <Heading4>Omen Of Clarity</Heading4>
+        <p>
+          <Spell id={16864}>Omen of Clarity</Spell> gives your melee attacks chance to apply <Spell
+          id={16870}>Clearcasting</Spell> buff that allows you to use next Ability for free (Ability cost 0 energy, rage
+          or mana). Proc rate is 5.833% per melee swing that does damage or is absorbed. There is no internal cooldown
+          on the ability, and it can happen multiple times in a row. You can increase amount of <Spell
+          id={16870}>Clearcasting</Spell> applications by improving your Attack
+          Speed, {ratingFor1Percent("meleeHaste")} Haste increase amount of activations per time period by ~0.058%.
+          (For <Spell id={24248}>Ferocious Bite</Spell> <Spell id={16870}>Clearcasting</Spell> means all your energy
+          will be counted toward additional damage as Ability itself costs no energy (This is horrible damage wise.)).
+        </p>
+
+        <Heading5><Talent id={17073}>Naturalist</Talent></Heading5>
+        <p>
+          <Talent id={17073}>Naturalist</Talent> increases all physical damage by 10%. Bonus is added at the end of
+          other calculation. It does increase your Auto-Attack damage and is visible in character sheet but it does not
+          increase Base Damage for purposes of percentual Damage calculation of abilities
+          like <Spell id={27002}>Shred</Spell> instead it adds 10% bonus to
+          final <Spell id={27002}>Shred</Spell> damage. It also increase damage of DoT abilities
+          like <Spell id={27006}>Pounce</Spell> and <Spell id={27003}>Rake</Spell>.
+        </p>
+
+        <Heading5><Spell id={16979}>Feral Charge</Spell></Heading5>
+        <p>
+          People often skip <Spell id={16979}>Feral Charge</Spell> when playing pure DPS but there are many uses for
+          this handy spell. It allows you to save time and sometimes even your life. You can charge back from pushbacks
+          (<Magtheridon />, <GruulTheDragonkiller />, <Kiljaeden />), pick up spells
+          (<Archimonde />, <KaelthasSunstrider />)
+          and dangerous zones (<Felmyst />, <Nightbane />, <Netherspite />, <Muru />). Nothing reduce your damage quite
+          as
+          death or time spend away from your target. You can <Spell id={16979}>Feral Charge</Spell> in, use
+          quick <Spell id={33987}>Mangle (Bear)</Spell> and continue your <Spell id={27002}>Shred</Spell> rotation.
+        </p>
+
+        <Heading5><Talent id={17061}>Furor</Talent>/<Talent id={16835}>Natural Shapeshifter</Talent></Heading5>
+        <p>
+          You need both <Talent id={17061}>Furor</Talent> and <Talent id={16835}>Natural Shapeshifter</Talent> for
+          effective <Link to="/pve-tutorials/druid/feral-dps/#powershifting">Powershifting</Link> if You do not plan to
+          use Powershifting feel free to allocate talent points elsewhere.
+        </p>
+
+        <Heading5><Talent id={17108}>Intensity</Talent></Heading5>
+        <p>
+          <Talent id={17108}>Intensity</Talent> is a bit overrated talent. From empirical privat server data is seems
+          it does something but as ShapeShifting seems to not
+          trigger <Link to="/pve-tutorials/physical/#five-second-rule">Five Second Rule</Link> and Spirit based
+          mana regeneration is unaffected (apart from 11% reduction
+          from <CatForm/>.) so <Talent id={17108}>Intensity</Talent> should have nothing to improve. Also your Spirit is
+          quite low, probably very far
+          from <Link to="/pve-tutorials/physical/#best-spirit-and-intellect-ratio">ideal ratio to Intellect</Link> and
+          your regeneration in <CatForm /> is also reduced to 89%. It seems that it will not hurt you, but you will be
+          happy if it provides you with one additional shapeshift.
+        </p>
+
+        <Heading5><Talent id={37117}>Primal Fury</Talent></Heading5>
+        <p>
+          Allow you to generate additional Combo Point when you Critical Strik with Combo Point Generating ability.
+          This increase value of Critical Strike Rating and Agility. Note that <Spell id={27006}>Pounce</Spell> is only
+          Combo Generating Ability that cannot Crit.
+        </p>
+
+        <Heading5><Talent id={24894}>Heart of the Wild</Talent></Heading5>
+        <p>
+          <Talent id={24894}>Heart of the Wild</Talent> improves your Attack Power by 10%. This is calculated as the
+          last effect which means all Attack Power buffs and all Primary Stats bonuses from Buffs are also
+          included (<Spell id={20217}>Blessing of Kings</Spell>, <Spell id={25359}>Grace of Air Totem</Spell>
+          <Spell id={25528}>Strength of Earth Totem</Spell>).
+        </p>
+        <p>
+          <Talent id={24894}>Heart of the Wild</Talent> also increases your Intellect by 20%. That is reason why you
+          should focus on Intellect over Spirit.
+        </p>
+
+        <Heading5><Talent id={16999}>Savage Fury</Talent></Heading5>
+        <p>
+          Description of this talent is a bit misleading as one could expect it would add 20% to resulting damage but
+          that is not true for all three spells. They are modified as follows:
+        </p>
+        <ul>
+          <li>
+            For <Spell id={27000}>Claw</Spell> it improves only Bonus Damage from 190 to 228 but not the "claw" damage
+            calculated from Base attack.
+          </li>
+          <li>
+            For <Spell id={27003}>Rake</Spell> it improves static damage values from 78 to 92 on initial hit and from
+            108 to 129 on subsequent DoT damage. But it does not improve how <Spell id={27003}>Rake</Spell> scales with
+            Attack Power.
+          </li>
+          <li>
+            For <Spell id={33983}>Mangle (Cat)</Spell> it improves both Base Damage multiplier from 160% to 192% and
+            Bonus damage from 264 to 317.
+          </li>
+        </ul>
+
+        <Heading5><Talent id={17007}>Leader of the Pack</Talent></Heading5>
+        <p>
+          <Spell id={24932}>Leader of the Pack</Spell> provides your party with aura which increase chance of Critical
+          Strike by 5% to everyone in the party. This also separately affects <Hunter />'s and <Warlock />'s pets. That
+          is
+          reason why <Hunter />s love <FeralCombat /> <Druid /> so much. This can be further improved
+          with <Item id={32387} quality="rare">Idol of the Raven Goddess</Item> idol,
+          providing {(critRatingToCrit(20) + 5) * 5}% Critical Strike Chance to your party. (Maximal amount of
+          Crital Strike Chance improvement you can provide is {(critRatingToCrit(20) + 5) * 9}% with
+          four <Hunter />s in your party.)
+        </p>
+
+        <Heading5><Talent id={33856}>Survival of the Fittest</Talent></Heading5>
+        <p>
+          <Talent id={33856}>Survival of the Fittest</Talent> improves all your Base Stats by 3%. This includes buffs
+          like <Spell id={25359}>Grace of Air Totem</Spell> or <Spell id={26990}>Mark of the Wild</Spell> and stacks
+          multiplicatively with <Spell id={20217}>Blessing of Kings</Spell>
+        </p>
+
+        <Heading5><Talent id={33873}>Nurturing Instinct</Talent></Heading5>
+        <p>
+          <Talent id={33873}>Nurturing Instinct</Talent> does not get enough love. There is one basic rule for DPS:
+          Dead people do not make any DPS. Apart from helping healers keep you alive this with healing weapon and well
+          timed <Spell id={26983}>Tranquility</Spell> (for instance on <Muru />) can make or break you attempt.
+        </p>
+
+        <Heading5><Talent id={33869}>Predatory Instincts</Talent></Heading5>
+        <p>
+          <Talent id={33869}>Predatory Instincts</Talent> is a bit unique compared to other Critical Strike Damage
+          improving talents as it does increase full damage of Critical Strike instead of just bonus portion of Critical
+          Strike. Meaning it increase whole Critical Strike <strong>Damage</strong> from 200% to 220% (instead of
+          increasing just Critical Strike Damage <strong>Bonus</strong> from 100% to 110%).
+        </p>
 
         <Heading2>Abilities</Heading2>
         <p>
-          If your hostile Ability either one that generates Combo Points or Finishing move are Parried, Dodged, Absorbed
-          or you
-          miss your attack 80% of energy cost is returned (or in other word Ability costs only 20% if attack does not
-          connect). On Block even if all damage is fully absorbed no energy is returned.
+          <CatForm /> uses three kinds of spells: Combo Point Generators, Finishing Moves and rest is uncategorized.
+          All abilities in <CatForm /> uses energy as resource or have no cost at all. If your hostile Ability either
+          one
+          that generates Combo Points or Finishing move are Parried, Dodged, Absorbed or you miss your attack 80% of
+          energy cost is returned (or in other word Ability costs only 20% if attack does not connect). Although if they
+          are Blocked even if all damage is fully absorbed no energy is returned.
         </p>
-        [quote=Rlnshadow]Which means that an OoC Ferocious Bite at 100 energy will deal 410 more damage. Pretty
-        sick.[/quote] Yes. It's so bad it's sick. If you use the energy for two Mangles or Shreds instead, you will do
-        at least four times the damage. If Clearcasting procs, you have 5 combo points, ~40 energy or more and is
-        about to use Ferocious Bite, don't use it. The 40 energy amounts to about 170 damage, while a Mangle or Shred
-        and a Ferocious Bite afterwards would deal much higher damage. It doesn't matter that the combo point is
-        wasted, you will still do much less damage if you burn Clearc
+        <p>
+          Combo Point Generators as name suggest generate Combo Points (or CP). Each Combo Point Generator generates 1
+          CP per use although this is improved with <Talent id={37117}>Primal Fury</Talent> to generate 2 CP on Critical
+          Strike. Maximal amount of CP is 5 and they are used by Finishing Moves. Damage of Combo Point Generators is
+          usually based on your Auto-Attack (or base) damage.
+        </p>
+        <p>
+          Second category are Finishing Moves, they use all CP currently on target and their effectiveness is based on
+          amount of CP and your Attack Power. They also require at leas one CP to be on target to be used.
+        </p>
+
+        <Heading3>Auto-Attack</Heading3>
+        <p>
+          Your base attack damage is <Expresion>51 - 75</Expresion> and attack speed is 1 Hit per second. This damage
+          is further improved by 1/14 of your Attack Power (and by <Talent id={17073}>Naturalist</Talent> talent by 10%
+          afterwards). Damage of you Auto-Attack is used to determine damage of various abilities. Formulas for
+          your <strong>Base Damage</strong> in <CatForm />:
+        </p>
+        <ul>
+          <li><strong>Min Damage</strong>: <Expresion>(51 + (AP/14))</Expresion></li>
+          <li><strong>Max Damage</strong>: <Expresion>(75 + (AP/14))</Expresion></li>
+          <li><strong>DPS</strong>: <Expresion>(63 + AP/14)</Expresion></li>
+        </ul>
+
+        <Heading3>Combo Point Generators</Heading3>
+
+        <Heading5 anchorId="mangle"><Spell id={33983}>Mangle (Cat)</Spell></Heading5>
+        <p>
+          <Spell id={33983}>Mangle (Cat)</Spell> is predominantly use for it 12 seconds long +30% Bleed
+          and <Spell id={27002}>Shred</Spell> Damage bonus debuff. It costs 40 energy
+          (with <Talent id={16938}>Ferocity</Talent>) and can have its energy cost reduced further to 35 energy with 2
+          Set
+          Bonus of <Link to="/pve-tutorials/druid/feral-dps/#thunderheart-harness-t6">Thunderheart Harness set</Link>.
+          It
+          deals <Expresion>(2.25 * BaseDamage) + 405</Expresion> Damage (with <Talent id={16999}>Savage Fury</Talent>)
+          and is used for improving <Spell id={27002}>Shred</Spell> and <Spell id={27008}>Rip</Spell> Damage or when you
+          are not able to attack enemy from behind therefore unable to
+          use <Spell id={27002}>Shred</Spell>. <Spell id={33983}>Mangle (Cat)</Spell> also generates 1 (2 on
+          Crit <Talent id={37117}>Primal Fury</Talent>) combo point.
+        </p>
+
+        <Heading5 anchorId="shred"><Spell id={27002}>Shred</Spell></Heading5>
+        <p>
+          <Spell id={27002}>Shred</Spell> is your main Damage and Combo Point Generating ability. It cost 42 energy
+          (with <Talent id={16968}>Shredding Attacks</Talent> talent), generates 1 (2 on
+          Crit <Talent id={37117}>Primal Fury</Talent>) Combo Points and deals <Expresion>(2.25 * BaseDamage) +
+          405</Expresion> Damage.
+          It gest 30% damage bonus from <Spell id={33983}>Mangle</Spell> so make sure it is always up. If there is
+          another druid in your group or raid you can let him use <Spell id={33983}>Mangle</Spell> and only
+          use <Spell id={27002}>Shred</Spell> and Finishing Move as only reason to use <Spell
+          id={33983}>Mangle</Spell> is to increase <Spell id={27002}>Shred</Spell> damage. You have to attack your
+          target from behind to use <Spell id={27002}>Shred</Spell> so
+          make sure other classes let you stay in correct position. <Spell id={27002}>Shred</Spell> has highest damage
+          per
+          energy ratio of all Combo Point Generators (with <Spell id={33983}>Mangle</Spell> bonus) and
+          only <Spell id={27005}>Ravage</Spell> deals more damage per hit.
+        </p>
+
+        <Heading5 anchorId="rake"><Spell id={27003}>Rake</Spell></Heading5>
+        <p>
+          <Spell id={27003}>Rake</Spell> is DoT that costs 35 energy (with <Talent id={16938}>Ferocity</Talent>). It
+          deals (with <Talent id={16999}>Savage Fury</Talent>) <Expresion>92 + (AP/100)</Expresion> instant Bleed
+          (affected by <Spell id={33983}>Mangle</Spell> bonus) Damage and another <Expresion>129 + (AP *
+          0.06)</Expresion> Bleed (also affected by <Spell id={33983}>Mangle</Spell> bonus) Damage over next 9 seconds
+          (1/3 of damage every 3 seconds). Initial damage is considered to by Hit so it can Crit but
+          also <strong>Totally Ignores Armor</strong> (subsequent DoT does as well). This makes it effective against
+          enemies with super huge Armor values. But in normal PvE combat there is pretty much no reason to use it as it
+          is worse than any other option.
+        </p>
+
+        <Heading5 anchorId="claw"><Spell id={27000}>Claw</Spell></Heading5>
+        <p>
+          <Spell id={27000}>Claw</Spell> is Ability of less fortune <Druid />'s that do not
+          have <Spell id={33983}>Mangle (Cat)</Spell>. With <Talent id={16999}>Savage Fury</Talent> it
+          deals <Expresion>BaseDamage + 228</Expresion> Damage and
+          generates 1 (2 on Crit <Talent id={37117}>Primal Fury</Talent>) combo point.
+          There is no reason whatsoever to use it as <FeralCombat /> <Druid />.
+        </p>
+
+        <Heading5 anchorId="pounce"><Spell id={27006}>Pounce</Spell></Heading5>
+        <p>
+          Pounce is only Combo Point Generator that cannot Crit so it always generates just 1 Combo Point. It can be
+          used only in <Spell id={9913}>Prowl</Spell> and it deals <Expresion>600 + (AP * 0.18)</Expresion> Bleed
+          (affected by <Spell id={33983}>Mangle</Spell> bonus) Damage (1/6 of Damage every 3 seconds).
+        </p>
+
+        <Heading5 anchorId="ravage"><Spell id={27005}>Ravage</Spell></Heading5>
+        <p>
+          <Spell id={27005}>Ravage</Spell> is ability that deals huge damage but can be only used
+          in <Spell id={9913}>Prowl</Spell> and you must be behind your target. It cost 60 energy and
+          deals <Expresion>(3.85 * BaseDamage) + 514</Expresion> Damage. It also generates 1 (2 on
+          Crit <Talent id={37117}>Primal Fury</Talent>) combo point. Although it deals huge damage is less energy
+          efficient than <Spell id={27002}>Shred</Spell> so it should not be used as it complicates beginning of fight
+          (You must be behind your target in <Spell id={9913}>Prowl</Spell>) and is not generally worth the hassle. You
+          will be better off just starting with <Spell id={33983}>Mangle (Cat)</Spell> and focusing
+          on <Spell id={27002}>Shred</Spell>.
+        </p>
+
+        <Table cellAlign="center" leftAlignFirstColumn={true}>
+          <caption>
+            Values include <Talent id={16968}>Shredding Attacks</Talent> and <Talent id={16999}>Savage Fury</Talent>.
+          </caption>
+          <thead>
+            <tr>
+              <th>Spell</th>
+              <th>Energy</th>
+              <th>Base Damage Multiplier</th>
+              <th>AP Multiplier</th>
+              <th>Flat Damage</th>
+              <th>Mangle Bonus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><Spell id={33983}>Mangle (Cat)</Spell></th>
+              <td>40</td>
+              <td>x1.92</td>
+              <td>0</td>
+              <td>317</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <th scope="row"><Spell id={33983}>Mangle (Cat)</Spell> 2xT6</th>
+              <td>35</td>
+              <td>x1.92</td>
+              <td>0</td>
+              <td>317</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <th scope="row"><Spell id={27002}>Shred</Spell></th>
+              <td>42</td>
+              <td>x2.25</td>
+              <td>0</td>
+              <td>405</td>
+              <td>x1.3</td>
+            </tr>
+            <tr>
+              <th scope="row"><Spell id={27000}>Claw</Spell></th>
+              <td>40</td>
+              <td>x1.00</td>
+              <td>0</td>
+              <td>228</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <th scope="row"><Spell id={27005}>Ravage</Spell></th>
+              <td>60</td>
+              <td>x3.85</td>
+              <td>0</td>
+              <td>514</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <th scope="row"><Spell id={27003}>Rake</Spell></th>
+              <td>35</td>
+              <td>0</td>
+              <td>x0.61</td>
+              <td>221</td>
+              <td>x1.3</td>
+            </tr>
+            <tr>
+              <th scope="row"><Spell id={27006}>Pounce</Spell></th>
+              <td>50</td>
+              <td>0</td>
+              <td>x0.18</td>
+              <td>600</td>
+              <td>x1.3</td>
+            </tr>
+          </tbody>
+        </Table>
+
+        <Heading3>Finishing moves</Heading3>
+        <p>
+          Finishing move is ability that require Combo Point created by Combo Point generating
+          Abilities (<Spell id={27002}>Shred</Spell>, <Spell id={27003}>Rake</Spell>... ) to be used
+          and have their effect improved by amount of Combo Points. <Druid /> in <CatForm /> can use three Finishing
+          moves. There is DoT <Spell id={27008}>Rip</Spell> and two instant
+          attacks <Spell id={24248}>Ferocious Bite</Spell> and <Spell id={22570}>Maim</Spell>.
+        </p>
+
+        <Heading5 anchorId="ferocious-bite"><Spell>Ferocious Bite</Spell></Heading5>
+        <p>
+          <Spell>Ferocious Bite</Spell> is finishing move that instantly deals damage based on amount of Combo Point
+          and also convert any energy remaining after initial cost of 35 energy to additional Damage. Damage range is
+          calculated as <Expresion>90 + (169 * CP) + (AP * 0.24) + ((Eng - 35) * 4.1)</Expresion> - <Expresion>123 +
+          (169 * CP) + (AP * 0.24) + ((Eng - 35) * 4.1)</Expresion>. Note that <Spell>Ferocious Bite</Spell> is
+          capable of Critical Strike but its Damage is reduced by enemies Armor.
+        </p>
+        <p>
+          Damage of <Spell>Ferocious Bite</Spell> can be improved by 15%
+          with <Talent id={16862}>Feral Aggression</Talent> and by another 15% with 4 Set
+          Bonus of <Link to="/pve-tutorials/druid/feral-dps/#thunderheart-harness-t6">Thunderheart Harness set</Link>
+        </p>
+        <p>
+          Energy bonus is your current energy minus cost of <Spell>Ferocious Bite</Spell> multiplied by 4.1 this is
+          horrible ratio. Even the loves flat damage bonus multiplier of <Spell id={27003}>Rake</Spell> (which is worst
+          of all abilities) is higher than this. There is literally no worse way to waste
+          Energy. <strong>Use <Spell>Ferocious Bite</Spell> with minimal possible amount of energy!</strong>
+        </p>
+        <p>
+          <Spell id={16864}>Omen of Clarity</Spell> reduce cost of <Spell>Ferocious Bite</Spell> to 0 allowing you to
+          use 100 energy for bonus of <Spell id={24248}>Ferocious Bite</Spell>. As we discussed energy bonus to damage
+          of <Spell id={24248}>Ferocious Bite</Spell> is really bad and you could
+          use <Spell id={27002}>Shred</Spell> three times instead so <strong>do not use <Spell id={24248}>Ferocious
+          Bite</Spell> with <Spell id={16864}>Omen of Clarity</Spell> buff!</strong>
+        </p>
+        <Table cellAlign="center" fillFirstCell={true}>
+          <caption><Spell id={24248}>Ferocious Bite</Spell> damage in relation to amount of CP</caption>
+          <thead>
+            <tr>
+              <th>CP</th>
+              <th>Min Base Dmg</th>
+              <th>Max Base Dmg</th>
+              <th>AP Bonus</th>
+              <th>Energy Bonus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>259</td>
+              <td>292</td>
+              <td>AP * 0.24</td>
+              <td>(Eng - 35) * 4.1</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>428</td>
+              <td>461</td>
+              <td>AP * 0.24</td>
+              <td>(Eng - 35) * 4.1</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>597</td>
+              <td>630</td>
+              <td>AP * 0.24</td>
+              <td>(Eng - 35) * 4.1</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>766</td>
+              <td>799</td>
+              <td>AP * 0.24</td>
+              <td>(Eng - 35) * 4.1</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>935</td>
+              <td>968</td>
+              <td>AP * 0.24</td>
+              <td>(Eng - 35) * 4.1</td>
+            </tr>
+          </tbody>
+        </Table>
+
+        <Heading5 anchorId="rip"><Spell>Rip</Spell></Heading5>
+        <p>
+          <Spell id={27008}>Rip</Spell> is DoT finishing move that applies Bleed (affected
+          by <Spell id={33983}>Mangle</Spell> 30% bonus) that deals
+          <Expresion>(102 + (198 * CP)) + (AP * 0.06 * CP(max 4))</Expresion> Damage over 12 seconds (1/6 of Damage
+          every 2 seconds). Note that <Spell>Rip</Spell> ignores Armor but is not capable of Critical Strike.
+        </p>
+        <p>
+          Damage of <Spell id={27008}>Rip</Spell> can be improved by 15%
+          with 4 Set Bonus
+          of <Link to="/pve-tutorials/druid/feral-dps/#thunderheart-harness-t6">Thunderheart Harness set</Link> and by
+          also with <Item id={28372} quality="rare">Idol of Feral Shadows</Item>, which increases Damage of
+          every <Spell id={27008}>Rip</Spell> tick by <Expresion>7 * CP</Expresion> (210 overall with 5 CP)
+        </p>
+        <Table cellAlign="center" fillFirstCell={true}>
+          <caption><Spell id={27008}>Rip</Spell> damage in relation to amount of CP</caption>
+          <thead>
+            <tr>
+              <th>CP</th>
+              <th>Base Damage</th>
+              <th>AP Bonus Damage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>300</td>
+              <td>0.06 * AP</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>498</td>
+              <td>0.12 * AP</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>698</td>
+              <td>0.18 * AP</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>894</td>
+              <td>0.24 * AP</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>1092</td>
+              <td>0.24 * AP</td>
+            </tr>
+          </tbody>
+        </Table>
+
+        <Heading5 anchorId="maim"><Spell>Maim</Spell></Heading5>
+        <p>
+          <Spell id={22570}>Maim</Spell> is your third finishing moves. It cost 35 energy and its effect increases with
+          amount of Combo Points. (You need at least one Combo Point to use <Spell id={22570}>Maim</Spell>) It deals
+          less damage than <Spell id={24248}>Ferocious Bite</Spell> or <Spell id={27008}>Rip</Spell> but allow you to
+          incapacitate your target for duration based on amount of Combo Points. This might have same uses in PvE combat
+          but is overall geared more towards PvP play and will not be part of your standard PvE rotation.
+          It Deals <Expresion>(82 * CP) + 45 + MinBaseDamage</Expresion> - <Expresion>(82 * CP)
+          + 45 + MaxBaseDamage</Expresion> damage. Is is also only offensive <CatForm /> spell that has cooldown.
+        </p>
+        <Table cellAlign="center" fillFirstCell={true}>
+          <caption><Spell id={22570}>Maim</Spell> damage and duration in relation to amount of CP</caption>
+          <thead>
+            <tr>
+              <th>CP</th>
+              <th>Min <Spell id={22570}>Maim</Spell> damage</th>
+              <th>Max <Spell id={22570}>Maim</Spell> damage</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>MinBaseDmg + 130</td>
+              <td>MaxBaseDmg + 130</td>
+              <td>2 sec</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>MinBaseDmg + 214</td>
+              <td>MaxBaseDmg + 214</td>
+              <td>3 sec</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>MinBaseDmg + 298</td>
+              <td>MaxBaseDmg + 298</td>
+              <td>4 sec</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>MinBaseDmg + 382</td>
+              <td>MaxBaseDmg + 382</td>
+              <td>5 sec</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>MinBaseDmg + 466</td>
+              <td>MaxBaseDmg + 466</td>
+              <td>6 sec</td>
+            </tr>
+          </tbody>
+        </Table>
 
         <Heading3>Powershifting</Heading3>
         <p>
@@ -466,7 +1017,7 @@ const Physical = () => {
         </p>
         <p>
           Usual Powershifting macro you will see recommended is <Expresion>/cast !Cat Form</Expresion> which is quite
-          bad and forces you to estimate everything by manually wasting huge sums of Energy and time. Our macro will not
+          bad and forces you to estimate everything manually wasting huge sums of Energy and time. Our macro will not
           let you Shapeshift if next energy tick will provide you enough Energy for another <Spell
           id={27002}>Shred</Spell> (saving mana) and if you are not able to shapeshift back to <CatForm /> (saving
           auto-attacks). (Dire Bear Form is used intentionally in #show command to prevent green glow of active spell
@@ -474,7 +1025,7 @@ const Physical = () => {
           will see all necessary information. But We recommend use of custom icon as <Expresion>?</Expresion> Icon will
           result in Dire Bear Form icon.)
         </p>
-        <SimpleMacro
+        <HeadlessMacro
           name="Powershifting"
           description={"This is best Powershifting macro you can use"}
           text={`#show Dire Bear Form
@@ -482,33 +1033,107 @@ const Physical = () => {
 /stopmacro [stance:3]
 /cast Cat Form(Shapeshift)`}
         />
+        <Heading3>Others</Heading3>
+        <Heading5><Spell>Dash</Spell></Heading5>
+        <p>
+          <Spell id={33357}>Dash</Spell> increases your movement speed by 70%. This stacks additively
+          with <Talent id={24866}>Feral Swiftness</Talent> making you quite swifty. Use this when you need to get to
+          the enemy or escape dangerous situation.
+        </p>
+        <Heading5><Spell>Faerie Fire (Feral)</Spell></Heading5>
+        <p>
+          <Spell id={27011}>Faerie Fire (Feral)</Spell> reduces targets Armor by 610
+          ({damageReductionOfArmor(610)}% maximal damage improvement). There should
+          be <Balance /> <Druid /> with <Talent id={33602}>Improved Faerie Fire</Talent> using hes improved version but
+          if there is no chicken it is your job keep <Spell id={27011}>Faerie Fire</Spell> active on enemy. Bear in mind
+          it does calculate Hit chance from Spell Hit Rating so you might get bunch of resists.
+        </p>
 
-        <Heading3>Combo Points</Heading3>
-        <ul>
-          <li><Spell id={27000}>Claw</Spell></li>
-          <li><Spell id={33983}>Mangle (Cat)</Spell></li>
-          <li><Spell id={27006}>Pounce</Spell></li>
-          <li><Spell id={27003}>Rake</Spell></li>
-          <li><Spell id={27005}>Ravage</Spell></li>
-          <li><Spell id={27002}>Shred</Spell></li>
-        </ul>
-        <Heading3>Finishing moves</Heading3>
-        <ul>
-          <li><Spell id={24248}>Ferocious Bite</Spell></li>
-          <li><Spell id={22570}>Maim</Spell></li>
-          <li><Spell id={27008}>Rip</Spell></li>
-        </ul>
-        <Heading3>Rest</Heading3>
-        <ul>
-          <li><Spell id={33357}>Dash</Spell></li>
-          <li><Spell id={27011}>Faerie Fire (Feral)</Spell></li>
-          <li><Spell id={20719}>Feline Grace</Spell></li>
-          <li><Spell id={9913}>Prowl</Spell></li>
-          <li><Spell id={9846}>Tiger's Fury</Spell></li>
-          <li><Spell id={5225}>Track Humanoids</Spell></li>
-        </ul>
+        <Heading5><Spell>Feline Grace</Spell></Heading5>
+        <p>
+          <Spell id={20719}>Feline Grace</Spell> reduced damage you take from falling by 17%. This can help you stay
+          alive (or at least take less damage) in few fight like <Archimonde /> or <KaelthasSunstrider />.
+          But <strong>you have to be in <CatForm /></strong> if you feel like you are too high to survive even
+          with <Spell id={20719}>Feline Grace</Spell> you can
+          use <Spell id={16979}>Feral Charge</Spell> or <Item id={8529} quality="common">Noggenfogger Elixir</Item> as
+          last resort.
+        </p>
+
+        <Heading5><Spell>Prowl</Spell></Heading5>
+        <p>
+          <Spell id={9913}>Prowl</Spell> make you invisible from far and harder to detect when close to enemy. It also
+          allows you to use <Spell id={27006}>Pounce</Spell> and <Spell id={27005}>Ravage</Spell>.
+          Use <Spell id={9913}>Prowl</Spell> every time your group or raid is trying to avoid same group of enemies
+          to reduce chance you will engage them.
+        </p>
+
+        <Heading5><Spell>Track Humanoids</Spell></Heading5>
+        <p>
+          <Spell id={5225}>Track Humanoids</Spell> allows you to see humanoids on minimap. This is useful on few rare
+          occasion when you can track movement of same patrol but thats pretty much it.
+        </p>
+
+        <Heading5><Spell>Cower</Spell></Heading5>
+        <p>
+          You can reduce your threat by 1170 using <Spell id={27004}>Cower</Spell> ability. It cost 20 energy and
+          is usually not very effective as one critical hit of <Spell id={27002}>Shred</Spell> can generate more threat.
+          Just stop attacking and regenerate same mana or do any other activities you need to do.
+          Refresh <Spell id={27011}>Faerie Fire (Feral)</Spell> use <Spell id={29166}>Innervate</Spell> or <Spell
+          id={20747}>Rebirth</Spell>. If there really is nothing else to do then use <Spell id={27004}>Cower</Spell>.
+        </p>
+
+        <Heading5><Spell>Tiger's Fury</Spell></Heading5>
+        <p>
+          <Spell id={9846}>Tiger's Fury</Spell> increase your Base Damage by 40 for the price of 30 energy. This Damage
+          increase damage of your Auto-Aattack and is included in percentual Damage calculation of
+          abilities like <Spell id={27002}>Shred</Spell>. Maximal damage you can get
+          from <Spell id={9846}>Tiger's Fury</Spell> is Critical Strike of <Spell id={27005}>Ravage</Spell> dealing up
+          to <Expresion>40 * 3.85 * 2.2 = 338.8</Expresion> additional Damage in one hit.
+
+          Lets take a look at absolute best possible scenario you can imagine we will enough
+          hase, <Spell id={2825}>Bloodlust</Spell> and <Item id={28830}>Dragonspine Trophy</Item> proc on to double our
+          attack speed and squeeze in 12 melee hits in 6 second duration of <Spell id={9846}>Tiger's Fury</Spell> and
+          we will also use <Spell id={27002}>Shred</Spell> six times (tanks
+          to best <Spell id={16864}>Omen of Clarity</Spell> procs in history of WoW)
+          with <Spell id={33983}>Mangle</Spell> already active . All of this Abilities will just by chance score
+          Critical Strike. This would give us <Expresion>(12 * 40 * 2.2) + (6 * 40 * 2.25 * 1.3 * 2.2)
+          = 2600.4</Expresion> additional damage from effect of <Spell id={9846}>Tiger's Fury</Spell>. Now this scenario
+          is very close to be impossible if not straight up impossible and even in this situation with all start align
+          we are only approaching Damage comparable with Critical Strike of normal <Spell id={27002}>Shred</Spell>.
+          Yes 30 energy is less than 42 but you will not find yourself in this situation. Far often this would be 5
+          melee hits and 3 <Spell id={27002}>Shred</Spell>s with far fewer Critical Strikes and same of them even
+          replaced with Glancing Blow or even full Dodge. In this situation you will be happy for 600 damage bonus
+          from <Spell id={9846}>Tiger's Fury</Spell>. So it might be useful when you are fresh green 70 and static
+          damage bonus seems like good ratio compared to your Attack Power or if you need
+          to <Spell id={27005}>Ravage</Spell> something real hard. But apart from that, it would be better to stay away
+          from <Spell id={9846}>Tiger's Fury</Spell>. Note that <Spell id={9846}>Tiger's Fury</Spell> is lost when you
+          leave <CatForm /> making it impossible to use <Spell id={27002}>Shred</Spell> more than 3 times in its
+          duration
+          without <Spell id={16864}>Omen of Clarity</Spell> proc.
+        </p>
 
         <Heading2>Rotation</Heading2>
+        <p>
+          Keep <Spell id={33983}>Mangle (Cat)</Spell> up if there is no
+          other <FeralCombat /> <Druid />, use <Spell id={27002}>Shred</Spell> up to minimal amount of 4 Combo Points if
+          it crits and you get 5 it is fine. (This is due to way <Spell id={27008}>Rip</Spell> scales with Attack Power
+          4 CP version benefits same as 5 CP version so its not much of improvement (257
+          with <Spell id={33983}>Mangle</Spell> active to be precise)). Then use <Spell id={27008}>Rip</Spell> and
+          repeat. Never use <Spell id={27002}>Shred</Spell> without <Spell id={33983}>Mangle</Spell> and
+          keep <Spell id={33983}>Mangle</Spell> up whole time <Spell id={27008}>Rip</Spell> is active (note
+          that first proc of <Spell id={27008}>Rip</Spell> is 2 seconds after application so you have same time to
+          get <Spell id={33983}>Mangle</Spell> up. If you feel like you build up CP fast enough to
+          put <Spell id={24248}>Ferocious Bite</Spell> between two 4 CP application
+          of <Spell id={27008}>Rip</Spell> without any downtime use it if you
+          have <Talent id={16862}>Feral Aggression</Talent> otherwise just continue
+          with <Spell id={27002}>Shred</Spell>. Powershift every time macro lets you (even if <Spell id={16864}>Omen of
+          Clarity</Spell> buff is up) and do not forget to keep <Spell id={27011}>Faerie Fire (Feral)</Spell> up at all
+          time. Also when <Spell id={16864}>Omen of Clarity</Spell> is up always
+          use <Spell id={27002}>Shred</Spell> only exception is when <Spell id={33983}>Mangle</Spell> bonus is not
+          active, otherwise always
+          prioritize <Spell id={27002}>Shred</Spell> over <Spell id={27008}>Rip</Spell>, <Spell id={33983}>Mangle
+          (Cat)</Spell> and especially <Spell id={24248}>Ferocious Bite</Spell>.
+        </p>
 
         <Heading2>Equipment</Heading2>
         <Heading3>Equipment Sets</Heading3>
@@ -525,8 +1150,13 @@ const Physical = () => {
         </ul>
         <p>
           2 Set Bonus is <strong>AMAZING</strong> it is hard to quantify how amazing it exactly is but it is with no
-          doubt best <CatForm /> set bonus. Only think holding it back are relatively weak stats of T4 items chance is
-          4%. 4 Set Bonus is fine but nothing extraordinary as 30 Strength is not that hard to get nor that useful
+          doubt best <CatForm /> set bonus. Only think holding it back are relatively weak stats of T4 items. Proc
+          chance is 4%.
+          4 Set Bonus is fine but nothing extraordinary as 30 Strength is not that hard to get nor that useful.
+        </p>
+        <p>
+          You should aim for 2 Set Bonus ideally chest and hands (or shoulders), it is crazy good and you will not
+          replace it until <SunwellPlateau /> and it might be worth even there. It is very hard to actually calculate.
         </p>
 
         <Heading5 anchorId="nordrassil-harness-t5">Nordrassil Harness (T5)</Heading5>
@@ -546,6 +1176,11 @@ const Physical = () => {
           4 Set Bonus is good but nothing special 75 <Spell id={27002}>Shred</Spell> damage is less than bonus
           from <Item id={29390}>Everbloom Idol</Item>.
         </p>
+        <p>
+          This set is just straight up bad. You will be better of with <Karazhan /> gear and 2 Set of T4.
+          2 Set of t5 is useless and although 4 set could be used you would have to sacrifice 2 Set of T4 which is much
+          better.
+        </p>
 
         <Heading5 anchorId="thunderheart-harness-t6">Thunderheart Harness (T6)</Heading5>
         <ul>
@@ -557,17 +1192,21 @@ const Physical = () => {
           <li><Item id={34556}>Thunderheart Waistguard</Item> (<Brutallus /> <SunwellPlateau />)</li>
           <li><Item id={34444}>Thunderheart Wristguards</Item> (<Kalecgos /> <SunwellPlateau />)</li>
           <li><Item id={34573}>Thunderheart Treads</Item> (<Felmyst /> <SunwellPlateau />)</li>
-          <li><strong>(2) Set</strong>: Reduces the energy cost of your Mangle ability in Cat Form by 5.</li>
+          <li><strong>(2) Set</strong>: Reduces the energy cost of your Mangle ability in <CatForm /> by 5.</li>
           <li><strong>(4) Set</strong>: Increases the damage dealt by your Rip and Ferocious Bite abilities by 15%.</li>
         </ul>
         <p>
           2 Set Bonus is great reducing energy you have to spend on <Spell id={33983}>Mangle (Cat)</Spell> in your
           rotation.
-          4 Set Bonus is amazing 15% bonus to <Spell id={27008}>Rip</Spell> and <Spell id={24248}>Ferocious
-          Bite</Spell> greatly increa your DPS.
+          4 Set Bonus is amazing, 15% bonus to <Spell id={27008}>Rip</Spell> and <Spell id={24248}>Ferocious
+          Bite</Spell> greatly increase your DPS.
+        </p>
+        <p>
+          You should not aim for 4 Set before <SunwellPlateau /> Belt, Boots and Bracers are available and combine them
+          with Shoulders (and Chest if you want to keep <Item id="30106">Belt of One-Hundred Deaths</Item>).
         </p>
 
-        <Heading5 anchorId="gladiators-sanctuary-s1234">Gladiator's Sanctuary (S1, S2,S3,S4)</Heading5>
+        <Heading5 anchorId="gladiators-sanctuary-s1234">Gladiator's Sanctuary (S1, S2, S3, S4)</Heading5>
         <ul>
           <li><Item id={34998}>Brutal Gladiator's Dragonhide Gloves</Item></li>
           <li><Item id={34999}>Brutal Gladiator's Dragonhide Helm</Item></li>
@@ -582,6 +1221,13 @@ const Physical = () => {
         <p>
           2 Set Bonus is of no use for DPS feral druid
           4 Set Bonus can be beneficial in same situations but those are few and far between.
+        </p>
+        <p>
+          Although PvP items for <FeralCombat /> <Druid /> are quite good they are never the best (they are usually in
+          top
+          3 tho). Avoid this sets if possible and try find something better. Only reason to use it is that you are PvP
+          players and have nothing better yet or you will be off tanking a lot and need Resilience to reduce chance
+          of Critical Strike against you.
         </p>
 
         <Heading3>Weapons</Heading3>
@@ -752,11 +1398,20 @@ const Physical = () => {
 
         <Heading3>Trinkets</Heading3>
         <p>
-          Majority of trinkets with use effect share 30 second long cooldown that prevents you using 2 of them at once.
+          Best Trinkets you can get early on are will keep for long time is <Item id={28830}>Dragonspine
+          Trophy</Item> combined with <Item id={32654} quality="rare">Crystalforged Trinket</Item>\<Item id={28579}>Romulo's
+          Poison Vial</Item>. In T5 you can replace one of those with <Item id={30627}>Tsunami Talisman</Item> and
+          with <Item id={32505}>Madness of the Betrayer</Item> in T6. When Magisters' Terrace on Isle of Quel'Danas
+          became available you can get <Item id={34472}>Shard of Contempt</Item> and at this point you will have to
+          joggle between <Item id={28830}>Dragonspine Trophy</Item> and <Item id={32505}>Madness of the
+          Betrayer</Item> depending on your needs. Note that majority of trinkets with use effect share 30 second long
+          cooldown that prevents you from using two of them at once.
         </p>
         <Table cellAlign="center" leftAlignFirstColumn={true} centerTable={false}>
-          <caption>Values include <Talent id={33856}>Survival of the Fittest</Talent>, <Spell id={20217}>Blessing of
-            Kings</Spell> and <Talent id={24894}>Heart of the Wild</Talent></caption>
+          <caption>
+            Values include <Talent id={33856}>Survival of the Fittest</Talent>, <Spell id={20217}>Blessing of
+            Kings</Spell> and <Talent id={24894}>Heart of the Wild</Talent>.
+          </caption>
           <thead>
             <tr>
               <th>Trinket</th>
@@ -792,11 +1447,13 @@ const Physical = () => {
               <td>325 Haste</td>
               <td>10</td>
               <td>20</td>
-              <td>81 Haste</td>
+              <td>???</td>
             </tr>
             <tr>
               <td colSpan={7}>
-                {round(hasteRatingToSpeed(325), 1)}% attack speed
+                Increase your attack speed by {round(hasteRatingToSpeed(325), 1)}%. This directly
+                affects only your Auto-Attacks but indirectly also increase your chance of <Spell id={16864}>Omen of
+                Clarity</Spell> proc.
               </td>
             </tr>
             <tr>
@@ -806,7 +1463,7 @@ const Physical = () => {
               <td>-300 Armor</td>
               <td>10</td>
               <td>0</td>
-              <td>-300 Armor</td>
+              <td>???</td>
             </tr>
             <tr>
               <td colSpan={7}>
@@ -888,13 +1545,15 @@ const Physical = () => {
             </tr>
             <tr>
               <td colSpan={7}>
-                35 Hit is HUGE (although situational) and 4.48 DPS (just from auto-attack) is also solid (Keep in mind this is spell and
+                35 Hit is HUGE (although situational) and 4.48 DPS (just from auto-attack) is also solid (Keep in mind
+                this is spell and
                 benefits from bonuses like <Spell id={17364}>Stormstrike</Spell> and <Spell id={27228}>Curse of the
                 Elements</Spell>)
               </td>
             </tr>
             <tr>
-              <td rowSpan={2}><strong><Item id={28034} quality="rare">Hourglass of the Unraveller</Item></strong><br /></td>
+              <td rowSpan={2}><strong><Item id={28034} quality="rare">Hourglass of the Unraveller</Item></strong><br />
+              </td>
               <td>P</td>
               <td>32 Crit</td>
               <td>330 Ap</td>
@@ -919,6 +1578,22 @@ const Physical = () => {
             <tr>
               <td colSpan={7}>
                 This is just worse version of <Item id={33831}>Berserker's Call</Item>.
+              </td>
+            </tr>
+            <tr>
+              <td rowSpan={2}><strong><Item id={35751}>Assassin's Alchemist Stone</Item></strong><br /></td>
+              <td>P</td>
+              <td>120 AP</td>
+              <td>+40% Mana Potion</td>
+              <td />
+              <td>120</td>
+              <td>6 - 10.7 MPS</td>
+            </tr>
+            <tr>
+              <td colSpan={7}>
+                This is not super good it is not enough AP to justify it and at this point in game you should be able
+                to keep up with mana. On other hand it allows you to use some <Item id={22838} quality="common">Haste
+                Potion</Item>.
               </td>
             </tr>
             <tr>
@@ -951,22 +1626,6 @@ const Physical = () => {
               </td>
             </tr>
             <tr>
-              <td rowSpan={2}><strong><Item id={35751}>Assassin's Alchemist Stone</Item></strong><br /></td>
-              <td>P</td>
-              <td>120 AP</td>
-              <td>+40% Mana Potion</td>
-              <td />
-              <td>120</td>
-              <td>6 - 10.7 MPS</td>
-            </tr>
-            <tr>
-              <td colSpan={7}>
-                This is not super good it is not enough AP to justify it and at this point in game you should be able
-                to keep up with mana. On other hand it allows you to use some <Item id={22838} quality="common">Haste
-                Potion</Item>.
-              </td>
-            </tr>
-            <tr>
               <td rowSpan={2}><strong><Item id={35694}>Figurine - Khorium Boar</Item></strong><br /></td>
               <td>U</td>
               <td>92 AP</td>
@@ -983,7 +1642,7 @@ const Physical = () => {
             <tr>
               <td rowSpan={2}><strong><Item id={32486}>Ashtongue Talisman of Equilibrium</Item></strong><br /></td>
               <td>P</td>
-              <td/>
+              <td />
               <td>158 Str (347 AP)</td>
               <td>8</td>
               <td>0</td>
@@ -991,12 +1650,13 @@ const Physical = () => {
             </tr>
             <tr>
               <td colSpan={7}>
-                This is not great as 8 sec duration with 40% proc amount to about 3.2 sec average uptime
-                per <Spell id={33983}>Mangle</Spell> use. It is great for farming tho.
+                This is not great as 8 sec duration with 40% proc amounts to about 3.2 sec average uptime
+                per <Spell id={33983}>Mangle</Spell> use. It is superb for farming tho.
               </td>
             </tr>
             <tr>
-              <td rowSpan={2}><strong><Item id={28121} quality="rare">Icon of Unyielding Courage</Item></strong><br /></td>
+              <td rowSpan={2}><strong><Item id={28121} quality="rare">Icon of Unyielding Courage</Item></strong><br />
+              </td>
               <td>U</td>
               <td>30 Hit</td>
               <td>-600 Armor</td>
@@ -1021,13 +1681,14 @@ const Physical = () => {
             </tr>
             <tr>
               <td colSpan={7}>
-                AP bonus + {hasteRatingToSpeed(260)}% attack speed for 10 use effect. It stack nicely
+                AP bonus + {hasteRatingToSpeed(260)}% attack speed for 10 seconds. It stack nicely
                 with <Spell id={2825}>Bloodlust</Spell> and improve your chance of <Spell id={16864}>Omen of
                 Clarity</Spell> proc.
               </td>
             </tr>
             <tr>
-              <td rowSpan={2}><strong><Item id={25937} quality="uncommon">Terokkar Tablet of Precision</Item></strong><br /></td>
+              <td rowSpan={2}><strong><Item id={25937} quality="uncommon">Terokkar Tablet of
+                Precision</Item></strong><br /></td>
               <td>U</td>
               <td>22 Hit</td>
               <td>154 AP</td>
@@ -1085,29 +1746,128 @@ const Physical = () => {
         </Table>
 
         <Heading3>Idols</Heading3>
-        <ul>
+        <ol>
           <li>
             <Item id={32387} quality="rare">Idol of the Raven Goddess</Item> (<Quest id={11001}>Vanquish the Raven
             God</Quest>)
+            <ul>
+              <li>
+                This increase Critical Strike Chance of every party member by {critRatingToCrit(20)}%.
+                For 5 players in party that benefits from physical Critical
+                Strike <Item id={32387} quality="rare">Idol of the Raven Goddess</Item> can provide up
+                to {critRatingToCrit(20) * 5}% additional Critical Strike Chance. (It also separately
+                affects <Hunter />'s pet)
+                <p>
+                  To find out if <Item id={32387} quality="rare">Idol of the Raven Goddess</Item> is better for your
+                  situation than <Item id={29390}>Everbloom Idol</Item> you have to calculate your DPS increase
+                  with <Item id={29390}>Everbloom Idol</Item> idol as described in its section and then
+                  do following for each member of your party (including you):
+                </p>
+
+                <ol>
+                  <li>
+                    Calculate percentual DPS
+                    improvement <Item id={32387} quality="rare">Idol of the Raven Goddess</Item> provides
+                    as: <Expresion>{critRatingToCrit(20)} * DpsIncreasePerPercentOfCritChance</Expresion> (You
+                    can find this value in list below.)
+                    <DpsIncreasePerCritChancePercent />
+                  </li>
+                  <li>
+                    Calculate how much DPS particular party member gets from <Item id={32387} quality="rare">Idol of the
+                    Raven Goddess</Item> as <Expresion>PartyMemberDPS * PercentualDpsImprovement / 100</Expresion>
+                  </li>
+                </ol>
+                <p>
+                  <strong>Then sum up DPS improvements of all party members and if that number is bigger than DPS you
+                    calculated for <Item id={29390}>Everbloom Idol</Item> you should
+                    use <Item id={32387} quality="rare">Idol of the Raven Goddess</Item>.</strong> For instance if we
+                  use 67 DPS improvement you can find in <Item id={29390}>Everbloom Idol</Item> section you would need
+                  to do 2000 DPS yourself and also have <Warrior /> that does 2500 DPS and <Shaman /> that does 2000 DPS
+                  in your group to make <Item id={32387} quality="rare">Idol of the Raven Goddess</Item> worth using.
+                </p>
+              </li>
+            </ul>
           </li>
-          <li><Item id={29390}>Everbloom Idol</Item> (15x<Boj />)</li>
-          <li><Item id={33509}>Idol of Terror</Item> (20x<Boj />)</li>
-          <li><Item id={32257}>Idol of the White Stag</Item> (<Supremus />, <BlackTemple />)</li>
-          <li><Item id={25940} quality="rare">Idol of the Claw</Item> (Pandemonius(1), Mana-Tombs(Normal))</li>
-          <li><Item id={28064} quality="uncommon">Idol of the Wild</Item> (<Quest id={10132}>Colossal Menace</Quest>)
+          <li>
+            <Item id={29390}>Everbloom Idol</Item> (15x<Boj />)
+            <ul>
+              <li>
+                Damage is affected by <Spell id={33983}>Mangle</Spell> and benefits from Critical Strike damage. Lets
+                say you can use <Spell id={27002}>Shred</Spell> 23 times per minute and 10 of those would be Critical
+                Strikes. That would give you about 67 DPS (this is SWP level gear). You can count amount
+                of <Spell id={27002}>Shred</Spell>s per minute you do in your gear with your rotation and check your
+                Critical Strike Chance while fully raid buffed in combat to calculate your DPS increas of Evebloom Idol.
+                Calculation is <Expresion>(((AmountOfShreds * CriticalStrikeChanceAsDecimal * 1.2) + AmountOfShreds ) *
+                88 * 1.3) / 60</Expresion> (CriticalStrikeChanceAsDecimal means 45.25% Crit Chance is 0.4525)
+                Note that amount of <Spell id={27002}>Shred</Spell> will differ in scenario where there is
+                another <FeralCombat /> <Druid /> to keep <Spell id={33983}>Mangle</Spell> up.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Item id={33509}>Idol of Terror</Item> (20x<Boj />)
+            <ul>
+              <li>
+                Both <Talent id={33856}>Survival of the Fittest</Talent> and <Spell id={20217}>Blessing of
+                Kings</Spell> affect amount of Agility you receive. 74 Agility that you get with both this buffs amounts
+                to: {agilityToCrit(74, "druid")}% Critical Strike Chance and 81 Attack Power
+                (with <Talent id={24894}>Heart of the Wild</Talent>). 81 Attack Power amounts to 5.79 DPS increase
+                from Auto-Attack only and same more from other
+                Abilities. {agilityToCrit(74, "druid")}% Critical Strike Chance increase your DPS
+                by {critToMeleeDpsImprovement(agilityToCrit(74, "druid"), 1.2)}%. Duration is
+                10 seconds but you use <Spell id={33983}>Mangle</Spell> every 12 seconds in standard rotation meaning
+                that it has maximal 83% uptime.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Item id={32257}>Idol of the White Stag</Item> (<Supremus />, <BlackTemple />)
+            <ul>
+              <li>
+                Attack Power bonus is 103 with <Talent id={24894}>Heart of the Wild</Talent>. Bonus is barely more AP
+                than <Item id={33509}>Idol of Terror</Item> making it a way worse but uptime on this is 20 second so
+                you can keep it up 100% of time in standard rotation. 103 Attack Power amounts to 7.36 DPS increase
+                from Auto-Attack only and same more from other Abilities.
+              </li>
+            </ul>
           </li>
           <li>
             <Item id={28372} quality="rare">Idol of Feral Shadows</Item> (Zereketh the Unbound(1), The
             Arcatraz(HC/Normal))
+            <ul>
+              <li>
+                Improves <Spell id={27008}>Rip</Spell> Damage by 210 overall (with 5 CP). This damage is further
+                improved by <Spell id={33983}>Mangle</Spell> to 273 Damage. That is 22.75 DPS boost.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Item id={28064} quality="uncommon">Idol of the Wild</Item> (<Quest id={10132}>Colossal Menace</Quest>)
+          </li>
+          <li>
+            <Item id={25940} quality="rare">Idol of the Claw</Item> (Pandemonius(1), Mana-Tombs(Normal))
+            <ul>
+              <li>
+                This is quite week as amount of HP restored is
+                miniscule. <Talent id={33873}>Nurturing Instinct</Talent> improved amount of healing received.
+              </li>
+            </ul>
           </li>
           <li>
             <Item id={27990} quality="rare">Idol of Savagery</Item> (<Item id={24579} quality="common">Mark of Honor
             Hold</Item>/<Item id={24581} quality="common">Mark of Thrallmar</Item>)
+            <ul>
+              <li>
+                This idol is of not use for us as
+                both <Spell id={27000}>Claw</Spell>, <Spell id={27003}>Rake</Spell> should not be used. (Bonus
+                to <Spell id={27003}>Rake</Spell> is applied on initial damage.)
+              </li>
+            </ul>
           </li>
           <li>
             <Item id={22397}>Idol of Ferocity</Item> (Lord Roccor, BRD) this is just weak version
             of <Item id={27990} quality="rare">Idol of Savagery</Item></li>
-        </ul>
+        </ol>
 
         <Heading3>Enchants</Heading3>
         <ul>
@@ -1115,27 +1875,63 @@ const Physical = () => {
             <strong>Head</strong>: <Item id={29192} quality="uncommon">Glyph of Ferocity</Item> if you need Hit
             otherwise <Item id={30846} quality="uncommon">Glyph of the Outcast</Item> (<Item id={8345} quality="rare">Wolfshead
             Helm</Item> with <Item id={29192} quality="uncommon">Glyph of Ferocity</Item> is good item to compensate for
-            missing <Balance /> <Druid /> as it is dirt cheap and you can easily swap it.)
+            missing <Balance /> <Druid /> as it is dirt cheap and you can easily swap it with one that
+            has <Item id={30846} quality="uncommon">Glyph of the Outcast</Item>.)
           </li>
           <li>
             <strong>Shoulder</strong>: <Item id={28910} quality="rare">Greater Inscription of the
-            Blade</Item> (preferably) <Item id={28888} quality="rare">Greater Inscription of the Blade</Item>
+            Blade</Item> (preferably) or <Item id={28888} quality="rare">Greater Inscription of the Blade</Item>
           </li>
           <li><strong>Back</strong>: <Spell id={34004}>Enchant Cloak - Greater Agility</Spell></li>
           <li><strong>Chest</strong>: <Spell id={46502}>Enchant Chest - Exceptional Stats</Spell></li>
           <li>
-            <strong>Wrists</strong>: <Spell id={27899}>Enchant Bracer - Brawn</Spell> (if you are not tanking or playing
-            PVP), <Spell id={27905}>Enchant Bracer - Stats</Spell>
+            <strong>Wrists</strong>: (assuming <Spell id={20217}>Blessing of
+            Kings</Spell> and <Talent id={33856}>Survival of the Fittest</Talent>)
+            <ol>
+              <li>
+                <Spell id={27905}>Enchant Bracer - Stats</Spell>: increase your Attack Power by 29.91 improving DPS by
+                2.137. Critical Strike chance improvement of Agility also increase DPS
+                by {critToMeleeDpsImprovement(agilityToCrit(4.532, "druid"), 1.2)}% so you need
+                to do at least 982 DPS to overcome 2.1365 DPS difference
+                of <Spell id={27899}>Enchant Bracer - Brawn</Spell>. <Spell id={27905}>Enchant Bracer -
+                Stats</Spell> also increases Stamina and Spirit by 4.532 and Intellect by 5.4384.
+              </li>
+              <li>
+                <Spell id={27899}>Enchant Bracer - Brawn</Spell>: increase your Attack Power by 59.82 improving DPS by
+                4.273.
+              </li>
+            </ol>
           </li>
-          <li><strong>Hands</strong>: <Spell id={25080}>Enchant Gloves - Superior Agility</Spell>, <Spell id={33995}>Enchant
-            Gloves - Major Strength</Spell></li>
+          <li><strong>Hands</strong>: <Spell id={25080}>Enchant Gloves - Superior Agility</Spell> if available
+            if not <Spell id={33995}>Enchant Gloves - Major Strength</Spell></li>
           <li><strong>Legs</strong>: <Item id={29535}>Nethercobra Leg Armor</Item></li>
           <li><strong>Feet</strong>: <Spell id={34007}>Enchant Boots - Cat's Swiftness</Spell> (Being able to hit is
             worth more than agility)
           </li>
           <li>
-            <strong>Finger</strong>: <Spell id={27920}>Enchant Ring - Striking</Spell> (if you are not tanking or
-            playing PVP), <Spell id={22538}>Formula: Enchant Ring - Stats</Spell>
+            <strong>Finger</strong>:
+            <ol>
+              <li>
+                <Spell id={27927}>Formula: Enchant Ring - Stats</Spell>: with <Spell id={20217}>Blessing of
+                Kings</Spell> and <Talent id={33856}>Survival of the Fittest</Talent> amounts to 14.9556 AP which
+                is 1.0683 DPS improvement
+                and additional {critToMeleeDpsImprovement(agilityToCrit(4.532, "druid"), 1.2)}%
+                increase in DPS due to Critical Strike Chance improvement of
+                Agility. <Spell id={27927}>Formula: Enchant Ring - Stats</Spell> also increases Stamina and Spirit by
+                4.532 and Intellect by 5.4384.
+              </li>
+              <li>
+                <Spell id={27920}>Enchant Ring - Striking</Spell> increase your DPS by 2. So you have 0.9317 DPS
+                (above <Spell id={27927}>Formula: Enchant Ring - Stats</Spell>)
+                against {critToMeleeDpsImprovement(agilityToCrit(4.532, "druid"), 1.2)}%
+                DPS increase and all other Stat bonuses of <Spell id={27927}>Formula: Enchant Ring - Stats</Spell>. It
+                is enough to do 429 DPS to surpass effect
+                of <Spell id={27920}>Enchant Ring - Striking</Spell> with <Spell id={27927}>Formula: Enchant Ring -
+                Stats</Spell>.
+                (Also <Spell id={27920}>Enchant Ring - Striking</Spell> does not improve damage
+                of <Spell id={27008}>Rip</Spell> whatsoever.)
+              </li>
+            </ol>
           </li>
           <li><strong>Weapon</strong>: <Spell id={27977}>Enchant 2H Weapon - Major Agility</Spell></li>
         </ul>
@@ -1230,9 +2026,10 @@ const Physical = () => {
           id={27002}>Shred</Spell> can generate more threat. Just stop attacking and regenerate same mana or do any
           other activities you need to do. Refresh <Spell id={27011}>Faerie Fire (Feral)</Spell> use <Spell
           id={29166}>Innervate</Spell> or <Spell id={20747}>Rebirth</Spell> help with healing or just take a break.
-          Anything is better than wiping whole raid due to taking Aggro from Tank. <Spell id={27011}>Faerie Fire
-          (Feral)</Spell> also generates 108 additional threat. You can learn more in our <Link
-          to="/stats-and-mechanics/threat">Threat Mechanics Tutorial</Link>
+          Anything is better than wiping whole raid due to taking Aggro from Tank. Only of there really is nothing else
+          to do then use <Spell id={27004}>Cower</Spell> and keep your eyes on your threat
+          meter. <Spell id={27011}>Faerie Fire (Feral)</Spell> also generates 108 additional threat. You can learn more
+          in our <Link to="/stats-and-mechanics/threat">Threat Mechanics Tutorial</Link>
         </p>
 
         <Heading2>Profession</Heading2>
@@ -1257,7 +2054,7 @@ const Physical = () => {
         <p>
           You cannot use Goggles from engineering due to <Item id={8345} quality="rare">Wolfshead Helm</Item> and you
           cannot use grenades in <CatForm /> neither. You can use <Item id={10725} quality="common">Gnomish Battle
-          Chicken</Item>but that is it.
+          Chicken</Item> but that is it.
         </p>
         <Heading5 anchorId="jewelcrafting"><Jewelcrafting /></Heading5>
         <p>
@@ -1294,27 +2091,33 @@ const Physical = () => {
         <Heading5>Food</Heading5>
         <p>
           Best food for DPS is Agility food: <Item id={27664} quality="common">Grilled Mudfish</Item> or <Item
-          id={27659} quality="common">Warp Burger</Item>. You can also use Hit food if you are short on Hit Rating:
-          <Item id={33872} quality="common">Spicy Hot Talbuk</Item> or Strength food if you run our of Agility food or
-          fight does not matter: <Item id={27658} quality="common">Roasted Clefthoof</Item>.
+          id={27659} quality="common">Warp Burger</Item>. You can also use Hit food if you are short on Hit
+          Rating: <Item id={33872} quality="common">Spicy Hot Talbuk</Item> or Strength food if you run our of Agility
+          food or fight does not matter: <Item id={27658} quality="common">Roasted Clefthoof</Item>.
         </p>
 
         <Heading5>Elixirs and Flasks</Heading5>
         <p>
           You can use <Item id={22854} quality="common">Flask of Relentless Assault</Item> if you dying a lot and want
           to save some many
-          but elixirs are better option. (There is also awesome <Item id={32598} quality="common">Unstable Flask of the
-          Beast</Item> that
-          can only be used in <GruulsLair />)
+          but elixirs are far better option. (There is also awesome <Item id={32598} quality="common">Unstable Flask of
+          the Beast</Item> that can only be used in <GruulsLair />)
         </p>
         <p>
-          For Battle Elixir you have two options <Item id={22831} quality="common">Elixir of Major
-          Agility</Item> and <Item id={28104} quality="common">Elixir of Mastery</Item> and also two options for
-          Guardian Elixir <Item id={32067} quality="common">Elixir of Draenic
-          Wisdom</Item> and <Item id={22840} quality="common">Elixir of Major Mageblood</Item>. <strong>Best combination
-          is <Item id={22831} quality="common">Elixir of Major Agility</Item> and <Item id={32067} quality="common">Elixir
-            of Draenic Wisdom</Item></strong> (because
-          of <Talent id={24894}>Heart of the Wild</Talent>)
+          For Battle Elixir <Item id={22831} quality="common">Elixir of Major Agility</Item> is clear winner without any
+          competition in sight with <Spell id={20217}>Blessing of Kings</Spell> it provides {critRatingToCrit(20)
+        + agilityToCrit(39.655, "druid")}% Critical Strike chance improvement and 47.59 Attack Power.
+        </p>
+        <p>
+          There are two options for Guardian Elixir <Item id={32067} quality="common">Elixir of Draenic
+          Wisdom</Item> and <Item id={22840} quality="common">Elixir of Major
+          Mageblood</Item>. <Item id={32067} quality="common">Elixir of Draenic Wisdom</Item> with <Spell id={20217}>Blessing
+          of Kings</Spell> provides very
+          roughly ~{round(manaRegen(33.99, 40.788) * 0.89)} MP5 (This will vary based on ratio of your Spirit to
+          Intellect) that is less regen than <Item id={22840} quality="common">Elixir of Major Mageblood</Item>. On
+          other hand <Item id={32067} quality="common">Elixir of Draenic Wisdom</Item> also provides 556.2 Mana. This
+          difference is offset with superior mana regen
+          of <Item id={22840} quality="common">Elixir of Major Mageblood</Item> in 90 seconds making it superior choice.
         </p>
 
         <Heading5>Stones and Oils</Heading5>
@@ -1328,22 +2131,11 @@ const Physical = () => {
         <p>
           If you are doing good mana wise you can use same of damage potions. Best you can use
           is <Item id={22838} quality="common">Haste Potion</Item> then <Item id={22828} quality="common">Insane
-          Strength Potion</Item>and <Item id={22837} quality="common">Heroic Potion</Item> is the least effective. Again
-          you should use those inside of Powershifting macro to maximize damage.
+          Strength Potion</Item> and <Item id={22837} quality="common">Heroic Potion</Item> is the least effective.
+          Again you should use those inside of Powershifting macro to maximize damage.
         </p>
 
         <Heading2>Buffs</Heading2>
-        <Heading4>Omen Of Clarity</Heading4>
-        <p>
-          <Spell id={16864}>Omen of Clarity</Spell> gives your melee attacks chance to apply <Spell
-          id={16870}>Clearcasting</Spell> buff that allows you to use next Ability for free (Ability cost 0 energy, rage
-          or mana). Proc rate is 5.833% per melee swing that does damage or is absorbed. There is no internal cooldown
-          on the ability, and it can happen multiple times in a row. You can increase amount of <Spell
-          id={16870}>Clearcasting</Spell> applications by improving your Attack
-          Speed, {ratingFor1Percent("meleeHaste")} Haste increase amount of activations per time period by ~0.058%.
-          (For <Spell id={24248}>Ferocious Bite</Spell> this mean all your energy will be counted toward additional
-          damage as Ability itself costs no energy (This is horrible damage wise))
-        </p>
 
         <Heading5>Paladin Blessing</Heading5>
         <p>
@@ -1371,7 +2163,7 @@ const Physical = () => {
 
           <li><Spell id={39235}>Arcane Intellect</Spell> increases your Intellect by 49</li>
           <li><Spell id={26990}>Mark of the Wild</Spell> increases All your Stats by 18</li>
-          <li><Spell id={25389}>Power Word: Fortitude</Spell> increases your Intellect Stamina 105</li>
+          <li><Spell id={25389}>Power Word: Fortitude</Spell> increases your Stamina 105</li>
           <li><Spell id={25312}>Divine Spirit</Spell> increases your Spirit by by 51</li>
         </ul>
 
@@ -1413,8 +2205,8 @@ const Physical = () => {
           <li>
             <p>
               <Retribution /> <Paladin /> with <Talent id={31870}>Improved Sanctity Aura</Talent> talent provides you
-              with exact same effect as hunter reduced to 2%. (As each aura can be active only once multiple <Paladin />
-              are useless.) This should be more
+              with exact same effect as hunter reduced to 2%. (As each aura can be active only once
+              multiple <Paladin />s are useless.) This should be more
               effective than <Warrior />'s <Spell id={2048}>Battle Shout</Spell> (With both <Talent id={12861}>Commanding
               Presence</Talent> and <Item id={30446}>Solarian's Sapphire</Item>) if you are doing more than 1773 DPS
             </p>
@@ -1428,7 +2220,7 @@ const Physical = () => {
           </li>
           <li>
             <p>
-              <Marksmanship /> <Hunter />'s <Spell id={27066}>Trueshot Aura</Spell> increases your Attack Power by 137..
+              <Marksmanship /> <Hunter />'s <Spell id={27066}>Trueshot Aura</Spell> increases your Attack Power by 137.
             </p>
           </li>
           <li>

@@ -18,7 +18,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  @include element-scrollbar(var(--scrollbar-thumb-color), var(--scrollbar-track-color), 0.5rem);
+  @include element-scrollbar(var(--scrollbar-thumb-color), var(--scrollbar-track-color), 0.625rem);
 }
 
 main {
